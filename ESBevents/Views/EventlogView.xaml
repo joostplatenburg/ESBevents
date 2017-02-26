@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+				xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+				x:Class="ESBevents.EventlogView" Title="ESB Eventlogs">
+	
+	<ContentPage.Content>
+		<ListView x:Name="eventList" RowHeight="100"
+					ItemsSource="{Binding Eventlog}"
+					SelectedItem="{Binding SelectedItem}" >
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout Orientation="Vertical">
+							<StackLayout Orientation="Horizontal">
+								<Image Source="{Binding TypeImage}" 
+										WidthRequest="40" HeightRequest="40"
+										VerticalOptions="Start" 
+										HorizontalOptions="Start"/>
+								<StackLayout Orientation="Vertical">
+									<Label Text="{Binding TimeLogged}" FontSize="10"/>
+									<Label Text="{Binding ConfigName}" FontSize="11"/>
+								</StackLayout>
+							</StackLayout>
+							<Label Text="{Binding Text}" FontSize="12"/>
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>
