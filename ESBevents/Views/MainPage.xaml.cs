@@ -54,7 +54,6 @@ namespace ESBevents.Views
 
 			// Altijd eerst vorige events verwijderen.
 			vm.EventLog.Clear();
-			vm.IsBusy = true;
 			vm.ProgressVisible = true;
 			// Dan met de velden de webservice aanroepen.
 			var webSrvc = new GetEventLogWS();
@@ -62,7 +61,7 @@ namespace ESBevents.Views
 
 			if (status == HttpStatusCode.Continue)
 			{
-				vm.IsBusy = false;
+				vm.ProgressVisible = false;
 				// De json die terug komt in vm zetten van door het object door te geven.
 
    				await Navigation.PushAsync(new EventlogView(vm));

@@ -13,15 +13,15 @@
 						<StackLayout Orientation="Vertical">
 							<StackLayout Orientation="Horizontal">
 								<Image Source="{Binding TypeImage}" 
-										WidthRequest="40" HeightRequest="40"
+										WidthRequest="35" HeightRequest="35"
 										VerticalOptions="Start" 
-										HorizontalOptions="Start"/>
+										HorizontalOptions="Start" Margin="5"/>
 								<StackLayout Orientation="Vertical">
 									<Label Text="{Binding TimeLogged}" FontSize="10"/>
 									<Label Text="{Binding ConfigName}" FontSize="11"/>
 								</StackLayout>
 							</StackLayout>
-							<Label Text="{Binding Text}" FontSize="12"/>
+							<Label Text="{Binding Text}" FontSize="12" Margin="10"/>
 						</StackLayout>
 					</ViewCell>
 				</DataTemplate>
