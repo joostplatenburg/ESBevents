@@ -24,7 +24,7 @@
 	</ContentPage.ToolbarItems>
 	
 	<ContentPage.Content>
-		<Grid Padding="40,20,40,20">
+		<Grid Padding="20">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="120" />
 				<RowDefinition Height="120" />
@@ -33,9 +33,8 @@
 				<RowDefinition Height="50" />
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="140" />
-				<ColumnDefinition Width="140" />
-				<ColumnDefinition Width="140" />
+				<ColumnDefinition Width="160" />
+				<ColumnDefinition Width="160" />
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 			
@@ -49,7 +48,7 @@
 					Clicked="ToonEvents" 
 					FontSize="14" />
 
-			<Button Grid.Row="1" Grid.Column="0" Text="Dichterbij (54322)" x:Name="DBZ"
+			<Button Grid.Row="1" Grid.Column="0" Text="Dichterbij" x:Name="DBZ"
 					Style="{StaticResource buttonStyle}" 
 					Clicked="ToonEvents" 
 					FontSize="14" />
@@ -68,6 +67,12 @@
 					Style="{StaticResource buttonStyle}" 
 					Clicked="ToonEvents" 
 					FontSize="14" />
+
+			<Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="mainMessage" FontSize="12" TextColor="Red"
+					Text="{Binding MainMessage}"/>
+
+			<ProgressBar Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" 
+					x:Name="progress" Progress=".5" IsVisible="{Binding ProgressVisible}" Scale="5"/>
 
 		</Grid>
 	</ContentPage.Content>

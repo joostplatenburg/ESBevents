@@ -34,7 +34,7 @@ namespace ESBevents.WebServices
 
 					//client.BaseAddress = new Uri("http://localhost:57772/psRest/hpd/");
 
-					client.BaseAddress = new Uri(Views.MainPage.BaseURL);
+					client.BaseAddress = new Uri(string.Format(Views.MainPage.BaseURL, vm.HttpServer, vm.HttpPort));
 
 					//var command = string.Format("organizations?$filter=naam eq '{0}' and plaats eq '{1}'", vm.Naam, vm.Plaats);
 					var command = "HaalEventlog";

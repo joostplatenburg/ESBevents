@@ -58,8 +58,60 @@ namespace ESBevents.ViewModels
 			}
 		}
 
+		private string _httpport;
+		public string HttpPort
+		{
+			get { return _httpport; }
+			set
+			{
+				if (_httpport == value) return;
 
+				_httpport = value;
 
+				OnPropertyChanged("HttpPort");
+			}
+		}
+
+		private string _httpserver;
+		public string HttpServer
+		{
+			get { return _httpserver; }
+			set
+			{
+				if (_httpserver == value) return;
+
+				_httpserver = value;
+
+				OnPropertyChanged("HttpServer");
+			}
+		}
+		private string _mainMessage;
+		public string MainMessage
+		{
+			get { return _mainMessage; }
+			set
+			{
+				if (_mainMessage == value) return;
+
+				_mainMessage = value;
+
+				OnPropertyChanged("MainMessage");
+			}
+		}
+
+		private Boolean _progressvisible;
+		public Boolean ProgressVisible
+		{
+			get { return _progressvisible; }
+			set
+			{
+				if (_progressvisible == value) return;
+
+				_progressvisible = value;
+
+				OnPropertyChanged("ProgressVisible");
+			}
+		}
 		#endregion Properties
 	}
 }

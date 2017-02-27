@@ -27,7 +27,7 @@ namespace ESBevents.Views
 			}
 			else
 			{
-				BaseURL = "http://52.73.112.29:54322/DXCUtilities/";
+				BaseURL = "http://{0}:{1}/DXCUtilities/";
 			}
 		}
 
@@ -40,12 +40,29 @@ namespace ESBevents.Views
 		{
 			var ik = sender as Button;
 
+			if (ik.Text == "Dichterbij")
+			{
+				vm.HttpServer = "52.73.112.29";
+				vm.HttpPort = "54322";
+				vm.MainMessage = "Poortnummer: 54322";
+			} else if (ik.Text == "Philadelphia")
+			{
+				vm.HttpServer = "52.73.112.29";
+				vm.HttpPort = "54323";
+				vm.MainMessage = "Poortnummer: 54323";
+			}
+
+			// Altijd eerst vorige events verwijderen.
+			vm.EventLog.Clear();
+			vm.IsBusy = true;
+			vm.ProgressVisible = true;
 			// Dan met de velden de webservice aanroepen.
 			var webSrvc = new GetEventLogWS();
 			var status = await webSrvc.GetEventLogAsync(vm);
 
 			if (status == HttpStatusCode.Continue)
 			{
+				vm.IsBusy = false;
 				// De json die terug komt in vm zetten van door het object door te geven.
 
    				await Navigation.PushAsync(new EventlogView(vm));
