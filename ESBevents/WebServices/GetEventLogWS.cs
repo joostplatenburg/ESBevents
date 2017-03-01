@@ -49,7 +49,7 @@ namespace ESBevents.WebServices
 					{
 						var eventlogJson = response.Content.ReadAsStringAsync().Result;
 
-	                	Debug.WriteLine(eventlogJson);
+	                	//Debug.WriteLine(eventlogJson);
 
 						var EventLogs = JsonConvert.DeserializeObject<List<List<EventModel>>>(eventlogJson);
 

@@ -1,5 +1,30 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ESBevents.EventView">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+				xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+				x:Class="ESBevents.EventView"
+				BackgroundColor="White">
 	<ContentPage.Content>
+		<StackLayout Orientation="Vertical">
+			<StackLayout Orientation="Horizontal">
+				<Image Source="{Binding TypeImage}" WidthRequest="80" HeightRequest="80"
+						VerticalOptions="Start" HorizontalOptions="Start" Margin="5"/>
+				<StackLayout Orientation="Vertical" Margin="5">
+					<Label FontSize="14" TextColor="Red" Text="TimeLogged:"/>
+					<Label Text="{Binding TimeLogged}" FontSize="16"/>
+					<Label FontSize="14" TextColor="Red" Text="Job:"/>
+					<Label Text="{Binding Job}" FontSize="16"/>
+					<Label FontSize="14" TextColor="Red" Text="MessageId:"/>
+					<Label Text="{Binding MessageId}" FontSize="16"/>
+				</StackLayout>
+			</StackLayout>
+			<Label FontSize="14" TextColor="Red" Text="SourceClass:"/>
+			<Label Text="{Binding SourceClass}" FontSize="16"/>
+			<Label FontSize="14" TextColor="Red" Text="SourceMethod:"/>
+			<Label Text="{Binding SourceMethod}" FontSize="16"/>
+			<Label FontSize="14" TextColor="Red" Text="ConfigName:"/>
+			<Label Text="{Binding ConfigName}" FontSize="16"/>
+			<Label FontSize="14" TextColor="Red" Text="Text:"/>
+			<Label Text="{Binding Text}" FontSize="16"/>
+		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

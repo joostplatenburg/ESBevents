@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,7 +12,12 @@ namespace ESBevents.ViewModels
 	{
 		public EventViewModel()
 		{
+			_event = new EventModel();
+		}
 
+		public EventViewModel(EventlogViewModel _elVM)
+		{
+			_event = _elVM.SelectedItem.Event;
 		}
 
 		#region INotifyPropertyChanged implementation
@@ -29,6 +34,7 @@ namespace ESBevents.ViewModels
 
 		#region Properties
 		private EventModel _event;
+
 		public EventModel Event
 		{
 			get { return _event; }
@@ -43,6 +49,10 @@ namespace ESBevents.ViewModels
 		}
 
 		public string TimeLogged { get { return string.Format("{0}", Event.TimeLogged); } }
+		public string Job { get { return string.Format("{0}", Event.Job); } }
+		public string MessageId { get { return string.Format("{0}", Event.MessageId); } }
+		public string SourceClass { get { return string.Format("{0}", Event.SourceClass); } }
+		public string SourceMethod { get { return string.Format("{0}", Event.SourceMethod); } }
 		public string ConfigName { get { return string.Format("{0}", Event.ConfigName); } }
 		public string Text { get { return string.Format("{0}", Event.Text); } }
 

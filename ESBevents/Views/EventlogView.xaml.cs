@@ -11,9 +11,9 @@ namespace ESBevents
 
 		public EventlogView()
 		{
-			vm = new EventlogViewModel();
-
 			InitializeComponent();
+
+			vm = new EventlogViewModel();
 
 			Initialize();
 		}
@@ -35,7 +35,7 @@ namespace ESBevents
 			eventList.ItemTapped += (sender, e) =>
 			{
 				//Navigation.PushAsync(new EventView(vm.SelectedItem.Event));
-				Navigation.PushAsync(new EventView());
+				Navigation.PushAsync(new EventView(vm));
 
 				((ListView)sender).SelectedItem = null;
 			};

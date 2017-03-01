@@ -68,11 +68,11 @@
 					Clicked="ToonEvents" 
 					FontSize="14" />
 
-			<Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="mainMessage" FontSize="12" TextColor="Red"
-					Text="{Binding MainMessage}"/>
-
-			<ProgressBar Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" 
+			<ProgressBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" 
 					x:Name="progress" Progress=".5" IsVisible="{Binding ProgressVisible}" Scale="5"/>
+
+			<Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" x:Name="mainMessage" FontSize="16" TextColor="Red"
+					Text="{Binding MainMessage}"/>
 
 		</Grid>
 	</ContentPage.Content>
