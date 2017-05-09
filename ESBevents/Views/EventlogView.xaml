@@ -3,13 +3,18 @@
 				xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 				x:Class="ESBevents.EventlogView" Title="ESB Eventlogs">
 	
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Icon="ic_drawer.png" Activated="OnClick" />
+	</ContentPage.ToolbarItems>
+	
 	<ContentPage.Content>
-		<ListView x:Name="eventList" RowHeight="100"
+		<ListView x:Name="eventList" RowHeight="55"
 					ItemsSource="{Binding Eventlog}"
 					SelectedItem="{Binding SelectedItem}" >
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
+<<<<<<< HEAD
 						<StackLayout Orientation="Vertical">
 							<StackLayout Orientation="Horizontal">
 								<Image Source="{Binding TypeImage}" WidthRequest="35" HeightRequest="35"
@@ -20,6 +25,18 @@
 								</StackLayout>
 							</StackLayout>
 							<Label Text="{Binding Text}" FontSize="12" Margin="10,0,0,0"/>
+=======
+						<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" >
+							<Image Source="{Binding TypeImage}" 
+									WidthRequest="40" HeightRequest="40"
+									VerticalOptions="Start" 
+									HorizontalOptions="Start"/>
+							<StackLayout Orientation="Vertical">
+								<Label Text="{Binding TimeLogged}" FontSize="10"/>
+								<Label Text="{Binding ConfigName}" FontSize="11"/>
+								<Label Text="{Binding Text}" FontSize="11" LineBreakMode="TailTruncation"/>
+							</StackLayout>
+>>>>>>> 0a1a82a... * ESBevents.Droid.csproj: Voor de save button in de optionview
 						</StackLayout>
 					</ViewCell>
 				</DataTemplate>

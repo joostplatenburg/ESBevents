@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
@@ -31,13 +31,18 @@ namespace ESBevents.Views
 			}
 			else
 			{
+<<<<<<< HEAD
 				BaseURL = "http://{0}:{1}/DXCUtilities/";
+=======
+				BaseURL = "http://52.73.112.29:54322/DXCUtilities/";
+				BaseURL = "http://192.168.2.23:54322/DXCUtilities/";
+>>>>>>> 0a1a82a... * ESBevents.Droid.csproj: Voor de save button in de optionview
 			}
 		}
 
 		void OnClick(object sender, EventArgs e)
 		{
-			//Navigation.PushAsync(new OptionsPage());
+			Navigation.PushAsync(new OptionView());
 		}
 
 		async void ToonEvents (object sender, EventArgs e)

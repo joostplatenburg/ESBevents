@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using ESBevents.ViewModels;
 using Xamarin.Forms;
@@ -34,11 +34,22 @@ namespace ESBevents
 
 			eventList.ItemTapped += (sender, e) =>
 			{
+<<<<<<< HEAD
 				//Navigation.PushAsync(new EventView(vm.SelectedItem.Event));
 				Navigation.PushAsync(new EventView(vm));
+=======
+				Navigation.PushAsync(new EventView(vm.SelectedItem));
+				//Navigation.PushAsync(new EventView());
+>>>>>>> 0a1a82a... * ESBevents.Droid.csproj: Voor de save button in de optionview
 
 				((ListView)sender).SelectedItem = null;
 			};
 		}
+
+		void OnClick(object sender, EventArgs e)
+		{
+			Navigation.PushAsync(new OptionView());
+		}
+
 	}
 }

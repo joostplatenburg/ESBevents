@@ -33,8 +33,13 @@
 				<RowDefinition Height="50" />
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
+<<<<<<< HEAD
 				<ColumnDefinition Width="160" />
 				<ColumnDefinition Width="160" />
+=======
+				<ColumnDefinition Width="140" />
+				<ColumnDefinition Width="140" />
+>>>>>>> 0a1a82a... * ESBevents.Droid.csproj: Voor de save button in de optionview
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 			
@@ -48,10 +53,17 @@
 					Clicked="ToonEvents" 
 					FontSize="14" />
 
+<<<<<<< HEAD
 			<Button Grid.Row="1" Grid.Column="0" Text="Dichterbij" x:Name="DBZ"
 					Style="{StaticResource buttonStyle}" 
 					Clicked="ToonEvents" 
 					FontSize="14" />
+=======
+				<Button Grid.Row="1" Grid.Column="0" Text="Dichterbij (54322)" x:Name="DBZ"
+						Style="{StaticResource buttonStyle}" 
+						Clicked="ToonEvents" 
+						FontSize="14" />
+>>>>>>> 0a1a82a... * ESBevents.Droid.csproj: Voor de save button in de optionview
 
 			<Button Grid.Row="1" Grid.Column="1" Text="Philadelphia" x:Name="SPZ"
 					Style="{StaticResource buttonStyle}" 

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
 				xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 				x:Class="ESBevents.EventView"
@@ -25,6 +26,53 @@
 			<Label Text="{Binding ConfigName}" FontSize="16"/>
 			<Label FontSize="14" TextColor="Red" Text="Text:"/>
 			<Label Text="{Binding Text}" FontSize="16"/>
+=======
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ESBevents.EventView">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="buttonStyle" TargetType="Button">
+				<Setter Property="HorizontalOptions" Value="End" />
+				<Setter Property="VerticalOptions" Value="Center" />
+				<Setter Property="TextColor" Value="White" />
+				<Setter Property="BackgroundColor" Value="#bddec3" />
+				<Setter Property="BorderRadius" Value="10" />
+				<Setter Property="HeightRequest" Value="400" />
+				<Setter Property="WidthRequest" Value="200" />
+				<Setter Property="FontAttributes" Value="Bold" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Icon="ic_drawer.png" Activated="OnClick" />
+	</ContentPage.ToolbarItems>
+	
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical">
+			<Label Text="Time Logged:" FontSize="12" TextColor="Red"/>
+			<Label Text="{Binding TimeLogged}" FontSize="10" Margin="20,0,20,0"/>
+
+			<Label Text="Source Class:" FontSize="12" TextColor="Red"/>
+			<Label Text="{Binding SourceClass}" FontSize="10" Margin="20,0,20,0"/>
+			<Label Text="Source Method:" FontSize="12" TextColor="Red"/>
+			<Label Text="{Binding SourceMethod}" FontSize="10" Margin="20,0,20,0"/>
+			<Label Text="Config Name:" FontSize="12" TextColor="Red"/>
+			<Label Text="{Binding ConfigName}" FontSize="10" Margin="20,0,20,0"/>
+
+			<Label Text="Type:" FontSize="12" TextColor="Red"/>
+			<Label Text="{Binding Type}" FontSize="10" Margin="20,0,20,0"/>
+
+			<Label Text="Session ID:" FontSize="12" TextColor="Red"/>
+			<Label Text="{Binding SessionId}" FontSize="10" Margin="20,0,20,0"/>
+
+			<Label Text="Job:" FontSize="12" TextColor="Red"/>
+			<Label Text="{Binding Job}" FontSize="10" Margin="20,0,20,0"/>
+			<Label Text="Message ID:" FontSize="12" TextColor="Red"/>
+			<Label Text="{Binding MessageId}" FontSize="10" Margin="20,0,20,0"/>
+
+			<Label Text="Text:" FontSize="12" TextColor="Red"/>
+			<Label Text="{Binding Text}" FontSize="10" Margin="20,0,20,0"/>
+>>>>>>> 0a1a82a... * ESBevents.Droid.csproj: Voor de save button in de optionview
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

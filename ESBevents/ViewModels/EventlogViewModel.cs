@@ -11,21 +11,28 @@ namespace ESBevents.ViewModels
 {
 	public class EventlogViewModel : INotifyPropertyChanged
     {
-		public EventlogViewModel()
+	public EventlogViewModel()
         {
 			_eventlog = new ObservableCollection<EventViewModel> ();
         }
 
-		public EventlogViewModel(MainPageViewModel _mpVM)
-		{
-			_eventlog = new ObservableCollection<EventViewModel> ();
+	public EventlogViewModel(MainPageViewModel _mpVM)
+	{
+		_eventlog = new ObservableCollection<EventViewModel> ();
 
-			foreach (EventModel e in _mpVM.EventLog) {
-				_eventlog.Add (new EventViewModel { Event = e });
-			}
+		foreach (EventModel e in _mpVM.EventLog) {
+				if(
+					(!e.SourceClass.StartsWith("Ens.")) && 
+					(!e.SourceClass.StartsWith("EnsLib")) &&
+					(!e.SourceClass.StartsWith("DXC."))
+				)
+				{
+					_eventlog.Add(new EventViewModel { Event = e });
+				}
 		}
-		       
-		#region INotifyPropertyChanged implementation
+	}
+	       
+	#region INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string name)
@@ -38,32 +45,34 @@ namespace ESBevents.ViewModels
         #endregion INotifyPropertyChanged implementation
 
         #region Properties
-		private ObservableCollection<EventViewModel> _eventlog;
-		public ObservableCollection<EventViewModel> Eventlog
-		{
-			get { return _eventlog; }
-			set {
-					if (_eventlog == value)
-						return;
+	private ObservableCollection<EventViewModel> _eventlog;
 
-					_eventlog = value;
+	public ObservableCollection<EventViewModel> Eventlog
+	{
+		get { return _eventlog; }
+		set {
+			if (_eventlog == value)
+				return;
 
-				OnPropertyChanged ("Eventlog");
-				}
+			_eventlog = value;
+
+			OnPropertyChanged ("Eventlog");
 		}
+	}
 
-		private EventViewModel _selectedItem;
-		public EventViewModel SelectedItem
-		{
-			get { return _selectedItem; }
-			set {
-				if (_selectedItem != value) {
-					_selectedItem = value;
+	private EventViewModel _selectedItem;
+	public EventViewModel SelectedItem
+	{
+		get { return _selectedItem; }
+		set {
+			if (_selectedItem == value) 
+				return;
+				
+			_selectedItem = value;
 
-					OnPropertyChanged ("SelectedItem");
-				}
-			}
+			OnPropertyChanged("SelectedItem");
 		}
-		#endregion Properties
+	}
+	#endregion Properties
     }
 }

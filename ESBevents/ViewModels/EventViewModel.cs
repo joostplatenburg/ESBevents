@@ -55,33 +55,40 @@ namespace ESBevents.ViewModels
 		public string SourceMethod { get { return string.Format("{0}", Event.SourceMethod); } }
 		public string ConfigName { get { return string.Format("{0}", Event.ConfigName); } }
 		public string Text { get { return string.Format("{0}", Event.Text); } }
+		public string SourceClass { get { return string.Format("{0}", Event.SourceClass); } }
+		public string SourceMethod { get { return string.Format("{0}", Event.SourceMethod); } }
+		public string Type { get { return string.Format("{0}", Event.Type); } }
+		public string SessionId { get { return string.Format("{0}", Event.SessionId); } }
+		public string Job { get { return string.Format("{0}", Event.Job); } }
+		public string TraceCat { get { return string.Format("{0}", Event.TraceCat); } }
+		public string MessageId { get { return string.Format("{0}", Event.SourceClass); } }
 
 		public string TypeImage
 		{
 			get {
 				if (Event.Type != null)
 				{
-					if (Event.Type == "1")
+					switch (Event.Type)
 					{
-						return "led_blue.png";
-					}
-					else if (Event.Type == "2")
-					{
-						return "led_red.png";
-					}
-					else if (Event.Type == "3")
-					{
-						return "led_yellow.png";
-					}
-					else if (Event.Type == "4")
-					{
-						return "led_green.png";
+						case "1":
+							return "led_blue.png";
+						case "2":
+							return "led_red.png";
+						case "3":
+							return "led_yellow.png";
+						case "4":
+							return "led_green.png";
+						case "5":
+							return "led_blue.png";
+						default:
+							break;
 					}
 				}
 
 				return "";
-				}
+			}
 		}
+
 		#endregion Properties
 	}
 }
