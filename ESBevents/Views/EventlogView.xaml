@@ -14,18 +14,6 @@
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
-<<<<<<< HEAD
-						<StackLayout Orientation="Vertical">
-							<StackLayout Orientation="Horizontal">
-								<Image Source="{Binding TypeImage}" WidthRequest="35" HeightRequest="35"
-										VerticalOptions="Start" HorizontalOptions="Start" Margin="5"/>
-								<StackLayout Orientation="Vertical" Margin="10">
-									<Label Text="{Binding TimeLogged}" FontSize="10"/>
-									<Label Text="{Binding ConfigName}" FontSize="11"/>
-								</StackLayout>
-							</StackLayout>
-							<Label Text="{Binding Text}" FontSize="12" Margin="10,0,0,0"/>
-=======
 						<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" >
 							<Image Source="{Binding TypeImage}" 
 									WidthRequest="40" HeightRequest="40"
@@ -36,7 +24,6 @@
 								<Label Text="{Binding ConfigName}" FontSize="11"/>
 								<Label Text="{Binding Text}" FontSize="11" LineBreakMode="TailTruncation"/>
 							</StackLayout>
->>>>>>> 0a1a82a... * ESBevents.Droid.csproj: Voor de save button in de optionview
 						</StackLayout>
 					</ViewCell>
 				</DataTemplate>

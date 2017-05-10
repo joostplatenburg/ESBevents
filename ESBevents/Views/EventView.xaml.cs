@@ -12,20 +12,6 @@ namespace ESBevents
 		public EventView()
 		{
 			InitializeComponent();
-<<<<<<< HEAD
-
-			vm = new EventViewModel();
-
-			Initialize();
-		}
-
-		public EventView(EventlogViewModel _elVM)
-		{
-			InitializeComponent();
-
-			vm = new EventViewModel(_elVM);
-
-=======
 			vm = new EventViewModel();
 			Initialize();
 		}
@@ -35,22 +21,18 @@ namespace ESBevents
 			InitializeComponent();
 
 			vm = _vm;
->>>>>>> 0a1a82a... * ESBevents.Droid.csproj: Voor de save button in de optionview
 			Initialize();
 		}
 
 		void Initialize()
 		{
 			BindingContext = vm;
-<<<<<<< HEAD
-=======
 
 		}
 
 		void OnClick(object sender, EventArgs e)
 		{
 			Navigation.PushAsync(new OptionView());
->>>>>>> 0a1a82a... * ESBevents.Droid.csproj: Voor de save button in de optionview
 		}
 	}
 }

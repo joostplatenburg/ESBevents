@@ -26,25 +26,39 @@
       "idiom": "iphone"
     },
     {
+<<<<<<< Updated upstream
       "filename": "DXC-Logo3-57.png",
+=======
+>>>>>>> Stashed changes
       "size": "57x57",
       "scale": "1x",
       "idiom": "iphone"
     },
     {
+<<<<<<< Updated upstream
       "filename": "DXC-Logo3-114.png",
+=======
+>>>>>>> Stashed changes
       "size": "57x57",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
+<<<<<<< Updated upstream
       "filename": "DXC-Logo3120.png",
+=======
+      "filename": "DXC 120.png",
+>>>>>>> Stashed changes
       "size": "60x60",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
+<<<<<<< Updated upstream
       "filename": "DXC-Logo3180.png",
+=======
+      "filename": "DXC 180.png",
+>>>>>>> Stashed changes
       "size": "60x60",
       "scale": "3x",
       "idiom": "iphone"

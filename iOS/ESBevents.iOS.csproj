@@ -18,7 +18,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: J.A. Platenburg (U8H6C6BG7K)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
@@ -36,7 +36,7 @@
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Distribution: J.A. Platenburg (YLT7AFC7PN)</CodesignKey>
+    <CodesignKey>iPhone Developer: J.A. Platenburg (U8H6C6BG7K)</CodesignKey>
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
@@ -44,6 +44,8 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <BuildIpa>true</BuildIpa>
+    <CodesignProvision>DevelopmentESBevents</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>
@@ -117,6 +119,8 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC-Logo3-114.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC-Logo3120.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC-Logo3180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC 120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC 180.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -140,6 +144,8 @@
     <BundleResource Include="Resources\led_red.png" />
     <BundleResource Include="Resources\led_yellow.png" />
     <BundleResource Include="Resources\DXC-Logo3.png" />
+    <BundleResource Include="Resources\DXC 120.png" />
+    <BundleResource Include="Resources\DXC 180.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

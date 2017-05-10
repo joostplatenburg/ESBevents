@@ -17,10 +17,10 @@
 			</Style>
 
 			<Style x:Key="entryStyle" TargetType="Entry">
-				<Setter Property="TextColor" Value="White" />
+				<Setter Property="TextColor" Value="Black" />
 				<Setter Property="BackgroundColor" Value="#bddec3" />
-				<Setter Property="FontSize" Value="11" />
-				<Setter Property="Keyboard" Value="Numeric" />
+				<Setter Property="FontSize" Value="15" />
+				<Setter Property="Keyboard" Value= "Default"/>
 			</Style>
 
 			<Style x:Key="labelStyle" TargetType="Label">
@@ -34,25 +34,25 @@
 	<ContentPage.Content>
 		<Grid Padding="10,10,0,10">
 			<Grid.RowDefinitions>
-				<RowDefinition Height="22" />  <!-- 00 -->
-				<RowDefinition Height="22" />  <!-- 01 -->
-				<RowDefinition Height="22" />  <!-- 02 -->
-				<RowDefinition Height="22" />  <!-- 03 -->
-				<RowDefinition Height="22" />  <!-- 04 -->
-				<RowDefinition Height="22" />  <!-- 05 -->
-				<RowDefinition Height="22" />  <!-- 06 -->
-				<RowDefinition Height="22" />  <!-- 07 -->
-				<RowDefinition Height="22" />  <!-- 08 -->
-				<RowDefinition Height="22" />  <!-- 09 -->
-				<RowDefinition Height="22" />  <!-- 10 -->
-				<RowDefinition Height="22" />  <!-- 11 -->
+				<RowDefinition Height="26" />  <!-- 00 -->
+				<RowDefinition Height="32" />  <!-- 01 -->
+				<RowDefinition Height="32" />  <!-- 02 -->
+				<RowDefinition Height="32" />  <!-- 03 -->
+				<RowDefinition Height="32" />  <!-- 04 -->
+				<RowDefinition Height="32" />  <!-- 05 -->
+				<RowDefinition Height="26" />  <!-- 06 -->
+				<RowDefinition Height="32" />  <!-- 07 -->
+				<RowDefinition Height="32" />  <!-- 08 -->
+				<RowDefinition Height="32" />  <!-- 09 -->
+				<RowDefinition Height="32" />  <!-- 10 -->
+				<RowDefinition Height="32" />  <!-- 11 -->
 				<RowDefinition Height="*" />   <!-- 12 -->
 				<RowDefinition Height="50" />  <!-- 13 -->
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="120" />
-				<ColumnDefinition Width="105" />
-				<ColumnDefinition Width="105" />
+				<ColumnDefinition Width="130" />
+				<ColumnDefinition Width="130" />
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 
@@ -106,7 +106,7 @@
 
 			<Button Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" Text="Save" x:Name="SaveButton"
 					Style="{StaticResource buttonStyle}" 
-					Clicked="SaveOptions" Margin="0,0,20,0"
+					Clicked="SaveOptions" Margin="0,0,10,0"
 					FontSize="14" />
 
 		</Grid>
