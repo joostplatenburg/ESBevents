@@ -67,6 +67,7 @@
     <Compile Include="Views\OptionView.xaml.cs">
       <DependentUpon>OptionView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

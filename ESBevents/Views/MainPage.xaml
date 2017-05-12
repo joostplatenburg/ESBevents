@@ -21,59 +21,31 @@
 	
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Icon="ic_drawer.png" Activated="OnClick" />
+        
 	</ContentPage.ToolbarItems>
-	
-	<ContentPage.Content>
-		<Grid Padding="20">
-			<Grid.RowDefinitions>
-				<RowDefinition Height="120" />
-				<RowDefinition Height="120" />
-				<RowDefinition Height="120" />
-				<RowDefinition Height="*" />
-				<RowDefinition Height="50" />
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="160" />
-				<ColumnDefinition Width="160" />
-				<ColumnDefinition Width="*" />
-			</Grid.ColumnDefinitions>
-			
-			<Button Grid.Row="0" Grid.Column="0" Text="Alliade" x:Name="ALL"
-					Style="{StaticResource buttonStyle}" 
-					Clicked="ToonEvents" 
-					FontSize="14" />
-
-			<Button Grid.Row="0" Grid.Column="1" Text="CoSimCare" x:Name="CSC"
-					Style="{StaticResource buttonStyle}" 
-					Clicked="ToonEvents" 
-					FontSize="14" />
-
-				<Button Grid.Row="1" Grid.Column="0" Text="Dichterbij (54322)" x:Name="DBZ"
-						Style="{StaticResource buttonStyle}" 
-						Clicked="ToonEvents" 
-						FontSize="14" />
-
-			<Button Grid.Row="1" Grid.Column="1" Text="Philadelphia" x:Name="SPZ"
-					Style="{StaticResource buttonStyle}" 
-					Clicked="ToonEvents" 
-					FontSize="14" />
-
-			<Button Grid.Row="2" Grid.Column="0" Text="'s Heeren Loo" x:Name="SHL"
-					Style="{StaticResource buttonStyle}" 
-					Clicked="ToonEvents" 
-					FontSize="14" />
-
-			<Button Grid.Row="2" Grid.Column="1" Text="Zorgboog" x:Name="ZGB"
-					Style="{StaticResource buttonStyle}" 
-					Clicked="ToonEvents" 
-					FontSize="14" />
-
-			<ProgressBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" 
-					x:Name="progress" Progress=".5" IsVisible="{Binding ProgressVisible}" Scale="5"/>
-
-			<Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" x:Name="mainMessage" FontSize="16" TextColor="Red"
-					Text="{Binding MainMessage}"/>
-
-		</Grid>
-	</ContentPage.Content>
+	   <ContentPage.Content>
+        <ListView x:Name="customerList" RowHeight="90"
+                    ItemsSource="{Binding Customer}"
+                    SelectedItem="{Binding SelectedItem}" >
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" >
+                            <Image Source="{Binding Logo}" 
+                                    WidthRequest="80" HeightRequest="80"
+                                    VerticalOptions="Start" 
+                                    HorizontalOptions="Start" />
+                            
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Name}" FontSize="10"/>
+                                <Label Text="{Binding IPNumber}" FontSize="11"/>
+                                <Label Text="{Binding PortNumber}" FontSize="11" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
 </ContentPage>

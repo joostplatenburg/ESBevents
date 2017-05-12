@@ -34,7 +34,7 @@ namespace ESBevents.WebServices
 
 					//client.BaseAddress = new Uri("http://localhost:57772/psRest/hpd/");
 
-					client.BaseAddress = new Uri(string.Format(Views.MainPage.BaseURL, vm.HttpServer, vm.HttpPort));
+					/////client.BaseAddress = new Uri(string.Format(Views.MainPage.BaseURL, vm.HttpServer, vm.HttpPort));
 
 					//var command = string.Format("organizations?$filter=naam eq '{0}' and plaats eq '{1}'", vm.Naam, vm.Plaats);
 					var command = "HaalEventlog";
@@ -53,12 +53,12 @@ namespace ESBevents.WebServices
 
 						var EventLogs = JsonConvert.DeserializeObject<List<List<EventModel>>>(eventlogJson);
 
-						vm.EventLog = EventLogs[0];
+						/////vm.EventLog = EventLogs[0];
 
-						if (vm.EventLog.Count > 0)
-						{
-							vm.Event = vm.EventLog.First();
-						}
+						/////if (vm.EventLog.Count > 0)
+						/////{
+						/////	vm.Event = vm.EventLog.First();
+						/////}
 
 						return HttpStatusCode.Continue;
 					}

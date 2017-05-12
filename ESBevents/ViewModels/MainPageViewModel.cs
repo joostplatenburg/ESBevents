@@ -13,8 +13,13 @@ namespace ESBevents.ViewModels
     {
         public MainPageViewModel()
         {
-			_eventlog = new List<EventModel>();
-        }
+			_customers = new List<CustomerModel>();
+
+			var ALL = new CustomerModel { Name = "Alliade", IPNumber = "123.456.789.012", PortNumber = "54321" }; Customers.Add(ALL);
+			var SPZ = new CustomerModel { Name = "Philadelphia", IPNumber = "123.456.789.012", PortNumber = "54322" }; Customers.Add(SPZ);
+			var DBZ = new CustomerModel { Name = "Dichterbij", IPNumber = "123.456.789.012", PortNumber = "54323" }; Customers.Add(DBZ);
+			var SHL = new CustomerModel { Name = "'s Heeren Loo", IPNumber = "123.456.789.012", PortNumber = "54324" }; Customers.Add(SHL);
+		}
 
         #region INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;
@@ -29,62 +34,35 @@ namespace ESBevents.ViewModels
         #endregion INotifyPropertyChanged implementation
 
         #region Properties
-		private List<EventModel> _eventlog;
-		public List<EventModel> EventLog
+		private List<CustomerModel> _customers;
+		public List<CustomerModel> Customers
 		{
-			get { return _eventlog; }
+			get { return _customers; }
 			set
 			{
-				if (_eventlog == value)
+				if (_customers == value)
 					return;
 
-				_eventlog = value;
+				_customers = value;
 
-				OnPropertyChanged("EventLog");
+				OnPropertyChanged("Customers");
 			}
 		}
 
-		private EventModel _event;
-		public EventModel Event
+		private CustomerModel _customer;
+		public CustomerModel Customer
 		{
-			get { return _event; }
+			get { return _customer; }
 			set
 			{
-				if (_event == value) return;
+				if (_customer == value) return;
 
-				_event = value;
+				_customer = value;
 
-				OnPropertyChanged("Event");
+				OnPropertyChanged("Customer");
 			}
 		}
 
-		private string _httpport;
-		public string HttpPort
-		{
-			get { return _httpport; }
-			set
-			{
-				if (_httpport == value) return;
-
-				_httpport = value;
-
-				OnPropertyChanged("HttpPort");
-			}
-		}
-
-		private string _httpserver;
-		public string HttpServer
-		{
-			get { return _httpserver; }
-			set
-			{
-				if (_httpserver == value) return;
-
-				_httpserver = value;
-
-				OnPropertyChanged("HttpServer");
-			}
-		}
 		private string _mainMessage;
 		public string MainMessage
 		{

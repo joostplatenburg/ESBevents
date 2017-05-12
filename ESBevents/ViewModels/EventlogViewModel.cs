@@ -19,7 +19,7 @@ namespace ESBevents.ViewModels
 	public EventlogViewModel(MainPageViewModel _mpVM)
 	{
 		_eventlog = new ObservableCollection<EventViewModel> ();
-
+			/*
 		foreach (EventModel e in _mpVM.EventLog) {
 				if(
 					(!e.SourceClass.StartsWith("Ens.")) && 
@@ -29,8 +29,9 @@ namespace ESBevents.ViewModels
 				{
 					_eventlog.Add(new EventViewModel { Event = e });
 				}
+        }
+		*/
 		}
-	}
 	       
 	#region INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;

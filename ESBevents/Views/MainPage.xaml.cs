@@ -44,7 +44,7 @@ namespace ESBevents.Views
 		async void ToonEvents (object sender, EventArgs e)
 		{
 			var ik = sender as Button;
-
+            /*
 			vm.HttpServer = "52.73.112.29";
 
 			if (ik.Text == "Alliade")
@@ -69,12 +69,12 @@ namespace ESBevents.Views
 				vm.HttpPort = "54325";
 			}
 			vm.MainMessage = "Poortnummer: " + vm.HttpPort;
-
+            */
 			try
 			{
 
 				// Altijd eerst vorige events verwijderen.
-				vm.EventLog.Clear();
+				//vm.EventLog.Clear();
 				vm.ProgressVisible = true;
 				// Dan met de velden de webservice aanroepen.
 				var webSrvc = new GetEventLogWS();
@@ -87,7 +87,7 @@ namespace ESBevents.Views
 
 					await Navigation.PushAsync(new EventlogView(vm));
 
-					vm.HttpPort = string.Empty;
+					//vm.HttpPort = string.Empty;
 					vm.MainMessage = string.Empty;
 				}
 				else
