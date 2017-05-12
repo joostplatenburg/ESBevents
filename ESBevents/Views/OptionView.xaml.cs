@@ -12,7 +12,7 @@ namespace ESBevents
 			InitializeComponent();
 		}
 
-		void SaveOptions(object sender, EventArgs e)
+		async void SaveOptions(object sender, EventArgs e)
 		{
 			var ik = sender as Button;
 

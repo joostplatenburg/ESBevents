@@ -113,17 +113,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC-Logo3-57.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC-Logo3-114.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC-Logo3120.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC-Logo3180.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC 120.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC 180.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
