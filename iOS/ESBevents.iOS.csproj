@@ -146,9 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC 120.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC 180.png" />
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC_120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC_180.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
