@@ -26,7 +26,7 @@
             <Style x:Key="labelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="Gray" />
                 <Setter Property="Margin" Value="10,0,0,0" />
-                <!--<Setter Property="BackgroundColor" Value="#bddec3" />-->
+                <Setter Property="FontSize" Value="12" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -50,15 +50,15 @@
                 <RowDefinition Height="50" />  <!-- 13 -->
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120" />
-                <ColumnDefinition Width="120" />
-                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="110" />
+                <ColumnDefinition Width="110" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Label Grid.Row="0" Grid.Column="0" Text="IP-adressen" />
-            <Label Grid.Row="0" Grid.Column="1" Text="Productie" Style="{StaticResource labelStyle}" XAlign="Center"/>
-            <Label Grid.Row="0" Grid.Column="2" Text="Test" Style="{StaticResource labelStyle}" XAlign="Center"/>
+            <Label Grid.Row="0" Grid.Column="1" Text="Productie" Style="{StaticResource labelStyle}" XAlign="Center" YAlign="Center" />
+            <Label Grid.Row="0" Grid.Column="2" Text="Test" Style="{StaticResource labelStyle}" XAlign="Center" YAlign="Center"/>
 
             <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Alliade:" />
             <Entry Grid.Row="1" Grid.Column="1" Style="{StaticResource entryStyle}" x:Name="ipALL" />
@@ -81,8 +81,8 @@
             <Entry Grid.Row="5" Grid.Column="2" Style="{StaticResource entryStyle}" x:Name="ipZGBtst" />
 
             <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Text="Poortnummers" />
-            <Label Grid.Row="6" Grid.Column="1" Text="Eventlogs" Style="{StaticResource labelStyle}" XAlign="Center"/>
-            <Label Grid.Row="6" Grid.Column="2" Text="Proces-starter" Style="{StaticResource labelStyle}" XAlign="Center"/>
+            <Label Grid.Row="6" Grid.Column="1" Text="Eventlogs" Style="{StaticResource labelStyle}" XAlign="Center" YAlign="Center"/>
+            <Label Grid.Row="6" Grid.Column="2" Text="Proces-starter" Style="{StaticResource labelStyle}" XAlign="Center" YAlign="Center"/>
 
             <Label Grid.Row="7" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Alliade:"  />
             <Entry Grid.Row="7" Grid.Column="1" Style="{StaticResource entryStyle}" x:Name="portEventsALL" />
@@ -106,7 +106,7 @@
 
             <Button Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" Text="Save" x:Name="SaveButton"
                     Style="{StaticResource buttonStyle}" 
-                    Clicked="SaveOptions" Margin="0,0,10,0"
+                    Clicked="SaveOptions" Margin="0,0,0,10"
                     FontSize="14" />
 
         </Grid>

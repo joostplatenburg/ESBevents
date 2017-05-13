@@ -20,7 +20,17 @@ namespace ESBevents.Views
 
 			BindingContext = vm;
 
+			customerList.ItemTapped += (sender, e) =>
+			{
+    			Navigation.PushAsync(new CustomerView(vm.SelectedItem));
+				//Navigation.PushAsync(new EventView());
+
+				((ListView)sender).SelectedItem = null;
+			};
+
+
 			// Fetch basURL from persistent storage
+			/*
 			if (Application.Current.Properties.ContainsKey("baseURL"))
 			{
 				var _baseURL = Application.Current.Properties["baseURL"] as string;
@@ -34,6 +44,7 @@ namespace ESBevents.Views
 				BaseURL = "http://52.73.112.29:54322/DXCUtilities/";
 				BaseURL = "http://192.168.2.23:54322/DXCUtilities/";
 			}
+			*/
 		}
 
 		void OnClick(object sender, EventArgs e)

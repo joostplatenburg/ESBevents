@@ -81,6 +81,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <CodesignProvision>DevelopmentESBevents</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -116,9 +117,6 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="LaunchScreen.storyboard" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
     <None Include="Info.plist" />
@@ -134,13 +132,21 @@
     <BundleResource Include="Resources\led_red.png" />
     <BundleResource Include="Resources\led_yellow.png" />
     <BundleResource Include="Resources\DXCLogo3.png" />
-    <BundleResource Include="Resources\DXC 120.png" />
-    <BundleResource Include="Resources\DXC 180.png" />
+    <BundleResource Include="Resources\DXC_120.png" />
+    <BundleResource Include="Resources\DXC_180.png" />
+    <BundleResource Include="Resources\ALL.png" />
+    <BundleResource Include="Resources\DBZ.png" />
+    <BundleResource Include="Resources\SHL.png" />
+    <BundleResource Include="Resources\SPZ.png" />
+    <BundleResource Include="Resources\ZGB.png" />
+    <BundleResource Include="Resources\EventLog.png" />
+    <BundleResource Include="Resources\ProcessStart.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC 120.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC 180.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

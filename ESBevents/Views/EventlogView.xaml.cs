@@ -1,11 +1,11 @@
 using System;
-using System.Collections.Generic;
+using ESBevents.Models;
 using ESBevents.ViewModels;
 using Xamarin.Forms;
 
 namespace ESBevents
 {
-	public partial class EventlogView : ContentPage
+    public partial class EventlogView : ContentPage
 	{
 		internal EventlogViewModel vm;
 
@@ -24,6 +24,15 @@ namespace ESBevents
 
 			vm = new EventlogViewModel(_mpVM);
 			//vm.Zorgverleners = _mpVM.Zorgverleners;
+
+			Initialize();
+		}
+
+        public EventlogView(CustomerModel _customer)
+        {
+            InitializeComponent();
+
+            vm = new EventlogViewModel();
 
 			Initialize();
 		}

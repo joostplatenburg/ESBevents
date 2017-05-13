@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>ESBevents.Droid</RootNamespace>
     <AssemblyName>ESBevents.Droid</AssemblyName>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -145,6 +145,15 @@
     <AndroidResource Include="Resources\drawable-hdpi\led_red.png" />
     <AndroidResource Include="Resources\drawable-hdpi\led_yellow.png" />
     <AndroidResource Include="Resources\drawable-hdpi\DXCLogo3.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ALL.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\DBZ.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\DXC_120.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\DXC_180.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\SHL.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\SPZ.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ZGB.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\EventLog.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ProcessStart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
