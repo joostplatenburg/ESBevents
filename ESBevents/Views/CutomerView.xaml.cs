@@ -33,7 +33,20 @@ namespace ESBevents
 			actionList.ItemTapped += (sender, e) =>
 			{
                 if (vm.SelectedActionItem.ID == 1) {
-                    Navigation.PushAsync(new EventlogView(vm.Customer));
+					// Dan met de velden de webservice aanroepen.
+
+					//var webSrvc = new GetEventLogWS();
+					//var status = await webSrvc.GetEventLogAsync(vm);
+
+					//if (status == HttpStatusCode.Continue)
+					//{
+					//  // De json die terug komt in vm zetten van door het object door te geven.
+
+					//  await Navigation.PushAsync(new EventlogView(vm));
+					//}
+
+
+					Navigation.PushAsync(new EventlogView(vm.Customer));
  
                 } else if (vm.SelectedActionItem.ID == 2) {
                     Navigation.PushAsync(new ProcessStartView(vm.Customer));

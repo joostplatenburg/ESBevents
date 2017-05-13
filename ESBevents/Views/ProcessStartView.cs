@@ -45,9 +45,21 @@ namespace ESBevents
 			{
                 KoppelingModel selected = ((ListView)sender).SelectedItem as KoppelingModel;
 
-                //// NU DE KOPPELING STARTEN
-                /// 
-                Debug.WriteLine("Start: " + selected.Name);
+				//// NU DE KOPPELING STARTEN
+				/// 
+				// Dan met de velden de webservice aanroepen.
+
+				//var webSrvc = new GetEventLogWS();
+				//var status = await webSrvc.GetEventLogAsync(vm);
+
+				//if (status == HttpStatusCode.Continue)
+				//{
+				//  // De json die terug komt in vm zetten van door het object door te geven.
+
+				//  await Navigation.PushAsync(new EventlogView(vm));
+				//}
+
+				Debug.WriteLine("Start: " + selected.Name);
 
 				((ListView)sender).SelectedItem = null;
 			};
