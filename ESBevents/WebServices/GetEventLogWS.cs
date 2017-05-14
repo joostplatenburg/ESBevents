@@ -15,7 +15,7 @@ namespace ESBevents.WebServices
     {
         public GetEventLogWS() { }
 
-		public async Task<HttpStatusCode> GetEventLogAsync(MainPageViewModel vm)
+		public async Task<HttpStatusCode> GetEventLogAsync(CustomerViewModel vm)
         {
             try
             {
@@ -23,54 +23,54 @@ namespace ESBevents.WebServices
 
                 var client = new System.Net.Http.HttpClient();
 
-				if (Views.MainPage.BaseURL == string.Empty) {
+                Debug.WriteLine(vm.Customer.Name);
 
-
-				} else {
-						                
-					// Null optie 
-					//client.BaseAddress = new Uri("http://www.platenburg.eu/php/zab/v1/");
-					//var command = "organisation.json.php";
-
-					//client.BaseAddress = new Uri("http://localhost:57772/psRest/hpd/");
-
-					/////client.BaseAddress = new Uri(string.Format(Views.MainPage.BaseURL, vm.HttpServer, vm.HttpPort));
-
-					//var command = string.Format("organizations?$filter=naam eq '{0}' and plaats eq '{1}'", vm.Naam, vm.Plaats);
-					var command = "HaalEventlog";
-
-					Debug.WriteLine(client.BaseAddress + command);
-
-					var response = await client.GetAsync(command);
-
-					if (response.StatusCode == HttpStatusCode.Continue ||
-						response.StatusCode == HttpStatusCode.Accepted ||
-						response.StatusCode == HttpStatusCode.OK)
-					{
-						var eventlogJson = response.Content.ReadAsStringAsync().Result;
-
-	                	//Debug.WriteLine(eventlogJson);
-
-						var EventLogs = JsonConvert.DeserializeObject<List<List<EventModel>>>(eventlogJson);
-
-						/////vm.EventLog = EventLogs[0];
-
-						/////if (vm.EventLog.Count > 0)
-						/////{
-						/////	vm.Event = vm.EventLog.First();
-						/////}
-
-						return HttpStatusCode.Continue;
-					}
-					return response.StatusCode;
+                switch (vm.SelectedActionItem.ID)
+                {
+                    case 1:
+                        client.BaseAddress = new Uri(string.Format("http://{0}:{1}/DXCUtilities/", vm.Customer.IPNumberO, vm.Customer.PortNumberEL));
+                        break;
+					case 2:
+						client.BaseAddress = new Uri(string.Format("http://{0}:{1}/DXCUtilities/", vm.Customer.IPNumberT, vm.Customer.PortNumberEL));
+						break;
+					case 3:
+						client.BaseAddress = new Uri(string.Format("http://{0}:{1}/DXCUtilities/", vm.Customer.IPNumberA, vm.Customer.PortNumberEL));
+						break;
+					case 4:
+						client.BaseAddress = new Uri(string.Format("http://{0}:{1}/DXCUtilities/", vm.Customer.IPNumberP, vm.Customer.PortNumberEL));
+						break;
 				}
+                var command = "HaalEventlog";
+
+				Debug.WriteLine(client.BaseAddress + command);
+
+				var response = await client.GetAsync(command);
+
+				if (response.StatusCode == HttpStatusCode.Continue ||
+					response.StatusCode == HttpStatusCode.Accepted ||
+					response.StatusCode == HttpStatusCode.OK)
+				{
+					var eventlogJson = response.Content.ReadAsStringAsync().Result;
+
+                	//Debug.WriteLine(eventlogJson);
+
+					var EventLogs = JsonConvert.DeserializeObject<List<List<EventModel>>>(eventlogJson);
+
+					vm.Eventlog = EventLogs[0];
+
+					if (vm.Eventlog.Count > 0)
+					{
+						vm.Event = vm.Eventlog.First();
+					}
+
+					return HttpStatusCode.Continue;
+				}
+				return response.StatusCode;
             }
             catch (System.Net.WebException)
             {
 				return HttpStatusCode.InternalServerError;
             }
-
-			return HttpStatusCode.BadRequest;
         }
     }
 }

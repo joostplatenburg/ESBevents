@@ -19,20 +19,35 @@ namespace ESBevents.ViewModels
 	public EventlogViewModel(MainPageViewModel _mpVM)
 	{
 		_eventlog = new ObservableCollection<EventViewModel> ();
-			/*
-		foreach (EventModel e in _mpVM.EventLog) {
-				if(
-					(!e.SourceClass.StartsWith("Ens.")) && 
-					(!e.SourceClass.StartsWith("EnsLib")) &&
-					(!e.SourceClass.StartsWith("DXC."))
-				)
-				{
-					_eventlog.Add(new EventViewModel { Event = e });
-				}
+		
+		foreach (EventModel e in _mpVM.Eventlog) {
+			if(
+				(!e.SourceClass.StartsWith("Ens.", StringComparison.CurrentCulture)) && 
+				(!e.SourceClass.StartsWith("EnsLib", StringComparison.CurrentCulture)) &&
+				(!e.SourceClass.StartsWith("DXC.", StringComparison.CurrentCulture))
+			)
+			{
+				_eventlog.Add(new EventViewModel { Event = e });
+			}
         }
-		*/
-		}
+	}
 	       
+	public EventlogViewModel(CustomerViewModel _cVM)
+	{
+		_eventlog = new ObservableCollection<EventViewModel>();
+		
+		foreach (EventModel e in _cVM.Eventlog) {
+			if(
+				(!e.SourceClass.StartsWith("Ens.", StringComparison.CurrentCulture)) && 
+				(!e.SourceClass.StartsWith("EnsLib", StringComparison.CurrentCulture)) &&
+				(!e.SourceClass.StartsWith("DXC.", StringComparison.CurrentCulture))
+			)
+			{
+				_eventlog.Add(new EventViewModel { Event = e });
+			}
+		}
+
+	}
 	#region INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;
 

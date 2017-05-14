@@ -80,7 +80,7 @@ namespace ESBevents.Views
 				vm.HttpPort = "54325";
 			}
 			vm.MainMessage = "Poortnummer: " + vm.HttpPort;
-            */
+           
 			try
 			{
 
@@ -114,6 +114,7 @@ namespace ESBevents.Views
 
 				vm.MainMessage = ex.Message.ToString();
 			}
+			 */
 		}
 	}
 }

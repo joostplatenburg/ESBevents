@@ -18,6 +18,8 @@ namespace ESBevents.ViewModels
             foreach(KoppelingModel k in _customerviewmodel.Customer.Koppelingen) {
                 Koppelingen.Add(k);
             }
+
+			Customer = _customerviewmodel.Customer;
 		}
 
 		public ProcessStartViewModel(CustomerModel _customer)
@@ -28,6 +30,8 @@ namespace ESBevents.ViewModels
             {
                 Koppelingen.Add(k);
             }
+
+			Customer = _customer;
         }
 	       
 		#region INotifyPropertyChanged implementation
@@ -44,7 +48,6 @@ namespace ESBevents.ViewModels
 
         #region Properties
 	    private ObservableCollection<KoppelingModel> _koppelingen;
-
 		public ObservableCollection<KoppelingModel> Koppelingen
 		{
 			get { return _koppelingen; }
@@ -71,6 +74,22 @@ namespace ESBevents.ViewModels
 				OnPropertyChanged("SelectedKoppelingenItem");
 			}
 		}
-	#endregion Properties
+
+		private CustomerModel _customer;
+		public CustomerModel Customer
+		{
+			get { return _customer;}
+			set {
+				if (_customer == value) return;
+
+				_customer = value;
+
+				OnPropertyChanged("Customer");
+			}
+		}
+
+		public string Logo { get { return Customer.Logo; } }
+
+		#endregion Properties
     }
 }

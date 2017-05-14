@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using ESBevents.Models;
 using ESBevents.ViewModels;
+using ESBevents.WebServices;
 using Xamarin.Forms;
 
 namespace ESBevents
@@ -30,27 +32,24 @@ namespace ESBevents
 		{
 			BindingContext = vm;
 
-			actionList.ItemTapped += (sender, e) =>
+			actionList.ItemTapped += async (sender, e) => 
 			{
-                if (vm.SelectedActionItem.ID == 1) {
+                if (vm.SelectedActionItem.ID >= 1 && vm.SelectedActionItem.ID <= 4) {
 					// Dan met de velden de webservice aanroepen.
+					var webSrvc = new GetEventLogWS();
+					var status = await webSrvc.GetEventLogAsync(vm);
 
-					//var webSrvc = new GetEventLogWS();
-					//var status = await webSrvc.GetEventLogAsync(vm);
+					if (status == HttpStatusCode.Continue)
+					{
+					  // De json die terug komt in vm zetten van door het object door te geven.
 
-					//if (status == HttpStatusCode.Continue)
-					//{
-					//  // De json die terug komt in vm zetten van door het object door te geven.
+					  await Navigation.PushAsync(new EventlogView(vm));
+					}
 
-					//  await Navigation.PushAsync(new EventlogView(vm));
-					//}
-
-
-					Navigation.PushAsync(new EventlogView(vm.Customer));
- 
-                } else if (vm.SelectedActionItem.ID == 2) {
-                    Navigation.PushAsync(new ProcessStartView(vm.Customer));
-                    
+				}
+				else if (vm.SelectedActionItem.ID == 5)
+				{
+					await Navigation.PushAsync(new ProcessStartView(vm.Customer));                    
                 }
 
 				((ListView)sender).SelectedItem = null;

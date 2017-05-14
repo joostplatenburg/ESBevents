@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -18,17 +18,17 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DXC_180.png" translatesAutoresizingMaskIntoConstraints="NO" id="3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DXC_180.png" translatesAutoresizingMaskIntoConstraints="NO" id="3" misplaced="YES">
                                 <rect key="frame" x="92" y="140" width="191" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="191" id="2uQ-Sz-jgI"/>
                                     <constraint firstAttribute="height" constant="180" id="hD5-fP-6yw"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4" misplaced="YES">
                                 <rect key="frame" x="54" y="347" width="267" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="267" id="4cq-RW-jHg"/>
@@ -45,7 +45,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                         <constraints>
                             <constraint firstItem="3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="76" id="3AT-ML-zzf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4" secondAttribute="trailing" constant="38" id="F0a-Gn-mf1"/>
@@ -60,10 +60,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="52" y="374.6627"/>
         </scene>
     </scenes>
     <resources>
         <image name="DXC_180.png" width="180" height="180"/>
+        <image name="ic_drawer.png" width="24" height="16"/>
+        <image name="led_blue.png" width="128" height="128"/>
+        <image name="led_green.png" width="128" height="128"/>
+        <image name="led_red.png" width="128" height="128"/>
+        <image name="led_yellow.png" width="128" height="128"/>
+        <image name="DXCLogo3.png" width="91" height="79"/>
+        <image name="DXC_120.png" width="120" height="120"/>
+        <image name="ALL.png" width="400" height="275"/>
+        <image name="DBZ.png" width="400" height="275"/>
+        <image name="SHL.png" width="400" height="275"/>
+        <image name="SPZ.png" width="400" height="275"/>
+        <image name="ZGB.png" width="400" height="275"/>
+        <image name="EventLog.png" width="256" height="256"/>
+        <image name="ProcessStart.png" width="259" height="194"/>
     </resources>
 </document>

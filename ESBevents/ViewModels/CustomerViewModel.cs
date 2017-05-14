@@ -25,8 +25,11 @@ namespace ESBevents.ViewModels
         {
 			_actions = new List<ActionModel>();
 
-			var EventLog = new ActionModel { ID = 1, Name = "Show the eventlog", Logo = "EventLog.png" }; Actions.Add(EventLog);
-			var ProcessStart = new ActionModel { ID = 2, Name = "Start Business Process", Logo = "ProcessStart.png" }; Actions.Add(ProcessStart);
+			Actions.Add(new ActionModel { ID = 1, Name = "Show the eventlog Ontwikkel omgeving", Logo = "EventLog.png" });
+			Actions.Add(new ActionModel { ID = 2, Name = "Show the eventlog Test omgeving", Logo = "EventLog.png" });
+			Actions.Add(new ActionModel { ID = 3, Name = "Show the eventlog Acceptatie omgeving", Logo = "EventLog.png" });
+            Actions.Add(new ActionModel { ID = 4, Name = "Show the eventlog Productie omgeving", Logo = "EventLog.png" });
+			var ProcessStart = new ActionModel { ID = 5, Name = "Start Business Process", Logo = "ProcessStart.png" }; Actions.Add(ProcessStart);
 
 		}
 		#region INotifyPropertyChanged implementation
@@ -57,8 +60,11 @@ namespace ESBevents.ViewModels
 		}
 
         public string Name { get { return Customer.Name; } }
-        public string IPNumber { get { return Customer.IPNumber; }}
-        public string PortNumberEL { get { return Customer.PortNumberEL; }} // Eventlog
+		public string IPNumberO { get { return Customer.IPNumberO; } }
+		public string IPNumberT { get { return Customer.IPNumberT; } }
+		public string IPNumberA { get { return Customer.IPNumberA; } }
+		public string IPNumberP { get { return Customer.IPNumberP; } }
+		public string PortNumberEL { get { return Customer.PortNumberEL; }} // Eventlog
         public string PortNumberSP { get { return Customer.PortNumberSP; } } // StartProcess
         public string Logo { get {return Customer.Logo; } }
 
@@ -89,6 +95,40 @@ namespace ESBevents.ViewModels
 				_selectedActionItem = value;
 
 				OnPropertyChanged("SelectedActionItem");
+			}
+		}
+
+		private List<EventModel> _eventlog;
+		public List<EventModel> Eventlog
+		{
+            get {
+                //_eventlog.Sort((a, b) => a.CompareTo(b));
+
+                return _eventlog; 
+            }
+			set
+			{
+				if (_eventlog == value)
+					return;
+
+				_eventlog = value;
+
+				OnPropertyChanged("Eventlog");
+			}
+		}
+
+		private EventModel _event;
+		public EventModel Event
+		{
+			get { return _event; }
+			set
+			{
+				if (_event == value)
+					return;
+
+				_event = value;
+
+				OnPropertyChanged("Event");
 			}
 		}
 		#endregion Properties

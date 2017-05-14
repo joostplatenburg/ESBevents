@@ -28,6 +28,16 @@ namespace ESBevents
 			Initialize();
 		}
 
+		public EventlogView(CustomerViewModel _cVM)
+		{
+			InitializeComponent();
+
+			vm = new EventlogViewModel(_cVM);
+			//vm.Zorgverleners = _mpVM.Zorgverleners;
+
+			Initialize();
+		}
+
         public EventlogView(CustomerModel _customer)
         {
             InitializeComponent();
