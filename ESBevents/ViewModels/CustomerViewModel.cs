@@ -25,11 +25,12 @@ namespace ESBevents.ViewModels
         {
 			_actions = new List<ActionModel>();
 
-			Actions.Add(new ActionModel { ID = 1, Name = "Show the eventlog Ontwikkel omgeving", Logo = "EventLog.png" });
-			Actions.Add(new ActionModel { ID = 2, Name = "Show the eventlog Test omgeving", Logo = "EventLog.png" });
-			Actions.Add(new ActionModel { ID = 3, Name = "Show the eventlog Acceptatie omgeving", Logo = "EventLog.png" });
-            Actions.Add(new ActionModel { ID = 4, Name = "Show the eventlog Productie omgeving", Logo = "EventLog.png" });
-			var ProcessStart = new ActionModel { ID = 5, Name = "Start Business Process", Logo = "ProcessStart.png" }; Actions.Add(ProcessStart);
+			Actions.Add(new ActionModel { ID = 1, Name = "Show the eventlog Ontwikkel omgeving", Logo = "EventLog.png", Key="Show the eventlog" });
+			Actions.Add(new ActionModel { ID = 2, Name = "Show the eventlog Test omgeving", Logo = "EventLog.png", Key = "Show the eventlog" });
+			Actions.Add(new ActionModel { ID = 3, Name = "Show the eventlog Acceptatie omgeving", Logo = "EventLog.png", Key = "Show the eventlog" });
+            Actions.Add(new ActionModel { ID = 4, Name = "Show the eventlog Productie omgeving", Logo = "EventLog.png", Key = "Show the eventlog" });
+
+            Actions.Add(new ActionModel { ID = 5, Name = "Start Business Process", Logo = "ProcessStart.png", Key = "Start Process" }); 
 
 		}
 		#region INotifyPropertyChanged implementation
@@ -131,6 +132,21 @@ namespace ESBevents.ViewModels
 				OnPropertyChanged("Event");
 			}
 		}
-		#endregion Properties
+        #endregion Properties
+
+        private string _key;
+        public string Key
+        {
+			get { return _key; }
+			set
+			{
+				if (_key == value)
+					return;
+
+				_key = value;
+
+				OnPropertyChanged("Key");
+			}
+		}
 	}
 }
