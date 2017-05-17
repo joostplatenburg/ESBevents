@@ -23,14 +23,19 @@ namespace ESBevents.ViewModels
 		}
         internal void Initialize()
         {
-			_actions = new List<ActionModel>();
+			_actionsEL = new List<ActionModel>();
+			_actionsPS = new List<ActionModel>();
 
-			Actions.Add(new ActionModel { ID = 1, Name = "Show the eventlog Ontwikkel omgeving", Logo = "EventLog.png", Key="Show the eventlog" });
-			Actions.Add(new ActionModel { ID = 2, Name = "Show the eventlog Test omgeving", Logo = "EventLog.png", Key = "Show the eventlog" });
-			Actions.Add(new ActionModel { ID = 3, Name = "Show the eventlog Acceptatie omgeving", Logo = "EventLog.png", Key = "Show the eventlog" });
-            Actions.Add(new ActionModel { ID = 4, Name = "Show the eventlog Productie omgeving", Logo = "EventLog.png", Key = "Show the eventlog" });
+			ActionsEL.Add(new ActionModel { ID = 1, Name = "de Ontwikkel omgeving", Logo = "EventLog.png" });
+			ActionsEL.Add(new ActionModel { ID = 2, Name = "de Test omgeving", Logo = "EventLog.png" });
+			ActionsEL.Add(new ActionModel { ID = 3, Name = "de Acceptatie omgeving", Logo = "EventLog.png" });
+			ActionsEL.Add(new ActionModel { ID = 4, Name = "de Productie omgeving", Logo = "EventLog.png" });
+			
+            ActionsPS.Add(new ActionModel { ID = 1, Name = "de Ontwikkel omgeving", Logo = "ProcessStart.png" });
+			ActionsPS.Add(new ActionModel { ID = 2, Name = "de Test omgeving", Logo = "ProcessStart.png" });
+			ActionsPS.Add(new ActionModel { ID = 3, Name = "de Acceptatie omgeving", Logo = "ProcessStart.png" });
+			ActionsPS.Add(new ActionModel { ID = 4, Name = "de Productie omgeving", Logo = "ProcessStart.png" });
 
-            Actions.Add(new ActionModel { ID = 5, Name = "Start Business Process", Logo = "ProcessStart.png", Key = "Start Process" }); 
 
 		}
 		#region INotifyPropertyChanged implementation
@@ -69,18 +74,33 @@ namespace ESBevents.ViewModels
         public string PortNumberSP { get { return Customer.PortNumberSP; } } // StartProcess
         public string Logo { get {return Customer.Logo; } }
 
-		private List<ActionModel> _actions;
-		public List<ActionModel> Actions
+		private List<ActionModel> _actionsEL;
+		public List<ActionModel> ActionsEL
 		{
-			get { return _actions; }
+			get { return _actionsEL; }
 			set
 			{
-				if (_actions == value)
+				if (_actionsEL == value)
 					return;
 
-				_actions = value;
+				_actionsEL = value;
 
-				OnPropertyChanged("Actions");
+				OnPropertyChanged("ActionsEL");
+			}
+		}
+
+		private List<ActionModel> _actionsPS;
+		public List<ActionModel> ActionsPS
+		{
+			get { return _actionsPS; }
+			set
+			{
+				if (_actionsPS == value)
+					return;
+
+				_actionsPS = value;
+
+				OnPropertyChanged("ActionsPS");
 			}
 		}
 

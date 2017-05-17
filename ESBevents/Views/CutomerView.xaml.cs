@@ -32,28 +32,27 @@ namespace ESBevents
 		{
 			BindingContext = vm;
 
-			actionList.ItemTapped += async (sender, e) => 
+			actionListEL.ItemTapped += async (sender, e) => 
 			{
-                if (vm.SelectedActionItem.ID >= 1 && vm.SelectedActionItem.ID <= 4) {
-					// Dan met de velden de webservice aanroepen.
-					var webSrvc = new GetEventLogWS();
-					var status = await webSrvc.GetEventLogAsync(vm);
+				// Dan met de velden de webservice aanroepen.
+				var webSrvc = new GetEventLogWS();
+				var status = await webSrvc.GetEventLogAsync(vm);
 
-					if (status == HttpStatusCode.Continue)
-					{
-					  // De json die terug komt in vm zetten van door het object door te geven.
-
-					  await Navigation.PushAsync(new EventlogView(vm));
-					}
-
-				}
-				else if (vm.SelectedActionItem.ID == 5)
+				if (status == HttpStatusCode.Continue)
 				{
-					await Navigation.PushAsync(new ProcessStartView(vm.Customer));                    
-                }
+				  // De json die terug komt in vm zetten van door het object door te geven.
+
+				  await Navigation.PushAsync(new EventlogView(vm));
+				}
 
 				((ListView)sender).SelectedItem = null;
 			};
+			actionListPS.ItemTapped += async (sender, e) =>
+            {
+				await Navigation.PushAsync(new ProcessStartView(vm.Customer));
+
+				((ListView)sender).SelectedItem = null;
+            };
 		}
 
 		void OnClick(object sender, EventArgs e)
