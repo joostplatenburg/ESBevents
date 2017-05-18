@@ -32,62 +32,44 @@
 
             <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
-            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="50">
                 <Image Source="EventLog.png" 
                     WidthRequest="60" HeightRequest="60"
-                    VerticalOptions="Start" 
-                    HorizontalOptions="Start" Margin="10,0,10,0"/>
+                    VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0"/>
                 <Label Text="Toon Eventlog van" FontSize="16" VerticalOptions="Center"/>
             </StackLayout>
             
             <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
-            <ListView x:Name="actionListEL" RowHeight="50"
-                ItemsSource="{Binding ActionsEL}"
-                SelectedItem="{Binding SelectedActionItem}" 
-                HasUnevenRows="True">
-
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" Margin="40,0,0,0">
-                                
-                                    <Label Text="{Binding Name}" FontSize="16" Margin="0,5,0,10"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                <Button x:Name="DEVEL" Text="Ontwikkel" BackgroundColor="#bddec3" WidthRequest="120" HeightRequest="80" Clicked="ToonEventLog" />
+                <Button x:Name="TSTEL" Text="Test" BackgroundColor="#bddec3"  WidthRequest="120" HeightRequest="80" Clicked="ToonEventLog"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button x:Name="ACCEL" Text="Acceptatie" BackgroundColor="#bddec3"  WidthRequest="120" HeightRequest="80" Clicked="ToonEventLog"/>
+                <Button x:Name="PRDEL" Text="Productie" BackgroundColor="#bddec3"  WidthRequest="120" HeightRequest="80" Clicked="ToonEventLog"/>
+            </StackLayout>
 
             <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
-            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="50">
                 <Image Source="ProcessStart.png" 
                     WidthRequest="60" HeightRequest="60"
-                    VerticalOptions="Start" 
-                    HorizontalOptions="Start" Margin="10,0,10,0"/>
-                <Label Text="Start Business Process op" FontSize="16" Margin="0,5,0,10" VerticalOptions="CenterAndExpand"/>
+                    VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0"/>
+                <Label Text="Start Business Process op" FontSize="16" VerticalOptions="CenterAndExpand"/>
             </StackLayout>
             
             <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
-            <ListView x:Name="actionListPS" RowHeight="50"
-                ItemsSource="{Binding ActionsPS}"
-                SelectedItem="{Binding SelectedActionItem}" 
-                HasUnevenRows="True">
 
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" Margin="40,0,0,0">
-                                
-                                    <Label Text="{Binding Name}" FontSize="16" Margin="0,5,0,10"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-        </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                <Button x:Name="DEVSP" Text="Ontwikkel" BackgroundColor="#bddec3" WidthRequest="120" HeightRequest="80" Clicked="StartProcess" />
+                <Button x:Name="TSTSP" Text="Test" BackgroundColor="#bddec3"  WidthRequest="120" HeightRequest="80" Clicked="StartProcess"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button x:Name="ACCSP" Text="Acceptatie" BackgroundColor="#bddec3"  WidthRequest="120" HeightRequest="80" Clicked="StartProcess"/>
+                <Button x:Name="PRDSP" Text="Productie" BackgroundColor="#bddec3"  WidthRequest="120" HeightRequest="80" Clicked="StartProcess"/>
+            </StackLayout>
+       </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

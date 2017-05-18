@@ -23,21 +23,8 @@ namespace ESBevents.ViewModels
 		}
         internal void Initialize()
         {
-			_actionsEL = new List<ActionModel>();
-			_actionsPS = new List<ActionModel>();
-
-			ActionsEL.Add(new ActionModel { ID = 1, Name = "de Ontwikkel omgeving", Logo = "EventLog.png" });
-			ActionsEL.Add(new ActionModel { ID = 2, Name = "de Test omgeving", Logo = "EventLog.png" });
-			ActionsEL.Add(new ActionModel { ID = 3, Name = "de Acceptatie omgeving", Logo = "EventLog.png" });
-			ActionsEL.Add(new ActionModel { ID = 4, Name = "de Productie omgeving", Logo = "EventLog.png" });
-			
-            ActionsPS.Add(new ActionModel { ID = 1, Name = "de Ontwikkel omgeving", Logo = "ProcessStart.png" });
-			ActionsPS.Add(new ActionModel { ID = 2, Name = "de Test omgeving", Logo = "ProcessStart.png" });
-			ActionsPS.Add(new ActionModel { ID = 3, Name = "de Acceptatie omgeving", Logo = "ProcessStart.png" });
-			ActionsPS.Add(new ActionModel { ID = 4, Name = "de Productie omgeving", Logo = "ProcessStart.png" });
-
-
 		}
+
 		#region INotifyPropertyChanged implementation
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -74,37 +61,7 @@ namespace ESBevents.ViewModels
         public string PortNumberSP { get { return Customer.PortNumberSP; } } // StartProcess
         public string Logo { get {return Customer.Logo; } }
 
-		private List<ActionModel> _actionsEL;
-		public List<ActionModel> ActionsEL
-		{
-			get { return _actionsEL; }
-			set
-			{
-				if (_actionsEL == value)
-					return;
-
-				_actionsEL = value;
-
-				OnPropertyChanged("ActionsEL");
-			}
-		}
-
-		private List<ActionModel> _actionsPS;
-		public List<ActionModel> ActionsPS
-		{
-			get { return _actionsPS; }
-			set
-			{
-				if (_actionsPS == value)
-					return;
-
-				_actionsPS = value;
-
-				OnPropertyChanged("ActionsPS");
-			}
-		}
-
-		private ActionModel _selectedActionItem;
+	private ActionModel _selectedActionItem;
 		public ActionModel SelectedActionItem
 		{
 			get { return _selectedActionItem; }

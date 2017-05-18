@@ -24,22 +24,24 @@ namespace ESBevents.WebServices
                 var client = new System.Net.Http.HttpClient();
 
                 Debug.WriteLine(vm.Customer.Name);
+                Debug.WriteLine(vm.Key);
 
-                switch (vm.SelectedActionItem.ID)
+                switch (vm.Key)
                 {
-                    case 1:
+                    case "Ontwikkel":
                         client.BaseAddress = new Uri(string.Format("http://{0}:{1}/DXCUtilities/", vm.Customer.IPNumberO, vm.Customer.PortNumberEL));
                         break;
-					case 2:
+					case "Test":
 						client.BaseAddress = new Uri(string.Format("http://{0}:{1}/DXCUtilities/", vm.Customer.IPNumberT, vm.Customer.PortNumberEL));
 						break;
-					case 3:
+					case "Acceptatie":
 						client.BaseAddress = new Uri(string.Format("http://{0}:{1}/DXCUtilities/", vm.Customer.IPNumberA, vm.Customer.PortNumberEL));
 						break;
-					case 4:
+					case "Productie":
 						client.BaseAddress = new Uri(string.Format("http://{0}:{1}/DXCUtilities/", vm.Customer.IPNumberP, vm.Customer.PortNumberEL));
 						break;
 				}
+
                 var command = "HaalEventlog";
 
 				Debug.WriteLine(client.BaseAddress + command);
