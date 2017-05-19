@@ -34,6 +34,7 @@
                 <Setter Property="TextColor" Value="Gray" />
                 <Setter Property="Margin" Value="10,0,0,0" />
                 <Setter Property="FontSize" Value="12" />
+                <Setter Property="VerticalOptions" Value="End" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -42,18 +43,18 @@
         <Grid Padding="10,10,0,10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="26" />  <!-- 00 -->
-                <RowDefinition Height="24" />  <!-- 01 -->
+                <RowDefinition Height="20" />  <!-- 01 -->
                 <RowDefinition Height="24" />  <!-- 02 -->
-                <RowDefinition Height="24" />  <!-- 03 -->
+                <RowDefinition Height="20" />  <!-- 03 -->
                 <RowDefinition Height="24" />  <!-- 04 -->
-                <RowDefinition Height="24" />  <!-- 05 -->
-                <RowDefinition Height="26" />  <!-- 06 -->
-                <RowDefinition Height="24" />  <!-- 07 -->
+                <RowDefinition Height="20" />  <!-- 05 -->
+                <RowDefinition Height="24" />  <!-- 06 -->
+                <RowDefinition Height="20" />  <!-- 07 -->
                 <RowDefinition Height="24" />  <!-- 08 -->
-                <RowDefinition Height="24" />  <!-- 09 -->
+                <RowDefinition Height="20" />  <!-- 09 -->
                 <RowDefinition Height="24" />  <!-- 10 -->
-                <RowDefinition Height="24" />  <!-- 11 -->
-                <RowDefinition Height="24" />  <!-- 12 -->
+                <RowDefinition Height="22" />  <!-- 11 -->
+                <RowDefinition Height="26" />  <!-- 12 -->
                 <RowDefinition Height="24" />  <!-- 13 -->
                 <RowDefinition Height="24" />  <!-- 14 -->
                 <RowDefinition Height="24" />  <!-- 15 -->
@@ -61,12 +62,13 @@
                 <RowDefinition Height="*" />   <!-- 17 -->
                 <RowDefinition Height="50" />  <!-- 18 -->
             </Grid.RowDefinitions>
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="90" />
-                <ColumnDefinition Width="90" />
-                <ColumnDefinition Width="90" />
-                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="85" />
+                <ColumnDefinition Width="85" />
+                <ColumnDefinition Width="85" />
+                <ColumnDefinition Width="85" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
@@ -74,27 +76,36 @@
             <Label Grid.Row="0" Grid.Column="1" Text="Productie" Style="{StaticResource labelStyle}" XAlign="Center" YAlign="Center" />
             <Label Grid.Row="0" Grid.Column="2" Text="Test" Style="{StaticResource labelStyle}" XAlign="Center" YAlign="Center"/>
 
-            <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Alliade:" />
-            <Entry Grid.Row="2" Grid.Column="0" Style="{StaticResource entryStyle}" x:Name="ipALLO" Placeholder="Ont"/>
-            <Entry Grid.Row="2" Grid.Column="1" Style="{StaticResource entryStyle}" x:Name="ipALLT" Placeholder="Tst"/>
-            <Entry Grid.Row="2" Grid.Column="2" Style="{StaticResource entryStyle}" x:Name="ipALLA" Placeholder="Acc"/>
-            <Entry Grid.Row="2" Grid.Column="3" Style="{StaticResource entryStyle}" x:Name="ipALLP" Placeholder="Prd"/>
+            <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Alliade:"/>
+
+            <Entry Grid.Row="2" Grid.Column="0" Style="{StaticResource entryStyleN}" x:Name="ipALLO" Placeholder="Ont"/>
+            <Entry Grid.Row="2" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="ipALLT" Placeholder="Tst"/>
+            <Entry Grid.Row="2" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="ipALLA" Placeholder="Acc"/>
+            <Entry Grid.Row="2" Grid.Column="3" Style="{StaticResource entryStyleN}" x:Name="ipALLP" Placeholder="Prd"/>
 
             <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Dichterbij:" />
-            <Entry Grid.Row="4" Grid.Column="1" Style="{StaticResource entryStyle}" x:Name="ipDBZ" Placeholder="Ontwikkel"/>
-            <Entry Grid.Row="4" Grid.Column="2" Style="{StaticResource entryStyle}" x:Name="ipDBZtst" Placeholder="Test"/>
+            <Entry Grid.Row="4" Grid.Column="0" Style="{StaticResource entryStyleN}" x:Name="ipDBZO" Placeholder="Ont"/>
+            <Entry Grid.Row="4" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="ipDBZT" Placeholder="Tst"/>
+            <Entry Grid.Row="4" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="ipDBZA" Placeholder="Acc"/>
+            <Entry Grid.Row="4" Grid.Column="3" Style="{StaticResource entryStyleN}" x:Name="ipDBZP" Placeholder="Prd"/>
 
             <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource labelStyle}" Text="'s Heeren Loo:" />
-            <Entry Grid.Row="6" Grid.Column="1" Style="{StaticResource entryStyle}" x:Name="ipSHL" Placeholder="Ontwikkel"/>
-            <Entry Grid.Row="6" Grid.Column="2" Style="{StaticResource entryStyle}" x:Name="ipSHLtst" Placeholder="Test"/>
+            <Entry Grid.Row="6" Grid.Column="0" Style="{StaticResource entryStyleN}" x:Name="ipSHLO" Placeholder="Ont"/>
+            <Entry Grid.Row="6" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="ipSHLT" Placeholder="Tst"/>
+            <Entry Grid.Row="6" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="ipSHLA" Placeholder="Acc"/>
+            <Entry Grid.Row="6" Grid.Column="3" Style="{StaticResource entryStyleN}" x:Name="ipSHLP" Placeholder="Prd"/>
 
             <Label Grid.Row="7" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Philadelphia:" />
-            <Entry Grid.Row="8" Grid.Column="1" Style="{StaticResource entryStyle}" x:Name="ipSPZ" Placeholder="Ontwikkel"/>
-            <Entry Grid.Row="8" Grid.Column="2" Style="{StaticResource entryStyle}" x:Name="ipSPZtst" Placeholder="Test"/>
+            <Entry Grid.Row="8" Grid.Column="0" Style="{StaticResource entryStyleN}" x:Name="ipSPZO" Placeholder="Ont"/>
+            <Entry Grid.Row="8" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="ipSPZT" Placeholder="Tst"/>
+            <Entry Grid.Row="8" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="ipSPZA" Placeholder="Acc"/>
+            <Entry Grid.Row="8" Grid.Column="3" Style="{StaticResource entryStyleN}" x:Name="ipSPZP" Placeholder="Prd"/>
 
             <Label Grid.Row="9" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Zorgboog:" />
-            <Entry Grid.Row="10" Grid.Column="1" Style="{StaticResource entryStyle}" x:Name="ipZGB" Placeholder="Ontwikkel"/>
-            <Entry Grid.Row="10" Grid.Column="2" Style="{StaticResource entryStyle}" x:Name="ipZGBtst" Placeholder="Test"/>
+            <Entry Grid.Row="10" Grid.Column="0" Style="{StaticResource entryStyleN}" x:Name="ipZGBO" Placeholder="Ont"/>
+            <Entry Grid.Row="10" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="ipZGBT" Placeholder="Tst"/>
+            <Entry Grid.Row="10" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="ipZGBA" Placeholder="Acc"/>
+            <Entry Grid.Row="10" Grid.Column="3" Style="{StaticResource entryStyleN}" x:Name="ipZGBP" Placeholder="Prd"/>
 
             <Label Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" Text="Poortnummers" />
             <Label Grid.Row="11" Grid.Column="1" Text="Eventlogs" Style="{StaticResource labelStyle}" XAlign="Center" YAlign="Center"/>
