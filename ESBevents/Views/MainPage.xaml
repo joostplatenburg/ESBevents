@@ -23,7 +23,8 @@
 		<ToolbarItem Icon="ic_drawer.png" Activated="OnClick" />
         
 	</ContentPage.ToolbarItems>
-	   <ContentPage.Content>
+
+    <ContentPage.Content>
         <ListView x:Name="customerList" RowHeight="80"
                     ItemsSource="{Binding Customers}"
                     SelectedItem="{Binding SelectedItem}" >

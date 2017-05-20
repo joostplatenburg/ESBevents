@@ -7,20 +7,15 @@
         <ResourceDictionary>
             <Style x:Key="buttonStyle" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="End" />
-                <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="BackgroundColor" Value="#bddec3" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="Silver" />
+<!--                <Setter Property="BackgroundColor" Value="#bddec3" />-->
                 <Setter Property="BorderRadius" Value="10" />
-                <Setter Property="HeightRequest" Value="400" />
+                <Setter Property="HeightRequest" Value="50" />
                 <Setter Property="WidthRequest" Value="200" />
                 <Setter Property="FontAttributes" Value="Bold" />
-            </Style>
-
-            <Style x:Key="entryStyle" TargetType="Entry">
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BackgroundColor" Value="#bddec3" />
-                <Setter Property="FontSize" Value="15" />
-                <Setter Property="Keyboard" Value= "Default"/>
+<!--                <Setter Property="Margin" Value="0,0,10,10" />-->
             </Style>
 
             <Style x:Key="entryStyleN" TargetType="Entry">
@@ -28,6 +23,15 @@
                 <Setter Property="BackgroundColor" Value="#bddec3" />
                 <Setter Property="FontSize" Value="15" />
                 <Setter Property="Keyboard" Value= "Numeric"/>
+                <Setter Property="WidthRequest" Value="90" />
+            </Style>
+
+            <Style x:Key="entryStyleN1" TargetType="Entry">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="#bddec3" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="Keyboard" Value= "Numeric"/>
+                <Setter Property="WidthRequest" Value="105" />
             </Style>
 
             <Style x:Key="labelStyle" TargetType="Label">
@@ -35,107 +39,97 @@
                 <Setter Property="Margin" Value="10,0,0,0" />
                 <Setter Property="FontSize" Value="12" />
                 <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="WidthRequest" Value="110" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Activated="SaveOptions" />
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
-        <Grid Padding="10,10,0,10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="26" />  <!-- 00 -->
-                <RowDefinition Height="20" />  <!-- 01 -->
-                <RowDefinition Height="24" />  <!-- 02 -->
-                <RowDefinition Height="20" />  <!-- 03 -->
-                <RowDefinition Height="24" />  <!-- 04 -->
-                <RowDefinition Height="20" />  <!-- 05 -->
-                <RowDefinition Height="24" />  <!-- 06 -->
-                <RowDefinition Height="20" />  <!-- 07 -->
-                <RowDefinition Height="24" />  <!-- 08 -->
-                <RowDefinition Height="20" />  <!-- 09 -->
-                <RowDefinition Height="24" />  <!-- 10 -->
-                <RowDefinition Height="22" />  <!-- 11 -->
-                <RowDefinition Height="26" />  <!-- 12 -->
-                <RowDefinition Height="24" />  <!-- 13 -->
-                <RowDefinition Height="24" />  <!-- 14 -->
-                <RowDefinition Height="24" />  <!-- 15 -->
-                <RowDefinition Height="24" />  <!-- 16 -->
-                <RowDefinition Height="*" />   <!-- 17 -->
-                <RowDefinition Height="50" />  <!-- 18 -->
-            </Grid.RowDefinitions>
+        <StackLayout Orientation="Vertical">
+            <Label Text="IP-adressen" Margin="10,10,0,0"/>
+
+            <Label Style="{StaticResource labelStyle}" Text="Alliade"/>
+
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipALLO" Placeholder="Ont" />
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipALLT" Placeholder="Tst"/>
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipALLA" Placeholder="Acc"/>
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipALLP" Placeholder="Prd"/>
+            </StackLayout>
+
+            <Label Style="{StaticResource labelStyle}" Text="Dichterbij" />
             
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="85" />
-                <ColumnDefinition Width="85" />
-                <ColumnDefinition Width="85" />
-                <ColumnDefinition Width="85" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipDBZO" Placeholder="Ont"/>
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipDBZT" Placeholder="Tst"/>
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipDBZA" Placeholder="Acc"/>
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipDBZP" Placeholder="Prd"/>
+            </StackLayout>
 
-            <Label Grid.Row="0" Grid.Column="0" Text="IP-adressen" />
-            <Label Grid.Row="0" Grid.Column="1" Text="Productie" Style="{StaticResource labelStyle}" XAlign="Center" YAlign="Center" />
-            <Label Grid.Row="0" Grid.Column="2" Text="Test" Style="{StaticResource labelStyle}" XAlign="Center" YAlign="Center"/>
+            <Label Style="{StaticResource labelStyle}" Text="'s Heeren Loo" />
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipSHLO" Placeholder="Ont"/>
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipSHLT" Placeholder="Tst"/>
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipSHLA" Placeholder="Acc"/>
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipSHLP" Placeholder="Prd"/>
+            </StackLayout>
 
-            <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Alliade:"/>
+            <Label Style="{StaticResource labelStyle}" Text="Philadelphia" />
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipSPZO" Placeholder="Ont"/>
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipSPZT" Placeholder="Tst"/>
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipSPZA" Placeholder="Acc"/>
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipSPZP" Placeholder="Prd"/>
+            </StackLayout>
 
-            <Entry Grid.Row="2" Grid.Column="0" Style="{StaticResource entryStyleN}" x:Name="ipALLO" Placeholder="Ont"/>
-            <Entry Grid.Row="2" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="ipALLT" Placeholder="Tst"/>
-            <Entry Grid.Row="2" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="ipALLA" Placeholder="Acc"/>
-            <Entry Grid.Row="2" Grid.Column="3" Style="{StaticResource entryStyleN}" x:Name="ipALLP" Placeholder="Prd"/>
+            <Label Style="{StaticResource labelStyle}" Text="Zorgboog" />
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipZGBO" Placeholder="Ont"/>
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipZGBT" Placeholder="Tst"/>
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipZGBA" Placeholder="Acc"/>
+                <Entry Style="{StaticResource entryStyleN}" x:Name="ipZGBP" Placeholder="Prd"/>
+            </StackLayout>
 
-            <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Dichterbij:" />
-            <Entry Grid.Row="4" Grid.Column="0" Style="{StaticResource entryStyleN}" x:Name="ipDBZO" Placeholder="Ont"/>
-            <Entry Grid.Row="4" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="ipDBZT" Placeholder="Tst"/>
-            <Entry Grid.Row="4" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="ipDBZA" Placeholder="Acc"/>
-            <Entry Grid.Row="4" Grid.Column="3" Style="{StaticResource entryStyleN}" x:Name="ipDBZP" Placeholder="Prd"/>
+            <Label Text="Poortnummers" Margin="10,10,0,0" />
+            
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                <Label Style="{StaticResource labelStyle}" Text="Alliade:" />
+                <Entry Style="{StaticResource entryStyleN1}" x:Name="portEventsALL" Placeholder="Eventlogs"/>
+                <Entry Style="{StaticResource entryStyleN1}" x:Name="portProcessALL" Placeholder="ProcesStart"/>
+            </StackLayout>
 
-            <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource labelStyle}" Text="'s Heeren Loo:" />
-            <Entry Grid.Row="6" Grid.Column="0" Style="{StaticResource entryStyleN}" x:Name="ipSHLO" Placeholder="Ont"/>
-            <Entry Grid.Row="6" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="ipSHLT" Placeholder="Tst"/>
-            <Entry Grid.Row="6" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="ipSHLA" Placeholder="Acc"/>
-            <Entry Grid.Row="6" Grid.Column="3" Style="{StaticResource entryStyleN}" x:Name="ipSHLP" Placeholder="Prd"/>
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                <Label Style="{StaticResource labelStyle}" Text="Dichterbij:"  />
+                <Entry Style="{StaticResource entryStyleN1}" x:Name="portEventsDBZ" Placeholder="Eventlogs"/>
+                <Entry Style="{StaticResource entryStyleN1}" x:Name="portProcessDBZ" Placeholder="ProcesStart"/>
+            </StackLayout>
 
-            <Label Grid.Row="7" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Philadelphia:" />
-            <Entry Grid.Row="8" Grid.Column="0" Style="{StaticResource entryStyleN}" x:Name="ipSPZO" Placeholder="Ont"/>
-            <Entry Grid.Row="8" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="ipSPZT" Placeholder="Tst"/>
-            <Entry Grid.Row="8" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="ipSPZA" Placeholder="Acc"/>
-            <Entry Grid.Row="8" Grid.Column="3" Style="{StaticResource entryStyleN}" x:Name="ipSPZP" Placeholder="Prd"/>
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                <Label Style="{StaticResource labelStyle}" Text="'s Heeren Loo:" />
+                <Entry Style="{StaticResource entryStyleN1}" x:Name="portEventsSHL" Placeholder="Eventlogs"/>
+                <Entry Style="{StaticResource entryStyleN1}" x:Name="portProcessSHL" Placeholder="ProcesStart"/>
+            </StackLayout>
 
-            <Label Grid.Row="9" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Zorgboog:" />
-            <Entry Grid.Row="10" Grid.Column="0" Style="{StaticResource entryStyleN}" x:Name="ipZGBO" Placeholder="Ont"/>
-            <Entry Grid.Row="10" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="ipZGBT" Placeholder="Tst"/>
-            <Entry Grid.Row="10" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="ipZGBA" Placeholder="Acc"/>
-            <Entry Grid.Row="10" Grid.Column="3" Style="{StaticResource entryStyleN}" x:Name="ipZGBP" Placeholder="Prd"/>
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                <Label Style="{StaticResource labelStyle}" Text="Philadelphia:" />
+                <Entry Style="{StaticResource entryStyleN1}" x:Name="portEventsSPZ" Placeholder="Eventlogs"/>
+                <Entry Style="{StaticResource entryStyleN1}" x:Name="portProcessSPZ" Placeholder="ProcesStart"/>
+            </StackLayout>
 
-            <Label Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" Text="Poortnummers" />
-            <Label Grid.Row="11" Grid.Column="1" Text="Eventlogs" Style="{StaticResource labelStyle}" XAlign="Center" YAlign="Center"/>
-            <Label Grid.Row="11" Grid.Column="2" Text="Proces-starter" Style="{StaticResource labelStyle}" XAlign="Center" YAlign="Center"/>
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                <Label Style="{StaticResource labelStyle}" Text="Zorgboog:" />
+                <Entry Style="{StaticResource entryStyleN1}" x:Name="portEventsZGB" Placeholder="Eventlogs"/>
+                <Entry Style="{StaticResource entryStyleN1}" x:Name="portProcessZGB" Placeholder="ProcesStart"/>
+            </StackLayout>
 
-            <Label Grid.Row="12" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Alliade:"  />
-            <Entry Grid.Row="12" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="portEventsALL" />
-            <Entry Grid.Row="12" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="portProcessALL" />
-
-            <Label Grid.Row="13" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Dichterbij:"  />
-            <Entry Grid.Row="13" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="portEventsDBZ" />
-            <Entry Grid.Row="13" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="portProcessDBZ" />
-
-            <Label Grid.Row="14" Grid.Column="0" Style="{StaticResource labelStyle}" Text="'s Heeren Loo:" />
-            <Entry Grid.Row="14" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="portEventsSHL" />
-            <Entry Grid.Row="14" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="portProcessSHL" />
-
-            <Label Grid.Row="15" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Philadelphia:" />
-            <Entry Grid.Row="15" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="portEventsSPZ" />
-            <Entry Grid.Row="15" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="portProcessSPZ" />
-
-            <Label Grid.Row="16" Grid.Column="0" Style="{StaticResource labelStyle}" Text="Zorgboog:" />
-            <Entry Grid.Row="16" Grid.Column="1" Style="{StaticResource entryStyleN}" x:Name="portEventsZGB" />
-            <Entry Grid.Row="16" Grid.Column="2" Style="{StaticResource entryStyleN}" x:Name="portProcessZGB" />
-
-            <Button Grid.Row="18" Grid.Column="1" Grid.ColumnSpan="2" Text="Save" x:Name="SaveButton"
+ <!--           <Button Text="Save" x:Name="SaveButton"
                     Style="{StaticResource buttonStyle}" 
-                    Clicked="SaveOptions" Margin="0,0,0,10"
+                    Clicked="SaveOptions" Margin="20,40"
                     FontSize="14" />
-
-        </Grid>
+-->        </StackLayout>
      </ContentPage.Content>
 </ContentPage>
