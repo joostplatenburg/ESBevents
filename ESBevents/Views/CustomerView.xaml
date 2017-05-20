@@ -9,11 +9,11 @@
 			<Style x:Key="buttonStyle" TargetType="Button">
 				<Setter Property="HorizontalOptions" Value="End" />
 				<Setter Property="VerticalOptions" Value="Center" />
-				<Setter Property="TextColor" Value="White" />
+				<Setter Property="TextColor" Value="Gray" />
 				<Setter Property="BackgroundColor" Value="#bddec3" />
 				<Setter Property="BorderRadius" Value="10" />
-				<Setter Property="HeightRequest" Value="400" />
-				<Setter Property="WidthRequest" Value="200" />
+				<Setter Property="HeightRequest" Value="60" />
+				<Setter Property="WidthRequest" Value="120" />
 				<Setter Property="FontAttributes" Value="Bold" />
 			</Style>
 		</ResourceDictionary>
@@ -39,35 +39,35 @@
                 <Label Text="Toon Eventlog van" FontSize="16" VerticalOptions="Center"/>
             </StackLayout>
             
-            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
-                <Button x:Name="DEVEL" Text="Ontwikkel" BackgroundColor="#bddec3" WidthRequest="120" HeightRequest="80" Clicked="ToonEventLog" Margin="10"/>
-                <Button x:Name="TSTEL" Text="Test" BackgroundColor="#bddec3"  WidthRequest="120" HeightRequest="80" Clicked="ToonEventLog" Margin="10"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                <Button x:Name="DEVEL" Text="Ontwikkel" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="10"/>
+                <Button x:Name="TSTEL" Text="Test" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="10"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Button x:Name="ACCEL" Text="Acceptatie" BackgroundColor="#bddec3"  WidthRequest="120" HeightRequest="80" Clicked="ToonEventLog" Margin="10"/>
-                <Button x:Name="PRDEL" Text="Productie" BackgroundColor="#bddec3"  WidthRequest="120" HeightRequest="80" Clicked="ToonEventLog" Margin="10"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button x:Name="ACCEL" Text="Acceptatie" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="10"/>
+                <Button x:Name="PRDEL" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="10"/>
             </StackLayout>
 
-            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
-            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HeightRequest="50">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="50">
                 <Image Source="ProcessStart.png" 
                     WidthRequest="60" HeightRequest="60"
                     VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0"/>
                 <Label Text="Start Business Process op" FontSize="16" VerticalOptions="Center"/>
             </StackLayout>
             
-            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
-                <Button x:Name="DEVSP" Text="Ontwikkel" BackgroundColor="#bddec3" WidthRequest="120" HeightRequest="80" Clicked="StartProcess" Margin="10"/>
-                <Button x:Name="TSTSP" Text="Test" BackgroundColor="#bddec3"  WidthRequest="120" HeightRequest="80" Clicked="StartProcess" Margin="10"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                <Button x:Name="DEVSP" Text="Ontwikkel" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="10"/>
+                <Button x:Name="TSTSP" Text="Test" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="10"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Button x:Name="ACCSP" Text="Acceptatie" BackgroundColor="#bddec3"  WidthRequest="120" HeightRequest="80" Clicked="StartProcess" Margin="10"/>
-                <Button x:Name="PRDSP" Text="Productie" BackgroundColor="#bddec3"  WidthRequest="120" HeightRequest="80" Clicked="StartProcess" Margin="10"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button x:Name="ACCSP" Text="Acceptatie" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="10"/>
+                <Button x:Name="PRDSP" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="10"/>
             </StackLayout>
        </StackLayout>
 	</ContentPage.Content>

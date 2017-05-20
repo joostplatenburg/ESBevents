@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace ESBevents
@@ -88,7 +88,7 @@ namespace ESBevents
 			SaveTextValue("portEventsZGB", portEventsZGB);
 			SaveTextValue("portProcessZGB", portProcessZGB);
 
-            Navigation.PopModalAsync(true);
+            Navigation.PopAsync(true);
 		}
 
         void SetTextValue(string Key, Entry obj) {
@@ -103,8 +103,15 @@ namespace ESBevents
 			if (obj.Text != null)
 			{
 				Application.Current.Properties[Key] = obj.Text.Replace(",", ".");
+                SetTextValue(Key, obj);
 			}
-
 		}
+
+        void OnTextChanged(object sender, EventArgs e)
+        {
+			var obj = sender as Entry;
+
+            obj.Text = obj.Text.Replace(",", ".");
+        }
 	}
 }
