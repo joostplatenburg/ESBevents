@@ -23,7 +23,7 @@ namespace ESBevents.WebServices
 
                 var client = new System.Net.Http.HttpClient();
 
-                Debug.WriteLine(vm.Customer.Name);
+                Debug.WriteLine(vm.Name);
                 Debug.WriteLine(vm.Key);
 
                 switch (vm.Key)
@@ -47,6 +47,8 @@ namespace ESBevents.WebServices
 				Debug.WriteLine(client.BaseAddress + command);
 
 				var response = await client.GetAsync(command);
+                //var requestTask = client.GetAsync(command); 
+                //var response = Task.Run(() => requestTask);
 
 				if (response.StatusCode == HttpStatusCode.Continue ||
 					response.StatusCode == HttpStatusCode.Accepted ||
