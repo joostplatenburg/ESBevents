@@ -126,6 +126,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="DeviceOrientationImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_drawer.png" />

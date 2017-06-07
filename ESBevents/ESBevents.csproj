@@ -84,12 +84,14 @@
       <DependentUpon>ProcessStartView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ProcessStartViewModel.cs" />
+    <Compile Include="Abstractions\iDeviceOrientation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Models\" />
     <Folder Include="WebServices\" />
+    <Folder Include="Abstractions\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

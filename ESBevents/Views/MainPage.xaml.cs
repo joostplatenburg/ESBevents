@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
+using ESBevents.Abstractions;
 using ESBevents.ViewModels;
 using ESBevents.WebServices;
 using Xamarin.Forms;
@@ -14,7 +15,7 @@ namespace ESBevents.Views
 
 		public static string BaseURL = "";
 
-		public MainPage()
+        public MainPage()
 		{
 			InitializeComponent();
 
@@ -27,7 +28,6 @@ namespace ESBevents.Views
 
 				((ListView)sender).SelectedItem = null;
 			};
-
 
 			// Fetch basURL from persistent storage
 			/*
@@ -45,6 +45,31 @@ namespace ESBevents.Views
 				BaseURL = "http://192.168.2.23:54322/DXCUtilities/";
 			}
 			*/
+		}
+
+        protected override void OnSizeAllocated(double width, double height) {
+            base.OnSizeAllocated(width, height);
+
+			if (width != this.width || height != this.height)
+			{
+				this.width = width;
+				this.height = height;
+				if (width > height)
+				{
+                    // landscape
+                    Debug.WriteLine("Landscape width: " + width);
+                    Debug.WriteLine("Landscape height: " + height);
+				}
+				else
+				{
+					// portrait
+					Debug.WriteLine("Portrait width: " + width);
+					Debug.WriteLine("Portrait height: " + height);
+				}
+			}
+
+			var orientation = DependencyService.Get<IDeviceOrientation>().GetOrientation();
+			Debug.WriteLine("Orientation: " + orientation);
 		}
 
 		void OnClick(object sender, EventArgs e)

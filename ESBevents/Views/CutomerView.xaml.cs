@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
+using ESBevents.Abstractions;
 using ESBevents.Models;
 using ESBevents.ViewModels;
 using ESBevents.WebServices;
@@ -63,6 +64,19 @@ namespace ESBevents
 		{
 			await Navigation.PushAsync(new ProcessStartView(vm.Customer));
 
-			((ListView)sender).SelectedItem = null;}
+			((ListView)sender).SelectedItem = null;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+			//MessagingCenter.Subscribe<DeviceOrientationChangeMessage>(this, DeviceOrientationChangeMessage.MessageId, (message) =>
+			//{
+			//	//TODO: HandleOrientationChange(message);
+			//});
+        }
+        }
+
 	}
 }
