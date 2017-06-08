@@ -9,28 +9,28 @@ using Xamarin.Forms;
 
 namespace ESBevents.Views
 {
-	public partial class MainPage : ContentPage
-	{
-		internal MainPageViewModel vm = new MainPageViewModel();
+    public partial class MainPage : ContentPage
+    {
+        internal MainPageViewModel vm = new MainPageViewModel();
 
-		public static string BaseURL = "";
+        public static string BaseURL = "";
 
         public MainPage()
-		{
-			InitializeComponent();
+        {
+            InitializeComponent();
 
-			BindingContext = vm;
+            BindingContext = vm;
 
-			customerList.ItemTapped += (sender, e) =>
-			{
-    			Navigation.PushAsync(new CustomerView(vm.SelectedItem));
-				//Navigation.PushAsync(new EventView());
+            customerList.ItemTapped += (sender, e) =>
+            {
+                Navigation.PushAsync(new CustomerView(vm.SelectedItem));
+                //Navigation.PushAsync(new EventView());
 
-				((ListView)sender).SelectedItem = null;
-			};
+                ((ListView)sender).SelectedItem = null;
+            };
 
-			// Fetch basURL from persistent storage
-			/*
+            // Fetch basURL from persistent storage
+            /*
 			if (Application.Current.Properties.ContainsKey("baseURL"))
 			{
 				var _baseURL = Application.Current.Properties["baseURL"] as string;
@@ -45,7 +45,10 @@ namespace ESBevents.Views
 				BaseURL = "http://192.168.2.23:54322/DXCUtilities/";
 			}
 			*/
-		}
+        }
+
+        public double width { get; set; }
+        public double height { get; set; }
 
         protected override void OnSizeAllocated(double width, double height) {
             base.OnSizeAllocated(width, height);

@@ -75,7 +75,7 @@ namespace ESBevents
 			//{
 			//	//TODO: HandleOrientationChange(message);
 			//});
-        }
+        
         }
 
 	}
