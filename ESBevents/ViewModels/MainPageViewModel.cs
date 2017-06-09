@@ -42,16 +42,16 @@ namespace ESBevents.ViewModels
 			var dbz015 = new KoppelingModel { ID = 015, Name = "DBZ015", Description = "AFAS naar " }; DBZ.Koppelingen.Add(dbz015);
 			Customers.Add(DBZ);
 
-			var SHL = new CustomerModel { Name = "'s Heeren Loo", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54323", PortNumberSP = "54333", Logo = "SHL.png" };
-			Customers.Add(SHL);
-
-			var SPZ = new CustomerModel { Name = "Stichting Philadelphia Zorg", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA="", IPNumberP="", PortNumberEL = "54324", PortNumberSP = "54334", Logo = "SPZ.png" }; 
+			var SPZ = new CustomerModel { Name = "Stichting Philadelphia Zorg", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA="", IPNumberP="", PortNumberEL = "54323", PortNumberSP = "54333", Logo = "SPZ.png" }; 
 			SPZ.Koppelingen = new List<KoppelingModel>();
 			var spz150 = new KoppelingModel { ID = 150, Name = "SPZ150", Description = "ESB-CMS Medewerkergegevens"}; SPZ.Koppelingen.Add(spz150);
 			var spz151 = new KoppelingModel { ID = 151, Name = "SPZ151", Description = "(Her)In- en Doorstroom Accounts"}; SPZ.Koppelingen.Add(spz151);
 			var spz152 = new KoppelingModel { ID = 152, Name = "SPZ152", Description = "BO4 naar WACHTRIJ" }; SPZ.Koppelingen.Add(spz152);
 			var spz153 = new KoppelingModel { ID = 153, Name = "SPZ153", Description = "ECD P&R Ambulant Clientgegevens"}; SPZ.Koppelingen.Add(spz153);
             Customers.Add(SPZ);
+
+			var SHL = new CustomerModel { Name = "'s Heeren Loo", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54324", PortNumberSP = "54334", Logo = "SHL.png" };
+			Customers.Add(SHL);
 
 			var ZGB = new CustomerModel { Name = "de Zorgboog", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54325", PortNumberSP = "54335", Logo = "ZGB.png" }; 
             Customers.Add(ZGB);

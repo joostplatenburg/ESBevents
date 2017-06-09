@@ -150,6 +150,10 @@
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC_120.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC_180.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\DXC_768x1048.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\DXC_1536x2048.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\DXC_1024x768.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\DXC_2048x1536.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
