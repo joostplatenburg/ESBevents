@@ -8,12 +8,21 @@ using System.Threading.Tasks;
 using ESBevents.Models;
 using ESBevents.ViewModels;
 using System.Net;
+using System.Net.Http;
 
 namespace ESBevents.WebServices
 {
-    class GetEventLogWS
+    public class GetEventLogWS
     {
-        public GetEventLogWS() { }
+		HttpClient client;
+
+		public GetEventLogWS()
+		{
+			client = new HttpClient();
+
+			//client.MaxResponseContentBufferSize = 256000;
+
+		}
 
 		public async Task<HttpStatusCode> GetEventLogAsync(CustomerViewModel vm)
         {
@@ -21,42 +30,42 @@ namespace ESBevents.WebServices
             {
                 Debug.WriteLine("Start GetEventLog()");
 
-                var client = new System.Net.Http.HttpClient();
-
                 Debug.WriteLine(vm.Name);
-                Debug.WriteLine(vm.Key);
+				Debug.WriteLine(vm.Key);
+				Debug.WriteLine(vm.Customer.IPNumberT);
+				Debug.WriteLine(vm.Customer.PortNumberEL);
+
+                var service = "http://{0}:{1}/DXCUtilities/HaalEventlog";
+                var serviceadres = string.Empty;
+
+				Debug.WriteLine(service);
 
                 switch (vm.Key)
                 {
                     case "Ontwikkel":
-                        client.BaseAddress = new Uri(string.Format("http://{0}:{1}/DXCUtilities/", vm.Customer.IPNumberO, vm.Customer.PortNumberEL));
+                        serviceadres = string.Format(service, vm.Customer.IPNumberO, vm.Customer.PortNumberEL);
                         break;
 					case "Test":
-						client.BaseAddress = new Uri(string.Format("http://{0}:{1}/DXCUtilities/", vm.Customer.IPNumberT, vm.Customer.PortNumberEL));
-						break;
+						serviceadres = string.Format(service, vm.Customer.IPNumberT, vm.Customer.PortNumberEL);
+                        break;
 					case "Acceptatie":
-						client.BaseAddress = new Uri(string.Format("http://{0}:{1}/DXCUtilities/", vm.Customer.IPNumberA, vm.Customer.PortNumberEL));
+						serviceadres = string.Format(service, vm.Customer.IPNumberA, vm.Customer.PortNumberEL);
 						break;
 					case "Productie":
-						client.BaseAddress = new Uri(string.Format("http://{0}:{1}/DXCUtilities/", vm.Customer.IPNumberP, vm.Customer.PortNumberEL));
+						serviceadres = string.Format(service, vm.Customer.IPNumberP, vm.Customer.PortNumberEL);
 						break;
 				}
 
-                var command = "HaalEventlog";
-
-				Debug.WriteLine(client.BaseAddress + command);
-
-				var response = await client.GetAsync(command);
-                //var requestTask = client.GetAsync(command); 
-                //var response = Task.Run(() => requestTask);
-
+                var uri = new Uri(serviceadres);
+ 
+				var response = await client.GetAsync(uri);
 				if (response.StatusCode == HttpStatusCode.Continue ||
 					response.StatusCode == HttpStatusCode.Accepted ||
 					response.StatusCode == HttpStatusCode.OK)
 				{
 					var eventlogJson = response.Content.ReadAsStringAsync().Result;
-
-                	//Debug.WriteLine(eventlogJson);
+	
+					//Debug.WriteLine(eventlogJson);
 
 					var EventLogs = JsonConvert.DeserializeObject<List<List<EventModel>>>(eventlogJson);
 
@@ -74,6 +83,11 @@ namespace ESBevents.WebServices
             catch (System.Net.WebException)
             {
 				return HttpStatusCode.InternalServerError;
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return HttpStatusCode.BadRequest;
             }
         }
     }

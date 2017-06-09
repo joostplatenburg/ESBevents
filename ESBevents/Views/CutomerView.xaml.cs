@@ -57,7 +57,7 @@ namespace ESBevents
 			  await Navigation.PushAsync(new EventlogView(vm));
 			}
 
-			((ListView)sender).SelectedItem = null;
+			//((ListView)sender).SelectedItem = null;
 		}
 
 		async void  StartProcess(object sender, EventArgs e)
