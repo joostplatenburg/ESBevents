@@ -20,30 +20,49 @@
 	</ContentPage.ToolbarItems>
 	
 	<ContentPage.Content>
-		<StackLayout Orientation="Vertical">
-			<Label Text="Time Logged:" FontSize="12" TextColor="Red"/>
-			<Label Text="{Binding TimeLogged}" FontSize="10" Margin="20,0,20,0"/>
+		<StackLayout Orientation="Vertical" Margin="20">
+            <StackLayout Orientation="Horizontal">
+			    <Label Text="Time Logged:" FontSize="12" TextColor="Red" WidthRequest="100"/>
+			    <Label Text="{Binding TimeLogged}" FontSize="10"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+    			<Label Text="Source Class:" FontSize="12" TextColor="Red" WidthRequest="100"/>
+    			<Label Text="{Binding SourceClass}" FontSize="10"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+    			<Label Text="Source Method:" FontSize="12" TextColor="Red" WidthRequest="100"/>
+    			<Label Text="{Binding SourceMethod}" FontSize="10"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+    			<Label Text="Config Name:" FontSize="12" TextColor="Red" WidthRequest="100"/>
+    			<Label Text="{Binding ConfigName}" FontSize="10"/>
+            </StackLayout>
 
-			<Label Text="Source Class:" FontSize="12" TextColor="Red"/>
-			<Label Text="{Binding SourceClass}" FontSize="10" Margin="20,0,20,0"/>
-			<Label Text="Source Method:" FontSize="12" TextColor="Red"/>
-			<Label Text="{Binding SourceMethod}" FontSize="10" Margin="20,0,20,0"/>
-			<Label Text="Config Name:" FontSize="12" TextColor="Red"/>
-			<Label Text="{Binding ConfigName}" FontSize="10" Margin="20,0,20,0"/>
+            <StackLayout Orientation="Horizontal">
+    			<Label Text="Type:" FontSize="12" TextColor="Red" WidthRequest="100"/>
+    			<Label Text="{Binding Type}" FontSize="10"/>
+            </StackLayout>
 
-			<Label Text="Type:" FontSize="12" TextColor="Red"/>
-			<Label Text="{Binding Type}" FontSize="10" Margin="20,0,20,0"/>
+            <StackLayout Orientation="Horizontal">
+    			<Label Text="Session ID:" FontSize="12" TextColor="Red" WidthRequest="100"/>
+    			<Label Text="{Binding SessionId}" FontSize="10"/>
+            </StackLayout>
 
-			<Label Text="Session ID:" FontSize="12" TextColor="Red"/>
-			<Label Text="{Binding SessionId}" FontSize="10" Margin="20,0,20,0"/>
+            <StackLayout Orientation="Horizontal">
+    			<Label Text="Job:" FontSize="12" TextColor="Red" WidthRequest="100"/>
+    			<Label Text="{Binding Job}" FontSize="10"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+    			<Label Text="Message ID:" FontSize="12" TextColor="Red" WidthRequest="100"/>
+    			<Label Text="{Binding MessageId}" FontSize="10"/>
+            </StackLayout>
 
-			<Label Text="Job:" FontSize="12" TextColor="Red"/>
-			<Label Text="{Binding Job}" FontSize="10" Margin="20,0,20,0"/>
-			<Label Text="Message ID:" FontSize="12" TextColor="Red"/>
-			<Label Text="{Binding MessageId}" FontSize="10" Margin="20,0,20,0"/>
-
-			<Label Text="Text:" FontSize="12" TextColor="Red"/>
-			<Label Text="{Binding Text}" FontSize="10" Margin="20,0,20,0"/>
+			<Label Text="Text:" FontSize="12" TextColor="Red" WidthRequest="100"/>
+			<Label Text="{Binding Text}" FontSize="10"/>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

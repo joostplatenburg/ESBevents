@@ -32,17 +32,22 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" >
-                            <Image Source="{Binding Logo}" 
-                                    WidthRequest="70" HeightRequest="70"
-                                    VerticalOptions="Start" 
-                                    HorizontalOptions="Start" Margin="10,0,10,0"/>
-                            
-                            <StackLayout Orientation="Vertical">
-                                <Label Text="{Binding Name}" FontSize="18" Margin="0,5,0,0"/>
-                                <Label Text="{Binding IPNumber}" FontSize="10"/>
-                                <Label Text="{Binding PortNumber}" FontSize="10" LineBreakMode="TailTruncation"/>
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" >
+                                <Image Source="{Binding Logo}" 
+                                        WidthRequest="70" HeightRequest="70"
+                                        VerticalOptions="Start" 
+                                        HorizontalOptions="Start" Margin="10,0,10,0"/>
+                                
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Name}" FontSize="18" Margin="0,5,0,0"/>
+                                    <Label Text="{Binding IPNumber}" FontSize="10"/>
+                                    <Label Text="{Binding PortNumber}" FontSize="10" LineBreakMode="TailTruncation"/>
+                                </StackLayout>
                             </StackLayout>
+
+                            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

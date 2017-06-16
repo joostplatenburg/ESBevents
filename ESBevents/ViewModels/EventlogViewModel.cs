@@ -11,44 +11,44 @@ namespace ESBevents.ViewModels
 {
 	public class EventlogViewModel : INotifyPropertyChanged
     {
-	public EventlogViewModel()
-        {
+		public EventlogViewModel()
+	        {
+				_eventlog = new ObservableCollection<EventViewModel> ();
+	        }
+
+		public EventlogViewModel(MainPageViewModel _mpVM)
+		{
 			_eventlog = new ObservableCollection<EventViewModel> ();
-        }
-
-	public EventlogViewModel(MainPageViewModel _mpVM)
-	{
-		_eventlog = new ObservableCollection<EventViewModel> ();
-		
-		foreach (EventModel e in _mpVM.Eventlog) {
-			if(
-				(!e.SourceClass.StartsWith("Ens.", StringComparison.CurrentCulture)) && 
-				(!e.SourceClass.StartsWith("EnsLib", StringComparison.CurrentCulture)) &&
-				(!e.SourceClass.StartsWith("DXC.", StringComparison.CurrentCulture))
-			)
-			{
-				_eventlog.Add(new EventViewModel { Event = e });
-			}
-        }
-	}
-	       
-	public EventlogViewModel(CustomerViewModel _cVM)
-	{
-		_eventlog = new ObservableCollection<EventViewModel>();
-		
-		foreach (EventModel e in _cVM.Eventlog) {
-			if(
-				(!e.SourceClass.StartsWith("Ens.", StringComparison.CurrentCulture)) && 
-				(!e.SourceClass.StartsWith("EnsLib", StringComparison.CurrentCulture)) &&
-				(!e.SourceClass.StartsWith("DXC.", StringComparison.CurrentCulture))
-			)
-			{
-				_eventlog.Add(new EventViewModel { Event = e });
-			}
+			
+			foreach (EventModel e in _mpVM.Eventlog) {
+				if(
+					(!e.SourceClass.StartsWith("Ens.", StringComparison.CurrentCulture)) && 
+					(!e.SourceClass.StartsWith("EnsLib", StringComparison.CurrentCulture)) &&
+					(!e.SourceClass.StartsWith("DXC.", StringComparison.CurrentCulture))
+				)
+				{
+					_eventlog.Add(new EventViewModel { Event = e });
+				}
+	        }
 		}
+		       
+		public EventlogViewModel(CustomerViewModel _cVM)
+		{
+			_eventlog = new ObservableCollection<EventViewModel>();
+			
+			foreach (EventModel e in _cVM.Eventlog) {
+				if(
+					(!e.SourceClass.StartsWith("Ens.", StringComparison.CurrentCulture)) && 
+					(!e.SourceClass.StartsWith("EnsLib", StringComparison.CurrentCulture)) &&
+					(!e.SourceClass.StartsWith("DXC.", StringComparison.CurrentCulture))
+				)
+				{
+					_eventlog.Add(new EventViewModel { Event = e });
+				}
+			}
 
-	}
-	#region INotifyPropertyChanged implementation
+		}
+		#region INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string name)
@@ -61,34 +61,34 @@ namespace ESBevents.ViewModels
         #endregion INotifyPropertyChanged implementation
 
         #region Properties
-	private ObservableCollection<EventViewModel> _eventlog;
+		private ObservableCollection<EventViewModel> _eventlog;
 
-	public ObservableCollection<EventViewModel> Eventlog
-	{
-		get { return _eventlog; }
-		set {
-			if (_eventlog == value)
-				return;
+		public ObservableCollection<EventViewModel> Eventlog
+		{
+			get { return _eventlog; }
+			set {
+				if (_eventlog == value)
+					return;
 
-			_eventlog = value;
+				_eventlog = value;
 
-			OnPropertyChanged ("Eventlog");
+				OnPropertyChanged ("Eventlog");
+			}
 		}
-	}
 
-	private EventViewModel _selectedItem;
-	public EventViewModel SelectedItem
-	{
-		get { return _selectedItem; }
-		set {
-			if (_selectedItem == value) 
-				return;
-				
-			_selectedItem = value;
+		private EventViewModel _selectedItem;
+		public EventViewModel SelectedItem
+		{
+			get { return _selectedItem; }
+			set {
+				if (_selectedItem == value) 
+					return;
+					
+				_selectedItem = value;
 
-			OnPropertyChanged("SelectedItem");
+				OnPropertyChanged("SelectedItem");
+			}
 		}
+		#endregion Properties
 	}
-	#endregion Properties
-    }
 }

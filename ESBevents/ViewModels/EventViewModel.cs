@@ -85,6 +85,33 @@ namespace ESBevents.ViewModels
 			}
 		}
 
+        public string MsgType
+		{
+			get
+			{
+                if (Event.Type != null)
+                {
+                    switch (Type)
+                    {
+                        case "1":
+                            return "1";
+                        case "2":
+                            return "Error";
+                        case "3":
+                            return "Warning";
+                        case "4":
+                            return "Info";
+                        case "5":
+                            return "Trace";
+                        default:
+                            break;
+                    }
+                }
+				return "";
+			}
+		}
+
+
 		#endregion Properties
 	}
 }

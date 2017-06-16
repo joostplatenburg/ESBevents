@@ -18,5 +18,5 @@ namespace ESBevents.Models
         public string TraceCat { get; set; }
         public string Job { get; set; }
 		public string MessageId { get; set; }
-    }
+	}
 }

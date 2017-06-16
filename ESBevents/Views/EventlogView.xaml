@@ -8,24 +8,33 @@
 	</ContentPage.ToolbarItems>
 	
 	<ContentPage.Content>
-		<ListView x:Name="eventList" RowHeight="55"
+		<ListView x:Name="eventList" RowHeight="70"
 					ItemsSource="{Binding Eventlog}"
 					SelectedItem="{Binding SelectedItem}" >
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
-						<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" >
-							<Image Source="{Binding TypeImage}" 
-									WidthRequest="40" HeightRequest="40"
-									VerticalOptions="Start" 
-									HorizontalOptions="Start"/>
-							<StackLayout Orientation="Vertical">
-								<Label Text="{Binding TimeLogged}" FontSize="10"/>
-								<Label Text="{Binding ConfigName}" FontSize="11"/>
-								<Label Text="{Binding Text}" FontSize="11" LineBreakMode="TailTruncation"/>
-							</StackLayout>
-						</StackLayout>
-					</ViewCell>
+                        <StackLayout Orientation="Vertical">
+        					<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" >
+                                <StackLayout Orientation="Vertical">
+        							<Image Source="{Binding TypeImage}" 
+        									WidthRequest="40" HeightRequest="40"
+        									VerticalOptions="Start" 
+        									HorizontalOptions="Start"/>
+                                    <Label Text="{Binding MsgType}" FontSize="9" Margin="5,0,5,0" HorizontalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                                
+        						<StackLayout Orientation="Vertical">
+        							<Label Text="{Binding TimeLogged}" FontSize="10"/>
+        							<Label Text="{Binding ConfigName}" FontSize="11"/>
+        							<Label Text="{Binding Text}" FontSize="11" LineBreakMode="TailTruncation"/>
+        						</StackLayout>
+        					</StackLayout>
+
+                            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+
+                        </StackLayout>
+                    </ViewCell>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
