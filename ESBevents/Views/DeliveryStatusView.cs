@@ -10,22 +10,22 @@ using Xamarin.Forms;
 
 namespace ESBevents
 {
-	public partial class CustomerView : ContentPage
+    public partial class DeliveryStatusView : ContentPage
 	{
-		internal CustomerViewModel vm = new CustomerViewModel();
+        internal PubSubLogViewModel vm = new PubSubLogViewModel();
 
-		public CustomerView()
+        public DeliveryStatusView()
 		{
 			InitializeComponent();
 		
             Initialize();
 		}
 
-		public CustomerView(CustomerModel cm)
+        public DeliveryStatusView(PubSubLogViewModel psvm)
 		{
 			InitializeComponent();
 
-			vm.Customer = cm;
+            vm = psvm;
 			
             Initialize();
 		}
@@ -40,38 +40,29 @@ namespace ESBevents
 			Navigation.PushAsync(new OptionView());
 		}
 
-		async void ToonEventLog(object sender, EventArgs e)
-		{
-			var but = sender as Button;
+        void ToonLog(object sender, EventArgs e)
+        {
+            
+        }
 
-			vm.Key = but.Text;
+		//async void ToonLog(object sender, EventArgs e)
+		//{
+			//var but = sender as Button;
+
+			////vm.Key = but.Text;
 
 			// Dan met de velden de webservice aanroepen.
-			var webSrvc = new GetEventLogWS();
-			var status = await webSrvc.GetEventLogAsync(vm);
+//			var webSrvc = new GetEventLogWS();
+//			var status = await webSrvc.GetEventLogAsync(vm);
 
-			if (status == HttpStatusCode.Continue)
-			{
+//			if (status == HttpStatusCode.Continue)
+//			{
 			  // De json die terug komt in vm zetten van door het object door te geven.
-			  await Navigation.PushAsync(new EventlogView(vm));
-			}
+//			  await Navigation.PushAsync(new EventlogView(vm));
+////			}
 
-			//((ListView)sender).SelectedItem = null;
-		}
-
-		async void  StartProcess(object sender, EventArgs e)
-		{
-			await Navigation.PushAsync(new ProcessStartView(vm.Customer));
-
-			((ListView)sender).SelectedItem = null;
-        }
-
-        async void ToonPubSubLog(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new PubSubLogView(vm.Customer));
-
-            //((ListView)sender).SelectedItem = null;
-        }
+		//	//((ListView)sender).SelectedItem = null;
+		//}
 
         protected override void OnAppearing()
         {

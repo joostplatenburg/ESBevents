@@ -53,8 +53,33 @@ namespace ESBevents.ViewModels
 			var SHL = new CustomerModel { Name = "'s Heeren Loo", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54324", PortNumberSP = "54334", Logo = "SHL.png" };
 			Customers.Add(SHL);
 
-			var ZGB = new CustomerModel { Name = "de Zorgboog", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54325", PortNumberSP = "54335", Logo = "ZGB.png" }; 
+            var ZGB = new CustomerModel { Name = "de Zorgboog", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54325", PortNumberSP = "54335", Logo = "ZGB.png" };
             Customers.Add(ZGB);
+
+            var DZG = new CustomerModel { Name = "de Zorggroep", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA = "192.168.213.111", IPNumberP = "192.168.213.11", PortNumberEL = "54326", PortNumberSP = "54336", Logo = "DZG.png" };
+            DZG.Koppelingen = new List<KoppelingModel>();
+            var DZG001 = new KoppelingModel { ID = 001, Name = "DZG001", Description = "Publisher - AFAS - PUBSUB Medewerkers" }; DZG.Koppelingen.Add(DZG001);
+            var DZG002 = new KoppelingModel { ID = 002, Name = "DZG002", Description = "Publisher - AFAS - PUBSUB " }; DZG.Koppelingen.Add(DZG002);
+            var DZG003 = new KoppelingModel { ID = 003, Name = "DZG003", Description = "Publisher - TBLOX - PUBSUB Inkoopfacturen" }; DZG.Koppelingen.Add(DZG003);
+            var DZG004 = new KoppelingModel { ID = 004, Name = "DZG004", Description = "Publisher - AFAS - PUBSUB" }; DZG.Koppelingen.Add(DZG004);
+            var DZG005 = new KoppelingModel { ID = 005, Name = "DZG005", Description = "Publisher - N@tSchool - PUBSUB Studieresultaten" }; DZG.Koppelingen.Add(DZG005);
+            var DZG006 = new KoppelingModel { ID = 006, Name = "DZG006", Description = "Publisher - AFAS - PUBSUB" }; DZG.Koppelingen.Add(DZG006);
+            var DZG007 = new KoppelingModel { ID = 007, Name = "DZG007", Description = "Subscriber - PUBSUB - HRMAD Medewerkers" }; DZG.Koppelingen.Add(DZG007);
+            var DZG008 = new KoppelingModel { ID = 008, Name = "DZG008", Description = "Publisher - AFAS - PUBSUB" }; DZG.Koppelingen.Add(DZG008);
+            var DZG009 = new KoppelingModel { ID = 009, Name = "DZG009", Description = "Publisher - AFAS - PUBSUB" }; DZG.Koppelingen.Add(DZG009);
+            var DZG010 = new KoppelingModel { ID = 010, Name = "DZG010", Description = "Subscriber - PUBSUB - ONS Medewerkers" }; DZG.Koppelingen.Add(DZG010);
+            var DZG011 = new KoppelingModel { ID = 011, Name = "DZG011", Description = "Subscriber - PUBSUB - " }; DZG.Koppelingen.Add(DZG011);
+            var DZG012 = new KoppelingModel { ID = 012, Name = "DZG012", Description = "Subscriber - PUBSUB - " }; DZG.Koppelingen.Add(DZG012);
+            var DZG013 = new KoppelingModel { ID = 013, Name = "DZG013", Description = "Subscriber - PUBSUB - AFAS Inkoopfacturen" }; DZG.Koppelingen.Add(DZG013);
+            var DZG014 = new KoppelingModel { ID = 014, Name = "DZG014", Description = "Subscriber - PUBSUB - CardsOnline Medewerkers" }; DZG.Koppelingen.Add(DZG014);
+            var DZG015 = new KoppelingModel { ID = 015, Name = "DZG015", Description = "Subscriber - PUBSUB - N@tSchool Medewerkers" }; DZG.Koppelingen.Add(DZG015);
+            var DZG016 = new KoppelingModel { ID = 016, Name = "DZG016", Description = "Subscriber - PUBSUB - AFAS Studieresultaten" }; DZG.Koppelingen.Add(DZG016);
+            var DZG017 = new KoppelingModel { ID = 017, Name = "DZG017", Description = "Publisher - AFAS naar PUBSUB Functies" }; DZG.Koppelingen.Add(DZG017);
+            var DZG018 = new KoppelingModel { ID = 018, Name = "DZG018", Description = "Subscriber - PUBSUB - HRMAD Functies" }; DZG.Koppelingen.Add(DZG018);
+            Customers.Add(DZG);
+
+            var DOB = new CustomerModel { Name = "de Opbouw", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54327", PortNumberSP = "54337", Logo = "DOB.png" };
+            Customers.Add(DOB);
 		}
 
         #region INotifyPropertyChanged implementation

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
-using ESBevents.Abstractions;
+//using ESBevents.Abstractions;
 using ESBevents.ViewModels;
 using ESBevents.WebServices;
 using Xamarin.Forms;
@@ -54,8 +54,8 @@ namespace ESBevents.Views
 				}
 			}
 
-			var orientation = DependencyService.Get<IDeviceOrientation>().GetOrientation();
-			Debug.WriteLine("Orientation: " + orientation);
+			//var orientation = DependencyService.Get<IDeviceOrientation>().GetOrientation();
+			//Debug.WriteLine("Orientation: " + orientation);
 		}
 
 		void OnClick(object sender, EventArgs e)

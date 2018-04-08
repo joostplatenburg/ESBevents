@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="ESBevents.DeliveryStatusView"
+    Title="Customer">
+    
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="buttonStyle" TargetType="Button">
+				<Setter Property="HorizontalOptions" Value="End" />
+				<Setter Property="VerticalOptions" Value="Center" />
+				<Setter Property="TextColor" Value="Gray" />
+				<Setter Property="BackgroundColor" Value="#bddec3" />
+				<Setter Property="BorderRadius" Value="10" />
+				<Setter Property="HeightRequest" Value="50" />
+				<Setter Property="WidthRequest" Value="120" />
+				<Setter Property="FontAttributes" Value="Bold" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Icon="ic_drawer.png" Activated="OnClick" />
+	</ContentPage.ToolbarItems>
+	
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical">
+           <Image Source="{Binding Logo}" 
+                WidthRequest="350" HeightRequest="60"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" Margin="10,0,10,0"/>
+
+<!--            Toon eventlog-->
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
+                <Image Source="EventLog.png" 
+                    WidthRequest="60" HeightRequest="60"
+                    VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0"/>
+                <Label Text="Publish and Subscribe States" FontSize="16" VerticalOptions="Center"/>
+            </StackLayout>
+            
+            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                <Button x:Name="Initial" Text="Initial" Style="{StaticResource buttonStyle}" Clicked="ToonLog" Margin="5"/>
+                <Button x:Name="Distributed" Text="Distributed" Style="{StaticResource buttonStyle}" Clicked="ToonLog" Margin="5"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button x:Name="Retry" Text="Retry" Style="{StaticResource buttonStyle}" Clicked="ToonLog" Margin="5"/>
+                <Button x:Name="Finished" Text="Finished" Style="{StaticResource buttonStyle}" Clicked="ToonLog" Margin="5"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button x:Name="All" Text="All" Style="{StaticResource buttonStyle}" Clicked="ToonLog" Margin="5"/>
+            </StackLayout>
+
+            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            
+       </StackLayout>
+	</ContentPage.Content>
+</ContentPage>
