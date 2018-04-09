@@ -31,7 +31,7 @@ namespace ESBevents.WebServices
                 Debug.WriteLine("Start GetEventLog()");
 
                 Debug.WriteLine(vm.Name);
-				Debug.WriteLine(vm.Key);
+                Debug.WriteLine(vm.Environment);
 				Debug.WriteLine(vm.Customer.IPNumberT);
 				Debug.WriteLine(vm.Customer.PortNumberEL);
 
@@ -40,7 +40,7 @@ namespace ESBevents.WebServices
 
 				Debug.WriteLine(service);
 
-                switch (vm.Key)
+                switch (vm.Environment)
                 {
                     case "Ontwikkel":
                         serviceadres = string.Format(service, vm.Customer.IPNumberO, vm.Customer.PortNumberEL);

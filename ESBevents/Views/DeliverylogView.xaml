@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+				xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+				x:Class="ESBevents.DeliverylogView" Title="Deliverylog">
+	
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Icon="ic_drawer.png" Activated="OnClick" />
+	</ContentPage.ToolbarItems>
+	
+	<ContentPage.Content>
+		<ListView x:Name="deliveryList" RowHeight="70"
+					ItemsSource="{Binding Deliverylog}"
+					SelectedItem="{Binding SelectedItem}" >
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+                        <StackLayout Orientation="Vertical">
+        					<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" >
+                                <StackLayout Orientation="Vertical">
+        							<Image Source="{Binding TypeImage}" 
+        									WidthRequest="40" HeightRequest="40"
+        									VerticalOptions="Start" 
+        									HorizontalOptions="Start"/>
+                                    <Label Text="{Binding MsgType}" FontSize="9" Margin="5,0,5,0" HorizontalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                                
+        						<StackLayout Orientation="Vertical">
+        							<Label Text="{Binding TimeLogged}" FontSize="10"/>
+        							<Label Text="{Binding ConfigName}" FontSize="11"/>
+        							<Label Text="{Binding Text}" FontSize="11" LineBreakMode="TailTruncation"/>
+        						</StackLayout>
+        					</StackLayout>
+
+                            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+
+                        </StackLayout>
+                    </ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>

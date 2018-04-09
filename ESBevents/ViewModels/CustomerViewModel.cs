@@ -111,19 +111,19 @@ namespace ESBevents.ViewModels
 		}
         #endregion Properties
 
-        private string _key;
-        public string Key
+        private string _environment;
+        public string Environment
         {
-			get { return _key; }
-			set
-			{
-				if (_key == value)
-					return;
+            get { return _environment; }
+            set
+            {
+                if (_environment == value)
+                    return;
 
-				_key = value;
+                _environment = value;
 
-				OnPropertyChanged("Key");
-			}
-		}
+                OnPropertyChanged("Environment");
+            }
+        }
 	}
 }

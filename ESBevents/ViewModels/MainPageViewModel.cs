@@ -16,7 +16,7 @@ namespace ESBevents.ViewModels
 			_customers = new List<CustomerModel>();
 
 			var ALL = new CustomerModel { Name = "Alliade Zorggroep", Logo="ALL.png" };
-            ALL.IPNumberO = "192.168.2.19";
+            ALL.IPNumberO = "192.168.2.14";
             ALL.IPNumberT = "52.73.112.29";
             ALL.IPNumberA = "";
             ALL.IPNumberP = "";
@@ -26,7 +26,7 @@ namespace ESBevents.ViewModels
             Customers.Add(ALL);
 
 			var DBZ = new CustomerModel { Name = "Dichterbij", Logo = "DBZ.png" };
-            DBZ.IPNumberO = "192.168.2.19";
+            DBZ.IPNumberO = "192.168.2.14";
             DBZ.IPNumberT = "52.73.112.29";
             DBZ.IPNumberA = "10.100.80.104";
             DBZ.IPNumberP = "10.100.80.73";
@@ -42,7 +42,7 @@ namespace ESBevents.ViewModels
 			var dbz015 = new KoppelingModel { ID = 015, Name = "DBZ015", Description = "AFAS naar " }; DBZ.Koppelingen.Add(dbz015);
 			Customers.Add(DBZ);
 
-			var SPZ = new CustomerModel { Name = "Stichting Philadelphia Zorg", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA="", IPNumberP="", PortNumberEL = "54323", PortNumberSP = "54333", Logo = "SPZ.png" }; 
+			var SPZ = new CustomerModel { Name = "Stichting Philadelphia Zorg", IPNumberO = "192.168.2.14", IPNumberT = "52.73.112.29", IPNumberA="", IPNumberP="", PortNumberEL = "54323", PortNumberSP = "54333", Logo = "SPZ.png" }; 
 			SPZ.Koppelingen = new List<KoppelingModel>();
 			var spz150 = new KoppelingModel { ID = 150, Name = "SPZ150", Description = "ESB-CMS Medewerkergegevens"}; SPZ.Koppelingen.Add(spz150);
 			var spz151 = new KoppelingModel { ID = 151, Name = "SPZ151", Description = "(Her)In- en Doorstroom Accounts"}; SPZ.Koppelingen.Add(spz151);
@@ -50,13 +50,13 @@ namespace ESBevents.ViewModels
 			var spz153 = new KoppelingModel { ID = 153, Name = "SPZ153", Description = "ECD P&R Ambulant Clientgegevens"}; SPZ.Koppelingen.Add(spz153);
             Customers.Add(SPZ);
 
-			var SHL = new CustomerModel { Name = "'s Heeren Loo", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54324", PortNumberSP = "54334", Logo = "SHL.png" };
+			var SHL = new CustomerModel { Name = "'s Heeren Loo", IPNumberO = "192.168.2.14", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54324", PortNumberSP = "54334", Logo = "SHL.png" };
 			Customers.Add(SHL);
 
-            var ZGB = new CustomerModel { Name = "de Zorgboog", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54325", PortNumberSP = "54335", Logo = "ZGB.png" };
+            var ZGB = new CustomerModel { Name = "de Zorgboog", IPNumberO = "192.168.2.14", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54325", PortNumberSP = "54335", Logo = "ZGB.png" };
             Customers.Add(ZGB);
 
-            var DZG = new CustomerModel { Name = "de Zorggroep", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA = "192.168.213.111", IPNumberP = "192.168.213.11", PortNumberEL = "54326", PortNumberSP = "54336", Logo = "DZG.png" };
+            var DZG = new CustomerModel { Name = "de Zorggroep", IPNumberO = "192.168.2.14", IPNumberT = "52.73.112.29", IPNumberA = "192.168.213.111", IPNumberP = "192.168.213.11", PortNumberEL = "54326", PortNumberSP = "54336", Logo = "DZG.png" };
             DZG.Koppelingen = new List<KoppelingModel>();
             var DZG001 = new KoppelingModel { ID = 001, Name = "DZG001", Description = "Publisher - AFAS - PUBSUB Medewerkers" }; DZG.Koppelingen.Add(DZG001);
             var DZG002 = new KoppelingModel { ID = 002, Name = "DZG002", Description = "Publisher - AFAS - PUBSUB " }; DZG.Koppelingen.Add(DZG002);
@@ -78,7 +78,7 @@ namespace ESBevents.ViewModels
             var DZG018 = new KoppelingModel { ID = 018, Name = "DZG018", Description = "Subscriber - PUBSUB - HRMAD Functies" }; DZG.Koppelingen.Add(DZG018);
             Customers.Add(DZG);
 
-            var DOB = new CustomerModel { Name = "de Opbouw", IPNumberO = "192.168.2.17", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54327", PortNumberSP = "54337", Logo = "DOB.png" };
+            var DOB = new CustomerModel { Name = "de Opbouw", IPNumberO = "192.168.2.14", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54327", PortNumberSP = "54337", Logo = "DOB.png" };
             Customers.Add(DOB);
 		}
 

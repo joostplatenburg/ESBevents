@@ -40,29 +40,29 @@ namespace ESBevents
 			Navigation.PushAsync(new OptionView());
 		}
 
-        void ToonLog(object sender, EventArgs e)
-        {
-            
-        }
+        //void ToonLog(object sender, EventArgs e)
+        //{
+        //    var but = sender as Button;
+        //    Debug.WriteLine("ToonLog: " + but.Text);
+        //}
 
-		//async void ToonLog(object sender, EventArgs e)
-		//{
-			//var but = sender as Button;
-
-			////vm.Key = but.Text;
+		async void ToonLog(object sender, EventArgs e)
+		{
+			var but = sender as Button;     
+			vm.Status = but.Text;
 
 			// Dan met de velden de webservice aanroepen.
-//			var webSrvc = new GetEventLogWS();
-//			var status = await webSrvc.GetEventLogAsync(vm);
+			var webSrvc = new GetPubSubLogWS();
+			var status = await webSrvc.GetPubSubLogAsync(vm);
 
-//			if (status == HttpStatusCode.Continue)
-//			{
+			if (status == HttpStatusCode.Continue)
+			{
 			  // De json die terug komt in vm zetten van door het object door te geven.
-//			  await Navigation.PushAsync(new EventlogView(vm));
-////			}
+			  await Navigation.PushAsync(new DeliverylogView(vm));
+    		}
 
 		//	//((ListView)sender).SelectedItem = null;
-		//}
+		}
 
         protected override void OnAppearing()
         {

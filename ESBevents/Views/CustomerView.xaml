@@ -76,7 +76,7 @@
            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
             <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
-                <Image Source="ProcessStart.png" 
+                <Image Source="pubsub.png" 
                     WidthRequest="60" HeightRequest="60"
                     VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0"/>
                 <Label Text="Toon Publish and Subscribe logs" FontSize="16" VerticalOptions="Center"/>

@@ -44,7 +44,7 @@ namespace ESBevents
 		{
 			var but = sender as Button;
 
-			vm.Key = but.Text;
+			vm.Environment = but.Text;
 
 			// Dan met de velden de webservice aanroepen.
 			var webSrvc = new GetEventLogWS();
@@ -68,7 +68,11 @@ namespace ESBevents
 
         async void ToonPubSubLog(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PubSubLogView(vm.Customer));
+            var but = sender as Button;
+
+            vm.Environment = but.Text;
+
+            await Navigation.PushAsync(new PubSubLogView(vm));
 
             //((ListView)sender).SelectedItem = null;
         }
