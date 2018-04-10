@@ -12,7 +12,7 @@ namespace ESBevents
 {
     public partial class DeliveryStatusView : ContentPage
 	{
-        internal PubSubLogViewModel vm = new PubSubLogViewModel();
+        internal PubsubKoppelingenViewModel vm = new PubsubKoppelingenViewModel();
 
         public DeliveryStatusView()
 		{
@@ -21,11 +21,12 @@ namespace ESBevents
             Initialize();
 		}
 
-        public DeliveryStatusView(PubSubLogViewModel psvm)
+        public DeliveryStatusView(PubsubKoppelingenViewModel psvm)
 		{
 			InitializeComponent();
 
             vm = psvm;
+            vm.Koppeling = psvm.SelectedKoppeling.Name;
 			
             Initialize();
 		}
@@ -52,8 +53,8 @@ namespace ESBevents
 			vm.Status = but.Text;
 
 			// Dan met de velden de webservice aanroepen.
-			var webSrvc = new GetPubSubLogWS();
-			var status = await webSrvc.GetPubSubLogAsync(vm);
+			var webSrvc = new GetDeliverylogWS();
+			var status = await webSrvc.GetDeliverylogAsync(vm);
 
 			if (status == HttpStatusCode.Continue)
 			{

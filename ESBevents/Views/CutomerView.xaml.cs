@@ -66,13 +66,13 @@ namespace ESBevents
 			((ListView)sender).SelectedItem = null;
         }
 
-        async void ToonPubSubLog(object sender, EventArgs e)
+        async void ToonPubsubKoppelingen(object sender, EventArgs e)
         {
             var but = sender as Button;
 
             vm.Environment = but.Text;
 
-            await Navigation.PushAsync(new PubSubLogView(vm));
+            await Navigation.PushAsync(new PubsubKoppelingenView(vm));
 
             //((ListView)sender).SelectedItem = null;
         }

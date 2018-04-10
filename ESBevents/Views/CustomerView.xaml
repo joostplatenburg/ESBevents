@@ -30,7 +30,7 @@
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" Margin="10,0,10,0"/>
 
-<!--            Toon eventlog-->
+            <!-- Toon eventlog-->
             <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
             <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
@@ -51,7 +51,7 @@
                 <Button x:Name="PRDEL" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="5"/>
             </StackLayout>
 
-<!--            Start business process-->
+            <!-- Start business process-->
             <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
             <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
@@ -72,8 +72,8 @@
                 <Button x:Name="PRDSP" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="5"/>
             </StackLayout>
 
-<!--            Toon pubsub log-->
-           <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <!-- Toon pubsub log-->
+            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
             <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
                 <Image Source="pubsub.png" 
@@ -85,12 +85,12 @@
             <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
-                <Button x:Name="DEVPS" Text="Ontwikkel" Style="{StaticResource buttonStyle}" Clicked="ToonPubSubLog" Margin="5"/>
-                <Button x:Name="TSTPS" Text="Test" Style="{StaticResource buttonStyle}" Clicked="ToonPubSubLog" Margin="5"/>
+                <Button x:Name="DEVPS" Text="Ontwikkel" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5"/>
+                <Button x:Name="TSTPS" Text="Test" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Button x:Name="ACCPS" Text="Acceptatie" Style="{StaticResource buttonStyle}" Clicked="ToonPubSubLog" Margin="5"/>
-                <Button x:Name="PRDPS" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="ToonPubSubLog" Margin="5"/>
+                <Button x:Name="ACCPS" Text="Acceptatie" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5"/>
+                <Button x:Name="PRDPS" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5"/>
             </StackLayout>
 
             <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />

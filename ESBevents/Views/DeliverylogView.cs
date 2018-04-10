@@ -7,13 +7,13 @@ namespace ESBevents
 {
     public partial class DeliverylogView : ContentPage
 	{
-        internal PubSubLogViewModel vm;
+        internal DeliverylogViewModel vm;
 
         public DeliverylogView()
 		{
 			InitializeComponent();
 
-            vm = new PubSubLogViewModel();
+            vm = new DeliverylogViewModel();
 
 			Initialize();
 		}
@@ -22,17 +22,27 @@ namespace ESBevents
 		{
 			InitializeComponent();
 
-            vm = new PubSubLogViewModel(_cVM);
+            vm = new DeliverylogViewModel(_cVM);
 
 			Initialize();
 		}
 
 
-        public DeliverylogView(PubSubLogViewModel _psVM)
+        public DeliverylogView(PubsubKoppelingenViewModel _psVM)
         {
             InitializeComponent();
 
-            vm = _psVM;
+            vm = new DeliverylogViewModel();
+
+
+            foreach (DeliveryModel dm in _psVM.Deliveries) {
+                vm.Deliveries.Add(dm);
+            }
+
+            vm.Customer = _psVM.Customer;
+            vm.Environment = _psVM.Environment;
+            vm.Status = _psVM.Status;
+            vm.Koppeling = _psVM.Koppeling;
 
             Initialize();
         }

@@ -8,35 +8,64 @@
 	</ContentPage.ToolbarItems>
 	
 	<ContentPage.Content>
-		<ListView x:Name="deliveryList" RowHeight="70"
-					ItemsSource="{Binding Deliverylog}"
-					SelectedItem="{Binding SelectedItem}" >
-			<ListView.ItemTemplate>
-				<DataTemplate>
-					<ViewCell>
-                        <StackLayout Orientation="Vertical">
-        					<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" >
-                                <StackLayout Orientation="Vertical">
-        							<Image Source="{Binding TypeImage}" 
-        									WidthRequest="40" HeightRequest="40"
-        									VerticalOptions="Start" 
-        									HorizontalOptions="Start"/>
-                                    <Label Text="{Binding MsgType}" FontSize="9" Margin="5,0,5,0" HorizontalOptions="CenterAndExpand"/>
-                                </StackLayout>
-                                
-        						<StackLayout Orientation="Vertical">
-        							<Label Text="{Binding TimeLogged}" FontSize="10"/>
-        							<Label Text="{Binding ConfigName}" FontSize="11"/>
-        							<Label Text="{Binding Text}" FontSize="11" LineBreakMode="TailTruncation"/>
-        						</StackLayout>
-        					</StackLayout>
+        <StackLayout Orientation="Vertical">
+           <Image Source="{Binding Logo}" WidthRequest="350" HeightRequest="60"
+                VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="10,0,10,0"/>
+            
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
-                            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" >
+                <Label Text="{Binding Koppeling}" FontSize="16" FontAttributes="Bold" WidthRequest="100"/>
+                <Label Text="{Binding Status}" FontSize="16" FontAttributes="Bold" WidthRequest="100"/>
+            </StackLayout>
+            
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
-                        </StackLayout>
-                    </ViewCell>
-				</DataTemplate>
-			</ListView.ItemTemplate>
-		</ListView>
-	</ContentPage.Content>
+            <ListView x:Name="deliveryList" RowHeight="100"
+    					ItemsSource="{Binding Deliveries}"
+    					SelectedItem="{Binding SelectedItem}" >
+    			<ListView.ItemTemplate>
+    				<DataTemplate>
+    					<ViewCell>
+                            <StackLayout Orientation="Vertical">
+            					<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" >
+<!--                                    <StackLayout Orientation="Vertical">
+                                        <Image Source="{Binding TypeImage}" 
+                                                WidthRequest="40" HeightRequest="40"
+                                                VerticalOptions="Start" 
+                                                HorizontalOptions="Start"/>
+                                        <Label Text="{Binding MsgType}" FontSize="9" Margin="5,0,5,0" HorizontalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+-->                                    
+                                    <StackLayout Orientation="Vertical">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Created on: " FontSize="12" Margin="10,0,10,0" FontAttributes="Bold" WidthRequest="90"/>
+                                            <Label Text="{Binding CreationDate}" FontSize="12"/>
+                							<Label Text="{Binding CreationTime}" FontSize="12"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Processed on: " FontSize="12" Margin="10,0,10,0" FontAttributes="Bold" WidthRequest="90"/>
+                							<Label Text="{Binding ProcessedDate}" FontSize="12"/> <!-- LineBreakMode="TailTruncation"/> -->
+                                            <Label Text="{Binding Processedtime}" FontSize="12"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Messagetype: " FontSize="12" Margin="10,0,10,0" FontAttributes="Bold" WidthRequest="90"/>
+                                            <Label Text="{Binding MessageType}" FontSize="12"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Result: " FontSize="12" Margin="10,0,10,0" FontAttributes="Bold" WidthRequest="90"/>
+                                            <Label Text="{Binding Resultmessage}" FontSize="12" LineBreakMode="TailTruncation"/>
+                                        </StackLayout>
+                                    </StackLayout>
+            					</StackLayout>
+
+                                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+
+                            </StackLayout>
+                        </ViewCell>
+    				</DataTemplate>
+    			</ListView.ItemTemplate>
+    		</ListView>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

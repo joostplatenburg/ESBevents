@@ -47,7 +47,7 @@
     <EmbeddedResource Include="Views\ProcessStartView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PubSubLogView.xaml">
+    <EmbeddedResource Include="Views\PubsubKoppelingenView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DeliveryStatusView.xaml">
@@ -93,18 +93,19 @@
     </Compile>
     <Compile Include="ViewModels\ProcessStartViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
-    <Compile Include="Views\PubSubLogView.cs">
-      <DependentUpon>PubSubLogView.xaml</DependentUpon>
+    <Compile Include="Views\PubsubKoppelingenView.cs">
+      <DependentUpon>PubsubKoppelingenView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\PubSubLogViewModel.cs" />
+    <Compile Include="ViewModels\PubsubKoppelingenViewModel.cs" />
     <Compile Include="Views\DeliveryStatusView.cs">
       <DependentUpon>DeliveryStatusView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WebServices\GetPubSubLogWS.cs" />
+    <Compile Include="WebServices\GetDeliverylogWS.cs" />
     <Compile Include="Models\DeliveryModel.cs" />
     <Compile Include="Views\DeliverylogView.cs">
       <DependentUpon>DeliverylogView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\DeliverylogViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

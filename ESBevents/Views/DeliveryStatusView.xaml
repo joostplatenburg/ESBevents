@@ -55,7 +55,8 @@
             </StackLayout>
 
             <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-            
+
+            <Label x:Name="Message" Margin="10" />
        </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

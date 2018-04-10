@@ -61,7 +61,7 @@ namespace ESBevents.ViewModels
         public string PortNumberSP { get { return Customer.PortNumberSP; } } // StartProcess
         public string Logo { get {return Customer.Logo; } }
 
-	private ActionModel _selectedActionItem;
+	    private ActionModel _selectedActionItem;
 		public ActionModel SelectedActionItem
 		{
 			get { return _selectedActionItem; }

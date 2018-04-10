@@ -57,6 +57,7 @@ namespace ESBevents.ViewModels
             Customers.Add(ZGB);
 
             var DZG = new CustomerModel { Name = "de Zorggroep", IPNumberO = "192.168.2.14", IPNumberT = "52.73.112.29", IPNumberA = "192.168.213.111", IPNumberP = "192.168.213.11", PortNumberEL = "54326", PortNumberSP = "54336", Logo = "DZG.png" };
+            //var DZG = new CustomerModel { Name = "de Zorggroep", IPNumberO = "172.30.207.193", IPNumberT = "52.73.112.29", IPNumberA = "192.168.213.111", IPNumberP = "192.168.213.11", PortNumberEL = "54326", PortNumberSP = "54336", Logo = "DZG.png" };
             DZG.Koppelingen = new List<KoppelingModel>();
             var DZG001 = new KoppelingModel { ID = 001, Name = "DZG001", Description = "Publisher - AFAS - PUBSUB Medewerkers" }; DZG.Koppelingen.Add(DZG001);
             var DZG002 = new KoppelingModel { ID = 002, Name = "DZG002", Description = "Publisher - AFAS - PUBSUB " }; DZG.Koppelingen.Add(DZG002);

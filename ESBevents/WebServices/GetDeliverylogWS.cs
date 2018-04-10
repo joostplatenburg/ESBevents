@@ -12,11 +12,11 @@ using System.Net.Http;
 
 namespace ESBevents.WebServices
 {
-    public class GetPubSubLogWS
+    public class GetDeliverylogWS
     {
 		HttpClient client;
 
-		public GetPubSubLogWS()
+        public GetDeliverylogWS()
 		{
 			client = new HttpClient();
 
@@ -24,11 +24,11 @@ namespace ESBevents.WebServices
 
 		}
 
-        public async Task<HttpStatusCode> GetPubSubLogAsync(PubSubLogViewModel vm)
+        public async Task<HttpStatusCode> GetDeliverylogAsync(PubsubKoppelingenViewModel vm)
         {
             try
             {
-                Debug.WriteLine("Start GetPubSubLog()");
+                Debug.WriteLine("Start GetDeliverylogWS()");
                 // http://localhost:54326/dxcmobile/GetDeliveryLog?subscription=DZG010&status=Initial
 
 //                Debug.WriteLine(vm.Name);
@@ -44,16 +44,16 @@ namespace ESBevents.WebServices
                 switch (vm.Environment)
                 {
                     case "Ontwikkel":
-                        serviceadres = string.Format(service, vm.Customer.IPNumberO, vm.Customer.PortNumberEL, vm.SelectedKoppelingenItem.Name, vm.Status);
+                        serviceadres = string.Format(service, vm.Customer.IPNumberO, vm.Customer.PortNumberEL, vm.Koppeling, vm.Status);
                         break;
 			        case "Test":
-                        serviceadres = string.Format(service, vm.Customer.IPNumberT, vm.Customer.PortNumberEL, vm.SelectedKoppelingenItem.Name, vm.Status);
+                        serviceadres = string.Format(service, vm.Customer.IPNumberT, vm.Customer.PortNumberEL, vm.Koppeling, vm.Status);
                         break;
 					case "Acceptatie":
-                        serviceadres = string.Format(service, vm.Customer.IPNumberA, vm.Customer.PortNumberEL, vm.SelectedKoppelingenItem.Name, vm.Status);
+                        serviceadres = string.Format(service, vm.Customer.IPNumberA, vm.Customer.PortNumberEL, vm.Koppeling, vm.Status);
 						break;
 					case "Productie":
-                        serviceadres = string.Format(service, vm.Customer.IPNumberP, vm.Customer.PortNumberEL, vm.SelectedKoppelingenItem.Name, vm.Status);
+                        serviceadres = string.Format(service, vm.Customer.IPNumberP, vm.Customer.PortNumberEL, vm.Koppeling, vm.Status);
 						break;
 				}
 
@@ -72,14 +72,10 @@ namespace ESBevents.WebServices
 
 					var Deliveries = JsonConvert.DeserializeObject<List<DeliveryModel>>(deliverylogJson);
 
+                    vm.Deliveries = new System.Collections.ObjectModel.ObservableCollection<DeliveryModel>();
                     foreach(DeliveryModel dm in Deliveries){
                         vm.Deliveries.Add(dm);
                     }
-
-					//if (vm.Eventlog.Count > 0)
-					//{
-					//	vm.Event = vm.Eventlog.First();
-					//}
 
 					return HttpStatusCode.Continue;
 				}
