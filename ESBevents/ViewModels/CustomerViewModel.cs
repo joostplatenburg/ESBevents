@@ -59,7 +59,11 @@ namespace ESBevents.ViewModels
 		public string IPNumberP { get { return Customer.IPNumberP; } }
 		public string PortNumberEL { get { return Customer.PortNumberEL; }} // Eventlog
         public string PortNumberSP { get { return Customer.PortNumberSP; } } // StartProcess
-        public string Logo { get {return Customer.Logo; } }
+        public string Logo { get { return Customer.Logo; } }
+
+        public bool ToonEventlog { get { return false; } }
+        public bool StartBP { get { return false; } }
+        public bool ToonEvToonPSentlog { get { return true; } }
 
 	    private ActionModel _selectedActionItem;
 		public ActionModel SelectedActionItem
@@ -123,6 +127,21 @@ namespace ESBevents.ViewModels
                 _environment = value;
 
                 OnPropertyChanged("Environment");
+            }
+        }
+
+        private string _status;
+        public string Status
+        {
+            get { return _status; }
+            set
+            {
+                if (_status == value)
+                    return;
+
+                _status = value;
+
+                OnPropertyChanged("Status");
             }
         }
 	}

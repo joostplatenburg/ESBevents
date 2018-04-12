@@ -30,13 +30,14 @@ namespace ESBevents.WebServices
             {
                 Debug.WriteLine("Start GetDeliverylogWS()");
                 // http://localhost:54326/dxcmobile/GetDeliveryLog?subscription=DZG010&status=Initial
+                // http://52.73.112.29:9925/dxcpsmobile/getdeliverylog?subscription=DZG015&status=Initial
 
 //                Debug.WriteLine(vm.Name);
 				Debug.WriteLine(vm.Status);
 				Debug.WriteLine(vm.Customer.IPNumberT);
 				Debug.WriteLine(vm.Customer.PortNumberEL);
 
-                var service = "http://{0}:{1}/dxcmobile/GetDeliveryLog?subscription={2}&status={3}";
+                var service = "http://{0}:{1}/dxcpsmobile/getdeliverylog?subscription={2}&status={3}";
                 var serviceadres = string.Empty;
 
 				Debug.WriteLine(service);
@@ -44,16 +45,16 @@ namespace ESBevents.WebServices
                 switch (vm.Environment)
                 {
                     case "Ontwikkel":
-                        serviceadres = string.Format(service, vm.Customer.IPNumberO, vm.Customer.PortNumberEL, vm.Koppeling, vm.Status);
+                        serviceadres = string.Format(service, vm.Customer.IPNumberO, vm.Customer.PortNumberEL, vm.SelectedKoppeling.Name, vm.Status);
                         break;
 			        case "Test":
-                        serviceadres = string.Format(service, vm.Customer.IPNumberT, vm.Customer.PortNumberEL, vm.Koppeling, vm.Status);
+                        serviceadres = string.Format(service, vm.Customer.IPNumberT, vm.Customer.PortNumberEL, vm.SelectedKoppeling.Name, vm.Status);
                         break;
 					case "Acceptatie":
-                        serviceadres = string.Format(service, vm.Customer.IPNumberA, vm.Customer.PortNumberEL, vm.Koppeling, vm.Status);
+                        serviceadres = string.Format(service, vm.Customer.IPNumberA, vm.Customer.PortNumberEL, vm.SelectedKoppeling.Name, vm.Status);
 						break;
 					case "Productie":
-                        serviceadres = string.Format(service, vm.Customer.IPNumberP, vm.Customer.PortNumberEL, vm.Koppeling, vm.Status);
+                        serviceadres = string.Format(service, vm.Customer.IPNumberP, vm.Customer.PortNumberEL, vm.SelectedKoppeling.Name, vm.Status);
 						break;
 				}
 

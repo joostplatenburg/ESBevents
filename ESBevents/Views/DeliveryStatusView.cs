@@ -12,7 +12,9 @@ namespace ESBevents
 {
     public partial class DeliveryStatusView : ContentPage
 	{
-        internal PubsubKoppelingenViewModel vm = new PubsubKoppelingenViewModel();
+        //internal PubsubKoppelingenViewModel vm = new PubsubKoppelingenViewModel();
+        internal PubsubKoppelingenViewModel vm;
+        internal CustomerViewModel cvm;
 
         public DeliveryStatusView()
 		{
@@ -21,15 +23,15 @@ namespace ESBevents
             Initialize();
 		}
 
-        public DeliveryStatusView(PubsubKoppelingenViewModel psvm)
-		{
-			InitializeComponent();
+        public DeliveryStatusView(CustomerViewModel _cvm)
+        {
+            InitializeComponent();
 
-            vm = psvm;
-            vm.Koppeling = psvm.SelectedKoppeling.Name;
-			
+            vm = new PubsubKoppelingenViewModel(_cvm);
+            cvm = _cvm;
+
             Initialize();
-		}
+        }
 
 		void Initialize()
 		{
@@ -47,23 +49,34 @@ namespace ESBevents
         //    Debug.WriteLine("ToonLog: " + but.Text);
         //}
 
-		async void ToonLog(object sender, EventArgs e)
-		{
-			var but = sender as Button;     
-			vm.Status = but.Text;
+        async void ToonLog(object sender, EventArgs e)
+        {
+            var but = sender as Button;
+            vm.Status = but.Text;
+            cvm.Status = but.Text;
 
-			// Dan met de velden de webservice aanroepen.
-			var webSrvc = new GetDeliverylogWS();
-			var status = await webSrvc.GetDeliverylogAsync(vm);
+            await Navigation.PushAsync(new PubsubKoppelingenView(cvm));
 
-			if (status == HttpStatusCode.Continue)
-			{
-			  // De json die terug komt in vm zetten van door het object door te geven.
-			  await Navigation.PushAsync(new DeliverylogView(vm));
-    		}
+            //  //((ListView)sender).SelectedItem = null;
+        }
 
-		//	//((ListView)sender).SelectedItem = null;
-		}
+        async void ToonStats(object sender, EventArgs e)
+        {
+        /*    var but = sender as Button;
+            vm.Status = but.Text;
+
+            // Dan met de velden de webservice aanroepen.
+            var webSrvc = new GetDeliverylogWS();
+            var status = await webSrvc.GetDeliverylogAsync(vm);
+
+            if (status == HttpStatusCode.Continue)
+            {
+                // De json die terug komt in vm zetten van door het object door te geven.
+                await Navigation.PushAsync(new DeliverylogView(vm));
+            }
+
+            //  //((ListView)sender).SelectedItem = null;
+       */ }
 
         protected override void OnAppearing()
         {

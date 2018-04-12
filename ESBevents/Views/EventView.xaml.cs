@@ -21,6 +21,7 @@ namespace ESBevents
 			InitializeComponent();
 
 			vm = _vm;
+
 			Initialize();
 		}
 

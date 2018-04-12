@@ -14,7 +14,7 @@ namespace ESBevents.ViewModels
         public MainPageViewModel()
         {
 			_customers = new List<CustomerModel>();
-
+    
 			var ALL = new CustomerModel { Name = "Alliade Zorggroep", Logo="ALL.png" };
             ALL.IPNumberO = "192.168.2.14";
             ALL.IPNumberT = "52.73.112.29";
@@ -55,9 +55,8 @@ namespace ESBevents.ViewModels
 
             var ZGB = new CustomerModel { Name = "de Zorgboog", IPNumberO = "192.168.2.14", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54325", PortNumberSP = "54335", Logo = "ZGB.png" };
             Customers.Add(ZGB);
-
+    
             var DZG = new CustomerModel { Name = "de Zorggroep", IPNumberO = "192.168.2.14", IPNumberT = "52.73.112.29", IPNumberA = "192.168.213.111", IPNumberP = "192.168.213.11", PortNumberEL = "54326", PortNumberSP = "54336", Logo = "DZG.png" };
-            //var DZG = new CustomerModel { Name = "de Zorggroep", IPNumberO = "172.30.207.193", IPNumberT = "52.73.112.29", IPNumberA = "192.168.213.111", IPNumberP = "192.168.213.11", PortNumberEL = "54326", PortNumberSP = "54336", Logo = "DZG.png" };
             DZG.Koppelingen = new List<KoppelingModel>();
             var DZG001 = new KoppelingModel { ID = 001, Name = "DZG001", Description = "Publisher - AFAS - PUBSUB Medewerkers" }; DZG.Koppelingen.Add(DZG001);
             var DZG002 = new KoppelingModel { ID = 002, Name = "DZG002", Description = "Publisher - AFAS - PUBSUB " }; DZG.Koppelingen.Add(DZG002);
@@ -66,8 +65,8 @@ namespace ESBevents.ViewModels
             var DZG005 = new KoppelingModel { ID = 005, Name = "DZG005", Description = "Publisher - N@tSchool - PUBSUB Studieresultaten" }; DZG.Koppelingen.Add(DZG005);
             var DZG006 = new KoppelingModel { ID = 006, Name = "DZG006", Description = "Publisher - AFAS - PUBSUB" }; DZG.Koppelingen.Add(DZG006);
             var DZG007 = new KoppelingModel { ID = 007, Name = "DZG007", Description = "Subscriber - PUBSUB - HRMAD Medewerkers" }; DZG.Koppelingen.Add(DZG007);
-            var DZG008 = new KoppelingModel { ID = 008, Name = "DZG008", Description = "Publisher - AFAS - PUBSUB" }; DZG.Koppelingen.Add(DZG008);
-            var DZG009 = new KoppelingModel { ID = 009, Name = "DZG009", Description = "Publisher - AFAS - PUBSUB" }; DZG.Koppelingen.Add(DZG009);
+            var DZG008 = new KoppelingModel { ID = 008, Name = "DZG008", Description = "Publisher - AFAS - PUBSUB Kostenplaatsen" }; DZG.Koppelingen.Add(DZG008);
+            var DZG009 = new KoppelingModel { ID = 009, Name = "DZG009", Description = "Publisher - AFAS - PUBSUB " }; DZG.Koppelingen.Add(DZG009);
             var DZG010 = new KoppelingModel { ID = 010, Name = "DZG010", Description = "Subscriber - PUBSUB - ONS Medewerkers" }; DZG.Koppelingen.Add(DZG010);
             var DZG011 = new KoppelingModel { ID = 011, Name = "DZG011", Description = "Subscriber - PUBSUB - " }; DZG.Koppelingen.Add(DZG011);
             var DZG012 = new KoppelingModel { ID = 012, Name = "DZG012", Description = "Subscriber - PUBSUB - " }; DZG.Koppelingen.Add(DZG012);

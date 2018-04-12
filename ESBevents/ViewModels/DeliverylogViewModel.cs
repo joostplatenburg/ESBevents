@@ -65,8 +65,8 @@ namespace ESBevents.ViewModels
 			}
 		}
 
-        private KoppelingModel _selectedDelivery;
-        public KoppelingModel SelectedDelivery
+        private DeliveryModel _selectedDelivery;
+        public DeliveryModel SelectedDelivery
 		{
 			get { return _selectedDelivery; }
 			set {

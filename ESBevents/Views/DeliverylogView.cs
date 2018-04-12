@@ -42,7 +42,7 @@ namespace ESBevents
             vm.Customer = _psVM.Customer;
             vm.Environment = _psVM.Environment;
             vm.Status = _psVM.Status;
-            vm.Koppeling = _psVM.Koppeling;
+            vm.Koppeling = _psVM.SelectedKoppeling.Name;
 
             Initialize();
         }
@@ -53,7 +53,11 @@ namespace ESBevents
 
 			deliveryList.ItemTapped += (sender, e) =>
 			{
-				//Navigation.PushAsync(new EventView(vm.SelectedItem));
+                DeliveryModel selected = ((ListView)sender).SelectedItem as DeliveryModel;
+
+                vm.SelectedDelivery = selected;
+
+				Navigation.PushAsync(new DeliveryView(vm));
 				////Navigation.PushAsync(new EventView());
 
 				//((ListView)sender).SelectedItem = null;

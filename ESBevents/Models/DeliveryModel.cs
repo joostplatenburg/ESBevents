@@ -21,5 +21,6 @@ namespace ESBevents.Models
         public string PublisherName { get; set; }
         public string SubscriptionName { get; set; }
         public string MessageType { get; set; }
+        public string Messagecontent { get; set; }
 	}
 }

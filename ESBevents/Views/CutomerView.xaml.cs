@@ -69,10 +69,10 @@ namespace ESBevents
         async void ToonPubsubKoppelingen(object sender, EventArgs e)
         {
             var but = sender as Button;
-
             vm.Environment = but.Text;
 
-            await Navigation.PushAsync(new PubsubKoppelingenView(vm));
+//            await Navigation.PushAsync(new PubsubKoppelingenView(vm));
+            await Navigation.PushAsync(new DeliveryStatusView(vm));
 
             //((ListView)sender).SelectedItem = null;
         }

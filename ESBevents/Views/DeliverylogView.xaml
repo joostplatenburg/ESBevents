@@ -39,28 +39,29 @@
 -->                                    
                                     <StackLayout Orientation="Vertical">
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="Created on: " FontSize="12" Margin="10,0,10,0" FontAttributes="Bold" WidthRequest="90"/>
+                                            <Label Text="Created on: " FontSize="12" Margin="10,0,0,0" FontAttributes="Bold" WidthRequest="90"/>
                                             <Label Text="{Binding CreationDate}" FontSize="12"/>
                 							<Label Text="{Binding CreationTime}" FontSize="12"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="Processed on: " FontSize="12" Margin="10,0,10,0" FontAttributes="Bold" WidthRequest="90"/>
+                                            <Label Text="Processed on: " FontSize="12" Margin="10,0,0,0" FontAttributes="Bold" WidthRequest="90"/>
                 							<Label Text="{Binding ProcessedDate}" FontSize="12"/> <!-- LineBreakMode="TailTruncation"/> -->
                                             <Label Text="{Binding Processedtime}" FontSize="12"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="Messagetype: " FontSize="12" Margin="10,0,10,0" FontAttributes="Bold" WidthRequest="90"/>
+                                            <Label Text="Messagetype: " FontSize="12" Margin="10,0,0,0" FontAttributes="Bold" WidthRequest="90"/>
                                             <Label Text="{Binding MessageType}" FontSize="12"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="Result: " FontSize="12" Margin="10,0,10,0" FontAttributes="Bold" WidthRequest="90"/>
+                                            <Label Text="Content: " FontSize="12" Margin="10,0,0,0" FontAttributes="Bold" WidthRequest="90"/>
+                                            <Label Text="{Binding Messagecontent}" FontSize="12" LineBreakMode="TailTruncation"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Result: " FontSize="12" Margin="10,0,0,0" FontAttributes="Bold" WidthRequest="90"/>
                                             <Label Text="{Binding Resultmessage}" FontSize="12" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
                                     </StackLayout>
             					</StackLayout>
-
-                                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-
                             </StackLayout>
                         </ViewCell>
     				</DataTemplate>

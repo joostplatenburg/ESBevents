@@ -56,6 +56,9 @@
     <EmbeddedResource Include="Views\DeliverylogView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\DeliveryView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -106,6 +109,10 @@
       <DependentUpon>DeliverylogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\DeliverylogViewModel.cs" />
+    <Compile Include="Views\DeliveryView.cs">
+      <DependentUpon>DeliveryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\DeliveryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="ESBevents.DeliveryView">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="buttonStyle" TargetType="Button">
+				<Setter Property="HorizontalOptions" Value="End" />
+				<Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="BackgroundColor" Value="#bddec3" />
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="WidthRequest" Value="170" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Icon="ic_drawer.png" Activated="OnClick" />
+	</ContentPage.ToolbarItems>
+	
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" Margin="20" >
+           <Image Source="{Binding Logo}" WidthRequest="350" HeightRequest="60"
+                VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="10,0,10,0"/>
+            
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+
+            <StackLayout Orientation="Vertical">
+			    <Label Text="Delivery ID:" FontSize="10" FontAttributes="Bold"/>
+			    <Label Text="{Binding DeliveryId}" FontSize="12" Margin="20,0,0,0"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Vertical">
+                <Label Text="Message ID:" FontSize="10" FontAttributes="Bold"/>
+                <Label Text="{Binding MessageId}" FontSize="12" Margin="20,0,0,0"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+                <Label Text="Created on: " FontSize="10" FontAttributes="Bold"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding CreationDate}" FontSize="12" Margin="20,0,0,0"/>
+                    <Label Text="{Binding CreationTime}" FontSize="12"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+                <Label Text="Processed on: " FontSize="10" FontAttributes="Bold"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding ProcessedDate}" FontSize="12" Margin="20,0,0,0"/> <!-- LineBreakMode="TailTruncation"/> -->
+                    <Label Text="{Binding Processedtime}" FontSize="12"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+    			<Label Text="Subscription Status:" FontSize="10" FontAttributes="Bold"/>
+    			<Label Text="{Binding SubscriptionStatus}" FontSize="12" Margin="20,0,0,0"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+    			<Label Text="Delivery Status:" FontSize="10" FontAttributes="Bold"/>
+    			<Label Text="{Binding DeliveryStatus}" FontSize="12" Margin="20,0,0,0"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Vertical">
+                <Label Text="Number of Tries:" FontSize="10" FontAttributes="Bold"/>
+                <Label Text="{Binding NumberOfTries}" FontSize="12" Margin="20,0,0,0"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+                <Label Text="Publisher Name:" FontSize="10" FontAttributes="Bold"/>
+                <Label Text="{Binding PublisherName}" FontSize="12" Margin="20,0,0,0"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Vertical">
+                <Label Text="Subscription Name:" FontSize="10" FontAttributes="Bold"/>
+                <Label Text="{Binding SubscriptionName}" FontSize="12" Margin="20,0,0,0"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Vertical">
+                <Label Text="Message Type:" FontSize="10" FontAttributes="Bold"/>
+                <Label Text="{Binding MessageType}" FontSize="12" Margin="20,0,0,0"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Vertical">
+    			<Label Text="Message Content:" FontSize="10" FontAttributes="Bold"/>
+    			<Label Text="{Binding Messagecontent}" FontSize="12" Margin="20,0,0,0"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+                <Label Text="Resultmessage:" FontSize="10" FontAttributes="Bold"/>
+                <Label Text="{Binding Resultmessage}" FontSize="12" Margin="20,0,0,0"/>
+            </StackLayout>
+
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+
+             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button x:Name="Delete" Text="Delete Message" Style="{StaticResource buttonStyle}" Clicked="DeleteMessage" Margin="5"/>
+                <Button x:Name="Resend" Text="Resend Message" Style="{StaticResource buttonStyle}" Clicked="ResendMessage" Margin="5"/>
+            </StackLayout>
+
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>
