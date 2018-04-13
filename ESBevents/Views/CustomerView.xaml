@@ -77,7 +77,7 @@
             </StackLayout>
 
             <!-- Toon pubsub log-->
-            <StackLayout Orientation="Vertical" IsVisible="{Binding ToonPS}">
+            <StackLayout Orientation="Vertical" IsVisible="{Binding ToonPSlog}">
                 <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">

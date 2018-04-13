@@ -23,18 +23,18 @@ namespace ESBevents.ViewModels
 		#region INotifyPropertyChanged implementation
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		private void OnPropertyChanged(string name)
-		{
-			if (PropertyChanged == null)
-				return;
+        void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged == null)
+                return;
 
-			PropertyChanged(this, new PropertyChangedEventArgs(name));
-		}
-		#endregion INotifyPropertyChanged implementation
+            PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
+        #endregion INotifyPropertyChanged implementation
 
-		#region Properties
-		private DeliveryModel _delivery;
-		public DeliveryModel Delivery
+        #region Properties
+        DeliveryModel _delivery;
+        public DeliveryModel Delivery
 		{
             get { return _delivery; }
 			set
@@ -62,7 +62,7 @@ namespace ESBevents.ViewModels
         public string MessageType { get { return string.Format("{0}", Delivery.MessageType); } }
         public string Messagecontent { get { return string.Format("{0}", Delivery.Messagecontent); } }
 
-        private string _logo;
+        string _logo;
         public string Logo { 
             get { return _logo; } 
             set

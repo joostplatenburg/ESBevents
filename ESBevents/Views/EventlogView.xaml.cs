@@ -38,15 +38,6 @@ namespace ESBevents
 			Initialize();
 		}
 
-        public EventlogView(CustomerModel _customer)
-        {
-            InitializeComponent();
-
-            vm = new EventlogViewModel();
-
-			Initialize();
-		}
-
 		void Initialize()
 		{
 			BindingContext = vm;

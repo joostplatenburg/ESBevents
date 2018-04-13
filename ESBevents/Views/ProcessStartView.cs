@@ -43,7 +43,7 @@ namespace ESBevents
 
 			koppelingenList.ItemTapped += (sender, e) =>
 			{
-                KoppelingModel selected = ((ListView)sender).SelectedItem as KoppelingModel;
+                var selected = ((ListView)sender).SelectedItem as KoppelingModel;
 
 				//// NU DE KOPPELING STARTEN
 				/// 

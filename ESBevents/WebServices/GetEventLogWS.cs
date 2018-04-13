@@ -14,17 +14,17 @@ namespace ESBevents.WebServices
 {
     public class GetEventLogWS
     {
-		HttpClient client;
+        readonly HttpClient client;
 
-		public GetEventLogWS()
-		{
-			client = new HttpClient();
+        public GetEventLogWS()
+        {
+            client = new HttpClient();
 
-			//client.MaxResponseContentBufferSize = 256000;
+            //client.MaxResponseContentBufferSize = 256000;
 
-		}
+        }
 
-		public async Task<HttpStatusCode> GetEventLogAsync(CustomerViewModel vm)
+        public async Task<HttpStatusCode> GetEventLogAsync(CustomerViewModel vm)
         {
             try
             {
@@ -32,59 +32,61 @@ namespace ESBevents.WebServices
 
                 Debug.WriteLine(vm.Name);
                 Debug.WriteLine(vm.Environment);
-				Debug.WriteLine(vm.Customer.IPNumberT);
-				Debug.WriteLine(vm.Customer.PortNumberEL);
+                Debug.WriteLine(vm.Customer.IPT);
+                Debug.WriteLine(vm.Customer.PortEnsemble);
 
                 var service = "http://{0}:{1}/DXCUtilities/HaalEventlog";
                 var serviceadres = string.Empty;
 
-				Debug.WriteLine(service);
+                Debug.WriteLine(service);
 
                 switch (vm.Environment)
                 {
                     case "Ontwikkel":
-                        serviceadres = string.Format(service, vm.Customer.IPNumberO, vm.Customer.PortNumberEL);
+                        serviceadres = string.Format(service, vm.Customer.IPO, vm.Customer.PortEnsemble);
                         break;
-					case "Test":
-						serviceadres = string.Format(service, vm.Customer.IPNumberT, vm.Customer.PortNumberEL);
+                    case "Test":
+                        serviceadres = string.Format(service, vm.Customer.IPT, vm.Customer.PortEnsemble);
                         break;
-					case "Acceptatie":
-						serviceadres = string.Format(service, vm.Customer.IPNumberA, vm.Customer.PortNumberEL);
-						break;
-					case "Productie":
-						serviceadres = string.Format(service, vm.Customer.IPNumberP, vm.Customer.PortNumberEL);
-						break;
-				}
+                    case "Acceptatie":
+                        serviceadres = string.Format(service, vm.Customer.IPA, vm.Customer.PortEnsemble);
+                        break;
+                    case "Productie":
+                        serviceadres = string.Format(service, vm.Customer.IPP, vm.Customer.PortEnsemble);
+                        break;
+                    default:
+                        break;
+                }
 
                 var uri = new Uri(serviceadres);
- 
-				var response = await client.GetAsync(uri);
-				if (response.StatusCode == HttpStatusCode.Continue ||
-					response.StatusCode == HttpStatusCode.Accepted ||
-					response.StatusCode == HttpStatusCode.OK)
-				{
-					var eventlogJson = response.Content.ReadAsStringAsync().Result;
-	
-					//Debug.WriteLine(eventlogJson);
 
-					var EventLogs = JsonConvert.DeserializeObject<List<List<EventModel>>>(eventlogJson);
+                var response = await client.GetAsync(uri);
+                if (response.StatusCode == HttpStatusCode.Continue ||
+                    response.StatusCode == HttpStatusCode.Accepted ||
+                    response.StatusCode == HttpStatusCode.OK)
+                {
+                    var eventlogJson = response.Content.ReadAsStringAsync().Result;
 
-					vm.Eventlog = EventLogs[0];
+                    //Debug.WriteLine(eventlogJson);
 
-					if (vm.Eventlog.Count > 0)
-					{
-						vm.Event = vm.Eventlog.First();
-					}
+                    var EventLogs = JsonConvert.DeserializeObject<List<List<EventModel>>>(eventlogJson);
 
-					return HttpStatusCode.Continue;
-				}
-				return response.StatusCode;
+                    vm.Eventlog = EventLogs[0];
+
+                    if (vm.Eventlog.Count > 0)
+                    {
+                        vm.Event = vm.Eventlog.First();
+                    }
+
+                    return HttpStatusCode.Continue;
+                }
+                return response.StatusCode;
             }
             catch (System.Net.WebException)
             {
-				return HttpStatusCode.InternalServerError;
+                return HttpStatusCode.InternalServerError;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 return HttpStatusCode.BadRequest;

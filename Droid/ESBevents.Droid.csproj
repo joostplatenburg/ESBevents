@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>ESBevents.Droid</RootNamespace>
     <AssemblyName>ESBevents.Droid</AssemblyName>
-    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>

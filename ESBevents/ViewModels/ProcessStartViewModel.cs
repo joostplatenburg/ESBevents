@@ -37,7 +37,7 @@ namespace ESBevents.ViewModels
 		#region INotifyPropertyChanged implementation
 	    public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged(string name)
+        void OnPropertyChanged(string name)
         {
             if (PropertyChanged == null)
                 return;
@@ -47,8 +47,8 @@ namespace ESBevents.ViewModels
         #endregion INotifyPropertyChanged implementation
 
         #region Properties
-	    private ObservableCollection<KoppelingModel> _koppelingen;
-		public ObservableCollection<KoppelingModel> Koppelingen
+        ObservableCollection<KoppelingModel> _koppelingen;
+        public ObservableCollection<KoppelingModel> Koppelingen
 		{
 			get { return _koppelingen; }
 			set {
@@ -61,8 +61,8 @@ namespace ESBevents.ViewModels
 			}
 		}
 
-		private EventViewModel _selectedKoppelingenItem;
-		public EventViewModel SelectedKoppelingenItem
+        EventViewModel _selectedKoppelingenItem;
+        public EventViewModel SelectedKoppelingenItem
 		{
 			get { return _selectedKoppelingenItem; }
 			set {
@@ -75,8 +75,8 @@ namespace ESBevents.ViewModels
 			}
 		}
 
-		private CustomerModel _customer;
-		public CustomerModel Customer
+        CustomerModel _customer;
+        public CustomerModel Customer
 		{
 			get { return _customer;}
 			set {

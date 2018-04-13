@@ -41,7 +41,7 @@ namespace ESBevents.ViewModels
 		#region INotifyPropertyChanged implementation
 	    public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged(string name)
+        void OnPropertyChanged(string name)
         {
             if (PropertyChanged == null)
                 return;
@@ -51,8 +51,8 @@ namespace ESBevents.ViewModels
         #endregion INotifyPropertyChanged implementation
 
         #region Properties
-	    private ObservableCollection<DeliveryModel> _deliveries;
-		public ObservableCollection<DeliveryModel> Deliveries
+        ObservableCollection<DeliveryModel> _deliveries;
+        public ObservableCollection<DeliveryModel> Deliveries
 		{
             get { return _deliveries; }
 			set {
@@ -65,7 +65,7 @@ namespace ESBevents.ViewModels
 			}
 		}
 
-        private DeliveryModel _selectedDelivery;
+        DeliveryModel _selectedDelivery;
         public DeliveryModel SelectedDelivery
 		{
 			get { return _selectedDelivery; }
@@ -79,8 +79,8 @@ namespace ESBevents.ViewModels
 			}
 		}
 
-		private CustomerModel _customer;
-		public CustomerModel Customer
+        CustomerModel _customer;
+        public CustomerModel Customer
 		{
 			get { return _customer;}
 			set {
@@ -94,7 +94,7 @@ namespace ESBevents.ViewModels
 
 		public string Logo { get { return Customer.Logo; } }
 
-        private string _environment;
+        string _environment;
         public string Environment
         {
             get { return _environment; }
@@ -109,7 +109,7 @@ namespace ESBevents.ViewModels
             }
         }
 
-        private string _status;
+        string _status;
         public string Status
         {
             get { return _status; }
@@ -123,8 +123,8 @@ namespace ESBevents.ViewModels
                 OnPropertyChanged("Status");
             }
         }
- 
-        private string _koppeling;
+
+        string _koppeling;
         public string Koppeling
         {
             get { return _koppeling; }

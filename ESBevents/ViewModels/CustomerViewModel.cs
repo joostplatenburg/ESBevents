@@ -8,114 +8,115 @@ using ESBevents.Models;
 
 namespace ESBevents.ViewModels
 {
-	public class CustomerViewModel : INotifyPropertyChanged
-	{
-		public CustomerViewModel()
-		{
-			_customer = new CustomerModel();
-			Initialize();
-		}
-
-		public CustomerViewModel(CustomerModel _cm)
-		{
-			_customer = _cm;
+    public class CustomerViewModel : INotifyPropertyChanged
+    {
+        public CustomerViewModel()
+        {
+            _customer = new CustomerModel();
             Initialize();
-		}
+        }
+
+        public CustomerViewModel(CustomerModel _cm)
+        {
+            _customer = _cm;
+            Initialize();
+        }
         internal void Initialize()
         {
-		}
+        }
 
-		#region INotifyPropertyChanged implementation
-		public event PropertyChangedEventHandler PropertyChanged;
+        #region INotifyPropertyChanged implementation
+        public event PropertyChangedEventHandler PropertyChanged;
 
-		private void OnPropertyChanged(string name)
-		{
-			if (PropertyChanged == null)
-				return;
+        void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged == null)
+                return;
 
-			PropertyChanged(this, new PropertyChangedEventArgs(name));
-		}
-		#endregion INotifyPropertyChanged implementation
+            PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
+        #endregion INotifyPropertyChanged implementation
 
-		#region Properties
-		private CustomerModel _customer;
-		public CustomerModel Customer
-		{
-			get { return _customer; }
-			set
-			{
-				if (_customer == value) return;
+        #region Properties
+        CustomerModel _customer;
+        public CustomerModel Customer
+        {
+            get { return _customer; }
+            set
+            {
+                if (_customer == value) return;
 
-				_customer = value;
+                _customer = value;
 
-				OnPropertyChanged("Customer");
-			}
-		}
+                OnPropertyChanged("Customer");
+            }
+        }
 
         public string Name { get { return Customer.Name; } }
-		public string IPNumberO { get { return Customer.IPNumberO; } }
-		public string IPNumberT { get { return Customer.IPNumberT; } }
-		public string IPNumberA { get { return Customer.IPNumberA; } }
-		public string IPNumberP { get { return Customer.IPNumberP; } }
-		public string PortNumberEL { get { return Customer.PortNumberEL; }} // Eventlog
-        public string PortNumberSP { get { return Customer.PortNumberSP; } } // StartProcess
+        public string IPO { get { return Customer.IPO; } }
+        public string IPT { get { return Customer.IPT; } }
+        public string IPA { get { return Customer.IPA; } }
+        public string IPP { get { return Customer.IPP; } }
+        public string PortEnsemble { get { return Customer.PortEnsemble; } } // Eventlog
+        public string PortPubsub { get { return Customer.PortPubsub; } } // StartProcess
         public string Logo { get { return Customer.Logo; } }
 
-        public bool ToonEventlog { get { return false; } }
-        public bool StartBP { get { return false; } }
-        public bool ToonEvToonPSentlog { get { return true; } }
+        public bool ToonEventlog { get { return Customer.ToonEventlog; } }
+        public bool StartBP { get { return Customer.StartBP; } }
+        public bool ToonPSlog { get { return Customer.ToonPSlog; } }
 
-	    private ActionModel _selectedActionItem;
-		public ActionModel SelectedActionItem
-		{
-			get { return _selectedActionItem; }
-			set
-			{
-				if (_selectedActionItem == value)
-					return;
+        ActionModel _selectedActionItem;
+        public ActionModel SelectedActionItem
+        {
+            get { return _selectedActionItem; }
+            set
+            {
+                if (_selectedActionItem == value)
+                    return;
 
-				_selectedActionItem = value;
+                _selectedActionItem = value;
 
-				OnPropertyChanged("SelectedActionItem");
-			}
-		}
+                OnPropertyChanged("SelectedActionItem");
+            }
+        }
 
-		private List<EventModel> _eventlog;
-		public List<EventModel> Eventlog
-		{
-            get {
+        List<EventModel> _eventlog;
+        public List<EventModel> Eventlog
+        {
+            get
+            {
                 //_eventlog.Sort((a, b) => a.CompareTo(b));
 
-                return _eventlog; 
+                return _eventlog;
             }
-			set
-			{
-				if (_eventlog == value)
-					return;
+            set
+            {
+                if (_eventlog == value)
+                    return;
 
-				_eventlog = value;
+                _eventlog = value;
 
-				OnPropertyChanged("Eventlog");
-			}
-		}
+                OnPropertyChanged("Eventlog");
+            }
+        }
 
-		private EventModel _event;
-		public EventModel Event
-		{
-			get { return _event; }
-			set
-			{
-				if (_event == value)
-					return;
+        EventModel _event;
+        public EventModel Event
+        {
+            get { return _event; }
+            set
+            {
+                if (_event == value)
+                    return;
 
-				_event = value;
+                _event = value;
 
-				OnPropertyChanged("Event");
-			}
-		}
+                OnPropertyChanged("Event");
+            }
+        }
         #endregion Properties
 
-        private string _environment;
+        string _environment;
         public string Environment
         {
             get { return _environment; }
@@ -130,7 +131,7 @@ namespace ESBevents.ViewModels
             }
         }
 
-        private string _status;
+        string _status;
         public string Status
         {
             get { return _status; }
@@ -144,5 +145,5 @@ namespace ESBevents.ViewModels
                 OnPropertyChanged("Status");
             }
         }
-	}
+    }
 }

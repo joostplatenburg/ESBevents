@@ -53,7 +53,7 @@ namespace ESBevents
 
 			deliveryList.ItemTapped += (sender, e) =>
 			{
-                DeliveryModel selected = ((ListView)sender).SelectedItem as DeliveryModel;
+                var selected = ((ListView)sender).SelectedItem as DeliveryModel;
 
                 vm.SelectedDelivery = selected;
 

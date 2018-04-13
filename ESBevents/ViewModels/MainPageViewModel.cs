@@ -15,24 +15,10 @@ namespace ESBevents.ViewModels
         {
 			_customers = new List<CustomerModel>();
     
-			var ALL = new CustomerModel { Name = "Alliade Zorggroep", Logo="ALL.png" };
-            ALL.IPNumberO = "192.168.2.14";
-            ALL.IPNumberT = "52.73.112.29";
-            ALL.IPNumberA = "";
-            ALL.IPNumberP = "";
-            ALL.PortNumberEL = "54321";
-            ALL.PortNumberSP = "54331";
-                
+            var ALL = new CustomerModel { Name = "Alliade Zorggroep", Logo="ALL.png", IPO = "192.168.2.14", IPT = "2.73.112.29", IPA = "", IPP="", PortEnsemble="54321", PortPubsub="54331", StartBP=false, ToonEventlog=false, ToonPSlog=false};
             Customers.Add(ALL);
 
-			var DBZ = new CustomerModel { Name = "Dichterbij", Logo = "DBZ.png" };
-            DBZ.IPNumberO = "192.168.2.14";
-            DBZ.IPNumberT = "52.73.112.29";
-            DBZ.IPNumberA = "10.100.80.104";
-            DBZ.IPNumberP = "10.100.80.73";
-            DBZ.PortNumberEL = "54322";
-            DBZ.PortNumberSP = "54332";
-			
+            var DBZ = new CustomerModel { Name = "Dichterbij", Logo = "DBZ.png", IPO = "192.168.2.14", IPT = "52.73.112.29", IPA = "10.100.80.104", IPP = "10.100.80.73", PortEnsemble = "54322", PortPubsub = "54332", StartBP = false,ToonEventlog = false, ToonPSlog = false};
             DBZ.Koppelingen = new List<KoppelingModel>();
 			var dbz009 = new KoppelingModel { ID = 009, Name = "DBZ009", Description = "AFAS naar UMRA" }; DBZ.Koppelingen.Add(dbz009);
 			var dbz010 = new KoppelingModel { ID = 010, Name = "DBZ010", Description = "AFAS naar " }; DBZ.Koppelingen.Add(dbz010);
@@ -42,7 +28,7 @@ namespace ESBevents.ViewModels
 			var dbz015 = new KoppelingModel { ID = 015, Name = "DBZ015", Description = "AFAS naar " }; DBZ.Koppelingen.Add(dbz015);
 			Customers.Add(DBZ);
 
-			var SPZ = new CustomerModel { Name = "Stichting Philadelphia Zorg", IPNumberO = "192.168.2.14", IPNumberT = "52.73.112.29", IPNumberA="", IPNumberP="", PortNumberEL = "54323", PortNumberSP = "54333", Logo = "SPZ.png" }; 
+            var SPZ = new CustomerModel { Name = "Stichting Philadelphia Zorg", Logo="SPZ.png", IPO = "192.168.2.14", IPT = "52.73.112.29", IPA="", IPP="", PortEnsemble = "54323", PortPubsub = "54333", StartBP = false, ToonEventlog = false, ToonPSlog = false };
 			SPZ.Koppelingen = new List<KoppelingModel>();
 			var spz150 = new KoppelingModel { ID = 150, Name = "SPZ150", Description = "ESB-CMS Medewerkergegevens"}; SPZ.Koppelingen.Add(spz150);
 			var spz151 = new KoppelingModel { ID = 151, Name = "SPZ151", Description = "(Her)In- en Doorstroom Accounts"}; SPZ.Koppelingen.Add(spz151);
@@ -50,13 +36,13 @@ namespace ESBevents.ViewModels
 			var spz153 = new KoppelingModel { ID = 153, Name = "SPZ153", Description = "ECD P&R Ambulant Clientgegevens"}; SPZ.Koppelingen.Add(spz153);
             Customers.Add(SPZ);
 
-			var SHL = new CustomerModel { Name = "'s Heeren Loo", IPNumberO = "192.168.2.14", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54324", PortNumberSP = "54334", Logo = "SHL.png" };
+            var SHL = new CustomerModel { Name = "'s Heeren Loo", IPO = "192.168.2.14", IPT = "52.73.112.29", IPA = "", IPP = "", PortEnsemble = "54324", PortPubsub = "54334", Logo = "SHL.png", StartBP = false, ToonEventlog = false, ToonPSlog = false };
 			Customers.Add(SHL);
 
-            var ZGB = new CustomerModel { Name = "de Zorgboog", IPNumberO = "192.168.2.14", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54325", PortNumberSP = "54335", Logo = "ZGB.png" };
+            var ZGB = new CustomerModel { Name = "de Zorgboog", IPO = "192.168.2.14", IPT = "52.73.112.29", IPA = "", IPP = "", PortEnsemble = "54325", PortPubsub = "54335", Logo = "ZGB.png", StartBP = false, ToonEventlog = false, ToonPSlog = false };
             Customers.Add(ZGB);
     
-            var DZG = new CustomerModel { Name = "de Zorggroep", IPNumberO = "192.168.2.14", IPNumberT = "52.73.112.29", IPNumberA = "192.168.213.111", IPNumberP = "192.168.213.11", PortNumberEL = "54326", PortNumberSP = "54336", Logo = "DZG.png" };
+            var DZG = new CustomerModel { Name = "de Zorggroep", IPO = "192.168.2.14", IPT = "52.73.112.29", IPA = "192.168.213.111", IPP = "192.168.213.11", PortEnsemble = "54326", PortPubsub = "54336", Logo = "DZG.png", StartBP = false, ToonEventlog = false, ToonPSlog = false};
             DZG.Koppelingen = new List<KoppelingModel>();
             var DZG001 = new KoppelingModel { ID = 001, Name = "DZG001", Description = "Publisher - AFAS - PUBSUB Medewerkers" }; DZG.Koppelingen.Add(DZG001);
             var DZG002 = new KoppelingModel { ID = 002, Name = "DZG002", Description = "Publisher - AFAS - PUBSUB " }; DZG.Koppelingen.Add(DZG002);
@@ -78,14 +64,14 @@ namespace ESBevents.ViewModels
             var DZG018 = new KoppelingModel { ID = 018, Name = "DZG018", Description = "Subscriber - PUBSUB - HRMAD Functies" }; DZG.Koppelingen.Add(DZG018);
             Customers.Add(DZG);
 
-            var DOB = new CustomerModel { Name = "de Opbouw", IPNumberO = "192.168.2.14", IPNumberT = "52.73.112.29", IPNumberA = "", IPNumberP = "", PortNumberEL = "54327", PortNumberSP = "54337", Logo = "DOB.png" };
+            var DOB = new CustomerModel { Name = "de Opbouw", IPO = "192.168.2.14", IPT = "52.73.112.29", IPA = "", IPP = "", PortEnsemble = "54327", PortPubsub = "54337", Logo = "DOB.png", StartBP = false, ToonEventlog = false, ToonPSlog = false };
             Customers.Add(DOB);
 		}
 
         #region INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged(string name)
+        void OnPropertyChanged(string name)
         {
             if (PropertyChanged == null)
                 return;
@@ -95,8 +81,8 @@ namespace ESBevents.ViewModels
         #endregion INotifyPropertyChanged implementation
 
         #region Properties
-		private List<CustomerModel> _customers;
-		public List<CustomerModel> Customers
+        List<CustomerModel> _customers;
+        public List<CustomerModel> Customers
 		{
 			get { return _customers; }
 			set
@@ -110,8 +96,8 @@ namespace ESBevents.ViewModels
 			}
 		}
 
-		private CustomerModel _customer;
-		public CustomerModel Customer
+        CustomerModel _customer;
+        public CustomerModel Customer
 		{
 			get { return _customer; }
 			set
@@ -124,8 +110,8 @@ namespace ESBevents.ViewModels
 			}
 		}
 
-		private string _mainMessage;
-		public string MainMessage
+        string _mainMessage;
+        public string MainMessage
 		{
 			get { return _mainMessage; }
 			set
@@ -138,8 +124,8 @@ namespace ESBevents.ViewModels
 			}
 		}
 
-		private Boolean _progressvisible;
-		public Boolean ProgressVisible
+        Boolean _progressvisible;
+        public Boolean ProgressVisible
 		{
 			get { return _progressvisible; }
 			set
@@ -152,8 +138,8 @@ namespace ESBevents.ViewModels
 			}
 		}
 
-		private CustomerModel _selectedItem;
-		public CustomerModel SelectedItem
+        CustomerModel _selectedItem;
+        public CustomerModel SelectedItem
 		{
 			get { return _selectedItem; }
 			set
@@ -168,8 +154,8 @@ namespace ESBevents.ViewModels
 		}
 
 
-		private List<EventModel> _eventlog;
-		public List<EventModel> Eventlog
+        List<EventModel> _eventlog;
+        public List<EventModel> Eventlog
 		{
 			get { return _eventlog; }
 			set
