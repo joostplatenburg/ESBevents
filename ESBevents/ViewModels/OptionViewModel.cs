@@ -12,28 +12,11 @@ using ESBevents.WebServices;
 
 namespace ESBevents.ViewModels
 {
-    public class MainPageViewModel : INotifyPropertyChanged
+    public class OptionViewModel : INotifyPropertyChanged
     {
-        public MainPageViewModel()
+        public OptionViewModel()
         {
-            GetCustomers();
-        }
 
-        private async void GetCustomers()
-        {
-            await GetCustomersAsync();
-        }
-
-        private async Task GetCustomersAsync()
-        {
-            var webSrvc = new GetCustomerDataWS();
-            var status = await webSrvc.GetCustomerDataAsync(this);
-
-            if (status != HttpStatusCode.Continue)
-            {
-                // WAT TE DOEN ALS ER EEN FOUT OPTREED
-                Debug.WriteLine("DXCPS - Fout bij ophalen customer data");
-            }
         }
 
         #region INotifyPropertyChanged implementation
@@ -51,33 +34,38 @@ namespace ESBevents.ViewModels
         #region Properties
         List<CustomerModel> _customers;
         public List<CustomerModel> Customers
-		{
-			get { return _customers; }
-			set
-			{
-				if (_customers == value)
-					return;
+        {
+            get { return _customers; }
+            set
+            {
+                if (_customers == value)
+                    return;
 
-				_customers = value;
+                _customers = value;
 
-				OnPropertyChanged("Customers");
-			}
-		}
+                OnPropertyChanged("Customers");
+            }
+        }
 
         CustomerModel _customer;
         public CustomerModel Customer
-		{
-			get { return _customer; }
-			set
-			{
-				if (_customer == value) return;
+        {
+            get { return _customer; }
+            set
+            {
+                if (_customer == value) return;
 
-				_customer = value;
+                _customer = value;
 
-				OnPropertyChanged("Customer");
-			}
-		}
+                OnPropertyChanged("Customer");
+            }
+        }
 
+        public string portEnsemble { get { return "54321"; } }
+        public string portPubsub { get { return "9924"; } }
+        public string IPO { get { return "192.168.2.14"; } }
+        public string IPT { get { return "52.73.112.29"; } }
+    
         string _mainMessage;
         public string MainMessage
 		{
@@ -121,21 +109,20 @@ namespace ESBevents.ViewModels
 			}
 		}
 
+        string _logo;
+        public string Logo
+        {
+            get { return _logo; }
+            set
+            {
+                if (_logo == value) return;
 
-        List<EventModel> _eventlog;
-        public List<EventModel> Eventlog
-		{
-			get { return _eventlog; }
-			set
-			{
-				if (_eventlog == value)
-					return;
+                _logo = value;
 
-				_eventlog = value;
+                OnPropertyChanged("Logo");
+            }
+        }
 
-				OnPropertyChanged("Eventlog");
-			}
-		}
 		#endregion Properties
 	}
 }

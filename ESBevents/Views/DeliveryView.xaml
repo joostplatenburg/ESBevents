@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="ESBevents.DeliveryView">
+             x:Class="ESBevents.DeliveryView" Title="Delivery">
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<Style x:Key="buttonStyle" TargetType="Button">
-				<Setter Property="HorizontalOptions" Value="End" />
+				<Setter Property="HorizontalOptions" Value="Center" />
 				<Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="Gray" />
                 <Setter Property="BackgroundColor" Value="#bddec3" />
                 <Setter Property="BorderRadius" Value="10" />
                 <Setter Property="HeightRequest" Value="50" />
-                <Setter Property="WidthRequest" Value="170" />
+                <Setter Property="WidthRequest" Value="150" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                
 			</Style>
+            <Style x:Key="PromptStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Margin" Value="5,0,0,0" />
+                <Setter Property="WidthRequest" Value="110" />
+            </Style>
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	
@@ -28,70 +32,66 @@
             
             <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
-            <StackLayout Orientation="Vertical">
-			    <Label Text="Delivery ID:" FontSize="10" FontAttributes="Bold"/>
-			    <Label Text="{Binding DeliveryId}" FontSize="12" Margin="20,0,0,0"/>
+            <StackLayout Orientation="Horizontal">
+			    <Label Text="Delivery ID:" Style="{StaticResource PromptStyle}"/>
+			    <Label Text="{Binding DeliveryId}" FontAttributes="Bold" FontSize="12"/>
             </StackLayout>
             
-            <StackLayout Orientation="Vertical">
-                <Label Text="Message ID:" FontSize="10" FontAttributes="Bold"/>
-                <Label Text="{Binding MessageId}" FontSize="12" Margin="20,0,0,0"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Message ID:" Style="{StaticResource PromptStyle}"/>
+                <Label Text="{Binding MessageId}" FontAttributes="Bold" FontSize="12"/>
             </StackLayout>
 
-            <StackLayout Orientation="Vertical">
-                <Label Text="Created on: " FontSize="10" FontAttributes="Bold"/>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding CreationDate}" FontSize="12" Margin="20,0,0,0"/>
-                    <Label Text="{Binding CreationTime}" FontSize="12"/>
-                </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Created on:" Style="{StaticResource PromptStyle}"/>
+                <Label Text="{Binding CreationDate}" FontAttributes="Bold" FontSize="12"/>
+                <Label Text="{Binding CreationTime}" FontAttributes="Bold" FontSize="12"/>
             </StackLayout>
 
-            <StackLayout Orientation="Vertical">
-                <Label Text="Processed on: " FontSize="10" FontAttributes="Bold"/>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding ProcessedDate}" FontSize="12" Margin="20,0,0,0"/> <!-- LineBreakMode="TailTruncation"/> -->
-                    <Label Text="{Binding Processedtime}" FontSize="12"/>
-                </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Processed on:" Style="{StaticResource PromptStyle}"/>
+                <Label Text="{Binding ProcessedDate}" FontAttributes="Bold" FontSize="12"/>
+                <Label Text="{Binding ProcessedTime}" FontAttributes="Bold" FontSize="12"/>
             </StackLayout>
 
-            <StackLayout Orientation="Vertical">
-    			<Label Text="Subscription Status:" FontSize="10" FontAttributes="Bold"/>
-    			<Label Text="{Binding SubscriptionStatus}" FontSize="12" Margin="20,0,0,0"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Subscription Status:" Style="{StaticResource PromptStyle}"/>
+                <Label Text="{Binding SubscriptionStatus}" FontAttributes="Bold" FontSize="12"/>
             </StackLayout>
 
-            <StackLayout Orientation="Vertical">
-    			<Label Text="Delivery Status:" FontSize="10" FontAttributes="Bold"/>
-    			<Label Text="{Binding DeliveryStatus}" FontSize="12" Margin="20,0,0,0"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Delivery Status:" Style="{StaticResource PromptStyle}"/>
+                <Label Text="{Binding DeliveryStatus}" FontAttributes="Bold" FontSize="12"/>
             </StackLayout>
             
-            <StackLayout Orientation="Vertical">
-                <Label Text="Number of Tries:" FontSize="10" FontAttributes="Bold"/>
-                <Label Text="{Binding NumberOfTries}" FontSize="12" Margin="20,0,0,0"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Number of Tries:" Style="{StaticResource PromptStyle}"/>
+                <Label Text="{Binding NumberOfTries}" FontAttributes="Bold" FontSize="12"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Publisher Name:" Style="{StaticResource PromptStyle}"/>
+                <Label Text="{Binding PublisherName}" FontAttributes="Bold" FontSize="12"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Subscription Name:" Style="{StaticResource PromptStyle}"/>
+                <Label Text="{Binding SubscriptionName}" FontAttributes="Bold" FontSize="12"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Messagetype:" Style="{StaticResource PromptStyle}"/>
+                <Label Text="{Binding MessageType}" FontAttributes="Bold" FontSize="12"/>
             </StackLayout>
 
             <StackLayout Orientation="Vertical">
-                <Label Text="Publisher Name:" FontSize="10" FontAttributes="Bold"/>
-                <Label Text="{Binding PublisherName}" FontSize="12" Margin="20,0,0,0"/>
-            </StackLayout>
-            
-            <StackLayout Orientation="Vertical">
-                <Label Text="Subscription Name:" FontSize="10" FontAttributes="Bold"/>
-                <Label Text="{Binding SubscriptionName}" FontSize="12" Margin="20,0,0,0"/>
-            </StackLayout>
-            
-            <StackLayout Orientation="Vertical">
-                <Label Text="Message Type:" FontSize="10" FontAttributes="Bold"/>
-                <Label Text="{Binding MessageType}" FontSize="12" Margin="20,0,0,0"/>
-            </StackLayout>
-            
-            <StackLayout Orientation="Vertical">
-    			<Label Text="Message Content:" FontSize="10" FontAttributes="Bold"/>
-    			<Label Text="{Binding Messagecontent}" FontSize="12" Margin="20,0,0,0"/>
+                <Label Text="Messagecontent:" Style="{StaticResource PromptStyle}"/>
+                <Label Text="{Binding Messagecontent}" FontAttributes="Bold" FontSize="12" LineBreakMode="TailTruncation" Margin="5,0,0,0"/>
             </StackLayout>
 
             <StackLayout Orientation="Vertical">
-                <Label Text="Resultmessage:" FontSize="10" FontAttributes="Bold"/>
-                <Label Text="{Binding Resultmessage}" FontSize="12" Margin="20,0,0,0"/>
+                <Label Text="Result: " Style="{StaticResource PromptStyle}"/>
+                <Label Text="{Binding Resultmessage}" FontAttributes="Bold" FontSize="12" LineBreakMode="TailTruncation" Margin="5,0,0,0"/>
             </StackLayout>
 
             <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />

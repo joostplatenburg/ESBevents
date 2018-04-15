@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ESBevents.Models;
 using ESBevents.ViewModels;
 using Xamarin.Forms;
 
@@ -36,7 +37,7 @@ namespace ESBevents
 
         void OnClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new OptionView());
+            Navigation.PushAsync(new OptionView(new List<CustomerModel>()));
         }
 
         void DeleteMessage(object sender, EventArgs e)

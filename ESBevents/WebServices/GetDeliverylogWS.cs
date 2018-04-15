@@ -45,18 +45,16 @@ namespace ESBevents.WebServices
                 switch (vm.Environment)
                 {
                     case "Ontwikkel":
-                        serviceadres = string.Format(service, vm.Customer.IPO, vm.Customer.PortEnsemble, vm.SelectedKoppeling.Name, vm.Status);
+                        serviceadres = string.Format(service, vm.Customer.IPO, vm.Customer.PortPubsub, vm.SelectedKoppeling.Name, vm.Status);
                         break;
                     case "Test":
-                        serviceadres = string.Format(service, vm.Customer.IPT, vm.Customer.PortEnsemble, vm.SelectedKoppeling.Name, vm.Status);
+                        serviceadres = string.Format(service, vm.Customer.IPT, vm.Customer.PortPubsub, vm.SelectedKoppeling.Name, vm.Status);
                         break;
                     case "Acceptatie":
-                        serviceadres = string.Format(service, vm.Customer.IPA, vm.Customer.PortEnsemble, vm.SelectedKoppeling.Name, vm.Status);
+                        serviceadres = string.Format(service, vm.Customer.IPA, vm.Customer.PortPubsub, vm.SelectedKoppeling.Name, vm.Status);
                         break;
                     case "Productie":
-                        serviceadres = string.Format(service, vm.Customer.IPP, vm.Customer.PortEnsemble, vm.SelectedKoppeling.Name, vm.Status);
-                        break;
-                    default:
+                        serviceadres = string.Format(service, vm.Customer.IPP, vm.Customer.PortPubsub, vm.SelectedKoppeling.Name, vm.Status);
                         break;
                 }
 

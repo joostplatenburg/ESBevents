@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net;
-//using ESBevents.Abstractions;
 using ESBevents.Models;
 using ESBevents.ViewModels;
 using ESBevents.WebServices;
@@ -12,7 +10,7 @@ namespace ESBevents
 {
 	public partial class CustomerView : ContentPage
 	{
-		internal CustomerViewModel vm = new CustomerViewModel();
+		private CustomerViewModel vm = new CustomerViewModel();
 
 		public CustomerView()
 		{
@@ -37,7 +35,7 @@ namespace ESBevents
 
 		void OnClick(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new OptionView());
+			Navigation.PushAsync(new OptionView(new List<CustomerModel>()));
 		}
 
 		async void ToonEventLog(object sender, EventArgs e)

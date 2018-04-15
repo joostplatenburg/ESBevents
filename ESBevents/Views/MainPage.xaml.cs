@@ -60,7 +60,8 @@ namespace ESBevents.Views
 
 		void OnClick(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new OptionView());
+            
+			Navigation.PushAsync(new OptionView(vm.Customers));
 		}
 	}
 }

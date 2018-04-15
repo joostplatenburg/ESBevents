@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using ESBevents.Models;
 using ESBevents.ViewModels;
 using Xamarin.Forms;
@@ -34,7 +35,6 @@ namespace ESBevents
 
             vm = new DeliverylogViewModel();
 
-
             foreach (DeliveryModel dm in _psVM.Deliveries) {
                 vm.Deliveries.Add(dm);
             }
@@ -58,15 +58,14 @@ namespace ESBevents
                 vm.SelectedDelivery = selected;
 
 				Navigation.PushAsync(new DeliveryView(vm));
-				////Navigation.PushAsync(new EventView());
 
-				//((ListView)sender).SelectedItem = null;
+				((ListView)sender).SelectedItem = null;
 			};
 		}
 
 		void OnClick(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new OptionView());
+			Navigation.PushAsync(new OptionView(new List<CustomerModel>()));
 		}
 
 	}

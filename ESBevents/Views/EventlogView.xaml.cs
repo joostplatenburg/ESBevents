@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using ESBevents.Models;
 using ESBevents.ViewModels;
 using Xamarin.Forms;
@@ -53,7 +54,7 @@ namespace ESBevents
 
 		void OnClick(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new OptionView());
+			Navigation.PushAsync(new OptionView(new List<CustomerModel>()));
 		}
 
 	}

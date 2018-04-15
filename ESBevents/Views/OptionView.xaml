@@ -5,175 +5,78 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="buttonStyle" TargetType="Button">
-                <Setter Property="HorizontalOptions" Value="End" />
-                <Setter Property="VerticalOptions" Value="End" />
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BackgroundColor" Value="Silver" />
-                <Setter Property="BorderRadius" Value="10" />
-                <Setter Property="HeightRequest" Value="0" />
-                <Setter Property="WidthRequest" Value="200" />
-                <Setter Property="FontAttributes" Value="Bold" />
-            </Style>
-
-            <Style x:Key="entryStyleN" TargetType="Entry">
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BackgroundColor" Value="#bddec3" />
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="Keyboard" Value= "Numeric"/>
-                <Setter Property="WidthRequest" Value="110" />
-               <Setter Property="HeightRequest" Value="22" />
-            </Style>
-
-            <Style x:Key="entryStyleN1" TargetType="Entry">
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BackgroundColor" Value="#bddec3" />
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="Keyboard" Value= "Numeric"/>
-               <Setter Property="HeightRequest" Value="22" />
-                <Setter Property="WidthRequest" Value="95" />
-            </Style>
-
-            <Style x:Key="labelStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="Gray" />
-                <Setter Property="Margin" Value="10,0,0,0" />
-                <Setter Property="FontSize" Value="12" />
-                <Setter Property="VerticalOptions" Value="End" />
-                <Setter Property="WidthRequest" Value="110" />
-            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Activated="SaveOptions" />
+        <!--<ToolbarItem Text="Save" Activated="SaveOptions" />-->
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <Label Text="IP-adressen" Margin="10,10,0,0"/>
-
-            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-
-             <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
-                <Label Style="{StaticResource labelStyle}" Text="Alliade" VerticalOptions="Start"/>
-
-                <StackLayout Orientation="Vertical">
-                    <StackLayout Orientation="Horizontal">
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipALLO" Placeholder="Ontwikkel" TextChanged="OnTextChanged"/>
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipALLT" Placeholder="Test" TextChanged="OnTextChanged"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipALLA" Placeholder="Acceptatie" TextChanged="OnTextChanged"/>
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipALLP" Placeholder="Productie" TextChanged="OnTextChanged"/>
-                    </StackLayout>
-                </StackLayout>
-            </StackLayout>
-
-            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-
-            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
-                <Label Style="{StaticResource labelStyle}" Text="Dichterbij" VerticalOptions="Start"/>
-
-                <StackLayout Orientation="Vertical">
-                    <StackLayout Orientation="Horizontal">
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipDBZO" Placeholder="Ontwikkel" TextChanged="OnTextChanged"/>
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipDBZT" Placeholder="Test" TextChanged="OnTextChanged"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipDBZA" Placeholder="Acceptatie" TextChanged="OnTextChanged"/>
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipDBZP" Placeholder="Productie" TextChanged="OnTextChanged"/>
-                    </StackLayout>
-                </StackLayout>
-            </StackLayout>
-
-            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-
-            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
-                <Label Style="{StaticResource labelStyle}" Text="'s Heeren Loo" VerticalOptions="Start"/>
-
-                <StackLayout Orientation="Vertical">
-                    <StackLayout Orientation="Horizontal">
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipSHLO" Placeholder="Ontwikkel" TextChanged="OnTextChanged"/>
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipSHLT" Placeholder="Test" TextChanged="OnTextChanged"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipSHLA" Placeholder="Acceptatie" TextChanged="OnTextChanged"/>
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipSHLP" Placeholder="Productie" TextChanged="OnTextChanged"/>
-                    </StackLayout>
-                </StackLayout>
-            </StackLayout>
-
-            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-
-            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
-                <Label Style="{StaticResource labelStyle}" Text="Philadelphia" VerticalOptions="Start"/>
-
-                <StackLayout Orientation="Vertical">
-                    <StackLayout Orientation="Horizontal">
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipSPZO" Placeholder="Ontwikkel" TextChanged="OnTextChanged"/>
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipSPZT" Placeholder="Test" TextChanged="OnTextChanged"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipSPZA" Placeholder="Acceptatie" TextChanged="OnTextChanged"/>
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipSPZP" Placeholder="Productie" TextChanged="OnTextChanged"/>
-                    </StackLayout>
-                </StackLayout>
-            </StackLayout>
-
-            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-
-            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
-                <Label Style="{StaticResource labelStyle}" Text="Zorgboog" VerticalOptions="Start"/>
-
-                <StackLayout Orientation="Vertical">
-                    <StackLayout Orientation="Horizontal">
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipZGBO" Placeholder="Ontwikkel" TextChanged="OnTextChanged"/>
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipZGBT" Placeholder="Test" TextChanged="OnTextChanged"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipZGBA" Placeholder="Acceptatie" TextChanged="OnTextChanged"/>
-                        <Entry Style="{StaticResource entryStyleN}" x:Name="ipZGBP" Placeholder="Productie" TextChanged="OnTextChanged"/>
-                    </StackLayout>
-                </StackLayout>
-            </StackLayout>
-
-            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-
-            <Label Text="Poortnummers" Margin="10,10,0,0" />
+            <Image Source="{Binding Logo}" WidthRequest="350" HeightRequest="60"
+                VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="5"/>
             
-             <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
-           <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
-                <Label Style="{StaticResource labelStyle}" Text="Alliade:" />
-                <Entry Style="{StaticResource entryStyleN1}" x:Name="portEventsALL" Placeholder="Eventlogs"/>
-                <Entry Style="{StaticResource entryStyleN1}" x:Name="portProcessALL" Placeholder="ProcesStart"/>
-            </StackLayout>
+            <Label Text="Portnumbers" Margin="5,0,0,0" FontAttributes="Bold"/>
+            
+            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
-            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
-                <Label Style="{StaticResource labelStyle}" Text="Dichterbij:"  />
-                <Entry Style="{StaticResource entryStyleN1}" x:Name="portEventsDBZ" Placeholder="Eventlogs"/>
-                <Entry Style="{StaticResource entryStyleN1}" x:Name="portProcessDBZ" Placeholder="ProcesStart"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Ensemble Services:" Margin="5,0,0,0" WidthRequest="130" FontSize="12"/>
+                <Label Text="{Binding portEnsemble}" FontAttributes="Bold" FontSize="12"/>
             </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="PubSub Services:" Margin="5,0,0,0" WidthRequest="130" FontSize="12"/>
+                <Label Text="{Binding portPubsub}" FontAttributes="Bold" FontSize="12"/>
+            </StackLayout>
+            
+            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
-            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
-                <Label Style="{StaticResource labelStyle}" Text="'s Heeren Loo:" />
-                <Entry Style="{StaticResource entryStyleN1}" x:Name="portEventsSHL" Placeholder="Eventlogs"/>
-                <Entry Style="{StaticResource entryStyleN1}" x:Name="portProcessSHL" Placeholder="ProcesStart"/>
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
-                <Label Style="{StaticResource labelStyle}" Text="Philadelphia:" />
-                <Entry Style="{StaticResource entryStyleN1}" x:Name="portEventsSPZ" Placeholder="Eventlogs"/>
-                <Entry Style="{StaticResource entryStyleN1}" x:Name="portProcessSPZ" Placeholder="ProcesStart"/>
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
-                <Label Style="{StaticResource labelStyle}" Text="Zorgboog:" />
-                <Entry Style="{StaticResource entryStyleN1}" x:Name="portEventsZGB" Placeholder="Eventlogs"/>
-                <Entry Style="{StaticResource entryStyleN1}" x:Name="portProcessZGB" Placeholder="ProcesStart"/>
-            </StackLayout>
+            <Label Text="IP-adressen" Margin="5,0,0,0" FontAttributes="Bold"/>
 
             <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Address on DEV:" Margin="5,0,0,0" WidthRequest="130" FontSize="12"/>
+                <Label Text="{Binding IPO}" FontAttributes="Bold" FontSize="12"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Address on TST:" Margin="5,0,0,0" WidthRequest="130" FontSize="12"/>
+                <Label Text="{Binding IPT}" FontAttributes="Bold" FontSize="12"/>
+            </StackLayout>
+
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+
+            <ListView x:Name="CustomersList" RowHeight="80"
+                        ItemsSource="{Binding Customers}"
+                        SelectedItem="{Binding Customer}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Customer:" Margin="5,0,0,0" WidthRequest="90" FontSize="12"/>
+                                    <Label Text="{Binding Identifier}" FontAttributes="Bold" FontSize="12"/>
+                                    <Label Text=" - " FontAttributes="Bold" FontSize="12"/>
+                                    <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="12"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Address on ACC:" Margin="5,0,0,0" WidthRequest="120" FontSize="12"/>
+                                    <Label Text="{Binding IPA}" FontAttributes="Bold" FontSize="12"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Address on PRD:" Margin="5,0,0,0" WidthRequest="120" FontSize="12"/>
+                                    <Label Text="{Binding IPP}" FontAttributes="Bold" FontSize="12"/>
+                                </StackLayout>
+                                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
         </StackLayout>
      </ContentPage.Content>

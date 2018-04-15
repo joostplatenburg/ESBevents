@@ -58,5 +58,13 @@ Global
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$0.VersionControlPolicy = $2
+		$0.TextStylePolicy = $3
+		$3.inheritsSet = null
+		$3.scope = text/x-json
+		$0.JSONFormattingPolicy = $4
+		$4.AutoStructureCompletion = True
+		$4.BracePositions = SemiExpanded
+		$4.FormatOnPaste = True
+		$4.scope = text/x-json
 	EndGlobalSection
 EndGlobal

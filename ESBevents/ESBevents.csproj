@@ -113,6 +113,9 @@
       <DependentUpon>DeliveryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\DeliveryViewModel.cs" />
+    <Compile Include="WebServices\GetCustomerDataWS.cs" />
+    <Compile Include="ViewModels\DeliveryStatusViewModel.cs" />
+    <Compile Include="ViewModels\OptionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

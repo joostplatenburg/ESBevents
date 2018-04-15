@@ -54,8 +54,6 @@ namespace ESBevents.WebServices
                     case "Productie":
                         serviceadres = string.Format(service, vm.Customer.IPP, vm.Customer.PortEnsemble);
                         break;
-                    default:
-                        break;
                 }
 
                 var uri = new Uri(serviceadres);

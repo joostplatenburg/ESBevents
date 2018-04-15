@@ -14,7 +14,18 @@
 
             <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
             
-			<ListView x:Name="koppelingenList" RowHeight="40"
+            <StackLayout Orientation="Vertical">
+                <Label Text="Publish and Subscribe Services" FontSize="16" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding Environment}" HorizontalOptions="CenterAndExpand" />
+                    <Label Text=" - " HorizontalOptions="CenterAndExpand" />
+                    <Label Text="{Binding Status}" HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+            </StackLayout>
+            
+             <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+
+       		<ListView x:Name="koppelingenList" RowHeight="35"
 						ItemsSource="{Binding Koppelingen}"
 						SelectedItem="{Binding SelectedKoppeling}" >
 				<ListView.ItemTemplate>
@@ -28,6 +39,11 @@
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
+
+             <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+
+            <BoxView Margin="0" HeightRequest="12" HorizontalOptions="FillAndExpand" BackgroundColor="White" />
+            
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

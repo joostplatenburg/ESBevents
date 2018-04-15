@@ -42,11 +42,9 @@
 
             <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
 
-            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
-                <Image Source="pubsub.png" 
-                    WidthRequest="60" HeightRequest="60"
-                    VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0"/>
-                <Label Text="Publish and Subscribe Services" FontSize="16" VerticalOptions="Center"/>
+            <StackLayout Orientation="Vertical">
+                <Label Text="Publish and Subscribe Services" FontSize="16" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                <Label Text="{Binding Environment}" HorizontalOptions="CenterAndExpand" />
             </StackLayout>
             
             <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />

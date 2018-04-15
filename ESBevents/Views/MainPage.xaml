@@ -2,22 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
 			xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 			x:Class="ESBevents.Views.MainPage" 
-	Title="ESB's">
-	
-	<ContentPage.Resources>
-		<ResourceDictionary>
-			<Style x:Key="buttonStyle" TargetType="Button">
-				<Setter Property="HorizontalOptions" Value="End" />
-				<Setter Property="VerticalOptions" Value="Center" />
-				<Setter Property="TextColor" Value="White" />
-				<Setter Property="BackgroundColor" Value="#bddec3" />
-				<Setter Property="BorderRadius" Value="10" />
-				<Setter Property="HeightRequest" Value="400" />
-				<Setter Property="WidthRequest" Value="200" />
-				<Setter Property="FontAttributes" Value="Bold" />
-			</Style>
-		</ResourceDictionary>
-	</ContentPage.Resources>
+	        Title="ESB's">
 	
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Icon="ic_drawer.png" Activated="OnClick" />
@@ -40,9 +25,21 @@
                                         HorizontalOptions="Start" Margin="10,0,10,0"/>
                                 
                                 <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Name}" FontSize="18" Margin="0,5,0,0"/>
-                                    <Label Text="{Binding IPNumber}" FontSize="10"/>
-                                    <Label Text="{Binding PortNumber}" FontSize="10" LineBreakMode="TailTruncation"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Identifier}" FontSize="18" FontAttributes="Bold" Margin="0,5,0,0"/>
+                                        <Label Text=" - " FontSize="18" FontAttributes="Bold" Margin="0,5,0,0"/>
+                                        <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" Margin="0,5,0,0"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding IPA}" FontSize="10" WidthRequest="80"/>
+                                        <Label Text=" : " FontSize="10"/>
+                                        <Label Text="{Binding PortEnsemble}" FontSize="10"/>
+                                        </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding IPP}" FontSize="10" WidthRequest="80"/>
+                                        <Label Text=" : " FontSize="10"/>
+                                        <Label Text="{Binding PortPubsub}" FontSize="10" LineBreakMode="TailTruncation"/>
+                                    </StackLayout>
                                 </StackLayout>
                             </StackLayout>
 

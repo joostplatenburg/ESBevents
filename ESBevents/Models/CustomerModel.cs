@@ -8,6 +8,7 @@ namespace ESBevents.Models
 {
     public class CustomerModel
     {
+        public string Identifier { get; set; }
         public string Name { get; set; }
 
 		public string IPO { get; set; }

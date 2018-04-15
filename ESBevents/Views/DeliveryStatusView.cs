@@ -40,7 +40,7 @@ namespace ESBevents
 
 		void OnClick(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new OptionView());
+			Navigation.PushAsync(new OptionView(new List<CustomerModel>()));
 		}
 
         //void ToonLog(object sender, EventArgs e)
