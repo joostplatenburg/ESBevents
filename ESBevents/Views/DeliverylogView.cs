@@ -29,20 +29,21 @@ namespace ESBevents
 		}
 
 
-        public DeliverylogView(PubsubKoppelingenViewModel _psVM)
+        public DeliverylogView(PubsubKoppelingenViewModel pkvm)
         {
             InitializeComponent();
 
             vm = new DeliverylogViewModel();
 
-            foreach (DeliveryModel dm in _psVM.Deliveries) {
+            foreach (DeliveryModel dm in pkvm.Deliveries) {
                 vm.Deliveries.Add(dm);
             }
 
-            vm.Customer = _psVM.Customer;
-            vm.Environment = _psVM.Environment;
-            vm.Status = _psVM.Status;
-            vm.Koppeling = _psVM.SelectedKoppeling.Name;
+            vm.Customer = pkvm.Customer;
+            vm.Customers = pkvm.Customers;
+            vm.Environment = pkvm.Environment;
+            vm.Status = pkvm.Status;
+            vm.Koppeling = pkvm.SelectedKoppeling.Name;
 
             Initialize();
         }
@@ -65,7 +66,7 @@ namespace ESBevents
 
 		void OnClick(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new OptionView(new List<CustomerModel>()));
+			Navigation.PushAsync(new OptionView(vm.Customers));
 		}
 
 	}

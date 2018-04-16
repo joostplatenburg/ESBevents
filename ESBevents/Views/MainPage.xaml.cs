@@ -23,8 +23,9 @@ namespace ESBevents.Views
 
             customerList.ItemTapped += (sender, e) =>
             {
-                Navigation.PushAsync(new CustomerView(vm.SelectedItem));
-                //Navigation.PushAsync(new EventView());
+                vm.Customer = vm.SelectedItem;
+
+                Navigation.PushAsync(new CustomerView(vm));
 
                 ((ListView)sender).SelectedItem = null;
             };

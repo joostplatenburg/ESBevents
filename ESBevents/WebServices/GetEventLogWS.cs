@@ -35,7 +35,7 @@ namespace ESBevents.WebServices
                 Debug.WriteLine(vm.Customer.IPT);
                 Debug.WriteLine(vm.Customer.PortEnsemble);
 
-                var service = "http://{0}:{1}/DXCUtilities/HaalEventlog";
+                var service = "http://{0}:{1}/dxcmobile/geteventlog";
                 var serviceadres = string.Empty;
 
                 Debug.WriteLine(service);

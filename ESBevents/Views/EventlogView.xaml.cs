@@ -23,18 +23,21 @@ namespace ESBevents
 		{
 			InitializeComponent();
 
-			vm = new EventlogViewModel(_mpVM);
+			vm = new EventlogViewModel();
 			//vm.Zorgverleners = _mpVM.Zorgverleners;
 
 			Initialize();
 		}
 
-		public EventlogView(CustomerViewModel _cVM)
+		public EventlogView(CustomerViewModel cvm)
 		{
 			InitializeComponent();
 
-			vm = new EventlogViewModel(_cVM);
-			//vm.Zorgverleners = _mpVM.Zorgverleners;
+			vm = new EventlogViewModel(cvm);
+            vm.Customer = cvm.Customer;
+            vm.Customers = cvm.Customers;
+            vm.Environment = cvm.Environment;
+            vm.Logo = cvm.Customer.Logo;
 
 			Initialize();
 		}
@@ -45,7 +48,7 @@ namespace ESBevents
 
 			eventList.ItemTapped += (sender, e) =>
 			{
-				Navigation.PushAsync(new EventView(vm.SelectedItem));
+				Navigation.PushAsync(new EventView(vm));
 				//Navigation.PushAsync(new EventView());
 
 				((ListView)sender).SelectedItem = null;
@@ -54,7 +57,7 @@ namespace ESBevents
 
 		void OnClick(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new OptionView(new List<CustomerModel>()));
+			Navigation.PushAsync(new OptionView(vm.Customers));
 		}
 
 	}

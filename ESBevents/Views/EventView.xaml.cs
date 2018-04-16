@@ -17,11 +17,13 @@ namespace ESBevents
 			Initialize();
 		}
 
-		public EventView(EventViewModel _vm)
+        public EventView(EventlogViewModel elvm)
 		{
 			InitializeComponent();
 
-			vm = _vm;
+			vm = elvm.SelectedItem;
+            vm.Customers = elvm.Customers;
+            vm.Logo = elvm.Customer.Logo;
 
 			Initialize();
 		}
@@ -34,7 +36,7 @@ namespace ESBevents
 
 		void OnClick(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new OptionView(new List<CustomerModel>()));
+			Navigation.PushAsync(new OptionView(vm.Customers));
 		}
 	}
 }

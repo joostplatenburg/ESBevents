@@ -12,9 +12,8 @@ namespace ESBevents
 {
     public partial class DeliveryStatusView : ContentPage
 	{
-        //internal PubsubKoppelingenViewModel vm = new PubsubKoppelingenViewModel();
-        internal PubsubKoppelingenViewModel vm;
-        internal CustomerViewModel cvm;
+        internal PubsubKoppelingenViewModel pkvm;
+        internal DeliveryStatusViewModel vm = new DeliveryStatusViewModel();
 
         public DeliveryStatusView()
 		{
@@ -23,13 +22,15 @@ namespace ESBevents
             Initialize();
 		}
 
-        public DeliveryStatusView(CustomerViewModel _cvm)
+        public DeliveryStatusView(CustomerViewModel cvm)
         {
             InitializeComponent();
 
-            vm = new PubsubKoppelingenViewModel(_cvm);
-            cvm = _cvm;
-
+            vm = new DeliveryStatusViewModel();
+            vm.Customer = cvm.Customer;
+            vm.Customers = cvm.Customers;
+            vm.Environment = cvm.Environment;
+                
             Initialize();
         }
 
@@ -40,7 +41,7 @@ namespace ESBevents
 
 		void OnClick(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new OptionView(new List<CustomerModel>()));
+            Navigation.PushAsync(new OptionView(vm.Customers));
 		}
 
         //void ToonLog(object sender, EventArgs e)
@@ -53,9 +54,8 @@ namespace ESBevents
         {
             var but = sender as Button;
             vm.Status = but.Text;
-            cvm.Status = but.Text;
 
-            await Navigation.PushAsync(new PubsubKoppelingenView(cvm));
+            await Navigation.PushAsync(new PubsubKoppelingenView(vm));
 
             //  //((ListView)sender).SelectedItem = null;
         }

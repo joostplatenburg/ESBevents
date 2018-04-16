@@ -93,6 +93,64 @@ namespace ESBevents.ViewModels
                 OnPropertyChanged("SelectedItem");
             }
         }
-        #endregion Properties
+
+        List<CustomerModel> _customers;
+        public List<CustomerModel> Customers
+        {
+            get { return _customers; }
+            set
+            {
+                if (_customers == value)
+                    return;
+
+                _customers = value;
+
+                OnPropertyChanged("Customers");
+            }
+        }
+
+        CustomerModel _customer;
+        public CustomerModel Customer
+        {
+            get { return _customer; }
+            set
+            {
+                if (_customer == value) return;
+
+                _customer = value;
+
+                OnPropertyChanged("Customer");
+            }
+        }
+
+        string _logo;
+        public string Logo
+        {
+            get { return _logo; }
+            set
+            {
+                if (_logo == value) return;
+
+                _logo = value;
+
+                OnPropertyChanged("Logo");
+            }
+        }
+
+        string _environment;
+        public string Environment
+        {
+            get { return _environment; }
+            set
+            {
+                if (_environment == value)
+                    return;
+
+                _environment = value;
+
+                OnPropertyChanged("Environment");
+            }
+        }
+       #endregion Properties
     }
 }

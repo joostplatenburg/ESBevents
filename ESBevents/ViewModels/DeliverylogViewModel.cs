@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Collections.ObjectModel;
 using ESBevents.Models;
+using System.Collections.Generic;
 
 namespace ESBevents.ViewModels
 {
@@ -78,6 +79,21 @@ namespace ESBevents.ViewModels
 				OnPropertyChanged("SelectedDelivery");
 			}
 		}
+
+        List<CustomerModel> _customers;
+        public List<CustomerModel> Customers
+        {
+            get { return _customers; }
+            set
+            {
+                if (_customers == value)
+                    return;
+
+                _customers = value;
+
+                OnPropertyChanged("Customers");
+            }
+        }
 
         CustomerModel _customer;
         public CustomerModel Customer

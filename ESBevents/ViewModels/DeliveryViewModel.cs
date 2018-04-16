@@ -75,61 +75,35 @@ namespace ESBevents.ViewModels
             }
         }
 
-        /*
+        List<CustomerModel> _customers;
+        public List<CustomerModel> Customers
+        {
+            get { return _customers; }
+            set
+            {
+                if (_customers == value)
+                    return;
 
-		public string TypeImage
-		{
-			get {
-				if (Event.Type != null)
-				{
-					switch (Event.Type)
-					{
-						case "1":
-							return "led_blue.png";
-						case "2":
-							return "led_red.png";
-						case "3":
-							return "led_yellow.png";
-						case "4":
-							return "led_green.png";
-						case "5":
-							return "led_blue.png";
-						default:
-							break;
-					}
-				}
+                _customers = value;
 
-				return "";
-			}
-		}
+                OnPropertyChanged("Customers");
+            }
+        }
 
-        public string MsgType
-		{
-			get
-			{
-                if (Event.Type != null)
-                {
-                    switch (Type)
-                    {
-                        case "1":
-                            return "1";
-                        case "2":
-                            return "Error";
-                        case "3":
-                            return "Warning";
-                        case "4":
-                            return "Info";
-                        case "5":
-                            return "Trace";
-                        default:
-                            break;
-                    }
-                }
-				return "";
-			}
-		}
-        */
+        CustomerModel _customer;
+        public CustomerModel Customer
+        {
+            get { return _customer; }
+            set
+            {
+                if (_customer == value) return;
 
-		#endregion Properties
+                _customer = value;
+
+                OnPropertyChanged("Customer");
+            }
+        }
+
+        #endregion Properties
 	}
 }

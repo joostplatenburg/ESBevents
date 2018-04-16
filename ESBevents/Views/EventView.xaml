@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ESBevents.EventView">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ESBevents.EventView" Title="Event">
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<Style x:Key="buttonStyle" TargetType="Button">
@@ -12,6 +12,15 @@
 				<Setter Property="WidthRequest" Value="200" />
 				<Setter Property="FontAttributes" Value="Bold" />
 			</Style>
+            <Style x:Key="PromptStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Margin" Value="5,0,0,0" />
+                <Setter Property="WidthRequest" Value="110" />
+            </Style>
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	
@@ -20,49 +29,54 @@
 	</ContentPage.ToolbarItems>
 	
 	<ContentPage.Content>
-		<StackLayout Orientation="Vertical" Margin="20">
+        <StackLayout Orientation="Vertical" Margin="20" >
+           <Image Source="{Binding Logo}" WidthRequest="350" HeightRequest="60"
+                VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="10,0,10,0"/>
+            
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+
             <StackLayout Orientation="Horizontal">
-			    <Label Text="Time Logged:" FontSize="12" TextColor="Red" WidthRequest="100"/>
-			    <Label Text="{Binding TimeLogged}" FontSize="10"/>
+			    <Label Text="Time Logged:" Style="{StaticResource PromptStyle}"/>
+			    <Label Text="{Binding TimeLogged}" Style="{StaticResource LabelStyle}"/>
             </StackLayout>
             
             <StackLayout Orientation="Horizontal">
-    			<Label Text="Source Class:" FontSize="12" TextColor="Red" WidthRequest="100"/>
-    			<Label Text="{Binding SourceClass}" FontSize="10"/>
+    			<Label Text="Source Class:" Style="{StaticResource PromptStyle}"/>
+    			<Label Text="{Binding SourceClass}" Style="{StaticResource LabelStyle}"/>
             </StackLayout>
             
             <StackLayout Orientation="Horizontal">
-    			<Label Text="Source Method:" FontSize="12" TextColor="Red" WidthRequest="100"/>
-    			<Label Text="{Binding SourceMethod}" FontSize="10"/>
+    			<Label Text="Source Method:" Style="{StaticResource PromptStyle}"/>
+    			<Label Text="{Binding SourceMethod}" Style="{StaticResource LabelStyle}"/>
             </StackLayout>
             
             <StackLayout Orientation="Horizontal">
-    			<Label Text="Config Name:" FontSize="12" TextColor="Red" WidthRequest="100"/>
-    			<Label Text="{Binding ConfigName}" FontSize="10"/>
+    			<Label Text="Config Name:" Style="{StaticResource PromptStyle}"/>
+    			<Label Text="{Binding ConfigName}" Style="{StaticResource LabelStyle}"/>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-    			<Label Text="Type:" FontSize="12" TextColor="Red" WidthRequest="100"/>
-    			<Label Text="{Binding Type}" FontSize="10"/>
+    			<Label Text="Type:" Style="{StaticResource PromptStyle}"/>
+    			<Label Text="{Binding Type}" Style="{StaticResource LabelStyle}"/>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-    			<Label Text="Session ID:" FontSize="12" TextColor="Red" WidthRequest="100"/>
-    			<Label Text="{Binding SessionId}" FontSize="10"/>
+    			<Label Text="Session ID:" Style="{StaticResource PromptStyle}"/>
+    			<Label Text="{Binding SessionId}" Style="{StaticResource LabelStyle}"/>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-    			<Label Text="Job:" FontSize="12" TextColor="Red" WidthRequest="100"/>
-    			<Label Text="{Binding Job}" FontSize="10"/>
+    			<Label Text="Job:" Style="{StaticResource PromptStyle}"/>
+    			<Label Text="{Binding Job}" Style="{StaticResource LabelStyle}"/>
             </StackLayout>
             
             <StackLayout Orientation="Horizontal">
-    			<Label Text="Message ID:" FontSize="12" TextColor="Red" WidthRequest="100"/>
-    			<Label Text="{Binding MessageId}" FontSize="10"/>
+    			<Label Text="Message ID:" Style="{StaticResource PromptStyle}"/>
+    			<Label Text="{Binding MessageId}" Style="{StaticResource LabelStyle}"/>
             </StackLayout>
 
-			<Label Text="Text:" FontSize="12" TextColor="Red" WidthRequest="100"/>
-			<Label Text="{Binding Text}" FontSize="10"/>
+			<Label Text="Text:" Style="{StaticResource PromptStyle}"/>
+			<Label Text="{Binding Text}" Style="{StaticResource LabelStyle}"/>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

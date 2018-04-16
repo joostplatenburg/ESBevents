@@ -25,6 +25,8 @@ namespace ESBevents
             vm = new DeliveryViewModel(_vm);
             vm.Delivery = _vm.SelectedDelivery;
             vm.Logo = _vm.Logo;
+            vm.Customer = vm.Customer;
+            vm.Customers = vm.Customers;
 
 			Initialize();
 		}
@@ -37,7 +39,7 @@ namespace ESBevents
 
         void OnClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new OptionView(new List<CustomerModel>()));
+            Navigation.PushAsync(new OptionView(vm.Customers));
         }
 
         void DeleteMessage(object sender, EventArgs e)

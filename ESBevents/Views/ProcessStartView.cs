@@ -20,20 +20,13 @@ namespace ESBevents
 			Initialize();
 		}
 
-		public ProcessStartView(CustomerViewModel _cVM)
+		public ProcessStartView(CustomerViewModel cvm)
 		{
 			InitializeComponent();
 
-			vm = new ProcessStartViewModel(_cVM);
-
-			Initialize();
-		}
-
-        public ProcessStartView(CustomerModel _customer)
-        {
-            InitializeComponent();
-
-            vm = new ProcessStartViewModel(_customer);
+			vm = new ProcessStartViewModel(cvm);
+            vm.Customer = cvm.Customer;
+            vm.Customers = cvm.Customers;
 
 			Initialize();
 		}
@@ -68,7 +61,7 @@ namespace ESBevents
 
 		void OnClick(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new OptionView(new List<CustomerModel>()));
+			Navigation.PushAsync(new OptionView(vm.Customers));
 		}
 
 	}

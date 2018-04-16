@@ -19,11 +19,13 @@ namespace ESBevents
             Initialize();
 		}
 
-		public CustomerView(CustomerModel cm)
+		public CustomerView(MainPageViewModel mpvm)
 		{
 			InitializeComponent();
 
-			vm.Customer = cm;
+            vm = new CustomerViewModel();
+            vm.Customer = mpvm.Customer;
+            vm.Customers = mpvm.Customers;
 			
             Initialize();
 		}
@@ -35,13 +37,12 @@ namespace ESBevents
 
 		void OnClick(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new OptionView(new List<CustomerModel>()));
+			Navigation.PushAsync(new OptionView(vm.Customers));
 		}
 
 		async void ToonEventLog(object sender, EventArgs e)
 		{
 			var but = sender as Button;
-
 			vm.Environment = but.Text;
 
 			// Dan met de velden de webservice aanroepen.
@@ -59,9 +60,9 @@ namespace ESBevents
 
 		async void  StartProcess(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new ProcessStartView(vm.Customer));
+			await Navigation.PushAsync(new ProcessStartView(vm));
 
-			((ListView)sender).SelectedItem = null;
+			//((ListView)sender).SelectedItem = null;
         }
 
         async void ToonPubsubKoppelingen(object sender, EventArgs e)
@@ -69,7 +70,6 @@ namespace ESBevents
             var but = sender as Button;
             vm.Environment = but.Text;
 
-//            await Navigation.PushAsync(new PubsubKoppelingenView(vm));
             await Navigation.PushAsync(new DeliveryStatusView(vm));
 
             //((ListView)sender).SelectedItem = null;
@@ -78,13 +78,6 @@ namespace ESBevents
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-			//MessagingCenter.Subscribe<DeviceOrientationChangeMessage>(this, DeviceOrientationChangeMessage.MessageId, (message) =>
-			//{
-			//	//TODO: HandleOrientationChange(message);
-			//});
-        
         }
-
 	}
 }

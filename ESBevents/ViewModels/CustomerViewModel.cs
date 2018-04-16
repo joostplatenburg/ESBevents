@@ -38,6 +38,21 @@ namespace ESBevents.ViewModels
         #endregion INotifyPropertyChanged implementation
 
         #region Properties
+        List<CustomerModel> _customers;
+        public List<CustomerModel> Customers
+        {
+            get { return _customers; }
+            set
+            {
+                if (_customers == value)
+                    return;
+
+                _customers = value;
+
+                OnPropertyChanged("Customers");
+            }
+        }
+
         CustomerModel _customer;
         public CustomerModel Customer
         {
