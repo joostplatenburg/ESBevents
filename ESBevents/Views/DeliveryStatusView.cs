@@ -12,7 +12,6 @@ namespace ESBevents
 {
     public partial class DeliveryStatusView : ContentPage
 	{
-        internal PubsubKoppelingenViewModel pkvm;
         internal DeliveryStatusViewModel vm = new DeliveryStatusViewModel();
 
         public DeliveryStatusView()
@@ -60,7 +59,8 @@ namespace ESBevents
             //  //((ListView)sender).SelectedItem = null;
         }
 
-        async void ToonStats(object sender, EventArgs e)
+        //async void ToonStats(object sender, EventArgs e)
+        void ToonStats(object sender, EventArgs e)
         {
         /*    var but = sender as Button;
             vm.Status = but.Text;

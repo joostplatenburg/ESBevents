@@ -4,16 +4,31 @@ namespace ESBevents
 {
 	public partial class App : Application
 	{
+        public static bool IsUserLoggedIn { get; set; }
+
+        static public int ScreenWidth;
+        static public int ScreenHeight;
+
 		public App()
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new ESBevents.Views.MainPage())
-			{
-				BarBackgroundColor = Color.FromHex("#806699"),
-				BarTextColor = Color.White,
-				Title = "ESB Eventlogs"
-			};
+            if (!IsUserLoggedIn)
+            {
+                MainPage = new NavigationPage(new ESBevents.Views.IdentityManagement.LoginPage())
+                {
+                    BarBackgroundColor = Color.FromHex("#806699"),
+                    BarTextColor = Color.White,
+                    Title = "ESB Eventlogs"
+                };
+            } else {
+                MainPage = new NavigationPage(new ESBevents.Views.MainPage())
+                {
+                    BarBackgroundColor = Color.FromHex("#806699"),
+                    BarTextColor = Color.White,
+                    Title = "ESB Eventlogs"
+                };
+            }
 		}
 
 		protected override void OnStart()

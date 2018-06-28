@@ -1,106 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="ESBevents.CustomerView"
-    Title="Customer">
-    
-	<ContentPage.Resources>
-		<ResourceDictionary>
-			<Style x:Key="buttonStyle" TargetType="Button">
-				<Setter Property="HorizontalOptions" Value="End" />
-				<Setter Property="VerticalOptions" Value="Center" />
-				<Setter Property="TextColor" Value="Gray" />
-				<Setter Property="BackgroundColor" Value="#bddec3" />
-				<Setter Property="BorderRadius" Value="10" />
-				<Setter Property="HeightRequest" Value="50" />
-				<Setter Property="WidthRequest" Value="120" />
-				<Setter Property="FontAttributes" Value="Bold" />
-			</Style>
-		</ResourceDictionary>
-	</ContentPage.Resources>
-	
-	<ContentPage.ToolbarItems>
-		<ToolbarItem Icon="ic_drawer.png" Activated="OnClick" />
-	</ContentPage.ToolbarItems>
-	
-	<ContentPage.Content>
-		<StackLayout Orientation="Vertical">
-           <Image Source="{Binding Logo}" 
-                WidthRequest="350" HeightRequest="60"
-                VerticalOptions="Start" 
-                HorizontalOptions="CenterAndExpand" Margin="10,0,10,0"/>
-
-            <!-- Toon eventlog-->
-            <StackLayout Orientation="Vertical" IsVisible="{Binding ToonEventlog}" >
-                <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
-                    <Image Source="EventLog.png" 
-                        WidthRequest="60" HeightRequest="60"
-                        VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0"/>
-                    <Label Text="Toon ESB Eventlog" FontSize="16" VerticalOptions="Center"/>
-                </StackLayout>
-
-                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
-                    <Button x:Name="DEVEL" Text="Ontwikkel" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="5"/>
-                    <Button x:Name="TSTEL" Text="Test" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="5"/>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Button x:Name="ACCEL" Text="Acceptatie" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="5"/>
-                    <Button x:Name="PRDEL" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="5"/>
-                </StackLayout>
-            </StackLayout>
-
-            <!-- Start business process-->
-            <StackLayout Orientation="Vertical" IsVisible="{Binding StartBP}">
-                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
-                    <Image Source="ProcessStart.png" 
-                        WidthRequest="60" HeightRequest="60"
-                        VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0"/>
-                    <Label Text="Start Business Process" FontSize="16" VerticalOptions="Center"/>
-                </StackLayout>
-                
-                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
-                    <Button x:Name="DEVSP" Text="Ontwikkel" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="5"/>
-                    <Button x:Name="TSTSP" Text="Test" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="5"/>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Button x:Name="ACCSP" Text="Acceptatie" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="5"/>
-                    <Button x:Name="PRDSP" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="5"/>
-                </StackLayout>
-            </StackLayout>
-
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ESBevents.Views.CustomerView" Title="Customer">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="BackgroundColor" Value="#bddec3" />
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_drawer.png" Activated="OnClick" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Image Source="{Binding Logo}" WidthRequest="350" HeightRequest="60" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="10,0,10,0" />
             <!-- Toon pubsub log-->
             <StackLayout Orientation="Vertical" IsVisible="{Binding ToonPSlog}">
-                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
-                    <Image Source="pubsub.png" 
-                        WidthRequest="60" HeightRequest="60"
-                        VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0"/>
-                    <Label Text="DXC Publish and Subscribe" FontSize="16" VerticalOptions="Center"/>
+                <StackLayout x:Name="psStack" Orientation="Vertical" HeightRequest="54">
+                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
+                        <Image Source="pubsub.png" WidthRequest="60" HeightRequest="60" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0" />
+                        <Label Text="DXC Publish and Subscribe" FontSize="16" VerticalOptions="Center" />
+                    </StackLayout>
+                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
                 </StackLayout>
-                
-                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
-                    <Button x:Name="DEVPS" Text="Ontwikkel" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5"/>
-                    <Button x:Name="TSTPS" Text="Test" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5"/>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Button x:Name="ACCPS" Text="Acceptatie" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5"/>
-                    <Button x:Name="PRDPS" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5"/>
+                <StackLayout Orientation="Vertical" IsVisible="{Binding psCommands}">
+                    <!--
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                        <Button x:Name="DEVPS" Text="Ontwikkel" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5"/>
+                        <Button x:Name="TSTPS" Text="Test" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button x:Name="ACCPS" Text="Acceptatie" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5"/>
+                        <Button x:Name="PRDPS" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5"/>
+                    </StackLayout>
+        -->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button x:Name="TSTPS" Text="Test" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5" />
+                        <Button x:Name="ACCPS" Text="Acceptatie" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5" />
+                        <Button x:Name="PRDPS" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="ToonPubsubKoppelingen" Margin="5" />
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
-
-            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-            
-       </StackLayout>
-	</ContentPage.Content>
+            <!-- Toon eventlog-->
+            <StackLayout Orientation="Vertical" IsVisible="{Binding ToonEventlog}">
+                <StackLayout x:Name="elStack" Orientation="Vertical" HeightRequest="54">
+                    <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
+                        <Image Source="EventLog.png" WidthRequest="60" HeightRequest="60" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0" />
+                        <Label Text="Toon ESB Eventlog" FontSize="16" VerticalOptions="Center" />
+                    </StackLayout>
+                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                </StackLayout>
+                <StackLayout Orientation="Vertical" IsVisible="{Binding elCommands}">
+                    <!--
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                        <Button x:Name="DEVEL" Text="Ontwikkel" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="5"/>
+                        <Button x:Name="TSTEL" Text="Test" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="5"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button x:Name="ACCEL" Text="Acceptatie" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="5"/>
+                        <Button x:Name="PRDEL" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="5"/>
+                    </StackLayout>
+        -->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button x:Name="TSTEL" Text="Test" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="5" />
+                        <Button x:Name="ACCEL" Text="Acceptatie" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="5" />
+                        <Button x:Name="PRDEL" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="ToonEventLog" Margin="5" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            <!-- Start business process-->
+            <StackLayout Orientation="Vertical" IsVisible="{Binding StartBP}">
+                <StackLayout x:Name="sbStack" Orientation="Vertical" HeightRequest="54">
+                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
+                        <Image Source="ProcessStart.png" WidthRequest="60" HeightRequest="60" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0" />
+                        <Label Text="Start Business Process" FontSize="16" VerticalOptions="Center" />
+                    </StackLayout>
+                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                </StackLayout>
+                <StackLayout Orientation="Vertical" IsVisible="{Binding sbCommands}">
+                    <!--
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                        <Button x:Name="DEVSP" Text="Ontwikkel" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="5"/>
+                        <Button x:Name="TSTSP" Text="Test" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="5"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button x:Name="ACCSP" Text="Acceptatie" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="5"/>
+                        <Button x:Name="PRDSP" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="5"/>
+                    </StackLayout>
+        -->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button x:Name="TSTSP" Text="Test" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="5" />
+                        <Button x:Name="ACCSP" Text="Acceptatie" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="5" />
+                        <Button x:Name="PRDSP" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="5" />
+                    </StackLayout>
+                </StackLayout>
+                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

@@ -62,22 +62,5 @@
     </scenes>
     <resources>
         <image name="DXC_180.png" width="180" height="180"/>
-        <image name="ic_drawer.png" width="24" height="16"/>
-        <image name="led_blue.png" width="128" height="128"/>
-        <image name="led_green.png" width="128" height="128"/>
-        <image name="led_red.png" width="128" height="128"/>
-        <image name="led_yellow.png" width="128" height="128"/>
-        <image name="DXCLogo3.png" width="91" height="79"/>
-        <image name="DXC_120.png" width="120" height="120"/>
-        <image name="ALL.png" width="400" height="275"/>
-        <image name="DBZ.png" width="400" height="275"/>
-        <image name="SHL.png" width="400" height="275"/>
-        <image name="SPZ.png" width="400" height="275"/>
-        <image name="ZGB.png" width="400" height="275"/>
-        <image name="EventLog.png" width="256" height="256"/>
-        <image name="ProcessStart.png" width="259" height="194"/>
-        <image name="DOB.png" width="219" height="219"/>
-        <image name="DZG.png" width="200" height="200"/>
-        <image name="pubsub.png" width="352" height="143"/>
     </resources>
 </document>

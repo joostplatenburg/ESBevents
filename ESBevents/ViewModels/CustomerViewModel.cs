@@ -129,6 +129,48 @@ namespace ESBevents.ViewModels
                 OnPropertyChanged("Event");
             }
         }
+
+        bool _psCommands = true;
+        public bool psCommands
+        {
+            get { return _psCommands; }
+            set
+            {
+                if (_psCommands == value) return;
+
+                _psCommands = value;
+
+                OnPropertyChanged("psCommands");
+            }
+        }
+
+        bool _elCommands = true;
+        public bool elCommands
+        {
+            get { return _elCommands; }
+            set
+            {
+                if (_elCommands == value) return;
+
+                _elCommands = value;
+
+                OnPropertyChanged("elCommands");
+            }
+        }
+
+        bool _sbCommands = true;
+        public bool sbCommands
+        {
+            get { return _sbCommands; }
+            set
+            {
+                if (_sbCommands == value) return;
+
+                _sbCommands = value;
+
+                OnPropertyChanged("sbCommands");
+            }
+        }
         #endregion Properties
 
         string _environment;

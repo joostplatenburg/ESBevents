@@ -33,13 +33,19 @@
     			<ListView.ItemTemplate>
     				<DataTemplate>
     					<ViewCell>
-                            <StackLayout Orientation="Vertical">
-            					<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" >
+                            <StackLayout Orientation="Vertical" BackgroundColor="{Binding bColor}">
+            					<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Vertical">
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="Created on: " FontSize="12" Margin="10,0,0,0" WidthRequest="90"/>
-                                            <Label Text="{Binding CreationDate}" FontAttributes="Bold" FontSize="12"/>
-                							<Label Text="{Binding CreationTime}" FontAttributes="Bold" FontSize="12"/>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Created on: " FontSize="12" Margin="10,0,0,0" WidthRequest="90"/>
+                                                <Label Text="{Binding CreationDate}" FontAttributes="Bold" FontSize="12"/>
+                    							<Label Text="{Binding CreationTime}" FontAttributes="Bold" FontSize="12"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="0,0,10,0">
+                                                <Label Text="Tries: " FontSize="12" Margin="10,0,0,0" WidthRequest="50"/>
+                                                <Label Text="{Binding NumberOfTries}" FontAttributes="Bold" FontSize="12"/>
+                                            </StackLayout>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <Label Text="Processed on: " FontSize="12" Margin="10,0,0,0" WidthRequest="90"/>

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ESBevents.Models;
 using ESBevents.WebServices;
+using Xamarin.Forms;
 
 namespace ESBevents.ViewModels
 {
@@ -51,91 +52,109 @@ namespace ESBevents.ViewModels
         #region Properties
         List<CustomerModel> _customers;
         public List<CustomerModel> Customers
-		{
-			get { return _customers; }
-			set
-			{
-				if (_customers == value)
-					return;
+        {
+            get { return _customers; }
+            set
+            {
+                if (_customers == value)
+                    return;
 
-				_customers = value;
+                _customers = value;
 
-				OnPropertyChanged("Customers");
-			}
-		}
+                OnPropertyChanged("Customers");
+            }
+        }
 
         CustomerModel _customer;
         public CustomerModel Customer
-		{
-			get { return _customer; }
-			set
-			{
-				if (_customer == value) return;
+        {
+            get { return _customer; }
+            set
+            {
+                if (_customer == value) return;
 
-				_customer = value;
+                _customer = value;
 
-				OnPropertyChanged("Customer");
-			}
-		}
+                OnPropertyChanged("Customer");
+            }
+        }
 
         string _mainMessage;
         public string MainMessage
-		{
-			get { return _mainMessage; }
-			set
-			{
-				if (_mainMessage == value) return;
+        {
+            get { return _mainMessage; }
+            set
+            {
+                if (_mainMessage == value) return;
 
-				_mainMessage = value;
+                _mainMessage = value;
 
-				OnPropertyChanged("MainMessage");
-			}
-		}
+                OnPropertyChanged("MainMessage");
+            }
+        }
 
         Boolean _progressvisible;
         public Boolean ProgressVisible
-		{
-			get { return _progressvisible; }
-			set
-			{
-				if (_progressvisible == value) return;
+        {
+            get { return _progressvisible; }
+            set
+            {
+                if (_progressvisible == value) return;
 
-				_progressvisible = value;
+                _progressvisible = value;
 
-				OnPropertyChanged("ProgressVisible");
-			}
-		}
+                OnPropertyChanged("ProgressVisible");
+            }
+        }
 
         CustomerModel _selectedItem;
         public CustomerModel SelectedItem
-		{
-			get { return _selectedItem; }
-			set
-			{
-				if (_selectedItem == value)
-					return;
+        {
+            get { return _selectedItem; }
+            set
+            {
+                if (_selectedItem == value)
+                    return;
 
-				_selectedItem = value;
+                _selectedItem = value;
 
-				OnPropertyChanged("SelectedItem");
-			}
-		}
+                OnPropertyChanged("SelectedItem");
+            }
+        }
 
 
         List<EventModel> _eventlog;
         public List<EventModel> Eventlog
-		{
-			get { return _eventlog; }
-			set
-			{
-				if (_eventlog == value)
-					return;
+        {
+            get { return _eventlog; }
+            set
+            {
+                if (_eventlog == value)
+                    return;
 
-				_eventlog = value;
+                _eventlog = value;
 
-				OnPropertyChanged("Eventlog");
-			}
-		}
-		#endregion Properties
-	}
+                OnPropertyChanged("Eventlog");
+            }
+        }
+        #endregion Properties
+
+        #region Commands
+
+        //private Command toolbarItemCommand;
+        //public Command ToolbarItemCommand
+        //{
+        //    get
+        //    {
+        //        return toolbarItemCommand ?? (toolbarItemCommand = new Command(ExecuteToolbarItemCommand));
+        //    }
+        //}
+
+        //internal void ExecuteToolbarItemCommand()
+        //{
+        //    Navigation.PushAsync(new OptionView(vm.Customers));
+        //}
+
+        #endregion Commands
+    }
 }

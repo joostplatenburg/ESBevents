@@ -11,6 +11,14 @@ namespace ESBevents
 	{
         OptionViewModel vm = new OptionViewModel();
 
+        public OptionView()
+        {
+            InitializeComponent();
+
+            BindingContext = vm;
+            vm.Logo = "DXCLogo3.png";
+        }
+
         public OptionView(List<CustomerModel> _customers)
 		{
 			InitializeComponent();
@@ -18,14 +26,10 @@ namespace ESBevents
             BindingContext = vm;
             vm.Logo = "DXCLogo3.png";
             vm.Customers = _customers;
-
 		}
 
 		void SaveOptions(object sender, EventArgs e)
 		{
-			var ik = sender as Button;
-
-
             Navigation.PopAsync(true);
 		}
 

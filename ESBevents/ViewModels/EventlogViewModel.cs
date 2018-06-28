@@ -41,8 +41,8 @@ namespace ESBevents.ViewModels
             {
                 if (
                     (!e.SourceClass.StartsWith("Ens.", StringComparison.CurrentCulture)) &&
-                    (!e.SourceClass.StartsWith("EnsLib", StringComparison.CurrentCulture)) &&
-                    (!e.SourceClass.StartsWith("DXC.", StringComparison.CurrentCulture))
+                    (!e.SourceClass.StartsWith("EnsLib", StringComparison.CurrentCulture)) // &&
+                    // (!e.SourceClass.StartsWith("DXC.", StringComparison.CurrentCulture))
                 )
                 {
                     _eventlog.Add(new EventViewModel { Event = e });

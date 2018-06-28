@@ -104,6 +104,36 @@ namespace ESBevents.ViewModels
             }
         }
 
+        public string bColor 
+        {
+            get
+            {
+                switch (DeliveryStatus)
+                {
+                    case "Retry":
+                        return "#fbb1b2";
+                    case "Finished":
+                        return "#c4dcc6";
+                    default:
+                        return "White";
+                }
+            }
+        }
+
+        string _environment;
+        public string Environment
+        {
+            get { return _environment; }
+            set
+            {
+                if (_environment == value)
+                    return;
+
+                _environment = value;
+
+                OnPropertyChanged("Environment");
+            }
+        }
         #endregion Properties
 	}
 }

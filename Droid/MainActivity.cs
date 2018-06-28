@@ -18,6 +18,9 @@ namespace ESBevents.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
 			LoadApplication(new App());
+
+            App.ScreenWidth = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
+            App.ScreenHeight = (int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density);
 		}
 	}
 }

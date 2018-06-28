@@ -12,11 +12,11 @@ using System.Net.Http;
 
 namespace ESBevents.WebServices
 {
-    public class GetEventLogWS
+    public class EventlogServices
     {
         readonly HttpClient client;
 
-        public GetEventLogWS()
+        public EventlogServices()
         {
             client = new HttpClient();
 
@@ -24,7 +24,7 @@ namespace ESBevents.WebServices
 
         }
 
-        public async Task<HttpStatusCode> GetEventLogAsync(CustomerViewModel vm)
+        public async Task<HttpStatusCode> GetEventlogAsync(CustomerViewModel vm)
         {
             try
             {
@@ -56,6 +56,7 @@ namespace ESBevents.WebServices
                         break;
                 }
 
+                serviceadres = string.Format("http://{0}:{1}/pubsub/geteventlog", "52.73.112.29", "58002");
                 var uri = new Uri(serviceadres);
 
                 var response = await client.GetAsync(uri);

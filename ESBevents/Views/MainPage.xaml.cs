@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
-//using ESBevents.Abstractions;
 using ESBevents.ViewModels;
 using ESBevents.WebServices;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ESBevents.Views
 {
     public partial class MainPage : ContentPage
@@ -41,6 +42,10 @@ namespace ESBevents.Views
 			{
 				this.width = width;
 				this.height = height;
+
+                Debug.WriteLine("ScreenWidth: " + App.ScreenWidth);
+                Debug.WriteLine("ScreenHeight: " + App.ScreenHeight);
+
 				if (width > height)
 				{
                     // landscape
@@ -59,9 +64,8 @@ namespace ESBevents.Views
 			//Debug.WriteLine("Orientation: " + orientation);
 		}
 
-		void OnClick(object sender, EventArgs e)
+		public void OnClick(object sender, EventArgs e)
 		{
-            
 			Navigation.PushAsync(new OptionView(vm.Customers));
 		}
 	}

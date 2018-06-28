@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="ESBevents.Views.IdentityManagement.LoginPage" 
+             Title="Login">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="BackgroundColor" Value="#bddec3" />
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="0,20,0,20" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Register" Clicked="OnRegisterButtonClicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="StartAndExpand" Margin="20,10,20,10">
+            <Image Source="DXC_180.png" WidthRequest="350" HeightRequest="80" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="10,0,10,0" />
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <Label Text="Username" />
+            <Entry x:Name="usernameEntry" Placeholder="username" Keyboard="Email"/>
+            <Label Text="Password" />
+            <Entry x:Name="passwordEntry" IsPassword="true" />
+            <Button Text="Login" Style="{StaticResource buttonStyle}" Clicked="OnLoginButtonClicked" />
+            <Label x:Name="messageLabel" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

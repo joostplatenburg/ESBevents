@@ -31,7 +31,7 @@ namespace ESBevents.WebServices
                 Debug.WriteLine("Start GetCustomerDataWS()");
                 // http://52.73.112.29:9924/dxcpsmobile/getcustomerdata
 
-                var serviceadres = string.Format("http://52.73.112.29:9924/dxcpsmobile/getcustomerdata");
+                var serviceadres = string.Format("http://52.73.112.29:9924/pubsub/getcustomers");
 
                 var uri = new Uri(serviceadres);
 
