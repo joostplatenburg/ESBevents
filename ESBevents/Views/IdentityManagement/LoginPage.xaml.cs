@@ -8,39 +8,37 @@ using ESBevents.WebServices;
 using System.Net;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using ESBevents.ViewModels;
 
 namespace ESBevents.Views.IdentityManagement
 {
     public partial class LoginPage : ContentPage
     {
+        IdentityViewModel vm;
+
         public LoginPage()
         {
             InitializeComponent();
-        }
-
-        async void OnRegisterButtonClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new RegisterPage());
+            vm = new IdentityViewModel();
+            vm.CurrentUser = new UserModel();
         }
 
         async void OnLoginButtonClicked(object sender, EventArgs e)
         {
-            var user = new UserModel()
-            {
-                Username = usernameEntry.Text,
-            };
+            vm.CurrentUser.Username = usernameEntry.Text;
 
-            var signUpSucceeded = AreDetailsValid(user);
+            var signUpSucceeded = AreDetailsValid();
             if (signUpSucceeded)
             {
-                // ================================================================
-                // === nu heb je username en hashed password,                   ===
-                // === roep service aan waarin je terug krijg Valid of Invalid  ===
-                var passHashed = await GetPassword(user);
-                if (!string.IsNullOrWhiteSpace(passHashed))
+                // ========================================================================
+                // === nu heb je username en hashed password,                           ===
+                // === roep service aan waarin je het gehashte password terug krijgt    ===
+                var identity = await vm.GetIdentityAsync();
+
+                if (!string.IsNullOrWhiteSpace(identity))
                 {
-                    ////if (global::BCrypt.Net.BCrypt.CheckPassword("password", pass)) { Console.WriteLine("Match"); } else { Console.WriteLine("Don’t Match"); }
-                    if (BCrypt.Net.BCrypt.CheckPassword(passwordEntry.Text, passHashed))
+                    // === nu de bestaande hash laten controleren op juistheid          ===
+                    if (BCrypt.Net.BCrypt.CheckPassword(passwordEntry.Text, identity))
                     {
                         Debug.WriteLine("Match");
 
@@ -49,7 +47,16 @@ namespace ESBevents.Views.IdentityManagement
                         {
                             App.IsUserLoggedIn = true;
 
-                            Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
+                            if (string.IsNullOrWhiteSpace(App.CurrentUser.CustomerId))
+                            {
+
+                                Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
+
+                            } else {
+
+                                Navigation.InsertPageBefore(new CustomerView(), Navigation.NavigationStack.First());
+
+                            }
                             await Navigation.PopToRootAsync();
                         }
                     }
@@ -65,33 +72,34 @@ namespace ESBevents.Views.IdentityManagement
             }
             else
             {
-                messageLabel.Text = "No Username of Password entered.";
+                messageLabel.Text = "No Username or Password entered.";
             }
         }
 
-        bool AreDetailsValid(UserModel user)
+        bool AreDetailsValid()
         {
-            return !string.IsNullOrWhiteSpace(user.Username);
+            return !string.IsNullOrWhiteSpace(vm.CurrentUser.Username);
         }
 
-        async Task<string> GetPassword(UserModel user)
+        async void OnRegisterButtonClicked(object sender, EventArgs e)
         {
-            // Assume no success
-            var result = string.Empty;
+            await Navigation.PushAsync(new RegisterPage(vm));
+        }
 
-            // Dan met de velden de webservice aanroepen.
-            var identityServicesClient = new IdentityServices();
-            var hashedObj = await identityServicesClient.GetPasswordAsync(user);
+        async void OnChangeButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ChangePassword(vm));
+        }
 
-            if (hashedObj != null)
-            {
-                if (hashedObj.Hashed != null)
-                {
-                    result = hashedObj.Hashed;
-                }
-            }
+        async void OnForgotButtonClicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Forgot Password", "Not Implemented Yet", "OK");
 
-            return result;
+            // 1. Remove Identity through webservice
+            //
+
+            // 2. Reregister
+            //
         }
     }
 }

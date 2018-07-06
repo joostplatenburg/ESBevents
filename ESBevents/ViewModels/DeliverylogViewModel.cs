@@ -2,45 +2,38 @@
 using System.Collections.ObjectModel;
 using ESBevents.Models;
 using System.Collections.Generic;
+using System;
+using System.Threading.Tasks;
+using System.Diagnostics.Contracts;
+using System.Linq;
+using Xamarin.Forms;
 
 namespace ESBevents.ViewModels
 {
     public class DeliverylogViewModel : INotifyPropertyChanged
     {
+        CustomerViewModel cvm;
+        CustomerModel cm;
+
         public DeliverylogViewModel()
-		{
-			_deliveries = new ObservableCollection<DeliveryModel>();
-		}
+        {
+            _deliveries = new ObservableCollection<DeliveryModel>();
+        }
 
         public DeliverylogViewModel(CustomerViewModel _customerviewmodel)
-		{
+        {
             _deliveries = new ObservableCollection<DeliveryModel>();
-        /*
-            foreach(DeliveryModel d in _customerviewmodel.Customer.Koppelingen) {
-                Koppelingen.Add(k);
-            }
-
-			Customer = _customerviewmodel.Customer;
-            Environment = _customerviewmodel.Environment;
-            Koppeling = _customerviewmodel.SelectedActionItem;
-        */
+            cvm = _customerviewmodel;
         }
 
         public DeliverylogViewModel(CustomerModel _customer)
         {
             _deliveries = new ObservableCollection<DeliveryModel>();
-        /*
-            foreach (KoppelingModel k in _customer.Koppelingen)
-            {
-                Koppelingen.Add(k);
-            }
-
-			Customer = _customer;
-        */
+            cm = _customer;
         }
-	       
-		#region INotifyPropertyChanged implementation
-	    public event PropertyChangedEventHandler PropertyChanged;
+
+        #region INotifyPropertyChanged implementation
+        public event PropertyChangedEventHandler PropertyChanged;
 
         void OnPropertyChanged(string name)
         {
@@ -54,31 +47,33 @@ namespace ESBevents.ViewModels
         #region Properties
         ObservableCollection<DeliveryModel> _deliveries;
         public ObservableCollection<DeliveryModel> Deliveries
-		{
+        {
             get { return _deliveries; }
-			set {
+            set
+            {
                 if (_deliveries == value)
-					return;
+                    return;
 
                 _deliveries = value;
 
-                OnPropertyChanged ("Deliveries");
-			}
-		}
+                OnPropertyChanged("Deliveries");
+            }
+        }
 
         DeliveryModel _selectedDelivery;
         public DeliveryModel SelectedDelivery
-		{
-			get { return _selectedDelivery; }
-			set {
-				if (_selectedDelivery == value) 
-					return;
-					
-				_selectedDelivery = value;
+        {
+            get { return _selectedDelivery; }
+            set
+            {
+                if (_selectedDelivery == value)
+                    return;
 
-				OnPropertyChanged("SelectedDelivery");
-			}
-		}
+                _selectedDelivery = value;
+
+                OnPropertyChanged("SelectedDelivery");
+            }
+        }
 
         List<CustomerModel> _customers;
         public List<CustomerModel> Customers
@@ -97,18 +92,19 @@ namespace ESBevents.ViewModels
 
         CustomerModel _customer;
         public CustomerModel Customer
-		{
-			get { return _customer;}
-			set {
-				if (_customer == value) return;
+        {
+            get { return _customer; }
+            set
+            {
+                if (_customer == value) return;
 
-				_customer = value;
+                _customer = value;
 
-				OnPropertyChanged("Customer");
-			}
-		}
+                OnPropertyChanged("Customer");
+            }
+        }
 
-		public string Logo { get { return Customer.Logo; } }
+        public string Logo { get { return Customer.Logo; } }
 
         string _environment;
         public string Environment
@@ -154,7 +150,6 @@ namespace ESBevents.ViewModels
                 OnPropertyChanged("Koppeling");
             }
         }
-
         #endregion Properties
     }
 }

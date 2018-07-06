@@ -64,8 +64,10 @@ namespace ESBevents.ViewModels
                 _customer = value;
 
                 OnPropertyChanged("Customer");
+                OnPropertyChanged("Logo");
             }
         }
+        public string Logo { get { return Customer.Logo; } }
 
         ActionModel _selectedActionItem;
         public ActionModel SelectedActionItem

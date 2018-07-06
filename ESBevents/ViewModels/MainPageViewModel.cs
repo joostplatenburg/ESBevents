@@ -20,15 +20,15 @@ namespace ESBevents.ViewModels
             GetCustomers();
         }
 
-        private async void GetCustomers()
+        async void GetCustomers()
         {
             await GetCustomersAsync();
         }
 
-        private async Task GetCustomersAsync()
+        async Task GetCustomersAsync()
         {
             var webSrvc = new GetCustomerDataWS();
-            var status = await webSrvc.GetCustomerDataAsync(this);
+            var status = await webSrvc.GetCustomersAsync(this);
 
             if (status != HttpStatusCode.Continue)
             {

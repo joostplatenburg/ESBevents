@@ -77,6 +77,8 @@ namespace ESBevents.ViewModels
                             return "led_green.png";
                         case "5":
                             return "led_blue.png";
+                        default:
+                            break;
                     }
                 }
 
@@ -102,6 +104,8 @@ namespace ESBevents.ViewModels
                             return "Info";
                         case "5":
                             return "Trace";
+                        default:
+                            break;
                     }
                 }
                 return "";

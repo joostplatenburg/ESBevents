@@ -14,8 +14,6 @@ namespace ESBevents.Views
     {
         internal MainPageViewModel vm = new MainPageViewModel();
 
-        public static string BaseURL = "";
-
         public MainPage()
         {
             InitializeComponent();

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ESBevents.Models;
 using System.Collections.ObjectModel;
+using Xamarin.Forms;
 
 namespace ESBevents.ViewModels
 {
@@ -42,7 +43,7 @@ namespace ESBevents.ViewModels
                 if (
                     (!e.SourceClass.StartsWith("Ens.", StringComparison.CurrentCulture)) &&
                     (!e.SourceClass.StartsWith("EnsLib", StringComparison.CurrentCulture)) // &&
-                    // (!e.SourceClass.StartsWith("DXC.", StringComparison.CurrentCulture))
+                                                                                           // (!e.SourceClass.StartsWith("DXC.", StringComparison.CurrentCulture))
                 )
                 {
                     _eventlog.Add(new EventViewModel { Event = e });
@@ -63,11 +64,39 @@ namespace ESBevents.ViewModels
         #endregion INotifyPropertyChanged implementation
 
         #region Properties
-        ObservableCollection<EventViewModel> _eventlog;
+        string _filterValue;
+        public string FilterValue
+        {
+            get { return _filterValue; }
+            set
+            {
+                if (_filterValue == value)
+                    return;
 
+                _filterValue = value;
+
+                OnPropertyChanged("Eventlog");
+            }
+        }
+
+        ObservableCollection<EventViewModel> _eventlog;
         public ObservableCollection<EventViewModel> Eventlog
         {
-            get { return _eventlog; }
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(FilterValue))
+                {
+                    var list = _eventlog.Where(el => el.MsgType == FilterValue).ToList();
+
+                    _eventlog.Clear();
+                    foreach (EventViewModel evm in list)
+                    {
+                        _eventlog.Add(evm);
+                    }
+                }
+                return _eventlog;
+            }
+
             set
             {
                 if (_eventlog == value)
@@ -151,6 +180,6 @@ namespace ESBevents.ViewModels
                 OnPropertyChanged("Environment");
             }
         }
-       #endregion Properties
+        #endregion Properties
     }
 }

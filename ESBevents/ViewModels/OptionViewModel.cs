@@ -16,7 +16,12 @@ namespace ESBevents.ViewModels
     {
         public OptionViewModel()
         {
+            Initialize();
+        }
 
+        void Initialize()
+        {
+            
         }
 
         #region INotifyPropertyChanged implementation

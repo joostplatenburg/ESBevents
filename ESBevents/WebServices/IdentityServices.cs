@@ -13,22 +13,25 @@ using ESBevents.Models;
 using ESBevents.ViewModels;
 using System.Net;
 using System.Net.Http;
+using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace ESBevents.WebServices
 {
     public class IdentityServices
     {
         readonly HttpClient client;
+        readonly IdentityViewModel vm;
 
-        public IdentityServices()
+        public IdentityServices(IdentityViewModel _vm)
         {
             client = new HttpClient();
+            vm = _vm;
 
             //client.MaxResponseContentBufferSize = 256000;
-
         }
 
-        public async Task<HttpStatusCode> RegisterAsync(UserModel user)
+        public async Task<HttpStatusCode> RegisterAsync()
         {
             try
             {
@@ -39,7 +42,7 @@ namespace ESBevents.WebServices
                 var server = "52.73.112.29";
                 var port = "58002";
 
-                var service = string.Format("http://{0}:{1}/pubsub/register?username={2}&password={3}&email={4}", server, port, user.Username, user.Password, user.Email);
+                var service = string.Format("http://{0}:{1}/pubsub/register?username={2}&password={3}&email={4}", server, port, vm.CurrentUser.Username, vm.CurrentUser.Password, vm.CurrentUser.Email);
                 var uri = new Uri(service);
 
                 Debug.WriteLine("DXCPS - " + service);
@@ -68,15 +71,13 @@ namespace ESBevents.WebServices
             }
         }
 
-        public async Task<PasswordHashedModel> GetPasswordAsync(UserModel user)
+        public async Task<UserModel> GetIdentityAsync()
         {
             try
             {
                 Debug.WriteLine("Start CheckPasswordAsync()");
-                var server = "52.73.112.29";
-                var port = "58002";
 
-                var service = string.Format("http://{0}:{1}/pubsub/getpassword?username={2}", server, port, user.Username);
+                var service = string.Format("http://52.73.112.29:58002/pubsub/getidentity?username={0}", vm.CurrentUser.Username);
                 var uri = new Uri(service);
 
                 Debug.WriteLine("DXCPS - " + service);
@@ -86,22 +87,20 @@ namespace ESBevents.WebServices
                     response.StatusCode == HttpStatusCode.Accepted ||
                     response.StatusCode == HttpStatusCode.OK)
                 {
-                    var result = await response.Content.ReadAsStringAsync();
+                    var result = response.Content.ReadAsStringAsync().Result;
 
                     // De json die terug komt in vm zetten van door het object door te geven.
-                    var Hashed = JsonConvert.DeserializeObject<PasswordHashedModel>(result);
+                    UserModel identity = JsonConvert.DeserializeObject<UserModel>(result);
 
-                //    vm.Deliveries = new System.Collections.ObjectModel.ObservableCollection<DeliveryModel>();
-                //    foreach (DeliveryModel dm in Deliveries)
-                //    {
-                //        vm.Deliveries.Add(dm);
-                //    }
+                    App.CurrentUser = identity;
+
                     Debug.WriteLine(result);
+                    Debug.WriteLine(identity.Password);
 
-                    return Hashed;
+                    return App.CurrentUser;
                 }
                 return null;
-                        }
+            }
             catch (System.Net.WebException)
             {
                 Debug.WriteLine(HttpStatusCode.InternalServerError);
@@ -113,5 +112,45 @@ namespace ESBevents.WebServices
                 return null;
             }
         }
-    }
+
+        public async Task<HttpStatusCode> ChangePasswordAsync()
+        {
+            try
+            {
+                Debug.WriteLine("Start CheckPasswordAsync()");
+                var server = "52.73.112.29";
+                var port = "58002";
+
+                var service = string.Format("http://{0}:{1}/pubsub/changepassword?username={2}&email={3}&password={4}", 
+                                            server, port, vm.CurrentUser.Username, vm.CurrentUser.Email, vm.CurrentUser.Password);
+                var uri = new Uri(service);
+
+                Debug.WriteLine("DXCPS - " + service);
+
+                var response = await client.GetAsync(uri);
+                if (response.StatusCode == HttpStatusCode.Continue ||
+                    response.StatusCode == HttpStatusCode.Accepted ||
+                    response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+
+                    Debug.WriteLine(result);
+
+                    return HttpStatusCode.Continue;
+                }
+                return response.StatusCode;
+            }
+            catch (System.Net.WebException)
+            {
+                Debug.WriteLine(HttpStatusCode.InternalServerError);
+                return HttpStatusCode.InternalServerError;
+ 
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return HttpStatusCode.BadRequest;
+           }
+        }
+}
 }

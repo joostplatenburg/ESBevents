@@ -9,14 +9,14 @@
                 <Setter Property="TextColor" Value="Gray" />
                 <Setter Property="BackgroundColor" Value="#bddec3" />
                 <Setter Property="BorderRadius" Value="10" />
-                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="HeightRequest" Value="40" />
                 <Setter Property="WidthRequest" Value="300" />
                 <Setter Property="FontAttributes" Value="Bold" />
 			</Style>
             <Style x:Key="PromptStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="12" />
                 <Setter Property="Margin" Value="5,0,0,0" />
-                <Setter Property="WidthRequest" Value="110" />
+                <Setter Property="WidthRequest" Value="130" />
             </Style>
 		</ResourceDictionary>
 	</ContentPage.Resources>

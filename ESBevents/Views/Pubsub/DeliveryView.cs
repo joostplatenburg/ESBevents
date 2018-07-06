@@ -53,14 +53,15 @@ namespace ESBevents
             {
                 Debug.WriteLine("Resend Message");
 
-                var httpstatus = await ResendMessage();
+                var httpstatus = await ResendMessageAsync();
+
                 if (httpstatus == HttpStatusCode.Continue) {
                     await Navigation.PopAsync();
                 }
             } 
         }
 
-        async Task<HttpStatusCode> ResendMessage()
+        async Task<HttpStatusCode> ResendMessageAsync()
         {
             // Dan met de velden de webservice aanroepen.
             var pubsubServicesClient = new PubsubServices();
@@ -75,7 +76,23 @@ namespace ESBevents
             if(answer)
             {
                 Debug.WriteLine("Make Messagestatus Obsolete");
+
+                var httpstatus = await ObsoleteMessageAsync();
+
+                if (httpstatus == HttpStatusCode.Continue)
+                {
+                    await Navigation.PopAsync();
+                }
             } 
+        }
+
+        async Task<HttpStatusCode> ObsoleteMessageAsync()
+        {
+            // Dan met de velden de webservice aanroepen.
+            var pubsubServicesClient = new PubsubServices();
+            var httpstatus = await pubsubServicesClient.SetObsoleteAsync(vm);
+
+            return httpstatus;
         }
 
         async void ResetMessage(object sender, EventArgs e)

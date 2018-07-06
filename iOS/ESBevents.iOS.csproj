@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Xamarin.Forms.3.1.0.583944\build\netstandard2.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.583944\build\netstandard2.0\Xamarin.Forms.props')" />
   <PropertyGroup>
@@ -37,7 +37,7 @@
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Distribution: J.A. Platenburg (YLT7AFC7PN)</CodesignKey>
+    <CodesignKey>iPhone Developer: J.A. Platenburg (U8H6C6BG7K)</CodesignKey>
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
@@ -46,7 +46,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>DistributionAdHocESBEventsMAS</CodesignProvision>
+    <CodesignProvision>VS: com.dxc.mas.esblogs Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>
@@ -54,14 +54,14 @@
     <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Distribution: J.A. Platenburg (YLT7AFC7PN)</CodesignKey>
+    <CodesignKey>iPhone Developer: J.A. Platenburg (U8H6C6BG7K)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
-    <CodesignProvision>DistributionAdHocESBEventsMAS</CodesignProvision>
+    <CodesignProvision>VS: com.dxc.mas.esblogs Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -82,9 +82,12 @@
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
-    <CodesignProvision>DevelopmentMAS</CodesignProvision>
+    <CodesignProvision>VS: com.dxc.mas.esblogs Development</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -92,9 +95,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\packages\Xamarin.Forms.3.1.0.583944\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
@@ -110,6 +110,9 @@
     <Reference Include="BCrypt.Net">
       <HintPath>..\packages\BCrypt.Net-PCL.1.0.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\BCrypt.Net.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Essentials">
+      <HintPath>..\packages\Xamarin.Essentials.0.8.0-preview\lib\xamarinios10\Xamarin.Essentials.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ESBevents\ESBevents.csproj">
@@ -117,10 +120,9 @@
       <Name>ESBevents</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="app.config" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
     <None Include="Info.plist" />
@@ -147,10 +149,6 @@
     <BundleResource Include="Resources\EventLog.png" />
     <BundleResource Include="Resources\ProcessStart.png" />
     <BundleResource Include="Resources\DOB.png" />
-    <BundleResource Include="Resources\DZG.png">
-      <IncludeInPackage>false</IncludeInPackage>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
     <BundleResource Include="Resources\pubsub.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
@@ -159,6 +157,7 @@
     <BundleResource Include="Resources\DXC_167.png" />
     <BundleResource Include="Resources\DXC_1024.png" />
     <BundleResource Include="Resources\CAR.png" />
+    <BundleResource Include="Resources\DZG.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -197,9 +196,15 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DXC_167.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\DXC_320x480.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\DXC_640x960.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\DXC_640x1136.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\DXC_320x480.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\DXC_640x960.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\DXC_640x1136.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />

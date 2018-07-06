@@ -5,23 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ESBevents.Models;
+using Xamarin.Forms;
 
 namespace ESBevents.ViewModels
 {
     public class DeliveryViewModel : INotifyPropertyChanged
-	{
+    {
+        DeliverylogViewModel dlvm;
+
         public DeliveryViewModel()
-		{
-			_delivery = new DeliveryModel();
-		}
+        {
+            _delivery = new DeliveryModel();
+        }
 
-        public DeliveryViewModel(DeliverylogViewModel _elVM)
-		{
-			//_delivery = _elVM.SelectedDelivery;
-		}
+        public DeliveryViewModel(DeliverylogViewModel _dlVM)
+        {
+            //_delivery = _elVM.SelectedDelivery;
+            dlvm = _dlVM;
+        }
 
-		#region INotifyPropertyChanged implementation
-		public event PropertyChangedEventHandler PropertyChanged;
+        #region INotifyPropertyChanged implementation
+        public event PropertyChangedEventHandler PropertyChanged;
 
         void OnPropertyChanged(string name)
         {
@@ -35,20 +39,21 @@ namespace ESBevents.ViewModels
         #region Properties
         DeliveryModel _delivery;
         public DeliveryModel Delivery
-		{
+        {
             get { return _delivery; }
-			set
-			{
+            set
+            {
                 if (_delivery == value) return;
 
                 _delivery = value;
 
-				OnPropertyChanged("Delivery");
-			}
-		}
+                OnPropertyChanged("Delivery");
+                OnPropertyChanged("DeliveryStatus");
+            }
+        }
 
         public string DeliveryId { get { return string.Format("{0}", Delivery.DeliveryId); } }
-		public string MessageId { get { return string.Format("{0}", Delivery.MessageId); } }
+        public string MessageId { get { return string.Format("{0}", Delivery.MessageId); } }
         public string CreationDate { get { return string.Format("{0}", Delivery.CreationDate); } }
         public string CreationTime { get { return string.Format("{0}", Delivery.CreationTime); } }
         public string ProcessedDate { get { return string.Format("{0}", Delivery.ProcessedDate); } }
@@ -63,8 +68,9 @@ namespace ESBevents.ViewModels
         public string Messagecontent { get { return string.Format("{0}", Delivery.Messagecontent); } }
 
         string _logo;
-        public string Logo { 
-            get { return _logo; } 
+        public string Logo
+        {
+            get { return _logo; }
             set
             {
                 if (_logo == value) return;
@@ -104,30 +110,13 @@ namespace ESBevents.ViewModels
             }
         }
 
-        public string bColor 
-        {
-            get
-            {
-                switch (DeliveryStatus)
-                {
-                    case "Retry":
-                        return "#fbb1b2";
-                    case "Finished":
-                        return "#c4dcc6";
-                    default:
-                        return "White";
-                }
-            }
-        }
-
         string _environment;
         public string Environment
         {
             get { return _environment; }
             set
             {
-                if (_environment == value)
-                    return;
+                if (_environment == value) return;
 
                 _environment = value;
 
@@ -135,5 +124,5 @@ namespace ESBevents.ViewModels
             }
         }
         #endregion Properties
-	}
+    }
 }

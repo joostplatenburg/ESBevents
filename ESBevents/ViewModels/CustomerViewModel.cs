@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using ESBevents.Models;
+using ESBevents.WebServices;
 
 namespace ESBevents.ViewModels
 {
@@ -12,17 +15,26 @@ namespace ESBevents.ViewModels
     {
         public CustomerViewModel()
         {
-            _customer = new CustomerModel();
-            Initialize();
+            Customer = new CustomerModel { Logo = "DXC_180.png", ToonPSlog = true, ToonEventlog = true, StartBP = false };
+
+            GetCustomer();
         }
 
-        public CustomerViewModel(CustomerModel _cm)
+        async void GetCustomer()
         {
-            _customer = _cm;
-            Initialize();
+            await GetCustomerAsync();
         }
-        internal void Initialize()
+
+        async Task GetCustomerAsync()
         {
+            var webSrvc = new GetCustomerDataWS();
+            var status = await webSrvc.GetCustomerAsync(this, App.CurrentUser.CustomerId);
+
+            if (status != HttpStatusCode.Continue)
+            {
+                // WAT TE DOEN ALS ER EEN FOUT OPTREED
+                Debug.WriteLine("DXCPS - Fout bij ophalen customer data");
+            }
         }
 
         #region INotifyPropertyChanged implementation
@@ -64,6 +76,7 @@ namespace ESBevents.ViewModels
                 _customer = value;
 
                 OnPropertyChanged("Customer");
+                OnPropertyChanged("Logo");
             }
         }
 

@@ -8,33 +8,54 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Diagnostics;
+using ESBevents.ViewModels;
 
 namespace ESBevents.Views.IdentityManagement
 {
     public partial class RegisterPage : ContentPage
     {
+        IdentityViewModel vm;
+
         public RegisterPage()
         {
             InitializeComponent();
+
+            vm = new IdentityViewModel();
+            vm.CurrentUser = new UserModel();
+
+            Initialize();
+        }
+
+        public RegisterPage(IdentityViewModel _vm)
+        {
+            InitializeComponent();
+
+            vm = _vm;
+        
+            Initialize();
+        }
+
+        void Initialize()
+        {
+            usernameEntry.Text = vm.CurrentUser.Username;
+            emailEntry.Text = vm.CurrentUser.Email;
         }
 
         async void OnRegisterButtonClicked(object sender, EventArgs e)
         {
             var passHashed = BCrypt.Net.BCrypt.HashPassword(passwordEntry.Text, BCrypt.Net.BCrypt.GenerateSalt(5));
 
-            var user = new UserModel()
-            {
-                Username = usernameEntry.Text,
-                Password = passHashed,
-                Email = emailEntry.Text
-            };
+            vm.CurrentUser.Username = usernameEntry.Text;
+            vm.CurrentUser.Password = passHashed;
+            vm.CurrentUser.Email = emailEntry.Text;
 
             // Sign up logic goes here
 
-            var signUpSucceeded = AreDetailsValid(user);
+            var signUpSucceeded = AreDetailsValid();
+
             if (signUpSucceeded)
             {
-                var result = await RegisterUser(user);
+                var result = await RegisterUser();
                 if (result) {
 
                     var rootPage = Navigation.NavigationStack.FirstOrDefault();
@@ -56,19 +77,22 @@ namespace ESBevents.Views.IdentityManagement
             }
         }
 
-        bool AreDetailsValid(UserModel user)
+        bool AreDetailsValid()
         {
-            return (!string.IsNullOrWhiteSpace(user.Username) && !string.IsNullOrWhiteSpace(user.Password) && !string.IsNullOrWhiteSpace(user.Email) && user.Email.Contains("@"));
+            return (!string.IsNullOrWhiteSpace(vm.CurrentUser.Username) && 
+                    !string.IsNullOrWhiteSpace(vm.CurrentUser.Password) && 
+                    !string.IsNullOrWhiteSpace(vm.CurrentUser.Email) && 
+                    vm.CurrentUser.Email.Contains("@"));
         }
 
-        async Task<bool> RegisterUser(UserModel user)
+        async Task<bool> RegisterUser()
         {
             // Assume no success
             var result = false;
 
             // Dan met de velden de webservice aanroepen.
-            var identityServicesClient = new IdentityServices();
-            var status = await identityServicesClient.RegisterAsync(user);
+            var identityServicesClient = new IdentityServices(vm);
+            var status = await identityServicesClient.RegisterAsync();
 
             if (status == HttpStatusCode.Continue)
             {

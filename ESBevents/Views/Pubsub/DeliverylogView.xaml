@@ -3,7 +3,24 @@
 				xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ESBevents.DeliverylogView" Title="Deliverylog">
 	
-	<ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="BackgroundColor" Value="#bddec3" />
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Margin" Value="0,20,0,20" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
 		<ToolbarItem Icon="ic_drawer.png" Activated="OnClick" />
 	</ContentPage.ToolbarItems>
 	
@@ -33,7 +50,7 @@
     			<ListView.ItemTemplate>
     				<DataTemplate>
     					<ViewCell>
-                            <StackLayout Orientation="Vertical" BackgroundColor="{Binding bColor}">
+                            <StackLayout Orientation="Vertical" >
             					<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Vertical">
                                         <StackLayout Orientation="Horizontal">

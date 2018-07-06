@@ -11,11 +11,13 @@ namespace ESBevents.Views
 {
     public partial class CustomerView : ContentPage
     {
-        private CustomerViewModel vm = new CustomerViewModel();
+        internal CustomerViewModel vm = new CustomerViewModel();
 
         public CustomerView()
         {
             InitializeComponent();
+
+            //Debug.WriteLine("Customer identification: " + vm.Customer.Identifier);
 
             Initialize();
         }
@@ -24,9 +26,9 @@ namespace ESBevents.Views
         {
             InitializeComponent();
 
-            vm = new CustomerViewModel();
             vm.Customer = mpvm.Customer;
-            vm.Customers = mpvm.Customers;
+
+            //vm.Customers = mpvm.Customers;
 
             Initialize();
         }

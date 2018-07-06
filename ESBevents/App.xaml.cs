@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using ESBevents.Models;
+using Xamarin.Forms;
 
 namespace ESBevents
 {
@@ -6,8 +7,10 @@ namespace ESBevents
 	{
         public static bool IsUserLoggedIn { get; set; }
 
-        static public int ScreenWidth;
-        static public int ScreenHeight;
+        public static int ScreenWidth;
+        public static int ScreenHeight;
+
+        public static UserModel CurrentUser = new UserModel();
 
 		public App()
 		{

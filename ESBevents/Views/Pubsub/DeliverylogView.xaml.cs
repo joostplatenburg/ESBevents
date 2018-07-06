@@ -68,6 +68,5 @@ namespace ESBevents
 		{
 			Navigation.PushAsync(new OptionView(vm.Customers));
 		}
-
 	}
 }

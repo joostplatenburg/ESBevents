@@ -34,31 +34,10 @@
     <EmbeddedResource Include="Views\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\EventlogView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\EventView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\OptionView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CustomerView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ProcessStartView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\PubsubKoppelingenView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\DeliveryStatusView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\DeliverylogView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\DeliveryView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\IdentityManagement\LoginPage.xaml">
@@ -66,6 +45,31 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\IdentityManagement\RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Eventlog\EventlogView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Eventlog\EventView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProcessStart\ProcessStartView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pubsub\DeliverylogView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pubsub\DeliveryView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pubsub\DeliveryStatusView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pubsub\PubsubKoppelingenView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdentityManagement\ChangePassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -80,14 +84,8 @@
     </Compile>
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="WebServices\EventlogServices.cs" />
-    <Compile Include="Views\EventlogView.xaml.cs">
-      <DependentUpon>EventlogView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\EventlogViewModel.cs" />
     <Compile Include="ViewModels\EventViewModel.cs" />
-    <Compile Include="Views\EventView.xaml.cs">
-      <DependentUpon>EventView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\OptionView.xaml.cs">
       <DependentUpon>OptionView.xaml</DependentUpon>
     </Compile>
@@ -98,27 +96,12 @@
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="Models\ActionModel.cs" />
     <Compile Include="Models\KoppelingModel.cs" />
-    <Compile Include="Views\ProcessStartView.cs">
-      <DependentUpon>ProcessStartView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\ProcessStartViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
-    <Compile Include="Views\PubsubKoppelingenView.cs">
-      <DependentUpon>PubsubKoppelingenView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\PubsubKoppelingenViewModel.cs" />
-    <Compile Include="Views\DeliveryStatusView.cs">
-      <DependentUpon>DeliveryStatusView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WebServices\PubsubServices.cs" />
     <Compile Include="Models\DeliveryModel.cs" />
-    <Compile Include="Views\DeliverylogView.cs">
-      <DependentUpon>DeliverylogView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\DeliverylogViewModel.cs" />
-    <Compile Include="Views\DeliveryView.cs">
-      <DependentUpon>DeliveryView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\DeliveryViewModel.cs" />
     <Compile Include="WebServices\GetCustomerDataWS.cs" />
     <Compile Include="ViewModels\DeliveryStatusViewModel.cs" />
@@ -131,11 +114,35 @@
     <Compile Include="Views\IdentityManagement\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\PasswordHashedModel.cs" />
+    <Compile Include="Views\Eventlog\EventlogView.xaml.cs">
+      <DependentUpon>EventlogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Eventlog\EventView.xaml.cs">
+      <DependentUpon>EventView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProcessStart\ProcessStartView.cs">
+      <DependentUpon>ProcessStartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pubsub\DeliverylogView.xaml.cs">
+      <DependentUpon>DeliverylogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pubsub\DeliveryView.cs">
+      <DependentUpon>DeliveryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pubsub\DeliveryStatusView.cs">
+      <DependentUpon>DeliveryStatusView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pubsub\PubsubKoppelingenView.cs">
+      <DependentUpon>PubsubKoppelingenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IdentityManagement\ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\IdentityManagement\IdentityViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core">
@@ -150,14 +157,21 @@
     <Reference Include="BCrypt.Net">
       <HintPath>..\packages\BCrypt.Net-PCL.1.0.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\BCrypt.Net.dll</HintPath>
     </Reference>
+    <Reference Include="System.Numerics.Vectors">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\netstandard1.1\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Essentials">
+      <HintPath>..\packages\Xamarin.Essentials.0.8.0-preview\lib\netstandard1.0\Xamarin.Essentials.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\IdentityManagement\" />
-    <Folder Include="ViewModels\IdentityManagement\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.583944\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.583944\build\netstandard1.0\Xamarin.Forms.targets')" />
 </Project>
