@@ -47,7 +47,24 @@ namespace ESBevents.WebServices
 
                 Debug.WriteLine("DXCPS - " + service);
 
-                var response = await client.PostAsync(uri, null);
+                var deviceInfo = new DeviceInfoModel
+                {
+                    DeviceType = DeviceInfo.DeviceType.ToString(),
+                    Idiom = DeviceInfo.Idiom,
+                    Manufacturer = DeviceInfo.Manufacturer,
+                    Model = DeviceInfo.Model,
+                    Name = DeviceInfo.Name,
+                    Platform = DeviceInfo.Platform,
+                    Version = DeviceInfo.Version.ToString(),
+                    VersionString = DeviceInfo.VersionString
+                };
+
+                string jsonData = JsonConvert.SerializeObject(deviceInfo);
+
+                Debug.WriteLine("DXCPS - DeviceInfo: " + jsonData);
+
+                var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(uri, content);
                 if (response.StatusCode == HttpStatusCode.Continue ||
                     response.StatusCode == HttpStatusCode.Accepted ||
                     response.StatusCode == HttpStatusCode.OK)
