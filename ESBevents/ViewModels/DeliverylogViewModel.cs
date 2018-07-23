@@ -12,7 +12,7 @@ namespace ESBevents.ViewModels
 {
     public class DeliverylogViewModel : INotifyPropertyChanged
     {
-        CustomerViewModel cvm;
+        ActionsViewModel avm;
         CustomerModel cm;
 
         public DeliverylogViewModel()
@@ -20,10 +20,10 @@ namespace ESBevents.ViewModels
             _deliveries = new ObservableCollection<DeliveryModel>();
         }
 
-        public DeliverylogViewModel(CustomerViewModel _customerviewmodel)
+        public DeliverylogViewModel(ActionsViewModel _avm)
         {
             _deliveries = new ObservableCollection<DeliveryModel>();
-            cvm = _customerviewmodel;
+            avm = _avm;
         }
 
         public DeliverylogViewModel(CustomerModel _customer)
@@ -75,8 +75,8 @@ namespace ESBevents.ViewModels
             }
         }
 
-        List<CustomerModel> _customers;
-        public List<CustomerModel> Customers
+        ObservableCollection<CustomerModel> _customers;
+        public ObservableCollection<CustomerModel> Customers
         {
             get { return _customers; }
             set

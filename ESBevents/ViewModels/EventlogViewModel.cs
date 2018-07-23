@@ -17,26 +17,10 @@ namespace ESBevents.ViewModels
             _eventlog = new ObservableCollection<EventViewModel>();
         }
 
-        public EventlogViewModel(MainPageViewModel _mpVM)
+        public EventlogViewModel(ActionsViewModel _cVM)
         {
             _eventlog = new ObservableCollection<EventViewModel>();
-
-            foreach (EventModel e in _mpVM.Eventlog)
-            {
-                if (
-                    (!e.SourceClass.StartsWith("Ens.", StringComparison.CurrentCulture)) &&
-                    (!e.SourceClass.StartsWith("EnsLib", StringComparison.CurrentCulture)) &&
-                    (!e.SourceClass.StartsWith("DXC.", StringComparison.CurrentCulture))
-                )
-                {
-                    _eventlog.Add(new EventViewModel { Event = e });
-                }
-            }
-        }
-
-        public EventlogViewModel(CustomerViewModel _cVM)
-        {
-            _eventlog = new ObservableCollection<EventViewModel>();
+            _eventlogall = new ObservableCollection<EventViewModel>();
 
             foreach (EventModel e in _cVM.Eventlog)
             {
@@ -47,6 +31,7 @@ namespace ESBevents.ViewModels
                 )
                 {
                     _eventlog.Add(new EventViewModel { Event = e });
+                    _eventlogall.Add(new EventViewModel { Event = e });
                 }
             }
 
@@ -79,20 +64,41 @@ namespace ESBevents.ViewModels
             }
         }
 
+        ObservableCollection<EventViewModel> _eventlogall;
+        public ObservableCollection<EventViewModel> EventlogAll
+        {
+            get { return _eventlogall; }
+
+            set
+            {
+                if (_eventlogall == value)
+                    return;
+
+                _eventlogall = value;
+
+                OnPropertyChanged("EventlogAll");
+            }
+        }
         ObservableCollection<EventViewModel> _eventlog;
         public ObservableCollection<EventViewModel> Eventlog
         {
             get
             {
+                List<EventViewModel> list;
+
                 if (!string.IsNullOrWhiteSpace(FilterValue))
                 {
-                    var list = _eventlog.Where(el => el.MsgType == FilterValue).ToList();
+                    list = _eventlogall.Where(el => el.MsgType == FilterValue).ToList();
 
-                    _eventlog.Clear();
-                    foreach (EventViewModel evm in list)
-                    {
-                        _eventlog.Add(evm);
-                    }
+                } else {
+                    list = _eventlogall.ToList();
+                }
+
+                _eventlog.Clear();
+
+                foreach (EventViewModel evm in list)
+                {
+                    _eventlog.Add(evm);
                 }
                 return _eventlog;
             }
@@ -123,8 +129,8 @@ namespace ESBevents.ViewModels
             }
         }
 
-        List<CustomerModel> _customers;
-        public List<CustomerModel> Customers
+        ObservableCollection<CustomerModel> _customers;
+        public ObservableCollection<CustomerModel> Customers
         {
             get { return _customers; }
             set

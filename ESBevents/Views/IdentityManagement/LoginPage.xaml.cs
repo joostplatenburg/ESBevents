@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using BCrypt.Net;
 using ESBevents.Models;
 using System.Linq;
-using ESBevents.WebServices;
+using ESBevents.Services;
 using System.Net;
 using System.Threading.Tasks;
 using System.Diagnostics;
@@ -20,7 +20,7 @@ namespace ESBevents.Views.IdentityManagement
         {
             InitializeComponent();
             vm = new IdentityViewModel();
-            vm.CurrentUser = new UserModel();
+            vm.CurrentUser = new IdentityModel();
         }
 
         async void OnLoginButtonClicked(object sender, EventArgs e)
@@ -42,19 +42,23 @@ namespace ESBevents.Views.IdentityManagement
                     {
                         Debug.WriteLine("Match");
 
+                        // === Now get SessionId from server to authenticate this sessions api calls
+                        App.SessionToken = await vm.PostSessionAsync();
+                        //
+
                         var rootPage = Navigation.NavigationStack.FirstOrDefault();
                         if (rootPage != null)
                         {
                             App.IsUserLoggedIn = true;
 
-                            if (string.IsNullOrWhiteSpace(App.CurrentUser.CustomerId))
+                            if (string.IsNullOrWhiteSpace(App.CurrentUser.CustomerId) || App.CurrentUser.CustomerId == "DXC")
                             {
 
                                 Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
 
                             } else {
 
-                                Navigation.InsertPageBefore(new CustomerView(), Navigation.NavigationStack.First());
+                                Navigation.InsertPageBefore(new ActionsView(), Navigation.NavigationStack.First());
 
                             }
                             await Navigation.PopToRootAsync();
@@ -67,7 +71,7 @@ namespace ESBevents.Views.IdentityManagement
                 }
                 else
                 {
-                    messageLabel.Text = "Login failed";
+                    messageLabel.Text = "Login failed, no connection with the server";
                 }
             }
             else

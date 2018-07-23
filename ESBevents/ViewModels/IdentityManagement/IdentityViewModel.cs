@@ -1,8 +1,12 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using ESBevents.Models;
-using ESBevents.WebServices;
+using ESBevents.Services;
 
 namespace ESBevents.ViewModels
 {
@@ -10,6 +14,16 @@ namespace ESBevents.ViewModels
     {
         public IdentityViewModel()
         {
+            Initialize();
+        }
+
+        public IdentityViewModel(IdentitiesViewModel idsvm)
+        {
+            SelectedItem = idsvm.SelectedItem;
+            Logo = idsvm.Logo;
+
+            GetIdentityExt();
+
             Initialize();
         }
 
@@ -30,10 +44,10 @@ namespace ESBevents.ViewModels
         #endregion INotifyPropertyChanged implementation
 
         #region Properties
-        UserModel _currentUser;
-        internal string NewPasswordHashed;
+        IdentityModel _currentUser;
+        public string NewPasswordHashed;
 
-        public UserModel CurrentUser
+        public IdentityModel CurrentUser
         {
             get { return _currentUser; }
             set
@@ -46,6 +60,94 @@ namespace ESBevents.ViewModels
                 OnPropertyChanged("CurrentUser");
             }
         }
+
+        ObservableCollection<SessionModel> _sessions;
+        public ObservableCollection<SessionModel> Sessions
+        {
+            get { return _sessions; }
+
+            set
+            {
+                if (_sessions == value)
+                    return;
+
+                _sessions = value;
+
+                OnPropertyChanged("Sessions");
+            }
+        }
+
+        string _logo;
+        public string Logo
+        {
+            get { return _logo; }
+            set
+            {
+                if (_logo == value) return;
+
+                _logo = value;
+
+                OnPropertyChanged("Logo");
+            }
+        }
+
+        IdentityModel _identityExt;
+        public IdentityModel IdentityExt
+        {
+            get { return _identityExt; }
+
+            set
+            {
+                if (_identityExt == value)
+                    return;
+
+                _identityExt = value;
+
+                Sessions = _identityExt.Sessions;
+
+                OnPropertyChanged("IdentityExt");
+                OnPropertyChanged("Sessions");
+            }
+        }
+
+        IdentityModel _selectedItem;
+        public IdentityModel SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                if (_selectedItem == value)
+                    return;
+
+                _selectedItem = value;
+
+                OnPropertyChanged("SelectedItem");
+            }
+        }
+
+        SessionModel _selectedSession;
+        public SessionModel SelectedSession
+        {
+            get { return _selectedSession; }
+            set
+            {
+                if (_selectedSession == value)
+                    return;
+
+                _selectedSession = value;
+
+                OnPropertyChanged("SelectedSession");
+            }
+        }
+
+        public bool ShowStackApproved
+        {
+            get
+            {
+                return (bool)!IdentityExt.Approved;
+            }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -55,8 +157,9 @@ namespace ESBevents.ViewModels
             var result = string.Empty;
 
             // Dan met de velden de webservice aanroepen.
-            var identityServicesClient = new IdentityServices(this);
-            var identityObj = await identityServicesClient.GetIdentityAsync();
+            var identityServicesClient = new PubsubServices();
+
+            var identityObj = await identityServicesClient.GetIdentityAsync(this);
 
             if (identityObj != null)
             {
@@ -69,14 +172,53 @@ namespace ESBevents.ViewModels
             return result;
         }
 
+        public async Task<string> PostSessionAsync()
+        {
+            // Assume no success
+            var sessionToken = string.Empty;
+
+            // Dan met de velden de webservice aanroepen.
+            var identityServicesClient = new PubsubServices();
+
+            var identityObj = await identityServicesClient.PostSessionAsync(this);
+
+            if (identityObj != null)
+            {
+                if (identityObj.Sessiontoken != null)
+                {
+                    sessionToken = identityObj.Sessiontoken;
+                }
+            }
+
+            return sessionToken;
+        }
+
         public async Task<bool> RegisterUserAsynv()
         {
             // Assume no success
             var result = false;
 
             // Dan met de velden de webservice aanroepen.
-            var identityServicesClient = new IdentityServices(this);
-            var status = await identityServicesClient.RegisterAsync();
+            var identityServicesClient = new PubsubServices();
+            var status = await identityServicesClient.RegisterAsync(this);
+
+            if (status == HttpStatusCode.Continue)
+            {
+                // De json die terug komt in vm zetten van door het object door te geven.
+                result = true;
+            }
+
+            return result;
+        }
+
+        public async Task<bool> ApproveIdentity()
+        {
+            // Assume no success
+            var result = false;
+
+            // Dan met de velden de webservice aanroepen.
+            var identityServicesClient = new PubsubServices();
+            var status = await identityServicesClient.ApproveAsync(this);
 
             if (status == HttpStatusCode.Continue)
             {
@@ -93,8 +235,8 @@ namespace ESBevents.ViewModels
             var result = false;
 
             // Dan met de velden de webservice aanroepen.
-            var identityServicesClient = new IdentityServices(this);
-            var status = await identityServicesClient.ChangePasswordAsync();
+            var identityServicesClient = new PubsubServices();
+            var status = await identityServicesClient.ChangePasswordAsync(this);
 
             if (status == HttpStatusCode.Continue)
             {
@@ -105,6 +247,18 @@ namespace ESBevents.ViewModels
             return result;
         }
 
+        private async void GetIdentityExt()
+        {
+            // Dan met de velden de webservice aanroepen.
+            var webSrvc = new PubsubServices();
+            var status = await webSrvc.GetIdentityExtAsync(this);
+
+            if (status == HttpStatusCode.Continue)
+            {
+                Sessions = IdentityExt.Sessions.OrderByDescending(i => i.Id) as ObservableCollection<SessionModel>;
+
+            }
+        }
         #endregion Methods
     }
 }

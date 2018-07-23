@@ -11,7 +11,7 @@
     <ContentPage.Content>
         <ListView x:Name="customerList" RowHeight="80"
                     ItemsSource="{Binding Customers}"
-                    SelectedItem="{Binding SelectedItem}" >
+                    SelectedItem="{Binding SelectedItem}" SeparatorColor="Yellow" >
             
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -41,9 +41,6 @@
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
-
-                            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
-
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

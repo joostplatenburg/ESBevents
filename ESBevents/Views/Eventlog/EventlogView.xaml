@@ -8,14 +8,15 @@
             <Style x:Key="buttonStyle" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="Gray" />
-                <Setter Property="BackgroundColor" Value="#bddec3" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Black" />
                 <Setter Property="BorderRadius" Value="10" />
-                <Setter Property="HeightRequest" Value="40" />
-                <Setter Property="WidthRequest" Value="60" />
+                <Setter Property="HeightRequest" Value="35" />
+                <Setter Property="WidthRequest" Value="50" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="Margin" Value="0,5,0,5" />
-                <Setter Property="IsEnabled" Value="false" />
+                <Setter Property="IsEnabled" Value="true" />
+                <Setter Property="FontSize" Value="12" />
             </Style>
             <Style x:Key="labelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="16" />
@@ -40,21 +41,22 @@
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" Margin="10,0,10,0"/>
 
-            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Button Text="Trace" Style="{StaticResource buttonStyle}" FontSize="11" Clicked="OnFilterTraceClicked" />
-                <Button Text="Warning" Style="{StaticResource buttonStyle}" FontSize="11" Clicked="OnFilterWarningClicked"/>
-                <Button Text="Error" Style="{StaticResource buttonStyle}" FontSize="11" Clicked="OnFilterErrorClicked"/>
-                <Button Text="Info" Style="{StaticResource buttonStyle}" FontSize="11" Clicked="OnFilterInfoClicked"/>
-                <Button Text="All" Style="{StaticResource buttonStyle}" FontSize="11" Clicked="OnFilterAllClicked"/>
+                <Button Text="Trace"    Style="{StaticResource buttonStyle}" Clicked="OnFilterTraceClicked" />
+                <Button Text="Warning"  Style="{StaticResource buttonStyle}" Clicked="OnFilterWarningClicked"/>
+                <Button Text="Error"    Style="{StaticResource buttonStyle}" Clicked="OnFilterErrorClicked"/>
+                <Button Text="Info"     Style="{StaticResource buttonStyle}" Clicked="OnFilterInfoClicked"/>
+                <Button Text="All"      Style="{StaticResource buttonStyle}" Clicked="OnFilterAllClicked"/>
             </StackLayout>
             
-            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
 
             <ListView x:Name="eventList" RowHeight="70"
     					ItemsSource="{Binding Eventlog}"
-    					SelectedItem="{Binding SelectedItem}" >
+    					SelectedItem="{Binding SelectedItem}" 
+                      SeparatorVisibility="None">
     			<ListView.ItemTemplate>
     				<DataTemplate>
     					<ViewCell>
@@ -75,7 +77,7 @@
             						</StackLayout>
             					</StackLayout>
 
-                                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
 
                             </StackLayout>
                         </ViewCell>

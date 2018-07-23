@@ -8,7 +8,7 @@ namespace ESBevents
 {
     public partial class DeliverylogView : ContentPage
 	{
-        internal DeliverylogViewModel vm;
+        DeliverylogViewModel vm;
 
         public DeliverylogView()
 		{
@@ -19,11 +19,11 @@ namespace ESBevents
 			Initialize();
 		}
 
-       public DeliverylogView(CustomerViewModel _cVM)
+       public DeliverylogView(ActionsViewModel _avm)
 		{
 			InitializeComponent();
 
-            vm = new DeliverylogViewModel(_cVM);
+            vm = new DeliverylogViewModel(_avm);
 
 			Initialize();
 		}

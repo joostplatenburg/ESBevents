@@ -8,7 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using ESBevents.Models;
-using ESBevents.WebServices;
+using ESBevents.Services;
 
 namespace ESBevents.ViewModels
 {
@@ -37,8 +37,8 @@ namespace ESBevents.ViewModels
         #endregion INotifyPropertyChanged implementation
 
         #region Properties
-        List<CustomerModel> _customers;
-        public List<CustomerModel> Customers
+        ObservableCollection<CustomerModel> _customers;
+        public ObservableCollection<CustomerModel> Customers
         {
             get { return _customers; }
             set

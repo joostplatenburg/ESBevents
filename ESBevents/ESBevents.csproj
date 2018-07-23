@@ -13,6 +13,7 @@
     <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <ReleaseVersion>1.0.9</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,7 +38,7 @@
     <EmbeddedResource Include="Views\OptionView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CustomerView.xaml">
+    <EmbeddedResource Include="Views\ActionsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\IdentityManagement\LoginPage.xaml">
@@ -73,6 +74,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdentityManagement\IdentitiesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdentityManagement\IdentityView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdentityManagement\ListCustomersView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -83,31 +93,28 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\EventModel.cs" />
-    <Compile Include="WebServices\EventlogServices.cs" />
     <Compile Include="ViewModels\EventlogViewModel.cs" />
     <Compile Include="ViewModels\EventViewModel.cs" />
     <Compile Include="Views\OptionView.xaml.cs">
       <DependentUpon>OptionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomerModel.cs" />
-    <Compile Include="Views\CutomerView.xaml.cs">
-      <DependentUpon>CustomerView.xaml</DependentUpon>
+    <Compile Include="Views\ActionsView.xaml.cs">
+      <DependentUpon>ActionsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\ActionsViewModel.cs" />
     <Compile Include="Models\ActionModel.cs" />
     <Compile Include="Models\KoppelingModel.cs" />
     <Compile Include="ViewModels\ProcessStartViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\PubsubKoppelingenViewModel.cs" />
-    <Compile Include="WebServices\PubsubServices.cs" />
+    <Compile Include="Services\EnsemblePSServices.cs" />
     <Compile Include="Models\DeliveryModel.cs" />
     <Compile Include="ViewModels\DeliverylogViewModel.cs" />
     <Compile Include="ViewModels\DeliveryViewModel.cs" />
-    <Compile Include="WebServices\GetCustomerDataWS.cs" />
     <Compile Include="ViewModels\DeliveryStatusViewModel.cs" />
     <Compile Include="ViewModels\OptionViewModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
-    <Compile Include="WebServices\IdentityServices.cs" />
+    <Compile Include="Models\IdentityModel.cs" />
     <Compile Include="Views\IdentityManagement\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -140,12 +147,23 @@
     </Compile>
     <Compile Include="ViewModels\IdentityManagement\IdentityViewModel.cs" />
     <Compile Include="Models\DeviceInfoModel.cs" />
+    <Compile Include="Services\PubsubServices.cs" />
+    <Compile Include="Services\EnsembleENSServices.cs" />
+    <Compile Include="Views\IdentityManagement\IdentitiesView.xaml.cs">
+      <DependentUpon>IdentitiesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\IdentityManagement\IdentitiesViewModel.cs" />
+    <Compile Include="Models\SessionModel.cs" />
+    <Compile Include="Views\IdentityManagement\IdentityView.xaml.cs">
+      <DependentUpon>IdentityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IdentityManagement\ListCustomersView.xaml.cs">
+      <DependentUpon>ListCustomersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\IdentityManagement\ListCustomersViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="BCrypt.Net">
       <HintPath>..\packages\BCrypt.Net-PCL.1.0.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\BCrypt.Net.dll</HintPath>
     </Reference>
@@ -166,6 +184,12 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.3.1.0.637273\lib\netstandard1.0\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

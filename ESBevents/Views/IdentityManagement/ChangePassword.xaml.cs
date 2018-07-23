@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using ESBevents.Models;
-using ESBevents.WebServices;
+using ESBevents.Services;
 using System.Net;
 using System.Threading.Tasks;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace ESBevents.Views.IdentityManagement
             InitializeComponent();
 
             vm = new IdentityViewModel();
-            vm.CurrentUser = new UserModel();
+            vm.CurrentUser = new IdentityModel();
 
             Initialize();
         }
@@ -43,14 +43,15 @@ namespace ESBevents.Views.IdentityManagement
 
         async void OnChangeButtonClicked(object sender, EventArgs e)
         {
+            vm.CurrentUser.Username = usernameEntry.Text;
+            vm.CurrentUser.Email = emailEntry.Text;
+            vm.CurrentUser.Password = curPasswordEntry.Text;
+
             // newpassword filled and confirmed
             if (AreDetailsValid())
             {
                 // 1. Check current password
                 //
-                vm.CurrentUser.Username = usernameEntry.Text;
-                vm.CurrentUser.Email = emailEntry.Text;
-
                 var passHashed = await vm.GetIdentityAsync();
                 if (!string.IsNullOrWhiteSpace(passHashed))
                 {
@@ -69,7 +70,7 @@ namespace ESBevents.Views.IdentityManagement
                         {
                             App.IsUserLoggedIn = true;
 
-                            Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
+                            Navigation.InsertPageBefore(new LoginPage(), Navigation.NavigationStack.First());
                             await Navigation.PopToRootAsync();
                         }
                     }

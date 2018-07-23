@@ -5,14 +5,14 @@ using System.Net;
 using System.Threading.Tasks;
 using ESBevents.Models;
 using ESBevents.ViewModels;
-using ESBevents.WebServices;
+using ESBevents.Services;
 using Xamarin.Forms;
 
 namespace ESBevents
 {
     public partial class DeliveryView : ContentPage
 	{
-        internal DeliveryViewModel vm;
+        DeliveryViewModel vm;
 
         public DeliveryView()
 		{
@@ -64,8 +64,8 @@ namespace ESBevents
         async Task<HttpStatusCode> ResendMessageAsync()
         {
             // Dan met de velden de webservice aanroepen.
-            var pubsubServicesClient = new PubsubServices();
-            var httpstatus = await pubsubServicesClient.ResendMessageAsync(vm);
+            var pubsubServicesClient = new EnsemblePSServices(vm);
+            var httpstatus = await pubsubServicesClient.ResendMessageAsync();
 
             return httpstatus;
         }
@@ -89,8 +89,8 @@ namespace ESBevents
         async Task<HttpStatusCode> ObsoleteMessageAsync()
         {
             // Dan met de velden de webservice aanroepen.
-            var pubsubServicesClient = new PubsubServices();
-            var httpstatus = await pubsubServicesClient.SetObsoleteAsync(vm);
+            var pubsubServicesClient = new EnsemblePSServices(vm);
+            var httpstatus = await pubsubServicesClient.SetObsoleteAsync();
 
             return httpstatus;
         }

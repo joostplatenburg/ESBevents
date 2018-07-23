@@ -8,7 +8,7 @@ namespace ESBevents
 {
     public partial class EventlogView : ContentPage
     {
-        internal EventlogViewModel vm;
+        EventlogViewModel vm;
 
         MainPageViewModel mpvm;
 
@@ -31,7 +31,7 @@ namespace ESBevents
             Initialize();
         }
 
-        public EventlogView(CustomerViewModel cvm)
+        public EventlogView(ActionsViewModel cvm)
         {
             InitializeComponent();
 

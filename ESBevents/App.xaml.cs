@@ -10,24 +10,29 @@ namespace ESBevents
         public static int ScreenWidth;
         public static int ScreenHeight;
 
-        public static UserModel CurrentUser = new UserModel();
+        public static IdentityModel CurrentUser = new IdentityModel();
+        public static string SessionToken = string.Empty;
 
 		public App()
 		{
 			InitializeComponent();
 
+            Application.Current.Properties["SessionToken"] = "";
+
             if (!IsUserLoggedIn)
             {
                 MainPage = new NavigationPage(new ESBevents.Views.IdentityManagement.LoginPage())
                 {
-                    BarBackgroundColor = Color.FromHex("#806699"),
+                    //BarBackgroundColor = Color.FromHex("#806699"),
+                    BarBackgroundColor = Color.Black,
                     BarTextColor = Color.White,
                     Title = "ESB Eventlogs"
                 };
             } else {
                 MainPage = new NavigationPage(new ESBevents.Views.MainPage())
                 {
-                    BarBackgroundColor = Color.FromHex("#806699"),
+                    //BarBackgroundColor = Color.FromHex("#806699"),
+                    BarBackgroundColor = Color.Black,
                     BarTextColor = Color.White,
                     Title = "ESB Eventlogs"
                 };

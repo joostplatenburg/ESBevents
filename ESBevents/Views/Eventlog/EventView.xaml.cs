@@ -8,7 +8,7 @@ namespace ESBevents
 {
 	public partial class EventView : ContentPage
 	{
-		internal EventViewModel vm;
+		EventViewModel vm;
 
 		public EventView()
 		{

@@ -1,9 +1,28 @@
-﻿namespace ESBevents.Models
+﻿using System;
+using Newtonsoft.Json;
+
+namespace ESBevents.Models
 {
     public class KoppelingModel
     {
-        public int ID { get; set;  }
+        [JsonProperty(PropertyName = "externalid")]
+        public string ExternalID { get; set;  }
+
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-		public string Description { get; set; }
+
+        [JsonProperty(PropertyName = "description")]
+        public string Description { get; set; }
+
+        [JsonProperty(PropertyName = "issubscriber")]
+        public bool IsSubscriber { get; set; }
+
+        [JsonConstructor]
+        public KoppelingModel()
+        {
+            //ExternalID      = string.Empty;
+            //Name            = string.Empty;
+            //Description     = string.Empty;
+        }
 	}
 }

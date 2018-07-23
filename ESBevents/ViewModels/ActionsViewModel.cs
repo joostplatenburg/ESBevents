@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -7,15 +8,23 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using ESBevents.Models;
-using ESBevents.WebServices;
+using ESBevents.Services;
 
 namespace ESBevents.ViewModels
 {
-    public class CustomerViewModel : INotifyPropertyChanged
+    public class ActionsViewModel : INotifyPropertyChanged
     {
-        public CustomerViewModel()
+        public ActionsViewModel()
         {
-            Customer = new CustomerModel { Logo = "DXC_180.png", ToonPSlog = true, ToonEventlog = true, StartBP = false };
+            Customer = new CustomerModel(); // { Logo = "DXC_180.png", ToonPSlog = true, ToonEventlog = true, ToonStartBP = false };
+
+            GetCustomer();
+        }
+
+        public ActionsViewModel(MainPageViewModel mpvm)
+        {
+            Customer = mpvm.Customer;
+            Customers = mpvm.Customers;
 
             GetCustomer();
         }
@@ -27,8 +36,8 @@ namespace ESBevents.ViewModels
 
         async Task GetCustomerAsync()
         {
-            var webSrvc = new GetCustomerDataWS();
-            var status = await webSrvc.GetCustomerAsync(this, App.CurrentUser.CustomerId);
+            var webSrvc = new PubsubServices();
+            var status = await webSrvc.GetCustomerAsync(this, Customer.Identifier);
 
             if (status != HttpStatusCode.Continue)
             {
@@ -50,8 +59,8 @@ namespace ESBevents.ViewModels
         #endregion INotifyPropertyChanged implementation
 
         #region Properties
-        List<CustomerModel> _customers;
-        public List<CustomerModel> Customers
+        ObservableCollection<CustomerModel> _customers;
+        public ObservableCollection<CustomerModel> Customers
         {
             get { return _customers; }
             set
@@ -81,17 +90,27 @@ namespace ESBevents.ViewModels
         }
 
         public string Name { get { return Customer.Name; } }
-        public string IPO { get { return Customer.IPO; } }
         public string IPT { get { return Customer.IPT; } }
         public string IPA { get { return Customer.IPA; } }
         public string IPP { get { return Customer.IPP; } }
-        public string PortEnsemble { get { return Customer.PortEnsemble; } } // Eventlog
-        public string PortPubsub { get { return Customer.PortPubsub; } } // StartProcess
+        public string PortEnsemble { get { return Customer.PortEnsemble; } }
+        public string PortPubsub { get { return Customer.PortPubsub; } }
         public string Logo { get { return Customer.Logo; } }
 
-        public bool ToonEventlog { get { return Customer.ToonEventlog; } }
-        public bool StartBP { get { return Customer.StartBP; } }
-        public bool ToonPSlog { get { return Customer.ToonPSlog; } }
+        public bool? ToonEventlog { get { return Customer.ToonEventlog; } }
+        public bool? ToonStartBP { get { return Customer.ToonStartBP; } }
+        public bool? ToonPSlog { get { return Customer.ToonPSlog; } }
+
+        public bool ToonIdentities
+        {
+            get {
+                if ((App.CurrentUser.Username == "jplatenb") && (Customer.Identifier == "DXC")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
 
         ActionModel _selectedActionItem;
         public ActionModel SelectedActionItem
@@ -108,8 +127,8 @@ namespace ESBevents.ViewModels
             }
         }
 
-        List<EventModel> _eventlog;
-        public List<EventModel> Eventlog
+        ObservableCollection<EventModel> _eventlog;
+        public ObservableCollection<EventModel> Eventlog
         {
             get
             {
@@ -182,6 +201,20 @@ namespace ESBevents.ViewModels
                 _sbCommands = value;
 
                 OnPropertyChanged("sbCommands");
+            }
+        }
+
+        bool _idCommands = true;
+        public bool idCommands
+        {
+            get { return _idCommands; }
+            set
+            {
+                if (_idCommands == value) return;
+
+                _idCommands = value;
+
+                OnPropertyChanged("idCommands");
             }
         }
         #endregion Properties

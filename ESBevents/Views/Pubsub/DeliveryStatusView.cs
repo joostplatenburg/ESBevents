@@ -5,7 +5,7 @@ using System.Net;
 //using ESBevents.Abstractions;
 using ESBevents.Models;
 using ESBevents.ViewModels;
-using ESBevents.WebServices;
+using ESBevents.Services;
 using Xamarin.Forms;
 
 namespace ESBevents
@@ -21,7 +21,7 @@ namespace ESBevents
             Initialize();
 		}
 
-        public DeliveryStatusView(CustomerViewModel cvm)
+        public DeliveryStatusView(ActionsViewModel cvm)
         {
             InitializeComponent();
 
@@ -43,23 +43,14 @@ namespace ESBevents
             Navigation.PushAsync(new OptionView(vm.Customers));
 		}
 
-        //void ToonLog(object sender, EventArgs e)
-        //{
-        //    var but = sender as Button;
-        //    Debug.WriteLine("ToonLog: " + but.Text);
-        //}
-
         async void ToonLog(object sender, EventArgs e)
         {
             var but = sender as Button;
             vm.Status = but.Text;
 
             await Navigation.PushAsync(new PubsubKoppelingenView(vm));
-
-            //  //((ListView)sender).SelectedItem = null;
         }
 
-        //async void ToonStats(object sender, EventArgs e)
         void ToonStats(object sender, EventArgs e)
         {
         /*    var but = sender as Button;
@@ -76,18 +67,7 @@ namespace ESBevents
             }
 
             //  //((ListView)sender).SelectedItem = null;
-       */ }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-			//MessagingCenter.Subscribe<DeviceOrientationChangeMessage>(this, DeviceOrientationChangeMessage.MessageId, (message) =>
-			//{
-			//	//TODO: HandleOrientationChange(message);
-			//});
-        
+       */
         }
-
 	}
 }

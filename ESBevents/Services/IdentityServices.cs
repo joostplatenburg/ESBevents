@@ -29,6 +29,8 @@ namespace ESBevents.WebServices
             vm = _vm;
 
             //client.MaxResponseContentBufferSize = 256000;
+
+            client.BaseAddress = new Uri("http://52.73.112.29:58002");
         }
 
         public async Task<HttpStatusCode> RegisterAsync()
@@ -36,16 +38,10 @@ namespace ESBevents.WebServices
             try
             {
                 Debug.WriteLine("Start RegisterAsync()");
-                // http://localhost:54326/dxcmobile/GetDeliveryLog?subscription=DZG010&status=Initial
-                // http://52.73.112.29:9925/dxcpsmobile/getdeliverylog?subscription=DZG015&status=Initial
 
-                var server = "52.73.112.29";
-                var port = "58002";
+                var service = string.Format("pubsub/register?username={0}&password={1}&email={2}", vm.CurrentUser.username, vm.CurrentUser.password, vm.CurrentUser.email);
 
-                var service = string.Format("http://{0}:{1}/pubsub/register?username={2}&password={3}&email={4}", server, port, vm.CurrentUser.Username, vm.CurrentUser.Password, vm.CurrentUser.Email);
-                var uri = new Uri(service);
-
-                Debug.WriteLine("DXCPS - " + service);
+                Debug.WriteLine("DXCPS - " + client.BaseAddress + service);
 
                 var deviceInfo = new DeviceInfoModel
                 {
@@ -64,7 +60,9 @@ namespace ESBevents.WebServices
                 Debug.WriteLine("DXCPS - DeviceInfo: " + jsonData);
 
                 var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(uri, content);
+
+                var response = await client.PostAsync(new Uri(service), content);
+
                 if (response.StatusCode == HttpStatusCode.Continue ||
                     response.StatusCode == HttpStatusCode.Accepted ||
                     response.StatusCode == HttpStatusCode.OK)
@@ -94,12 +92,12 @@ namespace ESBevents.WebServices
             {
                 Debug.WriteLine("Start CheckPasswordAsync()");
 
-                var service = string.Format("http://52.73.112.29:58002/pubsub/getidentity?username={0}", vm.CurrentUser.Username);
-                var uri = new Uri(service);
+                var service = string.Format("pubsub/getidentity?username={0}", vm.CurrentUser.username);
 
-                Debug.WriteLine("DXCPS - " + service);
+                Debug.WriteLine("DXCPS - " + client.BaseAddress + service);
 
-                var response = await client.GetAsync(uri);
+                var response = await client.GetAsync(service);
+
                 if (response.StatusCode == HttpStatusCode.Continue ||
                     response.StatusCode == HttpStatusCode.Accepted ||
                     response.StatusCode == HttpStatusCode.OK)
@@ -112,7 +110,8 @@ namespace ESBevents.WebServices
                     App.CurrentUser = identity;
 
                     Debug.WriteLine(result);
-                    Debug.WriteLine(identity.Password);
+                    Debug.WriteLine(identity.password);
+                    Debug.WriteLine(identity.customerid);
 
                     return App.CurrentUser;
                 }
@@ -135,16 +134,14 @@ namespace ESBevents.WebServices
             try
             {
                 Debug.WriteLine("Start CheckPasswordAsync()");
-                var server = "52.73.112.29";
-                var port = "58002";
 
-                var service = string.Format("http://{0}:{1}/pubsub/changepassword?username={2}&email={3}&password={4}", 
-                                            server, port, vm.CurrentUser.Username, vm.CurrentUser.Email, vm.CurrentUser.Password);
-                var uri = new Uri(service);
+                var service = string.Format("pubsub/changepassword?username={0}&email={1}&password={2}", 
+                                            vm.CurrentUser.username, vm.CurrentUser.email, vm.CurrentUser.password);
 
                 Debug.WriteLine("DXCPS - " + service);
 
-                var response = await client.GetAsync(uri);
+                var response = await client.GetAsync(service);
+
                 if (response.StatusCode == HttpStatusCode.Continue ||
                     response.StatusCode == HttpStatusCode.Accepted ||
                     response.StatusCode == HttpStatusCode.OK)

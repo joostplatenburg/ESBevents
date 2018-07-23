@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using ESBevents.Models;
 using ESBevents.ViewModels;
@@ -19,7 +20,7 @@ namespace ESBevents
             vm.Logo = "DXCLogo3.png";
         }
 
-        public OptionView(List<CustomerModel> _customers)
+        public OptionView(ObservableCollection<CustomerModel> _customers)
 		{
 			InitializeComponent();
 

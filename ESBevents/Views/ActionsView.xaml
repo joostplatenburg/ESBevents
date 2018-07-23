@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ESBevents.Views.CustomerView" Title="Customer">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="ESBevents.Views.ActionsView" Title="Actions">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="buttonStyle" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="End" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="Gray" />
-                <Setter Property="BackgroundColor" Value="#bddec3" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Black" />
                 <Setter Property="BorderRadius" Value="10" />
                 <Setter Property="HeightRequest" Value="40" />
                 <Setter Property="WidthRequest" Value="100" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontSize" Value="14" />
             </Style>
+            <Style x:Key="largeButtonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Black" />
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="300" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -24,12 +37,12 @@
             <!-- Toon pubsub log-->
             <StackLayout Orientation="Vertical" IsVisible="{Binding ToonPSlog}">
                 <StackLayout x:Name="psStack" Orientation="Vertical" HeightRequest="54">
-                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
                     <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
                         <Image Source="pubsub.png" WidthRequest="60" HeightRequest="60" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0" />
                         <Label Text="DXC Publish and Subscribe" FontSize="16" VerticalOptions="Center" />
                     </StackLayout>
-                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
                 </StackLayout>
                 <StackLayout Orientation="Vertical" IsVisible="{Binding psCommands}">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
@@ -43,12 +56,12 @@
             <!-- Toon eventlog-->
             <StackLayout Orientation="Vertical" IsVisible="{Binding ToonEventlog}">
                 <StackLayout x:Name="elStack" Orientation="Vertical" HeightRequest="54">
-                    <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                    <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
                     <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
                         <Image Source="EventLog.png" WidthRequest="60" HeightRequest="60" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0" />
                         <Label Text="Toon ESB Eventlog" FontSize="16" VerticalOptions="Center" />
                     </StackLayout>
-                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
                 </StackLayout>
                 <StackLayout Orientation="Vertical" IsVisible="{Binding elCommands}">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
@@ -60,14 +73,14 @@
             </StackLayout>
 
             <!-- Start business process-->
-            <StackLayout Orientation="Vertical" IsVisible="{Binding StartBP}">
+            <StackLayout Orientation="Vertical" IsVisible="{Binding ToonStartBP}">
                 <StackLayout x:Name="sbStack" Orientation="Vertical" HeightRequest="54">
-                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
                     <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
                         <Image Source="ProcessStart.png" WidthRequest="60" HeightRequest="60" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0" />
                         <Label Text="Start Business Process" FontSize="16" VerticalOptions="Center" />
                     </StackLayout>
-                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
                 </StackLayout>
                 <StackLayout Orientation="Vertical" IsVisible="{Binding sbCommands}">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
@@ -76,8 +89,30 @@
                         <Button x:Name="PRDSP" Text="Productie" Style="{StaticResource buttonStyle}" Clicked="StartProcess" Margin="5" />
                     </StackLayout>
                 </StackLayout>
-                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
             </StackLayout>
+            
+            <!-- Start identity management -->
+            <StackLayout Orientation="Vertical" IsVisible="{Binding ToonIdentities}">
+                <StackLayout x:Name="idStack" Orientation="Vertical" HeightRequest="54">
+                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HeightRequest="40">
+                        <Image Source="IdentityMngt.png" WidthRequest="60" HeightRequest="60" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,10,0" />
+                        <Label Text="Manage Identities en stuff" FontSize="16" VerticalOptions="Center" />
+                    </StackLayout>
+                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
+                </StackLayout>
+                <StackLayout Orientation="Vertical" IsVisible="{Binding idCommands}">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button x:Name="ListCustomers" Text="List Customers" Style="{StaticResource largeButtonStyle}" Clicked="ListCustomersClicked" Margin="5"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button x:Name="ListIdentities" Text="List Identities" Style="{StaticResource largeButtonStyle}" Clicked="ListIdentitiesClicked" Margin="5"/>
+                    </StackLayout>
+                </StackLayout>
+                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
+            </StackLayout>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

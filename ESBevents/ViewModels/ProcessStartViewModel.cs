@@ -12,15 +12,15 @@ namespace ESBevents.ViewModels
 			_koppelingen = new ObservableCollection<KoppelingModel>();
 		}
 
-		public ProcessStartViewModel(CustomerViewModel _customerviewmodel)
+		public ProcessStartViewModel(ActionsViewModel _avm)
 		{
 			_koppelingen = new ObservableCollection<KoppelingModel>();
 
-            foreach(KoppelingModel k in _customerviewmodel.Customer.Koppelingen) {
+            foreach(KoppelingModel k in _avm.Customer.Koppelingen) {
                 Koppelingen.Add(k);
             }
 
-			Customer = _customerviewmodel.Customer;
+			Customer = _avm.Customer;
 		}
 
 		public ProcessStartViewModel(CustomerModel _customer)
@@ -76,8 +76,8 @@ namespace ESBevents.ViewModels
 			}
 		}
 
-        List<CustomerModel> _customers;
-        public List<CustomerModel> Customers
+        ObservableCollection<CustomerModel> _customers;
+        public ObservableCollection<CustomerModel> Customers
         {
             get { return _customers; }
             set

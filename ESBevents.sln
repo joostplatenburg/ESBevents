@@ -8,6 +8,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESBevents.iOS", "iOS\ESBeve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESBevents.Droid", "Droid\ESBevents.Droid.csproj", "{96A2D971-9BD3-4842-B3EF-FE44CB0B64CD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{63CFC27F-E295-462B-B503-2572304FD10E}"
+	ProjectSection(SolutionItems) = preProject
+		ESBevents.sln = ESBevents.sln
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,5 +78,6 @@ Global
 		$4.BracePositions = SemiExpanded
 		$4.FormatOnPaste = True
 		$4.scope = text/x-json
+		version = 1.0.9
 	EndGlobalSection
 EndGlobal

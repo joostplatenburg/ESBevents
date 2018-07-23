@@ -45,16 +45,28 @@ namespace ESBevents.WebServices
 
                     Debug.WriteLine(json);
 
-                    var Customers = JsonConvert.DeserializeObject<List<CustomerModel>>(json);
-
+                    // 
                     vm.Customers = new List<CustomerModel>();
-                    foreach (CustomerModel cm in Customers)
+
+                    json = "[{\"identifier\":\"ALL\"}]";
+                    if (json != "")
                     {
-                        vm.Customers.Add(cm);
+                        vm.Customers = JsonConvert.DeserializeObject<IEnumerable<CustomerModel>>(json).ToList() as List<CustomerModel>;
                     }
+
+                    //int i = 1;
+                    //foreach (CustomerModel cm in vm.Customers)
+                    //{
+                    //    Debug.WriteLine(i + " Identifier: " + cm.Identifier + " - " + "Name: " + cm.Name);
+
+                    //    i = i + 1;
+                    //}
 
                     return HttpStatusCode.Continue;
                 }
+
+                Debug.WriteLine(response.ReasonPhrase);
+                Debug.WriteLine(response.StatusCode);
                 return response.StatusCode;
             }
             catch (System.Net.WebException)

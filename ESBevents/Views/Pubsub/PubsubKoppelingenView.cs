@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Net;
 using ESBevents.Models;
 using ESBevents.ViewModels;
-using ESBevents.WebServices;
+using ESBevents.Services;
 using Xamarin.Forms;
 
 namespace ESBevents
@@ -31,8 +31,15 @@ namespace ESBevents
             vm.Customers = dsvm.Customers;
             vm.Environment = dsvm.Environment;
             vm.Status = dsvm.Status;
+
             foreach(KoppelingModel km in dsvm.Customer.Koppelingen) {
                 vm.Koppelingen.Add(km);
+
+                if (km.IsSubscriber){
+                    vm.Subscribers.Add(km);
+                } else {
+                    vm.Publishers.Add(km);
+                }
             }
 
 			Initialize();
@@ -65,8 +72,8 @@ namespace ESBevents
                 {
                     //await Navigation.PushAsync(new DeliveryStatusView(vm));
                     // Dan met de velden de webservice aanroepen.
-                    var webSrvc = new PubsubServices();
-                    var status = await webSrvc.GetDeliverylogAsync(vm);
+                    var webSrvc = new EnsemblePSServices(vm);
+                    var status = await webSrvc.GetDeliverylogAsync();
 
                     if (status == HttpStatusCode.Continue)
                     {

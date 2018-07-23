@@ -17,11 +17,11 @@
             <Image Source="{Binding Logo}" WidthRequest="350" HeightRequest="60"
                 VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="5"/>
             
-            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
 
             <Label Text="Portnumbers" Margin="5,0,0,0" FontAttributes="Bold"/>
             
-            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
 
             <StackLayout Orientation="Horizontal">
                 <Label Text="Ensemble Services:" Margin="5,0,0,0" WidthRequest="130" FontSize="12"/>
@@ -32,11 +32,11 @@
                 <Label Text="{Binding portPubsub}" FontAttributes="Bold" FontSize="12"/>
             </StackLayout>
             
-            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
 
             <Label Text="IP-adressen" Margin="5,0,0,0" FontAttributes="Bold"/>
 
-            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
 
             <StackLayout Orientation="Horizontal">
                 <Label Text="Address on DEV:" Margin="5,0,0,0" WidthRequest="130" FontSize="12"/>
@@ -48,11 +48,12 @@
                 <Label Text="{Binding IPT}" FontAttributes="Bold" FontSize="12"/>
             </StackLayout>
 
-            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
 
             <ListView x:Name="CustomersList" RowHeight="80"
                         ItemsSource="{Binding Customers}"
-                        SelectedItem="{Binding Customer}" >
+                        SelectedItem="{Binding Customer}" 
+                      SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -71,7 +72,7 @@
                                     <Label Text="Address on PRD:" Margin="5,0,0,0" WidthRequest="120" FontSize="12"/>
                                     <Label Text="{Binding IPP}" FontAttributes="Bold" FontSize="12"/>
                                 </StackLayout>
-                                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+                                <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

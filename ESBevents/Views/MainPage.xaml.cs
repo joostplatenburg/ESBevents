@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using ESBevents.ViewModels;
-using ESBevents.WebServices;
+using ESBevents.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,7 +12,7 @@ namespace ESBevents.Views
 {
     public partial class MainPage : ContentPage
     {
-        internal MainPageViewModel vm = new MainPageViewModel();
+        public MainPageViewModel vm = new MainPageViewModel();
 
         public MainPage()
         {
@@ -24,7 +24,7 @@ namespace ESBevents.Views
             {
                 vm.Customer = vm.SelectedItem;
 
-                Navigation.PushAsync(new CustomerView(vm));
+                Navigation.PushAsync(new ActionsView(vm));
 
                 ((ListView)sender).SelectedItem = null;
             };

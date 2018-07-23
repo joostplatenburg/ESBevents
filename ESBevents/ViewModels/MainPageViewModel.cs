@@ -8,7 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using ESBevents.Models;
-using ESBevents.WebServices;
+using ESBevents.Services;
 using Xamarin.Forms;
 
 namespace ESBevents.ViewModels
@@ -17,24 +17,30 @@ namespace ESBevents.ViewModels
     {
         public MainPageViewModel()
         {
-            GetCustomers();
+            var rc = GetCustomers();
         }
 
-        async void GetCustomers()
+        private async Task<bool> GetCustomers()
         {
-            await GetCustomersAsync();
+            var rc = await GetCustomersAsync();
+
+            return true;
         }
 
-        async Task GetCustomersAsync()
+        async Task<bool> GetCustomersAsync()
         {
-            var webSrvc = new GetCustomerDataWS();
+            var webSrvc = new PubsubServices();
             var status = await webSrvc.GetCustomersAsync(this);
 
             if (status != HttpStatusCode.Continue)
             {
                 // WAT TE DOEN ALS ER EEN FOUT OPTREED
                 Debug.WriteLine("DXCPS - Fout bij ophalen customer data");
+
+                return false;
             }
+
+            return true;
         }
 
         #region INotifyPropertyChanged implementation
@@ -50,8 +56,8 @@ namespace ESBevents.ViewModels
         #endregion INotifyPropertyChanged implementation
 
         #region Properties
-        List<CustomerModel> _customers;
-        public List<CustomerModel> Customers
+        ObservableCollection<CustomerModel> _customers;
+        public ObservableCollection<CustomerModel> Customers
         {
             get { return _customers; }
             set
@@ -62,6 +68,7 @@ namespace ESBevents.ViewModels
                 _customers = value;
 
                 OnPropertyChanged("Customers");
+                OnPropertyChanged("Customer");
             }
         }
 
@@ -76,34 +83,6 @@ namespace ESBevents.ViewModels
                 _customer = value;
 
                 OnPropertyChanged("Customer");
-            }
-        }
-
-        string _mainMessage;
-        public string MainMessage
-        {
-            get { return _mainMessage; }
-            set
-            {
-                if (_mainMessage == value) return;
-
-                _mainMessage = value;
-
-                OnPropertyChanged("MainMessage");
-            }
-        }
-
-        Boolean _progressvisible;
-        public Boolean ProgressVisible
-        {
-            get { return _progressvisible; }
-            set
-            {
-                if (_progressvisible == value) return;
-
-                _progressvisible = value;
-
-                OnPropertyChanged("ProgressVisible");
             }
         }
 
@@ -122,38 +101,9 @@ namespace ESBevents.ViewModels
             }
         }
 
-
-        List<EventModel> _eventlog;
-        public List<EventModel> Eventlog
-        {
-            get { return _eventlog; }
-            set
-            {
-                if (_eventlog == value)
-                    return;
-
-                _eventlog = value;
-
-                OnPropertyChanged("Eventlog");
-            }
-        }
         #endregion Properties
 
         #region Commands
-
-        //private Command toolbarItemCommand;
-        //public Command ToolbarItemCommand
-        //{
-        //    get
-        //    {
-        //        return toolbarItemCommand ?? (toolbarItemCommand = new Command(ExecuteToolbarItemCommand));
-        //    }
-        //}
-
-        //internal void ExecuteToolbarItemCommand()
-        //{
-        //    Navigation.PushAsync(new OptionView(vm.Customers));
-        //}
 
         #endregion Commands
     }

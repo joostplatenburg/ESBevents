@@ -1,5 +1,4 @@
-﻿using System;
-namespace ESBevents
+﻿namespace ESBevents
 {
     public class DeviceInfoModel
     {

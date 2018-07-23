@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+				xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+				x:Class="ESBevents.Views.IdentityManagement.ListCustomersView" Title="Customers">
+	
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Black" />
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="35" />
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+                <Setter Property="IsEnabled" Value="true" />
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+            <Style x:Key="labelStyle1" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Margin" Value="10,0,0,0" />
+                <Setter Property="WidthRequest" Value="110" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="labelStyle2" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="entryStyle" TargetType="Entry">
+                <Setter Property="WidthRequest" Value="200" />
+                <Setter Property="HeightRequest" Value="40" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+		<ToolbarItem Icon="ic_drawer.png" Activated="OnClick" />
+	</ContentPage.ToolbarItems>
+	
+	<ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Image Source="{Binding Logo}" WidthRequest="350" HeightRequest="70"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" Margin="10,0,10,0"/>
+
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Show"         Style="{StaticResource buttonStyle}" Clicked="OnFilterShowClicked" />
+                <Button Text="Do NOT Show"  Style="{StaticResource buttonStyle}" Clicked="OnFilterNotShowClicked"/>
+                <Button Text="All"          Style="{StaticResource buttonStyle}" Clicked="OnFilterAllClicked"/>
+            </StackLayout>
+            
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
+
+            <ListView x:Name="customersList" RowHeight="100"
+    					ItemsSource="{Binding Customers}"
+    					SelectedItem="{Binding SelectedItem}" 
+                        SeparatorVisibility="None">
+    			<ListView.ItemTemplate>
+    				<DataTemplate>
+    					<ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
+                                    <StackLayout Orientation="Vertical" Margin="0,10,0,0">
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
+                                            <Label Text="Name:" Style="{StaticResource labelStyle1}" />
+                                            <Label Text="{Binding Name}" Style="{StaticResource labelStyle2}" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" >
+                                            <Label Text="Identifier:" Style="{StaticResource labelStyle1}" />
+                                            <Label Text="{Binding Identifier}" Style="{StaticResource labelStyle2}" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" >
+                                            <Label Text="IP Address ACC:" Style="{StaticResource labelStyle1}" />
+                                            <Label Text="{Binding IPA}" Style="{StaticResource labelStyle2}" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" >
+                                            <Label Text="IP Address PRD:" Style="{StaticResource labelStyle1}" />
+                                            <Label Text="{Binding IPP}" Style="{StaticResource labelStyle2}" />
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                    <!-- Image op basis van Approved -->
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand" Margin="0,0,10,0">
+                                        <Image Source="{Binding Logo}" WidthRequest="70" HeightRequest="70"
+                                            VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="5,0,5,0"/>
+                                        <Label Text="{Binding Logo}" Style="{StaticResource labelStyle2}" HorizontalOptions="CenterAndExpand" />
+                                    </StackLayout>
+                                        
+                                </StackLayout>
+                                    <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
+                            </StackLayout>
+                        </ViewCell>
+    				</DataTemplate>
+    			</ListView.ItemTemplate>
+    		</ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

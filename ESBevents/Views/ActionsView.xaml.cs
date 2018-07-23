@@ -4,27 +4,32 @@ using System.Diagnostics;
 using System.Net;
 using ESBevents.Models;
 using ESBevents.ViewModels;
-using ESBevents.WebServices;
+using ESBevents.Services;
 using Xamarin.Forms;
+using ESBevents.Views.IdentityManagement;
 
 namespace ESBevents.Views
 {
-    public partial class CustomerView : ContentPage
+    public partial class ActionsView : ContentPage
     {
-        internal CustomerViewModel vm = new CustomerViewModel();
+        internal ActionsViewModel vm;
 
-        public CustomerView()
+        public ActionsView()
         {
             InitializeComponent();
+
+            vm = new ActionsViewModel();
 
             //Debug.WriteLine("Customer identification: " + vm.Customer.Identifier);
 
             Initialize();
         }
 
-        public CustomerView(MainPageViewModel mpvm)
+        public ActionsView(MainPageViewModel mpvm)
         {
             InitializeComponent();
+
+            vm = new ActionsViewModel(mpvm);
 
             vm.Customer = mpvm.Customer;
 
@@ -40,6 +45,7 @@ namespace ESBevents.Views
             vm.psCommands = true;
             vm.elCommands = false;
             vm.sbCommands = false;
+            vm.idCommands = false;
 
             psStack.GestureRecognizers.Add(
                 new TapGestureRecognizer()
@@ -70,6 +76,16 @@ namespace ESBevents.Views
                          Debug.WriteLine("clicked stack sb");
                      })
                  });
+
+            idStack.GestureRecognizers.Add(
+                 new TapGestureRecognizer()
+                 {
+                     Command = new Command(() =>
+                     {
+                         vm.idCommands = !vm.idCommands;
+                         Debug.WriteLine("clicked stack id");
+                     })
+                 });
         }
 
         void OnClick(object sender, EventArgs e)
@@ -83,8 +99,8 @@ namespace ESBevents.Views
             vm.Environment = but.Text;
 
             // Dan met de velden de webservice aanroepen.
-            var webSrvc = new EventlogServices();
-            var status = await webSrvc.GetEventlogAsync(vm);
+            var webSrvc = new EnsembleENSServices(vm);
+            var status = await webSrvc.GetEventlogAsync();
 
             if (status == HttpStatusCode.Continue)
             {
@@ -110,6 +126,20 @@ namespace ESBevents.Views
             await Navigation.PushAsync(new DeliveryStatusView(vm));
 
             //((ListView)sender).SelectedItem = null;
+        }
+
+        async void ListCustomersClicked(object sender, EventArgs e)
+        {
+            var but = sender as Button;
+
+            await Navigation.PushAsync(new ListCustomersView(vm));
+        }
+
+        async void ListIdentitiesClicked(object sender, EventArgs e)
+        {
+            var but = sender as Button;
+
+            await Navigation.PushAsync(new IdentitiesView(vm));
         }
 
         protected override void OnAppearing()

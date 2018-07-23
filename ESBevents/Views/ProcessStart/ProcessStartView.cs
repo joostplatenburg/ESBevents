@@ -9,7 +9,7 @@ namespace ESBevents
 {
     public partial class ProcessStartView : ContentPage
 	{
-		internal ProcessStartViewModel vm;
+		ProcessStartViewModel vm;
 
 		public ProcessStartView()
 		{
@@ -20,13 +20,13 @@ namespace ESBevents
 			Initialize();
 		}
 
-		public ProcessStartView(CustomerViewModel cvm)
+		public ProcessStartView(ActionsViewModel _avm)
 		{
 			InitializeComponent();
 
-			vm = new ProcessStartViewModel(cvm);
-            vm.Customer = cvm.Customer;
-            vm.Customers = cvm.Customers;
+			vm = new ProcessStartViewModel(_avm);
+            vm.Customer = _avm.Customer;
+            vm.Customers = _avm.Customers;
 
 			Initialize();
 		}

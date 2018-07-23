@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -67,15 +68,15 @@ namespace ESBevents.ViewModels
                 {
                     switch (Event.Type)
                     {
-                        case "1":
+                        case 1:
                             return "led_blue.png";
-                        case "2":
+                        case 2:
                             return "led_red.png";
-                        case "3":
+                        case 3:
                             return "led_yellow.png";
-                        case "4":
+                        case 4:
                             return "led_green.png";
-                        case "5":
+                        case 5:
                             return "led_blue.png";
                         default:
                             break;
@@ -126,8 +127,8 @@ namespace ESBevents.ViewModels
             }
         }
 
-        List<CustomerModel> _customers;
-        public List<CustomerModel> Customers
+        ObservableCollection<CustomerModel> _customers;
+        public ObservableCollection<CustomerModel> Customers
         {
             get { return _customers; }
             set

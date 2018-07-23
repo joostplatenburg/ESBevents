@@ -12,7 +12,7 @@
            <Image Source="{Binding Logo}" WidthRequest="350" HeightRequest="70"
                 VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="10,0,10,0"/>
 
-            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
             
             <StackLayout Orientation="Vertical">
                 <Label Text="Publish and Subscribe Services" FontSize="16" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
@@ -23,10 +23,10 @@
                 </StackLayout>
             </StackLayout>
             
-            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
 
        		<ListView x:Name="koppelingenList" RowHeight="45"
-						ItemsSource="{Binding Koppelingen}"
+						ItemsSource="{Binding Subscribers}"
 						SelectedItem="{Binding SelectedKoppeling}" >
 				<ListView.ItemTemplate>
 					<DataTemplate>
@@ -40,7 +40,7 @@
 				</ListView.ItemTemplate>
 			</ListView>
 
-             <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+             <BoxView Margin="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
 
             <BoxView Margin="0" HeightRequest="12" HorizontalOptions="FillAndExpand" BackgroundColor="White" />
             

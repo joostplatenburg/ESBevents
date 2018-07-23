@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using ESBevents.Models;
-using ESBevents.WebServices;
+using ESBevents.Services;
 using System.Net;
 using System.Threading.Tasks;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace ESBevents.Views.IdentityManagement
             InitializeComponent();
 
             vm = new IdentityViewModel();
-            vm.CurrentUser = new UserModel();
+            vm.CurrentUser = new IdentityModel();
 
             Initialize();
         }
@@ -63,7 +63,7 @@ namespace ESBevents.Views.IdentityManagement
                     {
                         App.IsUserLoggedIn = true;
 
-                        Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
+                        Navigation.InsertPageBefore(new LoginPage(), Navigation.NavigationStack.First());
                         await Navigation.PopToRootAsync();
                     }
 
@@ -91,8 +91,8 @@ namespace ESBevents.Views.IdentityManagement
             var result = false;
 
             // Dan met de velden de webservice aanroepen.
-            var identityServicesClient = new IdentityServices(vm);
-            var status = await identityServicesClient.RegisterAsync();
+            var identityServicesClient = new PubsubServices();
+            var status = await identityServicesClient.RegisterAsync(vm);
 
             if (status == HttpStatusCode.Continue)
             {

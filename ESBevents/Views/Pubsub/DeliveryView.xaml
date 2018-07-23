@@ -6,8 +6,8 @@
 			<Style x:Key="buttonStyle" TargetType="Button">
 				<Setter Property="HorizontalOptions" Value="Center" />
 				<Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="Gray" />
-                <Setter Property="BackgroundColor" Value="#bddec3" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Black" />
                 <Setter Property="BorderRadius" Value="10" />
                 <Setter Property="HeightRequest" Value="40" />
                 <Setter Property="WidthRequest" Value="300" />
@@ -30,7 +30,7 @@
            <Image Source="{Binding Logo}" WidthRequest="350" HeightRequest="60"
                 VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="10,0,10,0"/>
             
-            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
 
             <StackLayout Orientation="Horizontal">
 			    <Label Text="Delivery ID:" Style="{StaticResource PromptStyle}"/>
@@ -91,10 +91,10 @@
 
             <StackLayout Orientation="Vertical">
                 <Label Text="Result: " Style="{StaticResource PromptStyle}"/>
-                <Label Text="{Binding Resultmessage}" FontAttributes="Bold" FontSize="12" LineBreakMode="TailTruncation" Margin="5,0,0,0"/>
+                <Label Text="{Binding Resultmessage}" FontAttributes="Bold" FontSize="12" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" Margin="5,0,0,0"/>
             </StackLayout>
 
-            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#bddec3" />
+            <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
 
              <StackLayout Orientation="Vertical" HorizontalOptions="Center">
                 <Button x:Name="Resend" Text="Resend Message" Style="{StaticResource buttonStyle}" Clicked="ResendMessage" Margin="5"/>
