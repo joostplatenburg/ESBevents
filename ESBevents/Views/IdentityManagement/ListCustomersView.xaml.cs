@@ -47,7 +47,7 @@ namespace ESBevents.Views.IdentityManagement
 
             customersList.ItemTapped += (sender, e) =>
             {
-                //Navigation.PushAsync(new CustomerView(vm));
+                Navigation.PushAsync(new EditCustomerView(vm));
 
                 ((ListView)sender).SelectedItem = null;
             };

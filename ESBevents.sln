@@ -78,6 +78,6 @@ Global
 		$4.BracePositions = SemiExpanded
 		$4.FormatOnPaste = True
 		$4.scope = text/x-json
-		version = 1.0.9
+		version = 1.2
 	EndGlobalSection
 EndGlobal

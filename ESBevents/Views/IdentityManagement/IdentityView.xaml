@@ -25,13 +25,13 @@
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
             <Style x:Key="labelStyle1" TargetType="Label">
-                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontSize" Value="14" />
                 <Setter Property="Margin" Value="10,0,0,0" />
-                <Setter Property="WidthRequest" Value="90" />
+                <Setter Property="WidthRequest" Value="140" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <Style x:Key="labelStyle2" TargetType="Label">
-                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontSize" Value="14" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="Margin" Value="0,0,0,0" />
                 <Setter Property="VerticalOptions" Value="Center" />
@@ -47,7 +47,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="70" />
-                <RowDefinition Height="140" />
+                <RowDefinition Height="180" />
+                <RowDefinition Height="20" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
@@ -65,6 +66,10 @@
                 <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" >
                     <Label Text="Emailadres:" Style="{StaticResource labelStyle1}" />
                     <Label Text="{Binding IdentityExt.Email}" Style="{StaticResource labelStyle2}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" >
+                    <Label Text="Customer:" Style="{StaticResource labelStyle1}" />
+                    <Label Text="{Binding IdentityExt.Customername}" Style="{StaticResource labelStyle2}" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" >
                     <Label Text="Created on:" Style="{StaticResource labelStyle1}" />
@@ -86,7 +91,12 @@
                 <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
             </StackLayout>
 
-            <ListView Grid.Row="2" x:Name="sessionList" RowHeight="115"
+            <StackLayout Grid.Row="2" Orientation="Vertical">
+                <Label Text="Sessions:" Style="{StaticResource labelStyle1}" FontAttributes="Bold"/>
+                <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
+            </StackLayout>
+
+            <ListView Grid.Row="3" x:Name="sessionList" RowHeight="120"
                         ItemsSource="{Binding IdentityExt.Sessions}"
                         SelectedItem="{Binding SelectedSession}" 
                         SeparatorVisibility="None">
@@ -125,11 +135,12 @@
                 </ListView.ItemTemplate>
             </ListView>
             
-            <StackLayout Grid.Row="3" Orientation="Vertical" Margin="10,0,10,0" >
+            <StackLayout Grid.Row="4" Orientation="Vertical" Margin="10,0,10,0" >
                 <BoxView HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" Margin="0,0,0,5" />
 
                 <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center">
                     <Button Text="Approve" Style="{StaticResource buttonStyle}" WidthRequest="130" FontSize="12" Clicked="OnApproveButtonClicked" Margin = "0"/>
+                    <Button Text="Set Customer" Style="{StaticResource buttonStyle}" WidthRequest="130" FontSize="12" Clicked="OnSetCustomerButtonClicked" Margin = "0"/>
                 </StackLayout>
             </StackLayout>
         </Grid>

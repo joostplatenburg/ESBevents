@@ -13,7 +13,7 @@
     <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ReleaseVersion>1.0.9</ReleaseVersion>
+    <ReleaseVersion>1.2</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml" />
-    <EmbeddedResource Include="Views\MainPage.xaml">
+    <EmbeddedResource Include="Views\MainPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\OptionView.xaml">
@@ -41,11 +41,11 @@
     <EmbeddedResource Include="Views\ActionsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\IdentityManagement\LoginPage.xaml">
+    <EmbeddedResource Include="Views\IdentityManagement\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\IdentityManagement\RegisterPage.xaml">
+    <EmbeddedResource Include="Views\IdentityManagement\RegisterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -70,7 +70,7 @@
     <EmbeddedResource Include="Views\Pubsub\PubsubKoppelingenView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\IdentityManagement\ChangePassword.xaml">
+    <EmbeddedResource Include="Views\IdentityManagement\ChangePasswordView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -83,14 +83,22 @@
     <EmbeddedResource Include="Views\IdentityManagement\ListCustomersView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdentityManagement\ResetPasswordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdentityManagement\EditCustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Views\MainPageView.xaml.cs">
+      <DependentUpon>MainPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="ViewModels\EventlogViewModel.cs" />
@@ -115,11 +123,11 @@
     <Compile Include="ViewModels\DeliveryStatusViewModel.cs" />
     <Compile Include="ViewModels\OptionViewModel.cs" />
     <Compile Include="Models\IdentityModel.cs" />
-    <Compile Include="Views\IdentityManagement\LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
+    <Compile Include="Views\IdentityManagement\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\IdentityManagement\RegisterPage.xaml.cs">
-      <DependentUpon>RegisterPage.xaml</DependentUpon>
+    <Compile Include="Views\IdentityManagement\RegisterView.xaml.cs">
+      <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Eventlog\EventlogView.xaml.cs">
       <DependentUpon>EventlogView.xaml</DependentUpon>
@@ -142,8 +150,8 @@
     <Compile Include="Views\Pubsub\PubsubKoppelingenView.cs">
       <DependentUpon>PubsubKoppelingenView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\IdentityManagement\ChangePassword.xaml.cs">
-      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    <Compile Include="Views\IdentityManagement\ChangePasswordView.xaml.cs">
+      <DependentUpon>ChangePasswordView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\IdentityManagement\IdentityViewModel.cs" />
     <Compile Include="Models\DeviceInfoModel.cs" />
@@ -161,6 +169,18 @@
       <DependentUpon>ListCustomersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\IdentityManagement\ListCustomersViewModel.cs" />
+    <Compile Include="Views\IdentityManagement\ResetPasswordView.xaml.cs">
+      <DependentUpon>ResetPasswordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmptyClass.cs" />
+    <Compile Include="ViewModels\IdentityManagement\LoginViewModel.cs" />
+    <Compile Include="ViewModels\IdentityManagement\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModels\IdentityManagement\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\IdentityManagement\ResetPasswordViewModel.cs" />
+    <Compile Include="Views\IdentityManagement\EditCustomerView.cs">
+      <DependentUpon>EditCustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\IdentityManagement\EditCustomerViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

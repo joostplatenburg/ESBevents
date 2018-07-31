@@ -9,19 +9,26 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using ESBevents.ViewModels;
+using Xamarin.Essentials;
 
 namespace ESBevents.Views.IdentityManagement
 {
-    public partial class LoginPage : ContentPage
+    public partial class LoginView : ContentPage
     {
-        IdentityViewModel vm;
+        LoginViewModel vm;
 
-        public LoginPage()
+        public LoginView()
         {
             InitializeComponent();
-            vm = new IdentityViewModel();
-            vm.CurrentUser = new IdentityModel();
-        }
+
+            vm = new LoginViewModel
+            {
+                CurrentUser = new IdentityModel(),
+                CurrentVersion = string.Format("{0}.{1}", VersionTracking.CurrentVersion, VersionTracking.CurrentBuild) 
+            };
+
+            BindingContext = vm;
+       }
 
         async void OnLoginButtonClicked(object sender, EventArgs e)
         {
@@ -43,7 +50,7 @@ namespace ESBevents.Views.IdentityManagement
                         Debug.WriteLine("Match");
 
                         // === Now get SessionId from server to authenticate this sessions api calls
-                        App.SessionToken = await vm.PostSessionAsync();
+                        App.SessionToken = vm.PostSessionAsync().Result;
                         //
 
                         var rootPage = Navigation.NavigationStack.FirstOrDefault();
@@ -54,9 +61,11 @@ namespace ESBevents.Views.IdentityManagement
                             if (string.IsNullOrWhiteSpace(App.CurrentUser.CustomerId) || App.CurrentUser.CustomerId == "DXC")
                             {
 
-                                Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
+                                Navigation.InsertPageBefore(new MainPageView(), Navigation.NavigationStack.First());
 
                             } else {
+
+                                Debug.WriteLine("DXCPS - LoginView.OnLoginButtonClicked()");
 
                                 Navigation.InsertPageBefore(new ActionsView(), Navigation.NavigationStack.First());
 
@@ -87,23 +96,17 @@ namespace ESBevents.Views.IdentityManagement
 
         async void OnRegisterButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RegisterPage(vm));
+            await Navigation.PushAsync(new RegisterView(vm));
         }
 
         async void OnChangeButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ChangePassword(vm));
+            await Navigation.PushAsync(new ChangePasswordView(vm));
         }
 
         async void OnForgotButtonClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Forgot Password", "Not Implemented Yet", "OK");
-
-            // 1. Remove Identity through webservice
-            //
-
-            // 2. Reregister
-            //
+            await Navigation.PushAsync(new ResetPasswordView(vm));
         }
     }
 }

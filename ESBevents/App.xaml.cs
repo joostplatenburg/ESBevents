@@ -21,7 +21,7 @@ namespace ESBevents
 
             if (!IsUserLoggedIn)
             {
-                MainPage = new NavigationPage(new ESBevents.Views.IdentityManagement.LoginPage())
+                MainPage = new NavigationPage(new ESBevents.Views.IdentityManagement.LoginView())
                 {
                     //BarBackgroundColor = Color.FromHex("#806699"),
                     BarBackgroundColor = Color.Black,
@@ -29,7 +29,7 @@ namespace ESBevents
                     Title = "ESB Eventlogs"
                 };
             } else {
-                MainPage = new NavigationPage(new ESBevents.Views.MainPage())
+                MainPage = new NavigationPage(new ESBevents.Views.MainPageView())
                 {
                     //BarBackgroundColor = Color.FromHex("#806699"),
                     BarBackgroundColor = Color.Black,

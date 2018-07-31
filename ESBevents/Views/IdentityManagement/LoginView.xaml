@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="ESBevents.Views.IdentityManagement.LoginPage" 
+             x:Class="ESBevents.Views.IdentityManagement.LoginView" 
              Title="Login">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -36,7 +36,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="65" />
+                <RowDefinition Height="90" />
             </Grid.RowDefinitions>
 
             <Image Grid.Row="0" Source="DXC_180.png" WidthRequest="350" HeightRequest="80" 
@@ -58,13 +58,19 @@
                 <Button Text="Login" Style="{StaticResource buttonStyle}" Clicked="OnLoginButtonClicked" Margin = "0,30,0,0"/>
 
                 <Label x:Name="messageLabel" />
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" 
+                           Margin="0,0,5,0" >
+                    <Label Text="CurrentVersion: " FontSize="10" />
+                    <Label Text="{Binding CurrentVersion}" HorizontalOptions="EndAndExpand" FontSize="10" />
+                </StackLayout>
             </StackLayout>
 
             <StackLayout Grid.Row="2" Orientation="Vertical" Margin="10,0,10,0" >
                 <BoxView HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" Margin="0,0,0,5" />
                 <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center">
-                    <Button Text="Change Password" Style="{StaticResource buttonStyle}" WidthRequest="130" FontSize="12" Clicked="OnChangeButtonClicked" Margin = "0"/>
-                    <Button Text="Forgot Password" Style="{StaticResource buttonStyle}" WidthRequest="130" FontSize="12" Clicked="OnForgotButtonClicked" Margin = "0"/>
+                    <Button Text="Change Password" Style="{StaticResource buttonStyle}" WidthRequest="160" FontSize="12" Clicked="OnChangeButtonClicked" Margin = "0"/>
+                    <Button Text="Reset Password" Style="{StaticResource buttonStyle}" WidthRequest="160" FontSize="12" Clicked="OnForgotButtonClicked" Margin = "0"/>
                 </StackLayout>
             </StackLayout>
         </Grid>

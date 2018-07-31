@@ -49,6 +49,9 @@ namespace ESBevents.Models
         [JsonProperty(PropertyName = "numberofsessions")]
         public int NumberOfSessions { get; set; }
 
+        [JsonProperty(PropertyName = "resetcode")]
+        public string ResetCode { get; set; }
+
         [JsonProperty(PropertyName = "sessions")]
         public ObservableCollection<SessionModel> Sessions { get; set; }
 

@@ -19,13 +19,13 @@
                 <Setter Property="FontSize" Value="12" />
             </Style>
             <Style x:Key="labelStyle1" TargetType="Label">
-                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontSize" Value="14" />
                 <Setter Property="Margin" Value="10,0,0,0" />
-                <Setter Property="WidthRequest" Value="90" />
+                <Setter Property="WidthRequest" Value="140" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <Style x:Key="labelStyle2" TargetType="Label">
-                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontSize" Value="14" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="Margin" Value="0,0,0,0" />
                 <Setter Property="VerticalOptions" Value="Center" />
@@ -57,7 +57,7 @@
             
             <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
 
-            <ListView x:Name="identitiesList" RowHeight="135"
+            <ListView x:Name="identitiesList" RowHeight="130"
     					ItemsSource="{Binding Identities}"
     					SelectedItem="{Binding SelectedItem}" 
                         SeparatorVisibility="None">
@@ -76,20 +76,16 @@
                                             <Label Text="{Binding Email}" Style="{StaticResource labelStyle2}" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" >
-                                            <Label Text="Created on:" Style="{StaticResource labelStyle1}" />
-                                            <Label Text="{Binding Created, StringFormat='{0:dddd, dd MMMM yyyy}'}" Style="{StaticResource labelStyle2}" />
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" >
-                                            <Label Text="Changed on:" Style="{StaticResource labelStyle1}" />
-                                            <Label Text="{Binding Changed, StringFormat='{0:dddd, dd MMMM yyyy}'}" Style="{StaticResource labelStyle2}" />
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" >
-                                            <Label Text="Approved on:" Style="{StaticResource labelStyle1}" />
-                                            <Label Text="{Binding ApprovedOn, StringFormat='{0:dddd, dd MMMM yyyy}'}" Style="{StaticResource labelStyle2}" />
+                                            <Label Text="Customer Name:" Style="{StaticResource labelStyle1}" />
+                                            <Label Text="{Binding Customername}" Style="{StaticResource labelStyle2}" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" >
                                             <Label Text="Last Login on:" Style="{StaticResource labelStyle1}" />
                                             <Label Text="{Binding LastLogin, StringFormat='{0:dddd, dd MMMM yyyy}'}" Style="{StaticResource labelStyle2}" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" >
+                                            <Label Text="Number of Sessions:" Style="{StaticResource labelStyle1}" />
+                                            <Label Text="{Binding NumberOfSessions}" Style="{StaticResource labelStyle2}" />
                                         </StackLayout>
                                     </StackLayout>
 

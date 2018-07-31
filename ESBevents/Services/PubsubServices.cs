@@ -12,8 +12,6 @@ using ESBevents.ViewModels;
 using System.Net;
 using System.Net.Http;
 using Xamarin.Essentials;
-using System.Collections.Generic;
-using System.Linq;
 using System.Collections.ObjectModel;
 
 namespace ESBevents.Services
@@ -36,35 +34,23 @@ namespace ESBevents.Services
             client.BaseAddress = new Uri("http://52.73.112.29:58002");
         }
 
-        public async Task<HttpStatusCode> RegisterAsync(IdentityViewModel vm)
+        public async Task<HttpStatusCode> RegisterAsync(IdentityModel _currentuser)
         {
             try
             {
                 Debug.WriteLine("Start RegisterAsync()");
 
-                var service = string.Format("pubsub/register?username={0}&password={1}&email={2}", vm.CurrentUser.Username, vm.CurrentUser.Password, vm.CurrentUser.Email);
+                var service = string.Format("pubsub/register?username={0}&password={1}&email={2}", _currentuser.Username, _currentuser.Password, _currentuser.Email);
 
                 Debug.WriteLine("DXCPS - " + client.BaseAddress + service);
 
-                var deviceInfo = new DeviceInfoModel
-                {
-                    DeviceType = DeviceInfo.DeviceType.ToString(),
-                    Idiom = DeviceInfo.Idiom,
-                    Manufacturer = DeviceInfo.Manufacturer,
-                    Model = DeviceInfo.Model,
-                    Name = DeviceInfo.Name,
-                    Platform = DeviceInfo.Platform,
-                    Version = DeviceInfo.Version.ToString(),
-                    VersionString = DeviceInfo.VersionString
-                };
-
-                string jsonData = JsonConvert.SerializeObject(deviceInfo);
+                var jsonData = GetDeviceInfoJson();
 
                 Debug.WriteLine("DXCPS - DeviceInfo: " + jsonData);
 
                 var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-                var response = await client.PostAsync(service, content);
+                var response = client.PostAsync(service, content).Result;
 
                 if (response.StatusCode == HttpStatusCode.Continue ||
                     response.StatusCode == HttpStatusCode.Accepted ||
@@ -99,13 +85,9 @@ namespace ESBevents.Services
 
                 Debug.WriteLine("DXCPS - " + client.BaseAddress + service);
 
-                string jsonData = "{}";
+                var content = new StringContent("{}", Encoding.UTF8, "application/json");
 
-                Debug.WriteLine("DXCPS - Body: " + jsonData);
-
-                var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-
-                var response = await client.PostAsync(service, content);
+                var response = client.PostAsync(service, content).Result;
 
                 if (response.StatusCode == HttpStatusCode.Continue ||
                     response.StatusCode == HttpStatusCode.Accepted ||
@@ -130,7 +112,7 @@ namespace ESBevents.Services
             }
         }
 
-public async Task<IdentityModel> PostSessionAsync(IdentityViewModel vm)
+        public async Task<IdentityModel> PostSessionAsync(IdentityViewModel vm)
         {
             try
             {
@@ -140,31 +122,19 @@ public async Task<IdentityModel> PostSessionAsync(IdentityViewModel vm)
 
                 Debug.WriteLine("DXCPS - " + client.BaseAddress + service);
 
-                var deviceInfo = new DeviceInfoModel
-                {
-                    DeviceType = DeviceInfo.DeviceType.ToString(),
-                    Idiom = DeviceInfo.Idiom,
-                    Manufacturer = DeviceInfo.Manufacturer,
-                    Model = DeviceInfo.Model,
-                    Name = DeviceInfo.Name,
-                    Platform = DeviceInfo.Platform,
-                    Version = DeviceInfo.Version.ToString(),
-                    VersionString = DeviceInfo.VersionString
-                };
-
-                string jsonData = JsonConvert.SerializeObject(deviceInfo);
+                var jsonData = GetDeviceInfoJson();
 
                 Debug.WriteLine("DXCPS - DeviceInfo: " + jsonData);
 
                 var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-                var response = await client.PostAsync(service, content);
+                var response = client.PostAsync(service, content).Result;
 
                 if (response.StatusCode == HttpStatusCode.Continue ||
                     response.StatusCode == HttpStatusCode.Accepted ||
                     response.StatusCode == HttpStatusCode.OK)
                 {
-                    var result = response.Content.ReadAsStringAsync().Result;
+                    var result = await response.Content.ReadAsStringAsync();
 
                     if (!string.IsNullOrWhiteSpace(result))
                     {
@@ -174,6 +144,54 @@ public async Task<IdentityModel> PostSessionAsync(IdentityViewModel vm)
                         App.SessionToken = identity.Sessiontoken;
 
                         return App.CurrentUser;
+                    }
+                }
+                return null;
+            }
+            catch (System.Net.WebException)
+            {
+                Debug.WriteLine(HttpStatusCode.InternalServerError);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<IdentityModel> PostSessionAsync(string _username)
+        {
+            try
+            {
+                Debug.WriteLine("DXCPS - Start PubsubSeervices.PostSessionAsync(" + _username + ")");
+
+                var service = string.Format("pubsub/postsession?username={0}", _username);
+
+                Debug.WriteLine("DXCPS - " + client.BaseAddress + service);
+
+                var jsonData = GetDeviceInfoJson();
+
+                Debug.WriteLine("DXCPS - DeviceInfo: " + jsonData);
+
+                var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+                var response = client.PostAsync(service, content).Result;
+
+                if (response.StatusCode == HttpStatusCode.Continue ||
+                    response.StatusCode == HttpStatusCode.Accepted ||
+                    response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+
+                    if (!string.IsNullOrWhiteSpace(result))
+                    {
+                        // De json die terug komt in vm zetten van door het object door te geven.
+                        IdentityModel identity = JsonConvert.DeserializeObject<IdentityModel>(result);
+
+                        App.SessionToken = identity.Sessiontoken;
+
+                        return identity;
                     }
                 }
                 return null;
@@ -200,13 +218,13 @@ public async Task<IdentityModel> PostSessionAsync(IdentityViewModel vm)
 
                 Debug.WriteLine("DXCPS - " + client.BaseAddress + service);
 
-                var response = await client.GetAsync(service);
+                var response = client.GetAsync(service).Result;
 
                 if (response.StatusCode == HttpStatusCode.Continue ||
                     response.StatusCode == HttpStatusCode.Accepted ||
                     response.StatusCode == HttpStatusCode.OK)
                 {
-                    var result = response.Content.ReadAsStringAsync().Result;
+                    var result = await response.Content.ReadAsStringAsync();
 
                     // De json die terug komt in vm zetten van door het object door te geven.
                     IdentityModel identity = JsonConvert.DeserializeObject<IdentityModel>(result);
@@ -230,7 +248,46 @@ public async Task<IdentityModel> PostSessionAsync(IdentityViewModel vm)
             }
         }
 
-        public async Task<IdentityModel> GetIdentityAsync(IdentityViewModel vm)
+        public async Task<IdentityModel> GetIdentityAsync(string _username)
+        {
+            try
+            {
+                Debug.WriteLine("DXCPS - Start GetIdentityAsync()");
+
+                var service = string.Format("pubsub/getidentity?username={0}", _username);
+
+                Debug.WriteLine("DXCPS - " + client.BaseAddress + service);
+
+                var response = client.GetAsync(service).Result;
+
+                if (response.StatusCode == HttpStatusCode.Continue ||
+                    response.StatusCode == HttpStatusCode.Accepted ||
+                    response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+
+                    // De json die terug komt in vm zetten van door het object door te geven.
+                    IdentityModel identity = JsonConvert.DeserializeObject<IdentityModel>(result);
+
+                    App.CurrentUser = identity;
+
+                    return App.CurrentUser;
+                }
+                return null;
+            }
+            catch (System.Net.WebException)
+            {
+                Debug.WriteLine(HttpStatusCode.InternalServerError);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<IdentityModel> GetIdentityAsync(LoginViewModel vm)
         {
             try
             {
@@ -240,13 +297,13 @@ public async Task<IdentityModel> PostSessionAsync(IdentityViewModel vm)
 
                 Debug.WriteLine("DXCPS - " + client.BaseAddress + service);
 
-                var response = await client.GetAsync(service);
+                var response = client.GetAsync(service).Result;
 
                 if (response.StatusCode == HttpStatusCode.Continue ||
                     response.StatusCode == HttpStatusCode.Accepted ||
                     response.StatusCode == HttpStatusCode.OK)
                 {
-                    var result = response.Content.ReadAsStringAsync().Result;
+                    var result = await response.Content.ReadAsStringAsync();
 
                     // De json die terug komt in vm zetten van door het object door te geven.
                     IdentityModel identity = JsonConvert.DeserializeObject<IdentityModel>(result);
@@ -279,13 +336,13 @@ public async Task<IdentityModel> PostSessionAsync(IdentityViewModel vm)
 
                 Debug.WriteLine("DXCPS - " + client.BaseAddress + service);
 
-                var response = await client.GetAsync(service);
+                var response = client.GetAsync(service).Result;
 
                 if (response.StatusCode == HttpStatusCode.Continue ||
                     response.StatusCode == HttpStatusCode.Accepted ||
                     response.StatusCode == HttpStatusCode.OK)
                 {
-                    var json = response.Content.ReadAsStringAsync().Result;
+                    var json = await response.Content.ReadAsStringAsync();
 
                     Debug.WriteLine(json);
 
@@ -324,13 +381,13 @@ public async Task<IdentityModel> PostSessionAsync(IdentityViewModel vm)
 
                 Debug.WriteLine("DXCPS - " + client.BaseAddress + service);
 
-                var response = await client.GetAsync(service);
+                var response = client.GetAsync(service).Result;
 
                 if (response.StatusCode == HttpStatusCode.Continue ||
                     response.StatusCode == HttpStatusCode.Accepted ||
                     response.StatusCode == HttpStatusCode.OK)
                 {
-                    var json = response.Content.ReadAsStringAsync().Result;
+                    var json = await response.Content.ReadAsStringAsync();
 
                     Debug.WriteLine(json);
 
@@ -359,20 +416,54 @@ public async Task<IdentityModel> PostSessionAsync(IdentityViewModel vm)
             }
         }
 
-        public async Task<HttpStatusCode> ChangePasswordAsync(IdentityViewModel vm)
+        public async Task<bool> GetResetCodeAsync(string _username)
+        {
+            try
+            {
+                Debug.WriteLine("DXCPS - Start GetResetCodeAsync()");
+
+                var service = string.Format("pubsub/askinlogcode?username={0}", _username);
+
+                Debug.WriteLine("DXCPS - " + client.BaseAddress + service);
+
+                var response = client.GetAsync(service).Result;
+
+                if (response.StatusCode == HttpStatusCode.Continue ||
+                    response.StatusCode == HttpStatusCode.Accepted ||
+                    response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+
+                    return true;
+                }
+                return false;
+            }
+            catch (System.Net.WebException)
+            {
+                Debug.WriteLine(HttpStatusCode.InternalServerError);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public async Task<HttpStatusCode> ChangePasswordAsync(IdentityModel _currentuser, string _newpasswordhashed)
         {
             try
             {
                 Debug.WriteLine("DXCPS - Start ChangePasswordAsync()");
 
                 var service = string.Format("pubsub/changepassword?username={0}&email={1}&password={2}", 
-                                            vm.CurrentUser.Username, vm.CurrentUser.Email, vm.NewPasswordHashed);
+                                            _currentuser.Username, _currentuser.Email, _newpasswordhashed);
 
                 Debug.WriteLine("DXCPS - " + service);
 
                 var content = new StringContent("{}", Encoding.UTF8, "application/json");
 
-                var response = await client.PutAsync(service, content);
+                var response = client.PutAsync(service, content).Result;
 
                 if (response.StatusCode == HttpStatusCode.Continue ||
                     response.StatusCode == HttpStatusCode.Accepted ||
@@ -409,21 +500,21 @@ public async Task<IdentityModel> PostSessionAsync(IdentityViewModel vm)
 
                 Debug.WriteLine("DXCPS - " + client.BaseAddress + service);
 
-                var response = await client.GetAsync(service);
+                var response = client.GetAsync(service).Result;
 
                 if (response.StatusCode == HttpStatusCode.Continue ||
                     response.StatusCode == HttpStatusCode.Accepted ||
                     response.StatusCode == HttpStatusCode.OK)
                 {
-                    var json = response.Content.ReadAsStringAsync().Result;
+                    var json = await response.Content.ReadAsStringAsync();
 
                     Debug.WriteLine(json);
 
-                    mainpagevm.Customers = new ObservableCollection<CustomerModel>();
+                    mainpagevm.CustomersAll = new ObservableCollection<CustomerModel>();
 
                     if (json != "")
                     {
-                        mainpagevm.Customers = JsonConvert.DeserializeObject<ObservableCollection<CustomerModel>>(json) as ObservableCollection<CustomerModel>;
+                        mainpagevm.CustomersAll = JsonConvert.DeserializeObject<ObservableCollection<CustomerModel>>(json) as ObservableCollection<CustomerModel>;
                     }
 
                     return HttpStatusCode.Continue;
@@ -448,19 +539,19 @@ public async Task<IdentityModel> PostSessionAsync(IdentityViewModel vm)
         {
             try
             {
-                Debug.WriteLine("Start GetCustomerAsync()");
+                Debug.WriteLine("DXCPS - PubsubServices.GetCustomerAsync()");
 
                 var service = string.Format("pubsub/getcustomer?customer={0}", customerid);
 
                 Debug.WriteLine("DXCPS - " + client.BaseAddress + service);
 
-                var response = await client.GetAsync(service);
+                var response = client.GetAsync(service).Result;
 
                 if (response.StatusCode == HttpStatusCode.Continue ||
                     response.StatusCode == HttpStatusCode.Accepted ||
                     response.StatusCode == HttpStatusCode.OK)
                 {
-                    var json = response.Content.ReadAsStringAsync().Result;
+                    var json = await response.Content.ReadAsStringAsync();
 
                     Debug.WriteLine(json);
 
@@ -487,6 +578,23 @@ public async Task<IdentityModel> PostSessionAsync(IdentityViewModel vm)
                 return HttpStatusCode.BadRequest;
             }
 
+        }
+
+        private string GetDeviceInfoJson()
+        {
+            var deviceInfo = new DeviceInfoModel
+            {
+                DeviceType = DeviceInfo.DeviceType.ToString(),
+                Idiom = DeviceInfo.Idiom,
+                Manufacturer = DeviceInfo.Manufacturer,
+                Model = DeviceInfo.Model,
+                Name = DeviceInfo.Name,
+                Platform = DeviceInfo.Platform,
+                Version = DeviceInfo.Version.ToString(),
+                VersionString = DeviceInfo.VersionString
+            };
+
+            return JsonConvert.SerializeObject(deviceInfo);
         }
     }
 }

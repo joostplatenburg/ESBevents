@@ -133,10 +133,25 @@ namespace ESBevents.ViewModels
             {
                 if (_selectedSession == value)
                     return;
-
+                
                 _selectedSession = value;
 
                 OnPropertyChanged("SelectedSession");
+            }
+        }
+
+        string _currentversion;
+        public string CurrentVersion
+        {
+            get { return _currentversion; }
+            set
+            {
+                if (_currentversion == value)
+                    return;
+
+                _currentversion = value;
+
+                OnPropertyChanged("CurrentVersion");
             }
         }
 
@@ -159,7 +174,7 @@ namespace ESBevents.ViewModels
             // Dan met de velden de webservice aanroepen.
             var identityServicesClient = new PubsubServices();
 
-            var identityObj = await identityServicesClient.GetIdentityAsync(this);
+            var identityObj = await identityServicesClient.GetIdentityAsync(CurrentUser.Username);
 
             if (identityObj != null)
             {
@@ -192,25 +207,6 @@ namespace ESBevents.ViewModels
 
             return sessionToken;
         }
-
-        public async Task<bool> RegisterUserAsynv()
-        {
-            // Assume no success
-            var result = false;
-
-            // Dan met de velden de webservice aanroepen.
-            var identityServicesClient = new PubsubServices();
-            var status = await identityServicesClient.RegisterAsync(this);
-
-            if (status == HttpStatusCode.Continue)
-            {
-                // De json die terug komt in vm zetten van door het object door te geven.
-                result = true;
-            }
-
-            return result;
-        }
-
         public async Task<bool> ApproveIdentity()
         {
             // Assume no success
@@ -219,24 +215,6 @@ namespace ESBevents.ViewModels
             // Dan met de velden de webservice aanroepen.
             var identityServicesClient = new PubsubServices();
             var status = await identityServicesClient.ApproveAsync(this);
-
-            if (status == HttpStatusCode.Continue)
-            {
-                // De json die terug komt in vm zetten van door het object door te geven.
-                result = true;
-            }
-
-            return result;
-        }
-
-        public async Task<bool> ChangePasswordAsync()
-        {
-            // Assume no success
-            var result = false;
-
-            // Dan met de velden de webservice aanroepen.
-            var identityServicesClient = new PubsubServices();
-            var status = await identityServicesClient.ChangePasswordAsync(this);
 
             if (status == HttpStatusCode.Continue)
             {

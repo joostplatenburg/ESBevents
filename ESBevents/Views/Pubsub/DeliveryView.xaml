@@ -98,7 +98,7 @@
 
              <StackLayout Orientation="Vertical" HorizontalOptions="Center">
                 <Button x:Name="Resend" Text="Resend Message" Style="{StaticResource buttonStyle}" Clicked="ResendMessage" Margin="5"/>
-                <Button x:Name="Obsolate" Text="Make Message Obsolete" Style="{StaticResource buttonStyle}" Clicked="ObsoleteMessage" Margin="5"/>
+                <Button x:Name="Obsolate" Text="Cancel Message" Style="{StaticResource buttonStyle}" Clicked="ObsoleteMessage" Margin="5"/>
                 <Button x:Name="ResetRetry" Text="Reset Retry Counter" Style="{StaticResource buttonStyle}" Clicked="ResetMessage" Margin="5"/>
             </StackLayout>
 

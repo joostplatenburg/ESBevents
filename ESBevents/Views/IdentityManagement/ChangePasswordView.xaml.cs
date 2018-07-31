@@ -12,25 +12,28 @@ using ESBevents.ViewModels;
 
 namespace ESBevents.Views.IdentityManagement
 {
-    public partial class ChangePassword : ContentPage
+    public partial class ChangePasswordView : ContentPage
     {
-        IdentityViewModel vm;
+        ChangePasswordViewModel vm;
 
-        public ChangePassword()
+        public ChangePasswordView()
         {
             InitializeComponent();
 
-            vm = new IdentityViewModel();
+            vm = new ChangePasswordViewModel();
+
             vm.CurrentUser = new IdentityModel();
 
             Initialize();
         }
 
-        public ChangePassword(IdentityViewModel _vm)
+        public ChangePasswordView(LoginViewModel _vm)
         {
             InitializeComponent();
 
-            vm = _vm;
+            vm = new ChangePasswordViewModel();
+
+            vm.CurrentUser = _vm.CurrentUser;
         
             Initialize();
         }
@@ -70,7 +73,7 @@ namespace ESBevents.Views.IdentityManagement
                         {
                             App.IsUserLoggedIn = true;
 
-                            Navigation.InsertPageBefore(new LoginPage(), Navigation.NavigationStack.First());
+                            Navigation.InsertPageBefore(new LoginView(), Navigation.NavigationStack.First());
                             await Navigation.PopToRootAsync();
                         }
                     }

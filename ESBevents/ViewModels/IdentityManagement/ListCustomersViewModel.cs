@@ -123,8 +123,8 @@ namespace ESBevents.ViewModels
             }
         }
 
-        IdentityModel _selectedItem;
-        public IdentityModel SelectedItem
+        CustomerModel _selectedItem;
+        public CustomerModel SelectedItem
         {
             get { return _selectedItem; }
             set

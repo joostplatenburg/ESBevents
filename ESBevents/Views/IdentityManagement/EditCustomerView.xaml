@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="ESBevents.Views.IdentityManagement.EditCustomerView" 
+             Title="Customer">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Black" />
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="160" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="Margin" Value="0,0,0,5" />
+                <Setter Property="WidthRequest" Value="140" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="label2Style" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="Margin" Value="0,0,0,5" />
+                <Setter Property="WidthRequest" Value="220" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="entryStyle" TargetType="Entry">
+                <Setter Property="WidthRequest" Value="220" />
+                <Setter Property="HeightRequest" Value="40" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="Save" Clicked="OnSaveButtonClicked" />-->
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row="0" Source="DXC_180.png" WidthRequest="350" HeightRequest="80" 
+                   VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="10,0,10,0" />
+
+            <StackLayout Grid.Row="1" Orientation="Vertical" Margin="20,0,20,0">
+                <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
+
+                <StackLayout Orientation="Horizontal" HeightRequest="35" Margin="0">
+                    <Label Text="Name:" Style="{StaticResource labelStyle}" />
+                    <Entry x:Name="nameEntry" Placeholder="name" Style="{StaticResource entryStyle}" Text="{Binding Customer.Name}"/>
+                </StackLayout>
+                    
+                <StackLayout Orientation="Horizontal" HeightRequest="35" Margin="0">
+                    <Label Text="Identifier:" Style="{StaticResource labelStyle}" />
+                    <Entry x:Name="identifierEntry" Placeholder="ïdentifier" Style="{StaticResource entryStyle}"  Text="{Binding Customer.Identifier}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HeightRequest="35" Margin="0">
+                    <Label Text="Logo:" Style="{StaticResource labelStyle}" />
+                    <Entry x:Name="logoEntry" Placeholder="logo" Style="{StaticResource entryStyle}"  Text="{Binding Customer.Logo}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HeightRequest="35" Margin="0">
+                    <Label Text="IP-Address TST:" Style="{StaticResource labelStyle}" />
+                    <Entry x:Name="iptEntry" Placeholder="ipaddress tst" Style="{StaticResource entryStyle}"  Text="{Binding Customer.IPT}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HeightRequest="35" Margin="0">
+                    <Label Text="IP-Address ACC:" Style="{StaticResource labelStyle}" />
+                    <Entry x:Name="ipaEntry" Placeholder="ipaddress acc" Style="{StaticResource entryStyle}"  Text="{Binding Customer.IPA}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HeightRequest="35" Margin="0">
+                    <Label Text="IP-Address PRD:" Style="{StaticResource labelStyle}" />
+                    <Entry x:Name="ippEntry" Placeholder="ipaddress prd" Style="{StaticResource entryStyle}"  Text="{Binding Customer.IPP}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HeightRequest="35" Margin="0">
+                    <Label Text="Port Ensemble:" Style="{StaticResource labelStyle}" />
+                    <Entry x:Name="portEnsEntry" Placeholder="portnumber ensemble" Style="{StaticResource entryStyle}"  Text="{Binding Customer.PortEnsemble}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HeightRequest="35" Margin="0">
+                    <Label Text="Port PUBSUB:" Style="{StaticResource labelStyle}" />
+                    <Entry x:Name="portpsEntry" Placeholder="portnumber pubsub" Style="{StaticResource entryStyle}"  Text="{Binding Customer.PortPubsub}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HeightRequest="35" Margin="0">
+                    <Label Text="Show PUBSUB Functions:" Style="{StaticResource label2Style}" />
+                    <Switch x:Name="showps" IsToggled="{Binding Customer.ToonPSlog}" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HeightRequest="35" Margin="0">
+                    <Label Text="Show InterSystems Eventlog:" Style="{StaticResource label2Style}" />
+                    <Switch x:Name="showel" IsToggled="{Binding Customer.ToonEventlog}" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal" HeightRequest="35" Margin="0">
+                    <Label Text="Show Start Business Service:" Style="{StaticResource label2Style}" />
+                    <Switch x:Name="showsb" IsToggled="{Binding Customer.ToonStartBP}" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HeightRequest="35" Margin="0">
+                    <Label Text="Show in Customers list:" Style="{StaticResource label2Style}" />
+                    <Switch x:Name="showmas" IsToggled="{Binding Customer.ShowInMASList}" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Orientation="Vertical" Margin="10,0,10,0" VerticalOptions="Start">
+                <BoxView HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" Margin="0,0,0,5" />
+                <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Text="Save" Style="{StaticResource buttonStyle}" Clicked="OnSaveButtonClicked"/>
+                    <Button Text="Delete" Style="{StaticResource buttonStyle}" Clicked="OnDeleteButtonClicked"/>
+                </StackLayout>
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

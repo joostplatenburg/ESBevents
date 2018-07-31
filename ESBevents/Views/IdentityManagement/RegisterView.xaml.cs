@@ -12,26 +12,27 @@ using ESBevents.ViewModels;
 
 namespace ESBevents.Views.IdentityManagement
 {
-    public partial class RegisterPage : ContentPage
+    public partial class RegisterView : ContentPage
     {
-        IdentityViewModel vm;
+        RegisterViewModel vm;
 
-        public RegisterPage()
+        public RegisterView()
         {
             InitializeComponent();
 
-            vm = new IdentityViewModel();
+            vm = new RegisterViewModel();
             vm.CurrentUser = new IdentityModel();
 
             Initialize();
         }
 
-        public RegisterPage(IdentityViewModel _vm)
+        public RegisterView(LoginViewModel _vm)
         {
             InitializeComponent();
 
-            vm = _vm;
-        
+            vm = new RegisterViewModel();
+            vm.CurrentUser = _vm.CurrentUser;
+
             Initialize();
         }
 
@@ -55,7 +56,7 @@ namespace ESBevents.Views.IdentityManagement
 
             if (signUpSucceeded)
             {
-                var result = await RegisterUser();
+                var result = await vm.RegisterUser();
                 if (result) {
 
                     var rootPage = Navigation.NavigationStack.FirstOrDefault();
@@ -63,7 +64,7 @@ namespace ESBevents.Views.IdentityManagement
                     {
                         App.IsUserLoggedIn = true;
 
-                        Navigation.InsertPageBefore(new LoginPage(), Navigation.NavigationStack.First());
+                        Navigation.InsertPageBefore(new LoginView(), Navigation.NavigationStack.First());
                         await Navigation.PopToRootAsync();
                     }
 
@@ -83,24 +84,6 @@ namespace ESBevents.Views.IdentityManagement
                     !string.IsNullOrWhiteSpace(vm.CurrentUser.Password) && 
                     !string.IsNullOrWhiteSpace(vm.CurrentUser.Email) && 
                     vm.CurrentUser.Email.Contains("@"));
-        }
-
-        async Task<bool> RegisterUser()
-        {
-            // Assume no success
-            var result = false;
-
-            // Dan met de velden de webservice aanroepen.
-            var identityServicesClient = new PubsubServices();
-            var status = await identityServicesClient.RegisterAsync(vm);
-
-            if (status == HttpStatusCode.Continue)
-            {
-                // De json die terug komt in vm zetten van door het object door te geven.
-                result = true;
-            }
-
-            return result;
         }
     }
 }

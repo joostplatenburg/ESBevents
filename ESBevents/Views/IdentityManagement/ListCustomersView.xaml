@@ -19,13 +19,13 @@
                 <Setter Property="FontSize" Value="12" />
             </Style>
             <Style x:Key="labelStyle1" TargetType="Label">
-                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontSize" Value="14" />
                 <Setter Property="Margin" Value="10,0,0,0" />
-                <Setter Property="WidthRequest" Value="110" />
+                <Setter Property="WidthRequest" Value="130" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <Style x:Key="labelStyle2" TargetType="Label">
-                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontSize" Value="14" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="Margin" Value="0,0,0,0" />
                 <Setter Property="VerticalOptions" Value="Center" />
@@ -57,7 +57,7 @@
             
             <BoxView Margin="0" HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" />
 
-            <ListView x:Name="customersList" RowHeight="100"
+            <ListView x:Name="customersList" RowHeight="110"
     					ItemsSource="{Binding Customers}"
     					SelectedItem="{Binding SelectedItem}" 
                         SeparatorVisibility="None">

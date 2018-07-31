@@ -1,91 +1,93 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
-using ESBevents.Models;
 using ESBevents.ViewModels;
 using ESBevents.Services;
 using Xamarin.Forms;
 using ESBevents.Views.IdentityManagement;
+using System.Threading.Tasks;
 
 namespace ESBevents.Views
 {
     public partial class ActionsView : ContentPage
     {
-        internal ActionsViewModel vm;
+        public ActionsViewModel vm = new ActionsViewModel();
 
         public ActionsView()
         {
+            Debug.WriteLine("DXCPS - ActionView()");
+            
             InitializeComponent();
-
-            vm = new ActionsViewModel();
-
-            //Debug.WriteLine("Customer identification: " + vm.Customer.Identifier);
 
             Initialize();
         }
 
         public ActionsView(MainPageViewModel mpvm)
         {
+            Debug.WriteLine("DXCPS - ActionView(MainPageViewModel)");
+
             InitializeComponent();
 
             vm = new ActionsViewModel(mpvm);
 
             vm.Customer = mpvm.Customer;
 
-            //vm.Customers = mpvm.Customers;
-
             Initialize();
         }
 
         void Initialize()
         {
+            Debug.WriteLine("DXCPS - ActionView.Initialize()");
+
             BindingContext = vm;
 
-            vm.psCommands = true;
-            vm.elCommands = false;
-            vm.sbCommands = false;
-            vm.idCommands = false;
+            if (vm.Customer != null)
+            {
+                vm.psCommands = true;
+                vm.elCommands = false;
+                vm.sbCommands = false;
+                vm.idCommands = false;
 
-            psStack.GestureRecognizers.Add(
-                new TapGestureRecognizer()
-                {
-                    Command = new Command(() =>
+                psStack.GestureRecognizers.Add(
+                    new TapGestureRecognizer()
                     {
-                        vm.psCommands = !vm.psCommands;
-                        Debug.WriteLine("clicked stack ps");
-                    })
-                });
+                        Command = new Command(() =>
+                        {
+                            vm.psCommands = !vm.psCommands;
+                            Debug.WriteLine("clicked stack ps");
+                        })
+                    });
 
-            elStack.GestureRecognizers.Add(
-                new TapGestureRecognizer()
-                {
-                    Command = new Command(() =>
+                elStack.GestureRecognizers.Add(
+                    new TapGestureRecognizer()
                     {
-                        vm.elCommands = !vm.elCommands;
-                        Debug.WriteLine("clicked stack el");
-                    })
-                });
+                        Command = new Command(() =>
+                        {
+                            vm.elCommands = !vm.elCommands;
+                            Debug.WriteLine("clicked stack el");
+                        })
+                    });
 
-            sbStack.GestureRecognizers.Add(
-                 new TapGestureRecognizer()
-                 {
-                     Command = new Command(() =>
+                sbStack.GestureRecognizers.Add(
+                     new TapGestureRecognizer()
                      {
-                         vm.sbCommands = !vm.sbCommands;
-                         Debug.WriteLine("clicked stack sb");
-                     })
-                 });
+                         Command = new Command(() =>
+                         {
+                             vm.sbCommands = !vm.sbCommands;
+                             Debug.WriteLine("clicked stack sb");
+                         })
+                     });
 
-            idStack.GestureRecognizers.Add(
-                 new TapGestureRecognizer()
-                 {
-                     Command = new Command(() =>
+                idStack.GestureRecognizers.Add(
+                     new TapGestureRecognizer()
                      {
-                         vm.idCommands = !vm.idCommands;
-                         Debug.WriteLine("clicked stack id");
-                     })
-                 });
+                         Command = new Command(() =>
+                         {
+                             vm.idCommands = !vm.idCommands;
+                             Debug.WriteLine("clicked stack id");
+                         })
+                     });
+            }
         }
 
         void OnClick(object sender, EventArgs e)

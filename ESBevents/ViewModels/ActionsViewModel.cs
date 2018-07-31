@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using ESBevents.Models;
 using ESBevents.Services;
@@ -16,34 +12,17 @@ namespace ESBevents.ViewModels
     {
         public ActionsViewModel()
         {
-            Customer = new CustomerModel(); // { Logo = "DXC_180.png", ToonPSlog = true, ToonEventlog = true, ToonStartBP = false };
+            Debug.WriteLine("DXCPS - ActionsViewModel()");
 
-            GetCustomer();
+            var rc = GetCustomerAsync().Result;
         }
 
         public ActionsViewModel(MainPageViewModel mpvm)
         {
+            Debug.WriteLine("DXCPS - ActionsViewModel(MainPageViewModel)");
+
             Customer = mpvm.Customer;
             Customers = mpvm.Customers;
-
-            GetCustomer();
-        }
-
-        async void GetCustomer()
-        {
-            await GetCustomerAsync();
-        }
-
-        async Task GetCustomerAsync()
-        {
-            var webSrvc = new PubsubServices();
-            var status = await webSrvc.GetCustomerAsync(this, Customer.Identifier);
-
-            if (status != HttpStatusCode.Continue)
-            {
-                // WAT TE DOEN ALS ER EEN FOUT OPTREED
-                Debug.WriteLine("DXCPS - Fout bij ophalen customer data");
-            }
         }
 
         #region INotifyPropertyChanged implementation
@@ -103,10 +82,14 @@ namespace ESBevents.ViewModels
 
         public bool ToonIdentities
         {
-            get {
-                if ((App.CurrentUser.Username == "jplatenb") && (Customer.Identifier == "DXC")) {
+            get
+            {
+                if ((App.CurrentUser.Username == "jplatenb") && (Customer.Identifier == "DXC"))
+                {
                     return true;
-                } else {
+                }
+                else
+                {
                     return false;
                 }
             }
@@ -132,8 +115,6 @@ namespace ESBevents.ViewModels
         {
             get
             {
-                //_eventlog.Sort((a, b) => a.CompareTo(b));
-
                 return _eventlog;
             }
             set
@@ -190,7 +171,7 @@ namespace ESBevents.ViewModels
             }
         }
 
-        bool _sbCommands = true;
+        bool _sbCommands = false;
         public bool sbCommands
         {
             get { return _sbCommands; }
@@ -248,5 +229,26 @@ namespace ESBevents.ViewModels
                 OnPropertyChanged("Status");
             }
         }
+
+        #region Methods
+        public async Task<bool> GetCustomerAsync()
+        {
+            Debug.WriteLine("DXCPS - ActionsViewModel.GetCustomerAsync()");
+
+            var client = new PubsubServices();
+            var status = await client.GetCustomerAsync(this, App.CurrentUser.CustomerId);
+
+            if (status != HttpStatusCode.Continue)
+            {
+                // WAT TE DOEN ALS ER EEN FOUT OPTREED
+                Debug.WriteLine("DXCPS - Fout bij ophalen customer data");
+
+                return false;
+            }
+
+            Debug.WriteLine("DXCPS - ActionsView.GetCustomerAsync() - Einde");
+            return true;
+        }
+        #endregion Methods
     }
 }

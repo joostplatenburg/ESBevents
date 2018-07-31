@@ -35,12 +35,17 @@ namespace ESBevents.Views.IdentityManagement
 
         async void OnApproveButtonClicked(object sender, EventArgs e)
         {
-            var retval = vm.ApproveIdentity();
+            var retval = await vm.ApproveIdentity();
 
-            if (retval.Result)
+            if (retval)
             {
                 await DisplayAlert("Approve Identity", "Identity is Approved", "OK");
             }
+        }
+
+        async void OnSetCustomerButtonClicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Select Customer", "How to select a customer?", "OK");
         }
 	}
 }

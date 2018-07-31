@@ -10,11 +10,11 @@ using Xamarin.Forms.Xaml;
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ESBevents.Views
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPageView : ContentPage
     {
         public MainPageViewModel vm = new MainPageViewModel();
 
-        public MainPage()
+        public MainPageView()
         {
             InitializeComponent();
 

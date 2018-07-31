@@ -17,6 +17,8 @@ namespace ESBevents.ViewModels
     {
         public MainPageViewModel()
         {
+           Debug.WriteLine("DXCPS - ActionsViewModel()");
+
             var rc = GetCustomers();
         }
 
@@ -24,7 +26,7 @@ namespace ESBevents.ViewModels
         {
             var rc = await GetCustomersAsync();
 
-            return true;
+            return rc;
         }
 
         async Task<bool> GetCustomersAsync()
@@ -69,6 +71,28 @@ namespace ESBevents.ViewModels
 
                 OnPropertyChanged("Customers");
                 OnPropertyChanged("Customer");
+            }
+        }
+
+        ObservableCollection<CustomerModel> _customersall;
+        public ObservableCollection<CustomerModel> CustomersAll
+        {
+            get { return _customersall; }
+            set
+            {
+                if (_customersall == value)
+                    return;
+
+                _customersall = value;
+
+                Customers = new ObservableCollection<CustomerModel>();
+                foreach (CustomerModel cm in _customersall)
+                {
+                    if (cm.ShowInMASList.HasValue && cm.ShowInMASList.Value)
+                    {
+                        Customers.Add(cm);
+                    }
+                }
             }
         }
 
